@@ -49,4 +49,8 @@ public class HomeController {
 		return mav;
 	}
 	
+	public void eumssoooTest() {
+		System.out.println("test 23:24");
+	}
+	
 }
