@@ -75,7 +75,7 @@
 	  </table>
 	</nav>
 </body>
-<!--  -->
+
 <!--  <table border="0" width="100%">
 	<tr>
 		<td align="right"><c:choose>
