@@ -48,5 +48,10 @@ public class HomeController {
 		
 		return mav;
 	}
+	private void dahee() {
+		// TODO Auto-generated method stub
+		System.out.println("김다희");
+	}
+	
 	
 }
