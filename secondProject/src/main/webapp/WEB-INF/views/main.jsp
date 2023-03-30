@@ -18,6 +18,18 @@
  width: 18rem;
 }  */
  
+ .card-body{
+  height: 100px;
+  padding:0px;
+ }
+ .card-text{
+  height:10px;
+  padding:0px;
+ } 
+ 
+ .card-title{
+ padding-bottom: 0px;
+ }
 </style>
 </head>
 <body>
