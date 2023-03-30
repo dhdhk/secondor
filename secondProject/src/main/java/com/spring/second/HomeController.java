@@ -48,24 +48,10 @@ public class HomeController {
 		
 		return mav;
 	}
-	
-	public void eumssoooTest() {
-		System.out.println("test 23:24");
+	private void dahee() {
+		// TODO Auto-generated method stub
+		System.out.println("김다희");
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//한글 테스트 중입니다 한글이 깨지면 안돼요
-	
-	
-	
-
 	
 	
 }
