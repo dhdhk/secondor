@@ -15,7 +15,7 @@
 
 body{
 	margin:0 auto;
-	padding-top : 78px;
+	padding-top : 120px;
 }
 
 #sidebar-left {
@@ -31,21 +31,23 @@ body{
 }
 
 #content {
-    margin: 0 auto;
-    display: flex;
-    padding: 5px;
-    margin-top: 100px;
-    margin-right: 5px;
-    border: 0px solid #bcbcbc;
-    min-height: 100vh;
-    justify-content: space-around;
+    min-height:100vh;
+	padding: 5px;
+	margin-top: 100px;
+	margin-right: 5px;
+	margin: 0px auto;
+	border: 0px solid #bcbcbc;
+	dispaly:flex;
 }
 
 #footer {
 	clear: both;
+	margin-top:auto;
 	padding: 5px;
-	border: 0px solid #bcbcbc;
+	border-top: 1px solid #bcbcbc;
 	background-color: lightblue;
+	display:flex;
+	flex-direction: column;
 }
 
 .no-underline {

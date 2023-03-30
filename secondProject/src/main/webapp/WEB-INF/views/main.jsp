@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${contextPath }/resources/css/main_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -24,7 +25,7 @@
   padding:0px;
  }
  .card-text{
-  t
+  
   height:10px;
   padding:0px;
  } 
@@ -37,8 +38,6 @@
 <body>
 <!-- 부트스트랩-->
 
-
-</div>
 
 	<div class="row">
 		<div class="col-lg-3">
