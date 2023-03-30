@@ -27,6 +27,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">회원가입</a>
+          <!-- dk -->
         </li>
       </ul>
     </div>
