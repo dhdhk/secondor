@@ -3,6 +3,6 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.spring.second.board.dto.BoardDTO" alias="boardDTO" />
+		<typeAlias type="com.spring.second.board.dto.ArticleDTO" alias="boardDTO" />
 	</typeAliases>
 </configuration>
