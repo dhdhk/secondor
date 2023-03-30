@@ -14,7 +14,7 @@
 }
 
 body{
-	padding-top : 78px;
+	padding-top : 120px;
 }
 
 #sidebar-left {
@@ -30,8 +30,8 @@ body{
 }
 
 #content {
-	
 	padding: 5px;
+	margin-top: 100px;
 	margin-right: 5px;
 	float: left;
 	border: 0px solid #bcbcbc;
@@ -39,9 +39,12 @@ body{
 
 #footer {
 	clear: both;
+	margin-top:auto;
 	padding: 5px;
-	border: 0px solid #bcbcbc;
+	border-top: 1px solid #bcbcbc;
 	background-color: lightblue;
+	display:flex;
+	flex-direction: column;
 }
 
 .no-underline {

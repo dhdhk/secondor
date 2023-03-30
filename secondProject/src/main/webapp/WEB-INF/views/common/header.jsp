@@ -7,32 +7,73 @@
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-sm bg-light fixed-top ">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#"><img src="${contextPath }/resources/image/duke_swing.gif" alt="Bootstrap" width="30" height="24"></a>
-    <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
-      <form class="d-flex translate-middle" role="search" style="width: 50%">
-        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" >
-        <button class="btn btn-outline-success" type="submit" >검색</button>
-      </form>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">상품 등록</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">로그인</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">회원가입</a>
-          <!-- dk -->
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-sm bg-light fixed-top ">
+	  <table border="0" width="100%">
+	  	<tr>
+	  	<td>
+		  <div class="container-fluid">
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <a class="navbar-brand" href="#"><img src="${contextPath }/resources/image/duke_swing.gif" alt="Bootstrap" width="30" height="24"></a>
+		    <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
+		      <form class="d-flex translate-middle" role="search" style="width: 50%">
+		        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" >
+		        <button class="btn btn-outline-success" type="submit" >검색</button>
+		      </form>
+		      <c:choose>
+				<c:when test="${isLogOn == true && member != null }">
+					<h3>환영합니다. ${member.name }님!</h3>
+					<li class="nav-item">
+				          <a class="nav-link" href="#">상품등록</a>
+				        </li>
+				    <li class="nav-item">
+				          <a class="nav-link" href="#">로그아웃</a>
+				    </li>
+				</c:when>
+				<c:otherwise>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">로그인</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#">회원가입</a>
+				        </li>
+				      </ul>
+				</c:otherwise>
+			</c:choose>
+		    </div>
+		  </div>
+		  </td>
+		  </tr>
+		  <tr>
+		  	<td>
+		  	<div>
+		  		<ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">거실</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">주방</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">침실</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">화장실</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">서재</a>
+			        </li>
+			        <li class="nav-item">
+			          <a class="nav-link" href="#">기타</a>
+			        </li>
+			      </ul>
+		  	</div>
+		  	</td>
+		  </tr>
+	  </table>
+	</nav>
 </body>
 <!--  <table border="0" width="100%">
 	<tr>
