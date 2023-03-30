@@ -13,6 +13,10 @@
 	border: 0px solid #bcbcbc;
 }
 
+body{
+	padding-top : 78px;
+}
+
 #sidebar-left {
 	width: 15%;
 	height: 570px;
@@ -26,7 +30,7 @@
 }
 
 #content {
-	width: 75%;
+	
 	padding: 5px;
 	margin-right: 5px;
 	float: left;
