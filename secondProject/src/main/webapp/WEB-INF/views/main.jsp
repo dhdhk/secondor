@@ -12,12 +12,26 @@
 .card-img-top{
 	height: 15rem;
 	object-fit: cover;
+	padding-bottom: 5px;
 }
 /* .card{
  border-color: :black;
  width: 18rem;
 }  */
  
+ .card-body{
+  height: 70px;
+  padding:0px;
+ }
+ .card-text{
+  t
+  height:10px;
+  padding:0px;
+ } 
+ 
+ .card-title{
+ padding-bottom: 0px;
+ }
 </style>
 </head>
 <body>
@@ -34,7 +48,6 @@
 				<div class="card-body">
 					<h5 class="card-title">뉴진스 파일</h5>
 					<p class="card-text">뉴진스 이미지 팝니다</p>
-					<a href="#" class="btn btn-primary">상품보기</a>
 				</div>
 			</div>
 		</div>
@@ -45,7 +58,6 @@
 				<div class="card-body">
 					<h5 class="card-title">뉴진스 파일</h5>
 					<p class="card-text">뉴진스 이미지 팝니다</p>
-					<a href="#" class="btn btn-primary">상품보기</a>
 				</div>
 			</div>
 		</div>
@@ -56,7 +68,6 @@
 				<div class="card-body">
 					<h5 class="card-title">뉴진스 파일</h5>
 					<p class="card-text">뉴진스 이미지 팝니다</p>
-					<a href="#" class="btn btn-primary">상품보기</a>
 				</div>
 			</div>
 		</div>
@@ -67,7 +78,6 @@
 				<div class="card-body">
 					<h5 class="card-title">뉴진스 파일</h5>
 					<p class="card-text">뉴진스 이미지 팝니다</p>
-					<a href="#" class="btn btn-primary">상품보기</a>
 				</div>
 			</div>
 		</div>
