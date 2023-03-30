@@ -2,7 +2,7 @@ package com.spring.second.board.dto;
 
 import java.sql.Date;
 
-public class ArticleDTO {
+public class BoardDTO {
 	private String seller_id;
 	private String pr_title;
 	private String pr_price;
