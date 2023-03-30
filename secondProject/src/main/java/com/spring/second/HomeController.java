@@ -40,7 +40,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value= {"main.do"})
+	@RequestMapping(value= "main.do")
 	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
