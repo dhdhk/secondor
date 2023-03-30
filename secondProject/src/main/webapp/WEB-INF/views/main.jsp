@@ -31,6 +31,53 @@
     <a href="#" class="btn btn-primary">상품보기</a>
   </div>
 </div>
-<!--eumssooo test -->
+
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card">
+				<img src="${contextPath }/resources/image/newjeans.png"
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">뉴진스 파일</h5>
+					<p class="card-text">뉴진스 이미지 팝니다</p>
+					<a href="#" class="btn btn-primary">상품보기</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="card">
+				<img src="${contextPath }/resources/image/newjeans.png"
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">뉴진스 파일</h5>
+					<p class="card-text">뉴진스 이미지 팝니다</p>
+					<a href="#" class="btn btn-primary">상품보기</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="card">
+				<img src="${contextPath }/resources/image/newjeans.png"
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">뉴진스 파일</h5>
+					<p class="card-text">뉴진스 이미지 팝니다</p>
+					<a href="#" class="btn btn-primary">상품보기</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<div class="card">
+				<img src="${contextPath }/resources/image/newjeans.png"
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">뉴진스 파일</h5>
+					<p class="card-text">뉴진스 이미지 팝니다</p>
+					<a href="#" class="btn btn-primary">상품보기</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--eumssooo test -->
 </body>
 </html>
