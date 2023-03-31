@@ -38,6 +38,7 @@
     margin-top: auto;
     display: flex;
     align-items: flex-end;
+	justify-content: center;
  }
  
 </style>
