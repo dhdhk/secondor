@@ -40,18 +40,16 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value= "main.do")
-	public ModelAndView main(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		
-		return mav;
-	}
-	private void dahee() {
-		// TODO Auto-generated method stub
-		System.out.println("김다희");
-	}
+	/*
+	 * @RequestMapping(value= "main.do") public ModelAndView main(HttpServletRequest
+	 * request, HttpServletResponse response) throws Exception { // TODO
+	 * Auto-generated method stub String viewName = (String)
+	 * request.getAttribute("viewName"); ModelAndView mav = new
+	 * ModelAndView(viewName);
+	 * 
+	 * return mav; }
+	 */
+	
 	
 	
 }

@@ -11,7 +11,7 @@ import com.spring.second.board.dto.BoardDTO;
 @Repository
 public class BoardDAOImpl implements BoardDAO {
    @Autowired
-   private SqlSession sqlSession;
+   SqlSession sqlSession;
    
    
    @Override

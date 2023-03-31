@@ -2,9 +2,6 @@ package com.spring.second.board.dto;
 
 import java.sql.Date;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BoardDTO {
 	private String seller_id;
 	private String pr_title;
