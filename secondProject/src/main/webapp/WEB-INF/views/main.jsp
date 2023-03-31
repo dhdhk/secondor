@@ -33,8 +33,8 @@
  .card-title{
  padding-bottom: 0px;
  }
-  .pageNum{
-    clear: both;
+ .pageNum{
+ 	clear: both;
     margin-top: auto;
     display: flex;
     align-items: flex-end;
