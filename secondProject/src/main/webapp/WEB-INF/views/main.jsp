@@ -33,6 +33,13 @@
  .card-title{
  padding-bottom: 0px;
  }
+  .pageNum{
+    clear: both;
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+ }
+ 
 </style>
 </head>
 <body>
@@ -49,7 +56,7 @@
 			<c:when test="${boardList != null }">
 				 <div class="row">
 				 <c:forEach var="board" items="${boardList }" >
-					<div class="col-md-3 mt-5 ">
+					<div class="col-md-3 mt-4 mb-4">
 						<div class="card">
 						<!-- 이미지 지정파일 정해지면 수정해야함 -->
 							<img src="${board.pr_img1 }"
@@ -62,18 +69,20 @@
 						</div>
 					</div>
 					</c:forEach>
+					
 				</div>
 				<!-- page 수  보여주기 수정 중 -->
-				<%-- <div class="row">
-					<div class="text-right">
+				<div class="pageNum">
+					<div class="">
 						<a href="main.jsp?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-info">이전</a> 
 							${curpage } page/ ${totalpage }pages 
 						<a href="main.jsp?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-success">다음</a>
 					</div>
-				</div> --%>
+				</div> 
+				
 
 			<!-- pro30 page 보여주기 방법 카피 -->
-			<div class="cls2">
+			<%-- <div class="cls2">
 				<c:if test="${totboards != null }">
 					<c:choose>
 						<c:when test="${totboards > 100 }">
@@ -108,54 +117,12 @@
 						</c:when>
 					</c:choose>
 				</c:if>
-			</div>
+			</div> --%>
+			
 		</c:when>
+	
 </c:choose>
 
-
-	<%-- 카드 예시파일 
-	<div class="row">
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-	</div> --%>
-	
 </body>
+
 </html>
