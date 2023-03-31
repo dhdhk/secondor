@@ -16,9 +16,9 @@
   <form name="write" method="post" action="${contextPath }/board/addNewArticle.do">
   	<br>
   	<br><br><br><br><br>
-  	<table align="center" border="9">
+  	<table align="center" >
   		<tr>
-  			<td colspan="4"><input type="text" id="title" placeholder="제목을 입력하세요." size="128" maxlength="15"></td>
+  			<td colspan="4"><input type="text" id="title" placeholder="제목을 입력하세요." size="125" maxlength="15"></td>
   			
   		</tr>
   		<tr>
@@ -32,17 +32,29 @@
   					<option value="etc">기타</option>
   				</select>
   			</td>
-  			<td colspan="2">
-  				<input type="text" id="pr_price"  placeholder="가격을 입력하세요" >
+  			<td rowspan="2">
+  				상품 상태
+  			</td>
+  			<td>
+  				하&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상
   			</td>
   		</tr>
   		<tr>
-  			<td colspan="4" ><textarea rows="15" cols="128" maxlength="4000" name="content" placeholder="내용을 입력하세요" style="resize: none;"></textarea></td>
+  			<td colspan="2">
+  				<input type="text" id="pr_price"  placeholder="가격을 입력하세요" >
+  			</td>
+  			<td>
+  				<input type="range" id="pr_condition" min="1" max="3">
+  			</td>
+  			
+  		</tr>
+  		<tr>
+  			<td colspan="4" ><textarea rows="15" cols="127.9" maxlength="4000" name="content" placeholder="내용을 입력하세요" style="resize: none;"></textarea></td>
   		</tr>
   		<tr>
   			<td align="left" colspan="2" >이미지파일 첨부 &nbsp;<input type="button" value="파일추가" onclick="fn_addFile()"></td>
   			<td>
-  				<input type="range" >
+  				
   			</td>
   		</tr>
   		<tr>
