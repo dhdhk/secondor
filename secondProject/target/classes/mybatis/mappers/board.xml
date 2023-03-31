@@ -22,8 +22,7 @@
    
    <select id="selectAllArticleList" resultMap="articleResult">
       <![CDATA[
-         select regNum, pr_title, , pr_img1, pr_sold, regDate from t_board
-         order siblings by regNum desc
+         select regNum, pr_title, pr_img1, pr_sold, regDate from board
       ]]>
    </select>
 	
