@@ -22,7 +22,7 @@
    
    <select id="selectAllArticleList" resultMap="articleResult">
       <![CDATA[
-         select regNum, pr_title, pr_img1, pr_sold, regDate from board
+         select * from board order by regDate desc
       ]]>
    </select>
 	
