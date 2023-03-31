@@ -52,11 +52,11 @@
 					<div class="col-lg-3">
 						<div class="card">
 						<!-- 이미지 지정파일 정해지면 수정해야함 -->
-							<img src="${contextPath }/resources/image/newjeans.png"
+							<img src="${board.pr_img1 }"
 								class="card-img-top" alt="...">
 							<div class="card-body">
-							<!-- 카드 내용: ,pr_title, pr_price , regDate -->
-								<h5 class="card-title"> ${board.pr_title }</h5>
+							<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
+								<h5 class="card-title"> ${board.pr_title }, ${board.pr_sold }</h5>
 								<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
 							</div>
 						</div>
