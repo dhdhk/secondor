@@ -40,7 +40,10 @@
   			<td colspan="4" ><textarea rows="15" cols="128" maxlength="4000" name="content" placeholder="내용을 입력하세요" style="resize: none;"></textarea></td>
   		</tr>
   		<tr>
-  			<td align="left" colspan="4" >이미지파일 첨부 &nbsp;<input type="button" value="파일추가" onclick="fn_addFile()"></td>
+  			<td align="left" colspan="2" >이미지파일 첨부 &nbsp;<input type="button" value="파일추가" onclick="fn_addFile()"></td>
+  			<td>
+  				<input type="range" >
+  			</td>
   		</tr>
   		<tr>
 			<td colspan="4"><div id="d_file"></div></td>
