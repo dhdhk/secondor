@@ -49,7 +49,7 @@
 			<c:when test="${boardList != null }">
 				 <div class="row">
 				 <c:forEach var="board" items="${boardList }" >
-					<div class="col-lg-3">
+					<div class="col-md-3 mt-5 ">
 						<div class="card">
 						<!-- 이미지 지정파일 정해지면 수정해야함 -->
 							<img src="${board.pr_img1 }"
