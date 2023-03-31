@@ -14,26 +14,27 @@
 <script>
 	var cnt=1;
 	function fn_addFile(){
-		if(cnt<4){$("#d_file").append("<br><input type='file' name='file"+cnt+"'>");
+		if(cnt<4){$("#d_file").append("<br><input type='file' name='file"+cnt+"' accept='image/*'>");
 		cnt++;}
 		if(cnt==4){$("#d_file").append("<br>사진은 최대 3장까지 등록할 수 있습니다.");
 		cnt++;}
 		if(cnt>5){}
-		
+	}
+	function backToList(obj){
+		obj.action = "${contextPath}/main.do";
+		obj.submit();
 	}
 </script>
 <script>
 	function onlyNumber(){
-
         if((event.keyCode<48)||(event.keyCode>57))
 
            event.returnValue=false;
-
-}
+	}
 </script>
 </head>
 <body>
-  <form name="write" method="post" action="${contextPath }/board/addNewArticle.do">
+  <form name="write" method="post" action="${contextPath }/write/addNewArticle.do">
   	<br>
   	<br><br><br><br><br>
   	<table align="center" >
@@ -83,7 +84,7 @@
 			<td colspan="4" align="left"><div id="d_file"></div></td>
 		</tr>
 		<tr>
-			<td colspan="4" align="center"><input type="submit" value="글쓰기">&nbsp;&nbsp;&nbsp;<input type="button" value="목록보기" onclick="backToList(this.form)">
+			<td colspan="4" align="center"><input type="submit" value="글쓰기">&nbsp;&nbsp;&nbsp;<input type="button" value="취소" onclick="backToList(this.form)">
 			</td>
 		</tr>
   	</table>
