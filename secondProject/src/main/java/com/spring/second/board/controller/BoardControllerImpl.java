@@ -31,4 +31,15 @@ public class BoardControllerImpl implements BoardController {
       return mav;
    }
 
+   @Override
+   @RequestMapping(value="/", method={RequestMethod.GET, RequestMethod.POST})
+   public ModelAndView listArticlesByCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	// TODO Auto-generated method stub
+	   String viewName = (String) request.getAttribute("viewName");
+	   ModelAndView mav = new ModelAndView(viewName);
+	   return mav;
+}
+   
+
+
 }

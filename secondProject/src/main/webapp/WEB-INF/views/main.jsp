@@ -58,7 +58,7 @@
 				 <div class="row">
 				 <c:forEach var="board" items="${boardList }" >
 					<div class="col-md-3 mt-5 mb-5">
-						<div class="card">
+						<a href="#"><div class="card"></a>
 						<!-- 이미지 지정파일 정해지면 수정해야함 -->
 							<img src="${board.pr_img1 }"
 								class="card-img-top" alt="...">
