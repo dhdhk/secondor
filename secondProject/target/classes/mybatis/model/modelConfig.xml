@@ -5,5 +5,7 @@
 	<typeAliases>
 	<!-- merge test -->
 		<typeAlias type="com.spring.second.board.dto.BoardDTO" alias="boardDTO" />
+		<typeAlias type="com.spring.second.chat.dto.ChatRoomDTO" alias="chatroomDTO"/>
+		<typeAlias type="com.spring.second.chat.dto.ChatDTO" alias="chatDTO"/>
 	</typeAliases>
 </configuration>
