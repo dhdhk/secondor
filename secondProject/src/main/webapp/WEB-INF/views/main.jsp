@@ -38,13 +38,13 @@
     margin-top: auto;
     display: flex;
     align-items: flex-end;
-	justify-content: center;
+    justify-content: center;
  }
  
 </style>
 </head>
 <body>
-<!-- 부트스트랩 적용-->
+<!-- 부트스트랩 card 적용-->
 
 <c:choose>
 			<c:when test="${boardList == null }">
@@ -57,9 +57,11 @@
 			<c:when test="${boardList != null }">
 				 <div class="row">
 				 <c:forEach var="board" items="${boardList }" >
-					<div class="col-md-3 mt-5 mb-5">
-						<a href="#"><div class="card"></a>
-						<!-- 이미지 지정파일 정해지면 수정해야함 -->
+					<div class="col-md-3 mt-4 mb-4">
+					<!-- **카드 선택 시 상세페이지로 이동할 수 있게 설정해야함 -->
+					<a href="#">
+						<div class="card">
+						<!-- **이미지 지정파일 정해지면 수정해야함 -->
 							<img src="${board.pr_img1 }"
 								class="card-img-top" alt="...">
 							<div class="card-body">
@@ -68,19 +70,33 @@
 								<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
 							</div>
 						</div>
+					</a>
 					</div>
+					
 					</c:forEach>
+					
 				</div>
-				<!-- page 수  보여주기 수정 중 -->
-				<div class="pageNum">
+				
+				<!-- page 수  보여주기 수정 중 ** 페이지 수가 뜨지 않음 **
+					${curpage }/ ${totalpage } 해결해야함
+				 -->
+				 <div class="pageNum">
+				
 					<div class="">
 						<a href="main.jsp?page=${curpage>1?curpage-1:curpage }" class="btn btn-sm btn-info">이전</a> 
 							${curpage } page/ ${totalpage }pages 
 						<a href="main.jsp?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-sm btn-success">다음</a>
 					</div>
-				</div>
+					
+				</div>  
+				
+				
+<!-- ignore 실험중 test2  -->
+				<!-- ignore 실험중 -->
 
-			<!-- pro30 page 보여주기 방법 카피 -->
+			<!-- pro30 page 보여주기 방법 카피 
+			     이건 지금 우리 main.do 에서 화면에 띄워지지 않음
+			-->
 			<%-- <div class="cls2">
 				<c:if test="${totboards != null }">
 					<c:choose>
@@ -117,53 +133,11 @@
 					</c:choose>
 				</c:if>
 			</div> --%>
+			
 		</c:when>
+	
 </c:choose>
 
-
-	<%-- 카드 예시파일 
-	<div class="row">
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-		<div class="col-lg-3">
-			<div class="card">
-				<img src="${contextPath }/resources/image/newjeans.png"
-					class="card-img-top" alt="...">
-				<div class="card-body">
-					<h5 class="card-title">뉴진스 파일</h5>
-					<p class="card-text">뉴진스 이미지 팝니다</p>
-				</div>
-			</div>
-		</div>
-	</div> --%>
-	
 </body>
+
 </html>
