@@ -33,11 +33,12 @@ body{
 #content {
    margin: 0 auto;
     display: flex;
-    padding: 5px;
+    padding: 50px;
     margin-right: 5px;
     border: 0px solid #bcbcbc;
     min-height: 100vh;
     flex-direction: column;
+    justify-content: center;
 }
 
 #footer {
