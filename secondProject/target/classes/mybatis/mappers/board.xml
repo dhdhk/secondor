@@ -28,15 +28,13 @@
    </select>
 
 	
-	<!--  <select id="selectAllArticleList" resultMap="articleResult">
+	<select id="selectArticleByCategory" parameterType="String" resultMap="articleResult">
 		<![CDATA[
-			select level, articleNo, parentNo, title, content, writeDate, imageFileName, id from t_board
-			start with parentNo=0
-			connect by prior articleNo=parentNo
-			order siblings by articleNo desc
+			select * from board where category=#{category}
 		]]>
 	</select>
 	
+		<!--  
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[
 			insert into t_board(articleNo, title, content, imageFileName, id)

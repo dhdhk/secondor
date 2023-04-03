@@ -8,4 +8,6 @@ public interface BoardDAO {
 
    List<BoardDTO> selectAllArticlesList();
 
+   List<BoardDTO> selectArticlesByCategory(String category_name);
+
 }

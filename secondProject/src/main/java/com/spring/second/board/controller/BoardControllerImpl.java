@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
@@ -32,12 +33,16 @@ public class BoardControllerImpl implements BoardController {
    }
 
    @Override
-   @RequestMapping(value="/", method={RequestMethod.GET, RequestMethod.POST})
-   public ModelAndView listArticlesByCategory(HttpServletRequest request, HttpServletResponse response) throws Exception {
+   @RequestMapping(value="/board/viewList.do", method={RequestMethod.GET, RequestMethod.POST})
+   public ModelAndView listArticlesByCategory(@RequestParam("category_name") String category_name,
+		   HttpServletRequest request, HttpServletResponse response) throws Exception {
 	// TODO Auto-generated method stub
 	   String viewName = (String) request.getAttribute("viewName");
-	   ModelAndView mav = new ModelAndView(viewName);
-	   return mav;
+	      List<BoardDTO> ListByCategory = boardService.listArticlesByCategory(category_name);
+	      
+	      ModelAndView mav = new ModelAndView(viewName);
+	      mav.addObject("ListByCategory", ListByCategory);
+	      return mav;
 }
    
 

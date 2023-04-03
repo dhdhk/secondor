@@ -14,13 +14,21 @@ public class BoardDAOImpl implements BoardDAO {
    SqlSession sqlSession;
    
    
-   @Override
-   public List<BoardDTO> selectAllArticlesList() {
-      // TODO Auto-generated method stub
+	@Override
+	public List<BoardDTO> selectAllArticlesList() {
+	// TODO Auto-generated method stub
+		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllArticleList");
       
-      List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllArticleList");
-      
-      return boardList;
+		return boardList;
    }
+
+
+@Override
+	public List<BoardDTO> selectArticlesByCategory(String category_name) {
+	// TODO Auto-generated method stub
+		List<BoardDTO> ListByCategory = sqlSession.selectList("mapper.board.selectArticleByCategory", category_name);
+	
+		return ListByCategory;
+}
 
 }

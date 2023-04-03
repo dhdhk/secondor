@@ -51,22 +51,22 @@
 		  	<div>
 		  		<ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">거실</a>
+			          <a class="nav-link" href="/viewList.do?category=living">거실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">주방</a>
+			          <a class="nav-link" href="/viewList.do?category=dining">주방</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">침실</a>
+			          <a class="nav-link" href="/viewList.do?category=bedroom">침실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">화장실</a>
+			          <a class="nav-link" href="/viewList.do?category=bathroom">화장실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">서재</a>
+			          <a class="nav-link" href="/viewList.do?category=study">서재</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">기타</a>
+			          <a class="nav-link" href="/viewList.do?category=etc">기타</a>
 			        </li>
 			      </ul>
 		  	</div>

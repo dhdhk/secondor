@@ -16,8 +16,15 @@ public class BoardServiceImpl implements BoardService {
    @Override
    public List<BoardDTO> listArticles() {
       // TODO Auto-generated method stub
-      List<BoardDTO> boardList = boardDAO.selectAllArticlesList();
+	   List<BoardDTO> boardList = boardDAO.selectAllArticlesList();
       return boardList;
    }
+
+@Override
+	public List<BoardDTO> listArticlesByCategory(String category_name) {
+	// TODO Auto-generated method stub
+		List<BoardDTO> ListByCategory = boardDAO.selectArticlesByCategory(category_name);
+		return ListByCategory;
+}
 
 }
