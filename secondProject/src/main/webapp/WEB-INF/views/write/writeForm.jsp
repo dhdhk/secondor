@@ -41,13 +41,13 @@
   	<br><br><br><br><br>
   	<table align="center" >
   		<tr>
-  			<td colspan="4"><input type="text" id="title" placeholder="제목을 입력하세요." size="118" maxlength="15"></td>
+  			<td colspan="4"><input type="text" name="pr_title" placeholder="제목을 입력하세요." size="118" maxlength="15"></td>
   			
   		</tr>
   		<tr>
   			<td>카테고리</td>
   			<td>
-  				<select name="category" id="category" style="background: silver;">
+  				<select name="category" name="category_name" style="background: silver;">
   					<option value="living">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;거실&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
   					<option value="bedroom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;침실&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
   					<option value="dining">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주방&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
@@ -66,10 +66,10 @@
   		<tr>
   			<td>상품 가격</td>
   			<td >
-  				<input type="text" id="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();">
+  				<input type="text" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();">
   			</td>
   			<td>
-  				<input type="range" id="pr_condition" min="1" max="3">
+  				<input type="range" name="pr_condition" min="1" max="3">
   			</td>
   			
   		</tr>
