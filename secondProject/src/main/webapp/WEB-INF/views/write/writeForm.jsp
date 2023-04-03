@@ -34,7 +34,7 @@
 </script>
 </head>
 <body>
-  <form name="write" method="post" action="${contextPath }/write/addNewArticle.do">
+  <form name="write" method="post" action="${contextPath }/write/addNewArticle.do" enctype="multipart/form-data">
   	<br>
   	<br><br><br><br><br>
   	<table align="center" >
