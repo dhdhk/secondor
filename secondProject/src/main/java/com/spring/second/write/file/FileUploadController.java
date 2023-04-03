@@ -49,7 +49,7 @@ public class FileUploadController {
 		
 
 		while(enu.hasMoreElements()) {
-			String name = (String)enu.nextElement();
+			String name = enu.nextElement();
 			String value = multipartRequest.getParameter(name);
 			articleMap.put(name, value);
 		}

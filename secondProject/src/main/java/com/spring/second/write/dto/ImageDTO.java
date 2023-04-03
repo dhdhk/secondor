@@ -7,6 +7,7 @@ public class ImageDTO {
 	private String imageFileName;
 	private Date regDate;
 	private int articleNo;
+	
 	public int getImageFileNo() {
 		return imageFileNo;
 	}
