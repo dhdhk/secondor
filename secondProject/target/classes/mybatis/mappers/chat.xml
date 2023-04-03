@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.chat">
+	<resultMap type="chatroomDTO" id="chatroomResult">
+      <result property="id" column="id" />
+    </resultMap>
+    <resultMap type="chatDTO" id="chatResult">
+    	<result property="chat_id" column="chat_id"/>
+    	<result property="pr_id" column="pr_id"/>
+    	<result property="pr_title" column="pr_title"/>
+    	<result property="seller_id" column="seller_id"/>
+    	<result property="buyer_id" column="buyer_id"/>
+    	<result property="chat_content" column="chat_content"/>
+    	<result property="chat_Time" column="chat_Time"/>
+    </resultMap>
+    
+    
+   
+</mapper>
