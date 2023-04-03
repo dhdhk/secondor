@@ -2,12 +2,13 @@ package com.spring.second.write.dto;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+@Component
 public class ImageDTO {
 	private int imageFileNo;
 	private String imageFileName;
 	private Date regDate;
-	private int articleNo;
-	
+	private int regNum;
 	public int getImageFileNo() {
 		return imageFileNo;
 	}
@@ -26,10 +27,10 @@ public class ImageDTO {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-	public int getArticleNo() {
-		return articleNo;
+	public int getRegNum() {
+		return regNum;
 	}
-	public void setArticleNo(int articleNo) {
-		this.articleNo = articleNo;
+	public void setRegNum(int regNum) {
+		this.regNum = regNum;
 	}
 }

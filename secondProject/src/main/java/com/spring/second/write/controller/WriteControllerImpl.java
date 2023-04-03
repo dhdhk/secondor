@@ -12,7 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class WriteControllerImpl implements WriteController{
 
 	@Override
-	@RequestMapping(value = "/write/writeForm.do")
+	//@RequestMapping(value = "/write/writeForm.do")
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
