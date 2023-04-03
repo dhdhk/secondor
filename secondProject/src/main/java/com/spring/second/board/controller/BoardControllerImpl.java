@@ -30,7 +30,5 @@ public class BoardControllerImpl implements BoardController {
       mav.addObject("boardList", boardList);
       return mav;
    }
-   
-   
 
 }
