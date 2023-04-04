@@ -23,9 +23,23 @@
    
    <select id="selectAllArticleList" resultMap="articleResult">
       <![CDATA[
-         select * from board order by regDate desc
+         select * from board order by regDate desc,regNum desc
       ]]>
    </select>
+   
+   
+   <select id="selectPage" parameterType="java.util.Map" resultMap="articleResult">
+   	 <![CDATA[
+         select * from (select rownum num, B.* from(select * from board order by regNum desc) B ) 
+         where num between #{start} and #{end}
+      ]]>
+   </select>
+   
+     <select id="count" resultType="int">
+     	<![CDATA[
+          SELECT count(*) FROM board
+         ]]>
+    </select>
 
 	
 	<!--  <select id="selectAllArticleList" resultMap="articleResult">
