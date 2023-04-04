@@ -26,10 +26,6 @@ public class WriteDAOImpl implements WriteDAO{
 		
 		articleMap.put("regNum", regNum);
 		sqlSession.insert("mapper.writeArticle.insertNewArticle",articleMap);
-//		for(String key : articleMap.keySet()) {
-//            String value = (String) articleMap.get(key);
-//            System.out.println(key + " : " + value);
-//        }
 		return regNum;
 	}
 
@@ -50,7 +46,6 @@ public class WriteDAOImpl implements WriteDAO{
 			imageDTO.setRegNum(regNum);
 		}
 		sqlSession.insert("mapper.writeImage.insertNewImage", imageFileList);
-		System.out.println("insertNewImage 성공");
 	}
 
 	private int selectNewImageFileNo() throws DataAccessException{

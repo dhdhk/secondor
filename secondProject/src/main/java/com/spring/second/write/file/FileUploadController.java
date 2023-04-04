@@ -63,7 +63,6 @@ public class FileUploadController {
 			System.out.println(name+" : "+value);
 			articleMap.put(name, value);
 		}
-		System.out.println("3333");
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
 		System.out.println();
@@ -71,7 +70,6 @@ public class FileUploadController {
 		String user_id="test";
 		writeDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
-		System.out.println("4444");
 		if(fileList != null && fileList.size() != 0) {
 			for(String fileName : fileList) {
 				ImageDTO image = new ImageDTO();
@@ -86,12 +84,10 @@ public class FileUploadController {
 		ResponseEntity<String> resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		System.out.println("5555");
 		
 		//-----
 		try {
 			int regNum = writeService.addNewArticle(articleMap);
-			System.out.println("6666");
 			
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
@@ -104,7 +100,6 @@ public class FileUploadController {
 			message += "alert('새글을 추가했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath() +"/board/listArticles.do';";
 			message += "</script>";
-			System.out.println("7777");
 			resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
 		} catch(Exception e) {
 			if(imageFileList != null && imageFileList.size() != 0) {
