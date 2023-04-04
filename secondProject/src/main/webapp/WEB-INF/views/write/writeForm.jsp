@@ -74,7 +74,7 @@
   			
   		</tr>
   		<tr>
-  			<td colspan="4" ><textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요." style="resize: none;"></textarea></td>
+  			<td colspan="4" ><textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요." wrap="hard" style="resize: none;"></textarea></td>
   		</tr>
   		<tr>
   			<td align="left" colspan="2" >사진 첨부 &nbsp;<input type="button" name="addFile" value="파일 추가" onclick="fn_addFile()" ></td>

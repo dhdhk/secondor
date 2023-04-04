@@ -59,13 +59,12 @@ public class FileUploadController {
 
 		while(enu.hasMoreElements()) {
 			String name = enu.nextElement();
-			String value = multipartRequest.getParameter(name);
+			String value = multipartRequest.getParameter(name).replace("\r\n", "<br>");
 			System.out.println(name+" : "+value);
 			articleMap.put(name, value);
 		}
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
-		System.out.println();
 		//판매자 이름 임시 지정
 		String user_id="test";
 		writeDTO.setSeller_id(user_id);
