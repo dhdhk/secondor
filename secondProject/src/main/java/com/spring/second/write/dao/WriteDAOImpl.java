@@ -10,18 +10,24 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.write.dto.ImageDTO;
+import com.spring.second.write.dto.WriteDTO;
 
 @Repository
 public class WriteDAOImpl implements WriteDAO{
 	@Autowired
 	SqlSession sqlSession;
+	@Autowired
+	WriteDTO writeDTO;
+	
 	@Override
 	public int insertNewArticle(Map<String, Object> articleMap) throws DataAccessException{
 		// TODO Auto-generated method stub
 		int regNum = selectNewRegNum();
+		System.out.println(regNum);
+		System.out.println(writeDTO.getSeller_id());
 		articleMap.put("regNum", regNum);
 		sqlSession.insert("mapper.writeArticle.insertNewArticle",articleMap);
-		
+		System.out.println("8888");
 		return regNum;
 	}
 

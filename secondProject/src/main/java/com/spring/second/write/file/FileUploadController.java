@@ -68,6 +68,7 @@ public class FileUploadController {
 		System.out.println();
 		//판매자 이름 임시 지정
 		String user_id="hong";
+		writeDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
 		System.out.println("4444");
 		if(fileList != null && fileList.size() != 0) {
@@ -88,7 +89,7 @@ public class FileUploadController {
 		//-----
 		try {
 			int regNum = writeService.addNewArticle(articleMap);
-
+			System.out.println("6666");
 			
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {

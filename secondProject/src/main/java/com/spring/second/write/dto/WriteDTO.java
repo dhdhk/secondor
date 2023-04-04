@@ -7,13 +7,15 @@ public class WriteDTO {
 private String seller_id;
 private String pr_title;
 private String pr_price;
+private String pr_img1;
+private String pr_img2;
+private String pr_img3;
 private String pr_content;
 private String pr_condition;
 private String pr_sold;
 private String regDate;
 private String regNum;
 private String category_name;
-private String pr_img1;
 public String getSeller_id() {
 	return seller_id;
 }
@@ -46,6 +48,21 @@ public void setPr_condition(String pr_condition) {
 }
 public String getPr_sold() {
 	return pr_sold;
+}
+public void setPr_sold() {
+	this.pr_sold = "0";
+}
+public String getPr_img2() {
+	return pr_img2;
+}
+public void setPr_img2(String pr_img2) {
+	this.pr_img2 = pr_img2;
+}
+public String getPr_img3() {
+	return pr_img3;
+}
+public void setPr_img3(String pr_img3) {
+	this.pr_img3 = pr_img3;
 }
 public void setPr_sold(String pr_sold) {
 	this.pr_sold = pr_sold;
