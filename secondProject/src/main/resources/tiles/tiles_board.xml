@@ -23,11 +23,12 @@
 		<put-attribute name="body" value="/WEB-INF/views/write/writeForm.jsp" />
 	</definition>
 	
-	<definition name="/board/viewList" extends="baseLayout">
+	<definition name="viewList" extends="baseLayout">
 		<put-attribute name="title" value="리스트" />
 		<put-attribute name="body" value="/WEB-INF/views/viewList.jsp" />
 	</definition>
-<!-- /viewList.do
+	
+<!-- 
 	<definition name="/board/viewArticle" extends="baseLayout">
 		<put-attribute name="title" value="상세글창" />
 		<put-attribute name="body" value="/WEB-INF/views/board/viewArticle.jsp" />

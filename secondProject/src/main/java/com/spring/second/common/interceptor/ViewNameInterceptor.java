@@ -12,6 +12,7 @@ public class ViewNameInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		try {
+			
 			String viewName = getViewName(request);
 			request.setAttribute("viewName", viewName);
 		} catch (Exception e) {
