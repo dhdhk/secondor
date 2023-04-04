@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 /* 리스트카드 이미지 크기 */
 .card-img-top{
 	height: 15rem;
@@ -47,28 +47,28 @@
 </head>
 <body>
 <!-- 부트스트랩 card 적용-->
-	<!-- 메인 리스트 -->
+	<!-- 카테고리 별 리스트 -->
 	<c:choose>
-		<c:when test="${boardList == null }">
+		<c:when test="${ListByCategory == null }">
 			<tr height="10">
 				<td colspan="4">
 					<b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
 				</td>
 			</tr>
 		</c:when>
-		<c:when test="${boardList != null }">
+		<c:when test="${ListByCategory != null }">
 			<div class="row">
-				<c:forEach var="board" items="${boardList }" >
+				<c:forEach var="ListByCategory" items="${ListByCategory }" >
 					<div class="col-md-3 mt-4 mb-4">
 					<!-- **카드 선택 시 상세페이지로 이동할 수 있게 설정해야함 -->
 						<a href="#">
 							<div class="card">
 							<!-- **이미지 지정파일 정해지면 수정해야함 -->
-								<img src="${board.pr_img1 }" class="card-img-top" alt="...">
+								<img src="${ListByCategory.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
-									<h5 class="card-title"> ${board.pr_title }, ${board.pr_sold }</h5>
-									<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
+									<h5 class="card-title"> ${ListByCategory.pr_title }, ${ListByCategory.pr_sold }</h5>
+									<p class="card-text"> ${ListByCategory.pr_price } , ${ListByCategory.regDate } </p>
 								</div>
 							</div>
 						</a>
@@ -77,7 +77,7 @@
 			</div>
 			
  			<!-- 페이징 -->
-			<c:set var="page" value="${ph.page}"/> 
+	<%-- 		<c:set var="page" value="${ph.page}"/> 
 			<c:set var="beginPage" value="${ph.beginPage }" />
 			<c:set var="endPage" value="${ph.endPage}"/>
 			<div class="pageNum">            
@@ -101,9 +101,10 @@
 						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">다음</span>
 					</c:if>
 				</div>
-			</div>   
+			</div>   --%> 
 		</c:when>
 	</c:choose>
 </body>
+
 
 </html>
