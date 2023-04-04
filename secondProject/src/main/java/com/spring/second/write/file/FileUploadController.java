@@ -60,6 +60,7 @@ public class FileUploadController {
 		while(enu.hasMoreElements()) {
 			String name = enu.nextElement();
 			String value = multipartRequest.getParameter(name);
+			System.out.println(name+" : "+value);
 			articleMap.put(name, value);
 		}
 		System.out.println("3333");
@@ -67,7 +68,7 @@ public class FileUploadController {
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
 		System.out.println();
 		//판매자 이름 임시 지정
-		String user_id="hong";
+		String user_id="test";
 		writeDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
 		System.out.println("4444");
@@ -86,6 +87,7 @@ public class FileUploadController {
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		System.out.println("5555");
+		
 		//-----
 		try {
 			int regNum = writeService.addNewArticle(articleMap);
@@ -98,7 +100,6 @@ public class FileUploadController {
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
 			}
-			System.out.println("6666");
 			message = "<script>";
 			message += "alert('새글을 추가했습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath() +"/board/listArticles.do';";

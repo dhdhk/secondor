@@ -14,7 +14,7 @@
 <script>
 	var cnt=1;
 	function fn_addFile(){
-		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_image"+cnt+"' accept='image/*'>");
+		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*'>");
 		cnt++;}
 		if(cnt==4){$("#d_file").append("<br>사진은 최대 3장까지 등록할 수 있습니다.");
 		cnt++;}
@@ -47,7 +47,7 @@
   		<tr>
   			<td>카테고리</td>
   			<td>
-  				<select name="category" name="category_name" style="background: silver;">
+  				<select name="category_name" style="background: silver;">
   					<option value="living">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;거실&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
   					<option value="bedroom">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;침실&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
   					<option value="dining">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주방&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
@@ -74,7 +74,7 @@
   			
   		</tr>
   		<tr>
-  			<td colspan="4" ><textarea rows="15" cols="120" maxlength="4000" name="content" placeholder="내용을 입력하세요." style="resize: none;"></textarea></td>
+  			<td colspan="4" ><textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요." style="resize: none;"></textarea></td>
   		</tr>
   		<tr>
   			<td align="left" colspan="2" >사진 첨부 &nbsp;<input type="button" name="addFile" value="파일 추가" onclick="fn_addFile()" ></td>

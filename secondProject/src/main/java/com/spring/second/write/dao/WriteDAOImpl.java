@@ -24,9 +24,14 @@ public class WriteDAOImpl implements WriteDAO{
 		// TODO Auto-generated method stub
 		int regNum = selectNewRegNum();
 		System.out.println(regNum);
+		
 		System.out.println(writeDTO.getSeller_id());
 		articleMap.put("regNum", regNum);
 		sqlSession.insert("mapper.writeArticle.insertNewArticle",articleMap);
+//		for(String key : articleMap.keySet()) {
+//            String value = (String) articleMap.get(key);
+//            System.out.println(key + " : " + value);
+//        }
 		System.out.println("8888");
 		return regNum;
 	}

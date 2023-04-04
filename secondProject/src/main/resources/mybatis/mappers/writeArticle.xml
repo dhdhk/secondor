@@ -18,8 +18,8 @@
     </resultMap>
     <insert id="insertNewArticle" parameterType="java.util.Map">
         <![CDATA[
-            insert into board(seller_id, pr_title, pr_price, pr_img1, pr_img2, pr_img3, pr_content, pr_condition, pr_sold, regDate, regNum, category_name)
-                values(#{seller_id}, #{pr_title}, #{pr_price}, null, null, null, #{pr_content}, #{pr_condition}, #{pr_sold},sysdate, #{regNum}, #{category_name})
+            insert into board(seller_id, pr_title, pr_price, pr_content, pr_condition, pr_sold, regDate, regNum, category_name)
+                values(#{seller_id}, #{pr_title}, #{pr_price}, #{pr_content}, #{pr_condition}, '0',sysdate, #{regNum}, #{category_name})
         ]]>
         
     </insert>
