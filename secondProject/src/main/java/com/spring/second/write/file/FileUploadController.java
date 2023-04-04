@@ -31,7 +31,7 @@ import com.spring.second.write.dto.ImageDTO;
 public class FileUploadController {
 	private static final String IMAGE_PATH = "C:\\image";
 	
-	@RequestMapping(value = "/write/writeForm.do")
+	//@RequestMapping(value = "/write/writeForm.do")
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
