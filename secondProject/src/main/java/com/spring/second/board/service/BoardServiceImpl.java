@@ -25,7 +25,6 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> listArticlesByCategory(String category_name) {
 		// TODO Auto-generated method stub
 		List<BoardDTO> ListByCategory = boardDAO.selectArticlesByCategory(category_name);
-		System.out.println(category_name + "2");
 		return ListByCategory;
 	}
 
@@ -39,6 +38,12 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardDTO> getPage(Map map) {
 	    return boardDAO.selectPage(map);
+	}
+
+	@Override
+	public Map<String, Object> viewProduct(int regNum) {
+		// TODO Auto-generated method stub
+		return boardDAO.viewProduct(regNum);
 	}
 
 }

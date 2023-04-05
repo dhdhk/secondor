@@ -13,4 +13,6 @@ public interface BoardService {
 	public int getCount();
 
 	List<BoardDTO> getPage(Map map);
+
+	Map<String, Object> viewProduct(int regNum);
 }
