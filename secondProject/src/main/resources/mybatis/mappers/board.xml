@@ -28,9 +28,8 @@
    </select>
    
  	<select id="selectPage" parameterType="java.util.Map" resultMap="articleResult">
-       <![CDATA[
-         select * from (select rownum num, B.* from(select * from board order by regNum desc) B ) 
-         where num between #{start} and #{end}
+       <![CDATA[  
+         select * from board_view where num between  #{start} and #{end}
       ]]>
    </select>
    
