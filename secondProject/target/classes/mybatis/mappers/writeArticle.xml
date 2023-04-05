@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.writeArticle">
-    <resultMap type="writeDTO" id="writeResult">
+    <resultMap type="boardDTO" id="writeResult">
         <result property="seller_id" column="seller_id"/>
         <result property="pr_title" column="pr_title"/>
         <result property="pr_price" column="pr_price"/>

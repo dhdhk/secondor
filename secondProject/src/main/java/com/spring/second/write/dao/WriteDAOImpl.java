@@ -9,21 +9,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
+import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.write.dto.ImageDTO;
-import com.spring.second.write.dto.WriteDTO;
 
 @Repository
 public class WriteDAOImpl implements WriteDAO{
 	@Autowired
 	SqlSession sqlSession;
 	@Autowired
-	WriteDTO writeDTO;
+	BoardDTO boardDTO;
 	
 	@Override
 	public int insertNewArticle(Map<String, Object> articleMap) throws DataAccessException{
 		// TODO Auto-generated method stub
 		int regNum = selectNewRegNum();
-		
 		articleMap.put("regNum", regNum);
 		sqlSession.insert("mapper.writeArticle.insertNewArticle",articleMap);
 		return regNum;

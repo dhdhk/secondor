@@ -8,4 +8,5 @@ import org.springframework.web.servlet.ModelAndView;
 public interface WriteController {
 
 	public ModelAndView write(HttpServletRequest request,HttpServletResponse response) throws Exception;
+	public ModelAndView viewArticle(HttpServletRequest request,HttpServletResponse response) throws Exception;
 }

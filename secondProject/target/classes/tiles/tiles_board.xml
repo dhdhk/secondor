@@ -22,6 +22,11 @@
 		<put-attribute name="title" value="글작성창" />
 		<put-attribute name="body" value="/WEB-INF/views/write/writeForm.jsp" />
 	</definition>
+	
+	<definition name="/board/viewArticle" extends="baseLayout">
+		<put-attribute name="title" value="내가쓴글" />
+		<put-attribute name="body" value="/WEB-INF/views/write/viewArticle.jsp" />
+	</definition>
 <!-- 	
 	<definition name="/board/articleForm" extends="baseLayout">
 		<put-attribute name="title" value="새글입력창" />

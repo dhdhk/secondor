@@ -5,7 +5,7 @@
 	<typeAliases>
 	<!-- merge test -->
 		<typeAlias type="com.spring.second.board.dto.BoardDTO" alias="boardDTO" />
-		<typeAlias type="com.spring.second.write.dto.WriteDTO" alias="writeDTO"/>
+		<!-- <typeAlias type="com.spring.second.write.dto.WriteDTO" alias="writeDTO"/> -->
 		<typeAlias type="com.spring.second.write.dto.ImageDTO" alias="imageDTO"/>
 	</typeAliases>
 </configuration>
