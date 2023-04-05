@@ -93,6 +93,7 @@ public class WriteControllerImpl implements WriteController{
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
 		//-----
+		if(imageFileList != null && imageFileList.size() != 0) {
 		try {
 			int regNum = writeService.addNewArticle(articleMap);
 			
@@ -123,6 +124,14 @@ public class WriteControllerImpl implements WriteController{
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
+		}}else {
+			message = "<script>";
+			message += "alert('사진은 반드시 1장 이상 첨부 되어야 합니다.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/write/writeForm.do';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			
 		}
 		return resEnt;
 	}
