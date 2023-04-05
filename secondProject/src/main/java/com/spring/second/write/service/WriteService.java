@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 public interface WriteService {
 
-	int addNewArticle(Map<String, Object> articleMap);
+	void addNewArticle(Map<String, Object> articleMap);
+	public int addNewRegNum();
 
 }

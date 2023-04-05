@@ -23,6 +23,21 @@
         ]]>
         
     </insert>
+    <update id="insertNewimg1" parameterType="java.util.Map">
+	    <![CDATA[
+	    	update board set pr_img1=#{pr_img1} where regNum=#{regNum}
+	    ]]>	
+    </update> 
+    <update id="insertNewimg2" parameterType="java.util.Map">
+	    <![CDATA[
+	    	update board set pr_img1=#{pr_img1}, pr_img2=#{pr_img2} where regNum=#{regNum}
+	    ]]>	
+    </update>
+    <update id="insertNewimg3" parameterType="java.util.Map">
+	    <![CDATA[
+	    	update board set pr_img1=#{pr_img1}, pr_img2=#{pr_img2}, pr_img3=#{pr_img3} where regNum=#{regNum}
+	    ]]>	
+    </update>  
     <select id="selectNewRegNum" resultType="int">
         <![CDATA[
             select max(regNum)+1 from board

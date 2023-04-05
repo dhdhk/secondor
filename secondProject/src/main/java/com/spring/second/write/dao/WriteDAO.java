@@ -4,8 +4,8 @@ import java.util.Map;
 
 public interface WriteDAO {
 
-	int insertNewArticle(Map<String, Object> articleMap);
-
+	void insertNewArticle(Map<String, Object> articleMap);
+	int selectNewRegNum();
 	void insertNewImage(Map<String, Object> articleMap);
 
 }

@@ -20,15 +20,22 @@ public class WriteDAOImpl implements WriteDAO{
 	BoardDTO boardDTO;
 	
 	@Override
-	public int insertNewArticle(Map<String, Object> articleMap) throws DataAccessException{
+	public void insertNewArticle(Map<String, Object> articleMap) throws DataAccessException{
 		// TODO Auto-generated method stub
-		int regNum = selectNewRegNum();
-		articleMap.put("regNum", regNum);
+		
 		sqlSession.insert("mapper.writeArticle.insertNewArticle",articleMap);
-		return regNum;
+		if(articleMap.get("pr_img1")==null) {
+			
+		}else if(articleMap.get("pr_img2")==null) {
+			sqlSession.update("mapper.writeArticle.insertNewimg1", articleMap);
+		}else if(articleMap.get("pr_img3")==null) {
+			sqlSession.update("mapper.writeArticle.insertNewimg2", articleMap);
+		}else {
+			sqlSession.update("mapper.writeArticle.insertNewimg3", articleMap);
+		}
 	}
 
-	private int selectNewRegNum() throws DataAccessException{
+	public int selectNewRegNum() throws DataAccessException{
 		// TODO Auto-generated method stub
 		
 		return sqlSession.selectOne("mapper.writeArticle.selectNewRegNum");

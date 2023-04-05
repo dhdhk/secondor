@@ -16,12 +16,16 @@ public class WriteServiceImpl implements WriteService{
 	WriteDAO writeDAO;
 	
 	@Override
-	public int addNewArticle(Map<String, Object> articleMap) {
+	public void addNewArticle(Map<String, Object> articleMap) {
 		// TODO Auto-generated method stub
-		int regNum=writeDAO.insertNewArticle(articleMap);
-		articleMap.put("regNum", regNum);
+		writeDAO.insertNewArticle(articleMap);
 		writeDAO.insertNewImage(articleMap);
-		return regNum;
 	}
+	
+	@Override
+	public int addNewRegNum() {
+		return writeDAO.selectNewRegNum();
+	}
+
 
 }

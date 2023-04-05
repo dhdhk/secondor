@@ -77,11 +77,16 @@ public class WriteControllerImpl implements WriteController{
 		String user_id="test";
 		boardDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
+		int regNum=writeService.addNewRegNum();
+		articleMap.put("regNum", regNum);
 		if(fileList != null && fileList.size() != 0) {
+			int i=1;
 			for(String fileName : fileList) {
 				ImageDTO image = new ImageDTO();
 				image.setImageFileName(fileName);
 				imageFileList.add(image);
+				articleMap.put("pr_img1", IMAGE_PATH + "\\" + regNum+"\\"+fileName);
+				i++;
 			}
 			articleMap.put("imageFileList", imageFileList);
 		}
@@ -95,7 +100,7 @@ public class WriteControllerImpl implements WriteController{
 		//-----
 		if(imageFileList != null && imageFileList.size() != 0) {
 		try {
-			int regNum = writeService.addNewArticle(articleMap);
+			writeService.addNewArticle(articleMap);
 			
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
