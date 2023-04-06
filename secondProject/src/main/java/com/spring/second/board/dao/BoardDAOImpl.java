@@ -31,7 +31,6 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardDTO> selectArticlesByCategory(String category_name) throws DataAccessException {
 		// TODO Auto-generated method stub
 		List<BoardDTO> ListByCategory = sqlSession.selectList("mapper.board.selectArticleByCategory", category_name);
-		System.out.println(category_name + "3");
 		return ListByCategory;
 	}
 
@@ -51,15 +50,15 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
-	@Override
-	public Map<String, Object> viewProduct(int regNum) {
-		// TODO Auto-generated method stub
-		BoardDTO product = sqlSession.selectOne("mapper.board.selectProduct", regNum);
-		List<ImageDTO> imageFileList = sqlSession.selectList("mapper.board.selectImageFileList", regNum);
-		
-		Map<String, Object> productMap = new HashMap<String, Object>();
-		productMap.put("product", product);
-		productMap.put("imageFileList", imageFileList);
-		return productMap;
-	}
+//	@Override
+//	public Map<String, Object> viewProduct(int regNum) {
+//		// TODO Auto-generated method stub
+//		BoardDTO product = sqlSession.selectOne("mapper.board.selectProduct", regNum);
+//		List<ImageDTO> imageFileList = sqlSession.selectList("mapper.board.selectImageFileList", regNum);
+//		
+//		Map<String, Object> productMap = new HashMap<String, Object>();
+//		productMap.put("product", product);
+//		productMap.put("imageFileList", imageFileList);
+//		return productMap;
+//	}
 }

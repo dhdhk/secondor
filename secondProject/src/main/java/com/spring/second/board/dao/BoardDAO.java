@@ -17,5 +17,5 @@ public interface BoardDAO {
 
 	public List<BoardDTO> selectPage(Map map);
 	
-	public Map<String, Object> viewProduct(int regNum);
+//	public Map<String, Object> viewProduct(int regNum);
 }
