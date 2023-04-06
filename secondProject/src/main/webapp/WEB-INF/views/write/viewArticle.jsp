@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	request.setCharacterEncoding("utf-8");
@@ -26,31 +27,32 @@
 <br>
 <br>
 <form name="frmArticle" method="post" enctype="multipart/form-data">
+<c:forEach var="board" items="${boardList }" >
 	<table border="9" align="center">
 		<tr>
 			<td colspan="3"></td>
 			<td align="right"><input type="button" name="modArticle" value="수정하기"><input type="button" name="removeArticle" value="삭제하기"></td>
 		</tr>
 		<tr>
-			<td rowspan="8" colspan="2"><img src="/image/23/다운로드.jpg" width="200" height="200"/></td>
-			<td rowspan="4" colspan="2">제목</td>
+			<td rowspan="8" colspan="2"><img src="/image/${board.regNum }/${board.pr_img1}"  width="200" height="200"/></td>
+			<td rowspan="4" colspan="2">${board.title }</td>
 		</tr>
 		<tr></tr>
 		<tr></tr>
 		<tr></tr>
 		<tr>
-			<td rowspan="2">작성자</td>
-			<td rowspan="2">상태</td>
+			<td rowspan="2">${board.seller_id }</td>
+			<td rowspan="2">${board.pr_condition }</td>
 		</tr>
 		<tr></tr>
 		<tr>
-			<td rowspan="2">가격</td>
+			<td rowspan="2">${board.pr_price }</td>
 			<td rowspan="2">1대1챗</td>
 		</tr>
 		<tr></tr>
 		<tr>
 			<td colspan="4" rowspan="15">
-				<textarea rows="15" cols="120" style="resize: none;" disabled="disabled" placeholder="임시내용입니다."></textarea>
+				<textarea rows="15" cols="120" style="resize: none;" disabled="disabled" placeholder="${board.content }"></textarea>
 			</td>
 		</tr>
 		<tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
@@ -62,5 +64,6 @@
 		</tr>
 	</table>
 	</form>
+	</c:forEach>
 </body>
 </html>

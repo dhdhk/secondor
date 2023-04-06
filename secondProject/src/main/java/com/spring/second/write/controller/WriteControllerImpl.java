@@ -47,15 +47,6 @@ public class WriteControllerImpl implements WriteController{
 		return mav;
 	}
 	
-	@Override
-	@RequestMapping(value = "/board/viewArticle.do")
-	public ModelAndView viewArticle(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
-		
-		return mav;
-	}
 	
 	@RequestMapping(value="/write/addNewArticle.do", method=RequestMethod.POST)
 	public ResponseEntity addNewArticle(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)

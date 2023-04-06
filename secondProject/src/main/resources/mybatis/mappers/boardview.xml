@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+
+<mapper namespace="mapper.boardview">
+
+ 	<resultMap type="boardDTO" id="articleResult">
+      <result property="seller_id" column="seller_id" />
+      <result property="pr_title" column="pr_title" />
+      <result property="pr_price" column="pr_price" />
+      <result property="pr_img1" column="pr_img1" />
+      <result property="pr_img2" column="pr_img2" />
+      <result property="pr_img3" column="pr_img3" />
+      <result property="pr_content" column="pr_content" />
+      <result property="pr_condition" column="pr_condition" />
+      <result property="pr_sold" column="pr_sold" />
+      <result property="regDate" column="regDate" />
+      <result property="regNum" column="regNum" />
+      <result property="category_name" column="category_name" />
+   </resultMap>
+
+   
+   <select id="selectviewArticle" resultMap="articleResult">
+      <![CDATA[
+         select * from board order by regDate desc
+      ]]>
+   </select>
+
+	</mapper>
