@@ -32,7 +32,7 @@
 			<td align="right"><input type="button" name="modArticle" value="수정하기"><input type="button" name="removeArticle" value="삭제하기"></td>
 		</tr>
 		<tr>
-			<td rowspan="8" colspan="2">이미지</td>
+			<td rowspan="8" colspan="2"><img src="/image/23/다운로드.jpg" width="200" height="200"/></td>
 			<td rowspan="4" colspan="2">제목</td>
 		</tr>
 		<tr></tr>
