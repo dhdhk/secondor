@@ -53,7 +53,8 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	public ModelAndView addMember(@ModelAttribute("member") MemberDTO member,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		// 프로필 이미지 파일 업로드
+		// 프로필 이미지 파일 업로드 내용 추가
+		
 		memberService.addMember(member);
 		
 		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
