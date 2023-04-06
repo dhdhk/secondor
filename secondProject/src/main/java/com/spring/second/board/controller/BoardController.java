@@ -14,6 +14,6 @@ public interface BoardController {
 	public ModelAndView listArticlesByCategory (@RequestParam("category_name") String category_name,
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
-//	public ModelAndView viewProduct(@RequestParam("regNum") int regNum, 
-//			HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView viewProduct(@RequestParam("regNum") int regNum, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -19,9 +19,4 @@
             select nvl(max(imageFileNo),0) from imageFile
         ]]>
     </select>
-    <select id="selectImageFileList" resultMap="imgResult" parameterType="int">
-    	<![CDATA[
-    		select * from imageFile where regNum=#{regNum}
-    	]]>
-    </select>
 </mapper>

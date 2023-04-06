@@ -19,6 +19,13 @@
       <result property="regNum" column="regNum" />
       <result property="category_name" column="category_name" />
    </resultMap>
+   
+   	<resultMap type="imageDTO" id="imageResult">
+		<result property="imageFileNo" column="imageFileNo" />
+		<result property="imageFileName" column="imagefileName" />
+		<result property="regDate" column="regDate" />
+		<result property="articleNo" column="articleNo" />
+	</resultMap>
 
    
    
@@ -48,11 +55,17 @@
 		]]>
 	</select>
 	
-	<select id="selectProduct" parameterType="String" >
+	<select id="selectProduct" parameterType="int" resultType="boardDTO">
 		<![CDATA[
 			select * from board where regNum=#{regNum}
 		]]>
 	</select>
+	
+	<select id="selectImageFileList" parameterType="int" resultType="imageDTO">
+    	<![CDATA[
+    		select pr_img1,pr_img2,pr_img3 from board where regNum=#{regNum}
+    	]]>
+    </select>
 	
 	
 	<!--  <select id="selectAllArticleList" resultMap="articleResult">
