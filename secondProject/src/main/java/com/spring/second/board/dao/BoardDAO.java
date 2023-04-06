@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryPageHandler;
 
 public interface BoardDAO {
 
@@ -16,4 +17,12 @@ public interface BoardDAO {
 	public int count();
 
 	public List<BoardDTO> selectPage(Map map);
+
+	
+
+//	public List<BoardDTO> selectArticleByCategory_page(CategoryPageHandler ch);
+//
+//	int categoryCount(CategoryPageHandler ch);
+
+	
 }

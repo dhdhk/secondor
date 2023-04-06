@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.spring.second.board.dao.BoardDAO;
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryPageHandler;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -40,5 +42,19 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardDTO> getPage(Map map) {
 	    return boardDAO.selectPage(map);
 	}
+
+	
+
+//	@Override
+//	public List<BoardDTO> getCategoryPage(CategoryPageHandler ch) {
+//		// TODO Auto-generated method stub
+//		return boardDAO.selectArticleByCategory_page(ch);
+//	}
+//
+//	@Override
+//	public int getCategoryCount(CategoryPageHandler ch) {
+//		// TODO Auto-generated method stub
+//		return boardDAO.categoryCount(ch);
+//	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryPageHandler;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
@@ -47,4 +48,23 @@ public class BoardDAOImpl implements BoardDAO {
 	   // TODO Auto-generated method stub
 	    return sqlSession.selectList("mapper.board.selectPage", map);
 	}
+
+
+	
+
+//	@Override
+//	public List<BoardDTO> selectArticleByCategory_page(CategoryPageHandler ch) {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectList("mapper.board.selectArticleByCategory_page", ch);
+//	}
+//
+//
+//	@Override
+//	public int categoryCount(CategoryPageHandler ch) {
+//		// TODO Auto-generated method stub
+//		return sqlSession.selectOne("mapper.board.categoryCount");
+//	}
+
+
+	
 }
