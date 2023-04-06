@@ -41,4 +41,11 @@ public class BoardServiceImpl implements BoardService {
 	    return boardDAO.selectPage(map);
 	}
 
+	@Override
+	public Map<String, Object> viewProduct(int regNum) {
+		// TODO Auto-generated method stub
+		return boardDAO.viewProduct(regNum);
+	}
+	
+
 }

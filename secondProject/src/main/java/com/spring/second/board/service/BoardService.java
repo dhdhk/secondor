@@ -6,11 +6,13 @@ import java.util.Map;
 import com.spring.second.board.dto.BoardDTO;
 
 public interface BoardService {
-	List<BoardDTO> listArticles();
+	public List<BoardDTO> listArticles();
 
-	List<BoardDTO> listArticlesByCategory(String category_name);
+	public List<BoardDTO> listArticlesByCategory(String category_name);
 
 	public int getCount();
 
-	List<BoardDTO> getPage(Map map);
+	public List<BoardDTO> getPage(Map map);
+	
+	public Map<String, Object> viewProduct(int regNum);
 }

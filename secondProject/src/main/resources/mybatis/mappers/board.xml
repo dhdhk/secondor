@@ -47,6 +47,18 @@
 		]]>
 	</select>
 	
+	<select id="selectProduct" parameterType="String" >
+		<![CDATA[
+			select * from board where regNum=#{regNum}
+		]]>
+	</select>
+	
+	<select id="selectImageFileList" parameterType="String" >
+		<![CDATA[
+			select * from board where regNum=#{regNum}
+		]]>
+	</select>
+	
 		<!--  
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[
