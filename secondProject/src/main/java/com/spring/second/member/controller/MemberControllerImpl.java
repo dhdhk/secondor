@@ -55,6 +55,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		// TODO Auto-generated method stub
 		// 프로필 이미지 파일 업로드 내용 추가
 		
+		
 		memberService.addMember(member);
 		
 		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
