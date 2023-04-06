@@ -39,6 +39,9 @@
 				        <li class="nav-item">
 				          <a class="nav-link" href="#">회원가입</a>
 				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="${contextPath }/write/writeForm.do">글쓰기</a>
+				        </li>
 				</c:otherwise>
 			</c:choose>
 			 </ul>
@@ -51,22 +54,22 @@
 		  	<div>
 		  		<ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">거실</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=living">거실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">주방</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=dining">주방</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">침실</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=bedroom">침실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">화장실</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=bathroom">화장실</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">서재</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=study">서재</a>
 			        </li>
 			        <li class="nav-item">
-			          <a class="nav-link" href="#">기타</a>
+			          <a class="nav-link" href="${contextPath }/viewList.do?category_name=etc">기타</a>
 			        </li>
 			      </ul>
 		  	</div>

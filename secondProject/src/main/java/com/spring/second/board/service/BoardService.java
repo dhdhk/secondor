@@ -14,5 +14,5 @@ public interface BoardService {
 
 	public List<BoardDTO> getPage(Map map);
 	
-	public Map<String, Object> viewProduct(int regNum);
+//	public Map<String, Object> viewProduct(int regNum);
 }
