@@ -20,8 +20,9 @@ public class PageHandler {
       this.page = page;
       
       
-      endPage = (double)Math.ceil(totalCnt/10);
+     
       beginPage = page-(page-1)%5; 
+      endPage = (int)Math.ceil((double)totalCnt/20);
       
       System.out.println("beginPage :" +beginPage);
       System.out.println("endpage:" +endPage);
