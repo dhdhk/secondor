@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,6 +50,21 @@ public class BoardControllerImpl implements BoardController {
     return "main";
     
     }
+    
+    @Override
+	@RequestMapping(value="/board/*Form.do", method=RequestMethod.GET)
+	public ModelAndView form(@RequestParam(value="result", required = false) String result,
+			@RequestParam(value="action", required = false) String action,
+			HttpServletRequest request, 
+			HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		session.setAttribute("action", action);
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("result", result);
+		return mav;
+	}
 	   
 
 	@Override
@@ -82,5 +98,5 @@ public class BoardControllerImpl implements BoardController {
 		return mav;
 	}
 
-
+	
 }

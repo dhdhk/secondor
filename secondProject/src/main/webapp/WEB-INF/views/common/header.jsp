@@ -24,7 +24,7 @@
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
 		      <c:choose>
 				<c:when test="${isLogOn == true && member != null }">
-					<li class="nav-item"><a class="nav-link" >환영합니다. ${member.name }님!</a></li>
+					<li class="nav-item"><a class="nav-link" >환영합니다. ${member.user_name }님!</a></li>
 					<li class="nav-item">
 				          <a class="nav-link" href="${contextPath }/write/writeForm.do">상품등록</a>
 				        </li>
@@ -34,10 +34,10 @@
 				</c:when>
 				<c:otherwise>		
 						 <li class="nav-item">
-				          <a class="nav-link" href="#">로그인</a>
+				          <a class="nav-link" href="${contextPath }/member/loginForm.do">로그인</a>
 				        </li>
 				        <li class="nav-item">
-				          <a class="nav-link" href="#">회원가입</a>
+				          <a class="nav-link" href="${contextPath }/member/memberForm.do">회원가입</a>
 				        </li>
 				</c:otherwise>
 			</c:choose>
@@ -80,7 +80,7 @@
 	<tr>
 		<td align="right"><c:choose>
 				<c:when test="${isLogOn == true && member != null }">
-					<h3>환영합니다. ${member.name }님!</h3>
+					<h3>환영합니다. ${member.user_name }님!</h3>
 					<a href="#"><h3>로그아웃</h3></a>
 				</c:when>
 				<c:otherwise>

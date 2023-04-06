@@ -11,6 +11,8 @@ public class ViewNameInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		
 		try {
 			String viewName = getViewName(request);
 			request.setAttribute("viewName", viewName);
