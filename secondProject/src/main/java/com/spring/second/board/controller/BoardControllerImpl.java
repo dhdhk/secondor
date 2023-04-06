@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.dto.PageHandler;
+import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
 
 @Controller
@@ -25,23 +26,49 @@ public class BoardControllerImpl implements BoardController {
 	BoardService boardService;
 
 
+//	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
+//	public String listArticles(@RequestParam(defaultValue ="1") Integer page , Model m,
+//			HttpServletRequest request, HttpServletResponse response) throws Exception
+//	{ 
+//
+//		int totalCnt = boardService.getCount();
+//		m.addAttribute("totalCnt",totalCnt);
+//		System.out.println(totalCnt);
+//
+//		PageHandler pageHandler = new PageHandler(totalCnt, page);
+//
+//
+//		Map map  = new HashMap();
+//		map.put("start", 1+ (page-1)*20);
+//		map.put("end", 20*page);
+//
+//		List<BoardDTO> boardList = boardService.getPage(map);
+//		m.addAttribute("boardList", boardList);
+//		m.addAttribute("ph", pageHandler);
+//
+//
+//		return "main";
+//
+//	}
+
+//검색
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public String listArticles(@RequestParam(defaultValue ="1") Integer page , Model m,
+	public String listArticles(SearchCondition sc , Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception
 	{ 
 
-		int totalCnt = boardService.getCount();
+		int totalCnt = boardService.getSerchCount(sc);
 		m.addAttribute("totalCnt",totalCnt);
 		System.out.println(totalCnt);
+		System.out.println(sc);
+		PageHandler pageHandler = new PageHandler(totalCnt, sc);
 
-		PageHandler pageHandler = new PageHandler(totalCnt, page);
 
+//		Map map  = new HashMap();
+//		map.put("start", 1+ (page-1)*20);
+//		map.put("end", 20*page);
 
-		Map map  = new HashMap();
-		map.put("start", 1+ (page-1)*20);
-		map.put("end", 20*page);
-
-		List<BoardDTO> boardList = boardService.getPage(map);
+		List<BoardDTO> boardList = boardService.getSerchSelectPage(sc);
 		m.addAttribute("boardList", boardList);
 		m.addAttribute("ph", pageHandler);
 
@@ -49,8 +76,6 @@ public class BoardControllerImpl implements BoardController {
 		return "main";
 
 	}
-
-
 	@Override
 	@RequestMapping(value="/viewList.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticlesByCategory(@RequestParam("category_name") String category_name,

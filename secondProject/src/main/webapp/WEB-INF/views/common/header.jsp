@@ -17,8 +17,10 @@
 		    </button>
 		    <a class="navbar-brand" href="${contextPath }/main.do"><img src="${contextPath }/resources/image/duke_swing.gif" alt="Bootstrap" width="30" height="24"></a>
 		    <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
+		    
+		   <c:set var="keyword" value="${ph.sc.keyword}"/> 
 		      <form action="<c:url value="/main.do" />"   class="d-flex translate-middle" role="search" style="width: 50%">
-		        <input class="form-control me-2 " type="search" placeholder="상품명을 검색해주세요"  aria-label="Search" >
+		        <input class="form-control me-2 " type="text" placeholder="상품명을 검색해주세요" value="${keyword }" aria-label="Search" >
 		        <button class="btn btn-outline-success" type="submit" >검색</button>
 		      </form>
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >

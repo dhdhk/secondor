@@ -11,6 +11,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.write.dto.ImageDTO;
 
 @Repository
@@ -50,6 +51,21 @@ public class BoardDAOImpl implements BoardDAO {
 	    return sqlSession.selectList("mapper.board.selectPage", map);
 	}
 
+//검색
+	@Override
+	public List<BoardDTO> serchSelectPage(SearchCondition sc) {
+	   // TODO Auto-generated method stub
+	    return sqlSession.selectList("mapper.board.serchSelectPage", sc);
+	}
+
+	@Override
+	public int serchcount(SearchCondition sc) {
+	   // TODO Auto-generated method stub
+	    return sqlSession.selectOne("mapper.board.serchcount",sc);
+
+	}
+	
+	
 
 //	@Override
 //	public Map<String, Object> viewProduct(int regNum) {

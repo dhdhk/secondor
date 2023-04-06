@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.SearchCondition;
 
 public interface BoardDAO {
 
@@ -16,6 +17,10 @@ public interface BoardDAO {
 	public int count();
 
 	public List<BoardDTO> selectPage(Map map);
+
+	int serchcount(SearchCondition sc);
+
+	List<BoardDTO> serchSelectPage(SearchCondition sc);
 	
 //	public Map<String, Object> viewProduct(int regNum);
 }

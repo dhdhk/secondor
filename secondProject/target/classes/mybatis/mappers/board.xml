@@ -42,15 +42,16 @@
     </select>
     
     <!-- 검색  -->
-    <select id="serchPage" parameterType="java.util.Map" resultMap="articleResult">
+    <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
-        select * from board_view where  pr_title like ('%',#{keyword},'%') and num #{start} and #{end}
+        select * from board_view where pr_title like '%' || #{keyword} || '%'
       ]]>
+     
    </select>
 
-    <select id="serchcount" resultType="int">
+    <select id="serchcount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
-          SELECT count(*) FROM board where pr_title like ('%',#{keyword},'%') and num #{start} and #{end}
+          SELECT count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
          ]]>
     </select>
 
