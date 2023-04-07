@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%
    request.setCharacterEncoding("utf-8");
 %>
@@ -11,6 +13,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    function backToList(obj){
       obj.action="${contextPath}/board/listArticles.do";
@@ -19,8 +23,6 @@
    
 
 </script>
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -54,6 +56,9 @@
 	font:bolder;
 	font-size: 60px;
 }
+.ProductContent{
+	font-size: 20px;
+}
 .buttons{
     position: relative;
     bottom: -233px;
@@ -72,15 +77,16 @@
     border-radius: 5px;
 }
 .articleCtrl{
-	display: flex;
-    flex-wrap: wrap;
     justify-content: center;
 }
+
+.prevProduct, .toList, .nextProduct{
+	padding-left: 5px;
+    padding-right: 5px;
+}
 </style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-	<form name="frmArticle" method="post" enctype="multipart/form-data">
 	
 	<div class="ProductTop">
 		<div class="ProductImage">
@@ -137,33 +143,34 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<div class="chatLink" href="#">
+				<span class="chatLink" href="#">
 					1대1 채팅
-				</div>
+				</span>
 			</div>
 		</div>
 	</div>
 		<div class="ProductContent">
 			${product.pr_content }
 		</div>
-		<div>
-			<input type="button" name="modArticle" value="수정하기">
-		</div>
-		<div>
-			<input type="button" name="removeArticle" value="삭제하기">
+		<div class="logonActiveButtons">
+			<span>
+				<input type="button" name="modArticle" value="수정하기">
+			</span>
+			<span>
+				<input type="button" name="removeArticle" value="삭제하기">
+			</span>
 		</div>
 		<div class="articleCtrl">	
-			<div>
+			<span class="prevProduct">
 				이전글
-			</div>
-			<div>
+			</span>
+			<span class="toList">
 				목록으로
-			</div>
-			<div>
+			</span>
+			<span class="nextProduct">
 				다음글
-			</div>
+			</span>
 		</div>
-	</form>
 
 </body>
 </html>
