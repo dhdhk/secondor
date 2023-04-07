@@ -15,8 +15,14 @@
 		<div id="header">
 			<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		</div>
+		<div id="side-left">
+			<tiles:insertAttribute name="sidebar-left"></tiles:insertAttribute>
+		</div>
+<%-- 		<div id="side-right">
+			<tiles:insertAttribute name="side-right"></tiles:insertAttribute>
+		</div> --%>
 			
-			<div id="content">
+		<div id="content">
 			<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
 			<div id="footer">
