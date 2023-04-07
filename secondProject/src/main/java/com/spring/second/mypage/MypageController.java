@@ -18,11 +18,45 @@ public class MypageController {
 	 SqlSession sqlSession;
 	 
 	@RequestMapping(value = "/mypage/mypageMain.do")
-	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView mypageMain(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		return mav;
 	}
+	
+	@RequestMapping(value = "/mypage/modInfo.do")
+	public ModelAndView modInfo(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		return mav;
+	}
+	@RequestMapping(value = "/mypage/myArticles.do")
+	public ModelAndView myArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		return mav;
+	}
+	@RequestMapping(value = "/mypage/myChatlist.do")
+	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		return mav;
+	}
+	@RequestMapping(value = "/mypage/dropOut.do")
+	public ModelAndView dropOut(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		return mav;
+	}
+	
 }
