@@ -53,7 +53,7 @@ public class BoardControllerImpl implements BoardController {
 
 //검색
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public String listArticles(SearchCondition sc , Model m,
+	public String listArticles( SearchCondition sc , Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception
 	{ 
 
@@ -61,7 +61,7 @@ public class BoardControllerImpl implements BoardController {
 		m.addAttribute("totalCnt",totalCnt);
 		System.out.println(totalCnt);
 		System.out.println(sc);
-		PageHandler pageHandler = new PageHandler(totalCnt, sc);
+		PageHandler pageHandler = new PageHandler(totalCnt,sc);
 
 
 //		Map map  = new HashMap();
@@ -76,6 +76,34 @@ public class BoardControllerImpl implements BoardController {
 		return "main";
 
 	}
+
+	
+	
+//	//검색2
+//		@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
+//		public String listArticles( @RequestParam(defaultValue ="1") Integer page ,SearchCondition sc , Model m,
+//				HttpServletRequest request, HttpServletResponse response) throws Exception
+//		{ 
+//
+//			int totalCnt = boardService.getSerchCount(sc);
+//			m.addAttribute("totalCnt",totalCnt);
+//			System.out.println(totalCnt);
+//			System.out.println(sc);
+//			PageHandler pageHandler = new PageHandler(totalCnt,sc,page);
+//
+//
+//			Map map  = new HashMap();
+//			map.put("start", 1+ (page-1)*20);
+//			map.put("end", 20*page);
+//
+//			List<BoardDTO> boardList = boardService.getSerchSelectPage(sc,map);
+//			m.addAttribute("boardList", boardList);
+//			m.addAttribute("ph", pageHandler);
+//
+//
+//			return "main";
+//
+//		}
 	@Override
 	@RequestMapping(value="/viewList.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticlesByCategory(@RequestParam("category_name") String category_name,

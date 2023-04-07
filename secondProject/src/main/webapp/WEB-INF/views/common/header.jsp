@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="keyword" value="${ph.sc.keyword}"/> 
 <head>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.min.css">
 </head>
 <body>
+
 	<nav class="navbar navbar-expand-sm bg-light fixed-top ">
 	  <table border="0" width="100%">
 	  	<tr>
@@ -18,11 +20,13 @@
 		    <a class="navbar-brand" href="${contextPath }/main.do"><img src="${contextPath }/resources/image/duke_swing.gif" alt="Bootstrap" width="30" height="24"></a>
 		    <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
 		    
-		   <c:set var="keyword" value="${ph.sc.keyword}"/> 
+		 
 		      <form action="<c:url value="/main.do" />"   class="d-flex translate-middle" role="search" style="width: 50%">
-		        <input class="form-control me-2 " type="text" placeholder="상품명을 검색해주세요" value="${keyword }" aria-label="Search" >
+		        <input class="form-control me-2 " name="keyword" type="text" placeholder="상품명을 검색해주세요" value="${ph.sc.keyword}" aria-label="Search" >
 		        <button class="btn btn-outline-success" type="submit" >검색</button>
 		      </form>
+		      
+		      
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
 		      <c:choose>
 				<c:when test="${isLogOn == true && member != null }">

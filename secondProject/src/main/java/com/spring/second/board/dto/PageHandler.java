@@ -40,7 +40,9 @@ public class PageHandler {
        doPaging(totalCnt, sc);
    }
    
-   private void doPaging(int totalCnt, SearchCondition sc) {
+
+
+private void doPaging(int totalCnt, SearchCondition sc) {
 	// TODO Auto-generated method stub
 	
 	   beginPage = sc.getPage()-(sc.getPage()-1)%5; 

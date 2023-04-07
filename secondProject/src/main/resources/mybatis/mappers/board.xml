@@ -44,7 +44,7 @@
     <!-- 검색  -->
     <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
-        select * from board_view where pr_title like '%' || #{keyword} || '%'
+        select * from board_view where pr_title like '%' || #{keyword} || '%' and num between  #{start} and #{end}
       ]]>
      
    </select>
