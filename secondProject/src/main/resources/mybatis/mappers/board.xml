@@ -61,7 +61,7 @@
 		]]>
 	</select>
 	
-	<select id="selectProduct" parameterType="String" >
+	<select id="selectProduct" parameterType="int" resultType="boardDTO">
 		<![CDATA[
 			select * from board where regNum=#{regNum}
 		]]>
