@@ -13,15 +13,6 @@
 	border: 0px solid #bcbcbc;
 }
 
-#side-left{
-	width: 150px;
-	height: 80%;
-	float: left;
-	background-color: silver;
-	border: 0px solid #bcbcbc;
-	font-size: 10px;
-	
-}
 
 body{
 	margin:0 auto;

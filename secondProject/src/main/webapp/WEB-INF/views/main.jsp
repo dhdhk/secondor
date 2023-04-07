@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/main_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
@@ -41,9 +41,10 @@
 }
 </style>
 </head>
-<body>
+
 <!-- 부트스트랩 card 적용-->
 	<!-- 메인 리스트 -->
+	<span>
 	<c:choose>
 		<c:when test="${boardList == null }">
 			<tr height="10">
@@ -100,6 +101,7 @@
 			</div>   
 		</c:when>
 	</c:choose>
-</body>
+	</span>
+
 
 </html>

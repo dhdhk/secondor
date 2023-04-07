@@ -18,14 +18,14 @@
 		<div id="side-left">
 			<tiles:insertAttribute name="sidebar-left"></tiles:insertAttribute>
 		</div>
-<%-- 		<div id="side-right">
-			<tiles:insertAttribute name="side-right"></tiles:insertAttribute>
-		</div> --%>
-			
+		<div id="side-right">
+			<tiles:insertAttribute name="sidebar-right"></tiles:insertAttribute>
+		</div>
 		<div id="content">
 			<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-			<div id="footer">
+
+		<div id="footer">
 			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 		</div>
 	</div>
