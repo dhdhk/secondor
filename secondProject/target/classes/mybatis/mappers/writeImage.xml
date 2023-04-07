@@ -19,4 +19,5 @@
             select nvl(max(imageFileNo),0) from imageFile
         ]]>
     </select>
+
 </mapper>

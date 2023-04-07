@@ -17,70 +17,147 @@
       obj.submit();
    }
    
-
 </script>
 <link rel="stylesheet"
 	href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.ProductTop{
+	display: grid;
+    grid-template-columns: 500px 700px;
+	text-align: left;
+	margin-top: 30px;
+	justify-content: center
+}
+.ProductSummary{
+	padding-left: 40px;
+	display: flex;
+    flex-direction: column;
+}
+.ProductCondition, .ProductSellerId{
+	display: flex;
+}
+.ProductCondition_1, .ProductSellerId_1{
+	width:150px;
+}
+.ProductInfo{
+	font-size: 20px;
+}
+.ProductTitle{
+	font:bolder;
+	font-size: 45px;
+}
+.ProductPrice{
+	font:bolder;
+	font-size: 60px;
+}
+.buttons{
+    position: relative;
+    bottom: -233px;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+}
+.chatLink{
+	width: 30%;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #5a7eff;
+    color: white;
+    border-radius: 5px;
+}
+.articleCtrl{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+</style>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body>
-	<form name="frmArticle" method="post" enctype="multipart/form-data">
-		<table border="9" align="center">
-			<tr>
-				<td colspan="3"></td>
-				<td align="right"><input type="button" name="modArticle"
-					value="수정하기"> <input type="button" name="removeArticle"
-					value="삭제하기"></td>
-			</tr>
-			<tr>
-		<%-- <td rowspan="8" colspan="2">
-					<%-- <img src="${contextPath }/download.do?regNum=${product.regNum}&imageFileName=${imageFileList.pr_img1}" 
-								 id="preview"><br> --%>
-				</td> 
-				<td rowspan="4" colspan="2">${product.pr_title }</td>
-			</tr>
-
-			<tr>
-				<td rowspan="2">${product.seller_id }</td>
-				<td rowspan="2">${product.pr_content }</td>
-			</tr>
-			<tr></tr>
-			<tr>
-				<td rowspan="2">${product.pr_price }</td>
-				<td rowspan="2">1대1챗</td>
-			</tr>
-			<tr></tr>
-			<tr>
-				<td colspan="4" rowspan="15"><textarea rows="15" cols="120"
-						style="resize: none;" disabled="disabled" placeholder="임시내용입니다."></textarea>
-				</td>
-			</tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr>
-				<td colspan="4"></td>
-			</tr>
-			<tr>
-				<td colspan="4"><input type="button" value="<"><input
-					type="button" value="목록으로" onclick="backToList(this.form)"><input
-					type="button" value=">"></td>
-			</tr>
-		</table>
-	</form>
-
-</body>
+<body>	
+	<div class="ProductTop">
+		<div class="ProductImage">
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="${product.pr_img1}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="${product.pr_img2}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="${product.pr_img3}" class="d-block w-100" alt="...">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="visually-hidden">Next</span>
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					</button>
+				</div>
+		</div>
+		<div class="ProductSummary">
+			<div class="ProductTitle">
+				${product.pr_title}
+			</div>
+			<div class="ProductPrice">
+				${product.pr_price }
+			</div>
+			<div class="ProductInfo">
+				<div class="ProductSellerId">
+					<div class="ProductSellerId_1">
+						판매자
+					</div>
+					<div class="ProductSellerId_2">
+						${product.seller_id }
+					</div>		
+				</div>
+				<div class="ProductCondition">
+					<div class="ProductCondition_1">
+						상품 상태
+					</div>
+					<div class="ProductCondition_2">
+						${product.pr_condition }
+					</div>		
+				</div>
+			</div>
+			<div class="buttons">
+				<div class="chatLink" href="#">
+					1대1 채팅
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="ProductContent">
+			${product.pr_content }
+		</div>
+		<div>
+			<input type="button" name="modArticle" value="수정하기">
+		</div>
+		<div>
+			<input type="button" name="removeArticle" value="삭제하기">
+		</div>
+		<div class="articleCtrl">	
+			<div>
+				이전글
+			</div>
+			<div>
+				목록으로
+			</div>
+			<div>
+				다음글
+			</div>
+		</div>
+	</body>
 </html>
