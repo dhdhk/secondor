@@ -7,7 +7,7 @@ public class SearchCondition {
 	//double totalPage; //전체 페이지의 갯수
 	//int page; //현재페이지 
 	
-	private Integer page;
+	private Integer page=1;
 //	private String keyword="조명";
 	private String keyword="";
     private Integer start = 1+ (page-1)*20;
@@ -17,23 +17,22 @@ public class SearchCondition {
 	
 	public SearchCondition(){}
 	
-	public SearchCondition(int totalCnt , Integer page,String keyword,Integer start,Integer end) {
+
+	
+public SearchCondition(int totalCnt , Integer page,String keyword) {
 		
 		
 		this.page = page;
 		this.keyword = keyword;	      
-		this.start= start;
-		this.end = end;
 		
 		
-//		this.start = 1+ (page-1)*20;
-//		this.end = 20*page;
 		
+	
 		System.out.println("page : " + page);
 		System.out.println("keyword2 : " + keyword);
-		System.out.println("start: "+ start);
-		System.out.println("end: "+ end);
+
 	}
+	
 	
 	public String getQueryString() {
         return getQueryString(page);
@@ -69,40 +68,29 @@ public class SearchCondition {
 		return start;
 	}
 
-	public void setStart(Integer start) {
-		this.start = start;
+	public void setStart() {
+		this.start = 1+ (this.page-1)*20;
 	}
 
 	public Integer getEnd() {
 		return end;
 	}
 
-	public void setEnd(Integer end) {
-		this.end = 20*page;
+	public void setEnd() {
+		this.end = 20*this.page;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "SearchCondition [page=" + page + ", keyword=" + keyword + ", start=" + start + ", end=" + end + "]";
+//	}
+    
 	@Override
 	public String toString() {
-		return "SearchCondition [page=" + page + ", keyword=" + keyword + ", start=" + start + ", end=" + end + "]";
+		return "SearchCondition [page=" + page + ", keyword=" + keyword + "]";
 	}
-    
 
 
-//	public Integer getStart() {
-//		return  start;
-//	}
-//
-//	public void setStart(Integer start) {
-//		this.start = start;
-//	}
-//
-//	public Integer getEnd() {
-//		return end;
-//	}
-//
-//	public void setEnd(Integer end) {
-//		this.end = end;
-//	}
 
 	
 

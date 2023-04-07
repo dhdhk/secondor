@@ -42,16 +42,25 @@
     </select>
     
     <!-- 검색  -->
-    <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
+  <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
-        select * from board_view where pr_title like '%' || #{keyword} || '%' and num between  #{start} and #{end}
+        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) where rnum between  #{start} and #{end}
+       
       ]]>
      
-   </select>
+   </select> 
+   
+<!--     <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
+       <![CDATA[  
+        select * from board_view where pr_title like '%' || #{keyword} || '%' 
+      ]]>
+     
+   </select> -->
 
     <select id="serchcount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
           SELECT count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
+          
          ]]>
     </select>
 

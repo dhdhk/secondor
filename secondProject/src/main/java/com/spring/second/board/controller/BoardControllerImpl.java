@@ -53,7 +53,7 @@ public class BoardControllerImpl implements BoardController {
 
 //검색
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public String listArticles( SearchCondition sc , Model m,
+	public String listArticles(SearchCondition sc , Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception
 	{ 
 
@@ -61,6 +61,11 @@ public class BoardControllerImpl implements BoardController {
 		m.addAttribute("totalCnt",totalCnt);
 		System.out.println(totalCnt);
 		System.out.println(sc);
+		sc.setStart();
+		sc.setEnd();
+		System.out.println("page : " + sc.getPage());
+		System.out.println("start : " + sc.getStart());
+		System.out.println("end : " + sc.getEnd());
 		PageHandler pageHandler = new PageHandler(totalCnt,sc);
 
 
