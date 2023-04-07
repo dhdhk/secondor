@@ -85,7 +85,7 @@ public class WriteControllerImpl implements WriteController{
 				ImageDTO image = new ImageDTO();
 				image.setImageFileName(fileName);
 				imageFileList.add(image);
-				articleMap.put("pr_img1", IMAGE_PATH + "\\" + regNum + "\\" + fileName );
+				articleMap.put("pr_img"+i, fileName );
 				i++;
 			}
 			articleMap.put("imageFileList", imageFileList);
