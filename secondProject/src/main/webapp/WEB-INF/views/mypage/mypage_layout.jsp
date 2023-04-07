@@ -10,20 +10,20 @@
 <meta charset="UTF-8">
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
-<body>
-	<div id="container">
-		<div id="header">
-			<tiles:insertAttribute name="header"></tiles:insertAttribute>
+	<body>
+		<div id="container">
+			<div id="header">
+				<tiles:insertAttribute name="header"></tiles:insertAttribute>
+			</div>
+			<div id="sidebar-left">
+				<tiles:insertAttribute name="side"></tiles:insertAttribute>
+			</div>
+			<div id="content">
+				<tiles:insertAttribute name="body"></tiles:insertAttribute>
+			</div>
+			<div id="footer">
+				<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+			</div>
 		</div>
-		<div id="sidebar-left">
-			<tiles:insertAttribute name="side"></tiles:insertAttribute>
-		</div>
-		<div id="content">
-			<tiles:insertAttribute name="body"></tiles:insertAttribute>
-		</div>
-		<div id="footer">
-			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
-		</div>
-	</div>
-</body>
+	</body>
 </html>

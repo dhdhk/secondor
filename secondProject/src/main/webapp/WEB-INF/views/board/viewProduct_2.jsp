@@ -20,8 +20,6 @@
       obj.action="${contextPath}/board/listArticles.do";
       obj.submit();
    }
-   
-
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -29,9 +27,11 @@
 .ProductTop{
 	display: grid;
     grid-template-columns: 500px 700px;
+    height: 500px;
 	text-align: left;
 	margin-top: 30px;
-	justify-content: center
+	justify-content: center;
+	align-content: center;
 }
 .ProductSummary{
 	padding-left: 40px;
@@ -49,6 +49,7 @@
 	font-size: 20px;
 }
 .ProductTitle{
+	height : 150px;
 	font:bolder;
 	font-size: 45px;
 }
@@ -171,6 +172,6 @@
 				다음글
 			</span>
 		</div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
