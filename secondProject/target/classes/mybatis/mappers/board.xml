@@ -35,16 +35,29 @@
       ]]>
    </select>
    
+ 	<!-- 전체 리스트 메인 페이징  -->
  	<select id="selectPage" parameterType="java.util.Map" resultMap="articleResult">
-       <![CDATA[
-         select * from (select rownum num, B.* from(select * from board order by regNum desc) B ) 
-         where num between #{start} and #{end}
+       <![CDATA[  
+         select * from board_view where num between  #{start} and #{end}
       ]]>
    </select>
    
      <select id="count" resultType="int">
         <![CDATA[
           SELECT count(*) FROM board
+         ]]>
+    </select>
+    
+    <!-- 검색  -->
+    <select id="serchPage" parameterType="java.util.Map" resultMap="articleResult">
+       <![CDATA[  
+        select * from board_view where  pr_title like ('%',#{keyword},'%') and num #{start} and #{end}
+      ]]>
+   </select>
+
+    <select id="serchcount" resultType="int">
+        <![CDATA[
+          SELECT count(*) FROM board where pr_title like ('%',#{keyword},'%') and num #{start} and #{end}
          ]]>
     </select>
 
