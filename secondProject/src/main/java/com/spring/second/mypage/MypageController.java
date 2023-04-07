@@ -2,6 +2,7 @@ package com.spring.second.mypage;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MypageController {
-	 @Autowired
-	 SqlSession sqlSession;
+	 
+	 
+	 //@Autowrired
+	//MemberDTO memberDTO;
 	 
 	@RequestMapping(value = "/mypage/mypageMain.do")
 	public ModelAndView mypageMain(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
+		HttpSession session = request.getSession();
+		
 		
 		return mav;
 	}

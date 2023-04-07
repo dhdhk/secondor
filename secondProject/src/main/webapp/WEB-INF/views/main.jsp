@@ -7,6 +7,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<c:set var="msg" value="${param.msg }" />
+<c:if test="${msg == 'login'}">
+	<script>
+		window.onload = function(){
+			alert('로그인에 성공했습니다.');
+		}
+	</script>
+</c:if>
 <link rel="stylesheet" href="${contextPath }/resources/css/main_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -60,7 +68,7 @@
 						<a href="${contextPath }/product/viewProduct.do?regNum=${board.regNum}">
 							<div class="card">
 							<!-- **이미지 지정파일 정해지면 수정해야함 -->
-								<img src="${board.pr_img1 }" class="card-img-top" alt="...">
+								<img src="/image/${board.regNum }/${board.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
 									<h5 class="card-title"> ${board.pr_title }, ${board.pr_sold }</h5>

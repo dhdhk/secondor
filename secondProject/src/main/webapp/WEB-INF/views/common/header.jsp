@@ -17,14 +17,14 @@
 		    </button>
 		    <a class="navbar-brand" href="${contextPath }/main.do"><img src="${contextPath }/resources/image/duke_swing.gif" alt="Bootstrap" width="30" height="24"></a>
 		    <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
-		      <form action="<c:url value="/main.do" />"   class="d-flex translate-middle" role="search" style="width: 50%">
+		      <form method="post" action="<c:url value="/main.do" />"   class="d-flex translate-middle" role="search" style="width: 50%">
 		        <input class="form-control me-2 " type="search" placeholder="상품명을 검색해주세요"  aria-label="Search" >
 		        <button class="btn btn-outline-success" type="submit" >검색</button>
 		      </form>
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " >
 		      <c:choose>
 				<c:when test="${isLogOn == true && member != null }">
-					<li class="nav-item"><a class="nav-link" >환영합니다. ${member.name }님!</a></li>
+					<li class="nav-item"><a class="nav-link" >환영합니다. ${parameter.user_name }님!</a></li>
 					<li class="nav-item">
 				          <a class="nav-link" href="${contextPath }/write/writeForm.do">상품등록</a>
 				        </li>
@@ -34,7 +34,7 @@
 				</c:when>
 				<c:otherwise>		
 						 <li class="nav-item">
-				          <a class="nav-link" href="#">로그인</a>
+				          <a class="nav-link" href="${contextPath }/member/loginForm.do">로그인</a>
 				        </li>
 				        <li class="nav-item">
 				          <a class="nav-link" href="#">회원가입</a>
