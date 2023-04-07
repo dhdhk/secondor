@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:set var="result" value="${param.result }" />
 <c:if test="${result == 'loginfailed' }">
-<script>
+	<script>
 	window.onload = function(){
 		alert("아이디 / 패스워드가 다릅니다. 다시 로그인 하세요.");
 	}
 </script>
 </c:if>
 <c:if test="${result == 'logout' }">
-<script>
+	<script>
 	window.onload = function(){
 		alert("로그아웃이 되었습니다. 다시 로그인 하세요.");
 	}
 </script>
 </c:if>
 <c:if test="${result == 'notLogin' }">
-<script>
+	<script>
 	window.onload = function(){
 		alert("로그인 되어 있지 않습니다. 로그인 하세요.");
 	}
@@ -36,10 +36,8 @@
 		</tr>
 		<tr>
 			<td></td>
-			<td>
-				<input type="submit" value="로그인">
-				<input type="reset" value="다시입력">
-			</td>
+			<td><input type="submit" value="로그인"> <input
+				type="reset" value="다시입력"></td>
 		</tr>
 	</table>
 </form>

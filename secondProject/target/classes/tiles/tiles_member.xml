@@ -31,5 +31,16 @@
 		<put-attribute name="title" value="회원수정창" />
 		<put-attribute name="body" value="/WEB-INF/views/member/modMemberForm.jsp" />
 	</definition>
-	
+	<definition name="/member/findIdForm" extends="baseLayout">
+		<put-attribute name="title" value="아이디 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/member/findId.jsp" />
+	</definition>
+	<definition name="/member/findIdShow" extends="baseLayout">
+		<put-attribute name="title" value="아이디 출력" />
+		<put-attribute name="body" value="/WEB-INF/views/member/findIdShow.jsp" />
+	</definition>
+	<definition name="/member/findPwForm" extends="baseLayout">
+		<put-attribute name="title" value="암호 찾기" />
+		<put-attribute name="body" value="/WEB-INF/views/member/findPw.jsp" />
+	</definition>
 </tiles-definitions>

@@ -1,6 +1,7 @@
 package com.spring.second.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,4 +50,9 @@ public class MemberServiceImpl implements MemberService{
 		return memberDAO.loginById(member);
 	}
 
+	@Override
+	public String find_id(Map<String, String> searchId) {
+		
+		return memberDAO.find_id(searchId);
+	}
 }

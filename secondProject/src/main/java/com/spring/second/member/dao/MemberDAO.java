@@ -1,6 +1,7 @@
 package com.spring.second.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
 
@@ -13,4 +14,5 @@ public interface MemberDAO {
 	MemberDTO selectMember(String id);
 	void updateMember(MemberDTO member);
 	MemberDTO loginById(MemberDTO member);
+	String find_id(Map<String, String> searchId);
 }

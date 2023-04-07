@@ -1,6 +1,7 @@
 package com.spring.second.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +54,12 @@ public class MemberDAOImpl implements MemberDAO{
 		member = sqlSession.selectOne("mapper.member.loginById", member);
 		return member;
 	}
+
+	@Override
+	public String find_id(Map<String, String> searchId) {
+		
+		return sqlSession.selectOne("mapper.member.find_id",searchId);
+	}
+	
+	
 }

@@ -18,4 +18,8 @@ public interface MemberController {
 	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView findIdForm(@ModelAttribute("member") HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView findId(HttpServletRequest request, HttpServletResponse response)throws Exception;
+	public ModelAndView findIdShow(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView findPw(HttpServletRequest request, HttpServletResponse response)throws Exception;
 }

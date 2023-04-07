@@ -29,7 +29,7 @@
 				          <a class="nav-link" href="${contextPath }/write/writeForm.do">상품등록</a>
 				        </li>
 				    <li class="nav-item">
-				          <a class="nav-link" href="#">로그아웃</a>
+				          <a class="nav-link" href="${contextPath }/member/logout.do">로그아웃</a>
 				    </li>
 				</c:when>
 				<c:otherwise>		

@@ -50,4 +50,16 @@
 			select * from users where user_id=#{user_id} and user_pw=#{user_pw}
 		]]>
 	</select>
+	
+	<select id="find_id" parameterType="java.util.Map" resultType="String">
+		<![CDATA[
+			select user_id from users where user_name=#{user_name} and user_email=#{user_email}
+		]]>
+	</select>
+	
+	<select id="find_pw" parameterType="java.util.Map" resultType="String">
+		<![CDATA[
+			select user_pw from users where user_id=#{user_id} and user_email=#{user_email}
+		]]>
+	</select>
 </mapper>

@@ -1,8 +1,10 @@
 package com.spring.second.member.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -53,7 +55,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	public ModelAndView addMember(@ModelAttribute("member") MemberDTO member,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		// ÇÁ·ÎÇÊ ÀÌ¹ÌÁö ÆÄÀÏ ¾÷·Îµå ³»¿ë Ãß°¡
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 		
 		
 		memberService.addMember(member);
@@ -158,4 +160,74 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		mav.setViewName("redirect:/member/loginForm.do");
 		return mav;
 	}
+
+	@Override
+	@RequestMapping(value="/member/findIdForm.do", method=RequestMethod.GET)
+	public ModelAndView findIdForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/member/findIdForm");
+		return mav;
+	}
+
+	@Override
+	@RequestMapping(value="/member/findId.do", method=RequestMethod.POST)
+	public ModelAndView findId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String user_name = request.getParameter("user_name");
+		String user_email = request.getParameter("user_email");
+		Map<String, String> searchId=new HashMap<String, String>();
+		searchId.put("user_name", user_name);
+		searchId.put("user_email", user_email);
+		for(String key: searchId.keySet()) {
+			String value=(String)searchId.get(key);
+			System.out.println(key+" "+value);
+		}
+		
+		String id = memberService.find_id(searchId);
+		request.setAttribute("user_id", id);
+		System.out.println("id = " + id);
+		ModelAndView mav = new ModelAndView();
+		if(id!=null) {
+			mav.setViewName("/member/findIdShow");
+		}else {
+			
+			mav.setViewName("redirect:/member/findIdForm.do");
+		}
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/member/findIdShow.do", method=RequestMethod.GET)
+	public ModelAndView findIdShow(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/member/findIdShow");
+		return mav;
+	}
+
+	@Override
+	public ModelAndView findPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String user_id = request.getParameter("user_id");
+		String user_email = request.getParameter("user_email");
+		Map<String, String> searchPw = new HashMap<String, String>();
+		searchPw.put("user_id", user_id);
+		searchPw.put("user_email", user_email);
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
