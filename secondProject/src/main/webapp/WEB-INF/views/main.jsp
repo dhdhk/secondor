@@ -39,6 +39,15 @@
 	align-items: flex-end;
 	justify-content: center;
 }
+.page {
+    color: black;
+     
+    }
+.paging-active{
+	background-color: rgb(216, 216, 216);
+	border-radius: 5px;
+	color: rgb(24, 24, 24);
+}   
 </style>
 </head>
 <body>
@@ -79,22 +88,22 @@
 			<div class="pageNum">            
 				<div class="">
 					<c:if test="${beginPage>1 }">
-						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">이전</a> 
+						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
 					</c:if>
 					<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 (css에서) -->
 					<c:if test="${beginPage<=1 }">
-						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')">이전</span>
+						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')">&lt;</span>
 					</c:if>
 					<c:forEach var="i" begin="0" end="4">
 						<c:if test="${beginPage+i  <= endPage }">
-							<a class="${((page==beginPage+i))?'yellow':'' } " href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+i)}">${beginPage+i }</a>
+							<a class="page ${(page==beginPage+i)? 'paging-active' : ''}" href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+i)}">${beginPage+i }</a>
 						</c:if>
 					</c:forEach>
 					<c:if test="${beginPage+4<endPage }">
-						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">다음</a>
+						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
 					</c:if>
 					<c:if test="${beginPage+4>=endPage }">
-						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">다음</span>
+						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">&gt;</span>
 					</c:if>
 				</div>
 			</div>   

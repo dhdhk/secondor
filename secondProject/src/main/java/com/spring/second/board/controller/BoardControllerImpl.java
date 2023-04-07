@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CPageHandler;
+import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.PageHandler;
 import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
@@ -85,7 +87,7 @@ public class BoardControllerImpl implements BoardController {
 	
 	
 
-	@Override
+	/*@Override
 	@RequestMapping(value="/viewList.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listArticlesByCategory(@RequestParam("category_name") String category_name,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -97,6 +99,42 @@ public class BoardControllerImpl implements BoardController {
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("ListByCategory", ListByCategory);
 		return mav;
+	}*/
+	
+	
+	@Override
+	@RequestMapping(value="/viewList.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public String listArticlesByCategory(CategoryCondition cc,Model m,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		
+		int totalCnt = boardService.getCategoryPagecount(cc);
+		m.addAttribute("totalCnt",totalCnt);
+		System.out.println("c_totalCnt: "+totalCnt);
+		System.out.println("cc: "+cc);
+		cc.setStart();
+		cc.setEnd();
+		System.out.println("page : " + cc.getPage());
+		System.out.println("start : " + cc.getStart());
+		System.out.println("end : " + cc.getEnd());
+		CPageHandler cpageHandler = new CPageHandler(totalCnt,cc);
+
+
+
+
+		List<BoardDTO> ListByCategory = boardService.getselectByCategoryPage(cc);
+		m.addAttribute("ListByCategory", ListByCategory);
+		m.addAttribute("ch", cpageHandler);
+
+		return "viewList";
+
+//		String viewName = (String) request.getAttribute("viewName");
+//		List<BoardDTO> ListByCategory = boardService.listArticlesByCategory(category_name);
+//
+//		ModelAndView mav = new ModelAndView(viewName);
+//		mav.addObject("ListByCategory", ListByCategory);
+//		return mav;
 	}
 
 

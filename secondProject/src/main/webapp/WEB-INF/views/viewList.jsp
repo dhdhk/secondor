@@ -38,6 +38,16 @@
 	align-items: flex-end;
 	justify-content: center;
 }
+.page {
+    color: black;
+     
+    }
+.paging-active{
+	background-color: rgb(216, 216, 216);
+	border-radius: 5px;
+	color: rgb(24, 24, 24);
+}   
+ 
 </style>
 </head>
 <body>
@@ -72,31 +82,31 @@
 			</div>
 			
  			<!-- 페이징 -->
-	<%-- 		<c:set var="page" value="${ph.page}"/> 
-			<c:set var="beginPage" value="${ph.beginPage }" />
-			<c:set var="endPage" value="${ph.endPage}"/>
+	 		<c:set var="page" value="${ch.cc.page}"/> 
+			<c:set var="beginPage" value="${ch.beginPage }" />
+			<c:set var="endPage" value="${ch.endPage}"/>
 			<div class="pageNum">            
 				<div class="">
 					<c:if test="${beginPage>1 }">
-						<a href="${contextPath }/main.do?page=${beginPage-5 }" class="btn btn-sm btn-info">이전</a> 
+						<a href="${contextPath }/viewList.do${ch.cc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">이전</a> 
 					</c:if>
-					<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 (css에서) -->
+					<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 ( css에서) -->
 					<c:if test="${beginPage<=1 }">
 						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')">이전</span>
 					</c:if>
 					<c:forEach var="i" begin="0" end="4">
 						<c:if test="${beginPage+i  <= endPage }">
-							<a class="${((page==beginPage+i))?'yellow':'' } " href="${contextPath }/main.do?page=${beginPage+i }">${beginPage+i }</a>
+							<a class="page ${(page==beginPage+i)? 'paging-active' : ''}"  href="${contextPath }/viewList.do${ch.cc.getQueryString(beginPage+i)}">${beginPage+i }</a>
 						</c:if>
 					</c:forEach>
 					<c:if test="${beginPage+4<endPage }">
-						<a href="${contextPath }/main.do?page=${beginPage+5 }" class="btn btn-sm btn-success">다음</a>
+						<a href="${contextPath }/viewList.do${ch.cc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
 					</c:if>
 					<c:if test="${beginPage+4>=endPage }">
-						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">다음</span>
+						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">&gt;</span>
 					</c:if>
 				</div>
-			</div>   --%> 
+			</div>    
 		</c:when>
 	</c:choose>
 </body>

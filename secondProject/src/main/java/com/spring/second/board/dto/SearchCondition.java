@@ -1,7 +1,9 @@
 package com.spring.second.board.dto;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Component
 public class SearchCondition {
 	
 	//double totalPage; //전체 페이지의 갯수
@@ -39,7 +41,7 @@ public SearchCondition(int totalCnt , Integer page,String keyword) {
     }
 
     public String getQueryString(Integer page) {
-        // ?page=10&pageSize=10&option=A&keyword=title
+        // ?page=1&keyword=title
         return UriComponentsBuilder.newInstance()
                 .queryParam("page",     page)
                 .queryParam("keyword",  keyword)

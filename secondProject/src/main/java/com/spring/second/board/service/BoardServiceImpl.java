@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.second.board.dao.BoardDAO;
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
 
 @Service
@@ -41,6 +42,7 @@ public class BoardServiceImpl implements BoardService {
 	    return boardDAO.selectPage(map);
 	}
 
+//검색
 	@Override
 	public List<BoardDTO> getSerchSelectPage(SearchCondition sc) {
 	    return boardDAO.serchSelectPage(sc);
@@ -52,6 +54,20 @@ public class BoardServiceImpl implements BoardService {
 	   
 	   return boardDAO.serchcount(sc);
 	}
+	
+//카테고리
+	@Override
+	public List<BoardDTO> getselectByCategoryPage(CategoryCondition cc) {
+	    return boardDAO.selectByCategoryPage(cc);
+	}
+	
+	@Override
+	public int getCategoryPagecount(CategoryCondition cc) {
+	   // TODO Auto-generated method stub
+	   
+	   return boardDAO.CategoryPagecount(cc);
+	}
+	
 	
 //	@Override
 //	public Map<String, Object> viewProduct(int regNum) {

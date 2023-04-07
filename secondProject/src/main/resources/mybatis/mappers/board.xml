@@ -33,43 +33,55 @@
        <![CDATA[  
          select * from board_view where num between  #{start} and #{end}
       ]]>
-   </select>
+    </select>
    
-     <select id="count" resultType="int">
+	<select id="count" resultType="int">
         <![CDATA[
-          SELECT count(*) FROM board
+          select count(*) FROM board
          ]]>
     </select>
     
-    <!-- 검색  -->
-  <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
+    <!-- 검색  페이징-->
+  	<select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
         select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) where rnum between  #{start} and #{end}
        
       ]]>
      
-   </select> 
-   
-<!--     <select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
-       <![CDATA[  
-        select * from board_view where pr_title like '%' || #{keyword} || '%' 
-      ]]>
-     
-   </select> -->
+    </select> 
+
 
     <select id="serchcount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
-          SELECT count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
+          select count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
           
          ]]>
     </select>
+    
+	<!-- 카데고리 페이징  -->
+   
+   <select id="selectByCategoryPage" parameterType="SearchCondition" resultMap="articleResult">
+       <![CDATA[  
+        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate from board where category_name like '%' || #{category_name} || '%' order by regNum desc) where rnum between  #{start} and #{end}
+       
+      ]]>
+     
+   </select> 
+   
+   <select id="CategoryPagecount" parameterType="SearchCondition" resultType="int">
+        <![CDATA[
+          select count(*) FROM board where category_name=#{category_name}
+          
+         ]]>
+    </select>
+   
 
 	
-	<select id="selectArticleByCategory" parameterType="String" resultMap="articleResult">
+	<!-- <select id="selectArticleByCategory" parameterType="String" resultMap="articleResult">
 		<![CDATA[
 			select * from board where category_name=#{category_name} order by regNum desc
 		]]>
-	</select>
+	</select> -->
 	
 	<select id="selectProduct" parameterType="String" >
 		<![CDATA[
