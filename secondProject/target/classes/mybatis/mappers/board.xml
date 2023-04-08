@@ -19,13 +19,6 @@
       <result property="regNum" column="regNum" />
       <result property="category_name" column="category_name" />
    </resultMap>
-   
-      <resultMap type="imageDTO" id="imageResult">
-		<result property="imageFileNo" column="imageFileNo" />
-		<result property="imageFileName" column="imagefileName" />
-		<result property="regDate" column="regDate" />
-		<result property="articleNo" column="articleNo" />
-	</resultMap>
 
    
    
@@ -74,12 +67,35 @@
 		]]>
 	</select>
 	
-<!-- 	<select id="selectImageFileList" parameterType="int" resultType="imageDTO">
-    	<![CDATA[
-    		select pr_img1,pr_img2,pr_img3 from board where regNum=#{regNum}
-    	]]>
-    </select> -->
+	<select id="ProductList" resultMap="articleResult" parameterType="String">	
+		<![CDATA[
+			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board
+		]]>
+	</select>
 	
+	<select id="selectProductdelete" resultMap="articleResult" parameterType="String">	
+		<![CDATA[
+			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board where pr_title like '%' || #{pr_title} || '%'
+		]]>
+	</select>
+	<delete id="prdelete" parameterType="int">
+		<![CDATA[
+			delete from board where regNum=#{regNum}
+		]]>
+	</delete>
+	<!-- 
+	<insert id="insertNewArticle" parameterType="java.util.Map">
+		<![CDATA[
+			insert into t_board(articleNo, title, content, imageFileName, id)
+				values(#{articleNo}, #{title}, #{content}, #{imageFileName}, #{id})
+		]]>
+	</insert>
+	
+	<select id="selectNewArticleNo" resultType="int">
+		<![CDATA[
+			select max(articleNo)+1 from t_board
+		]]>
+	</select> -->
 	
 	
 	</mapper>
