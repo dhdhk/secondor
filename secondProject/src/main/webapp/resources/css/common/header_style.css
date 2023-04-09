@@ -40,9 +40,10 @@
 /* 검색 버튼 */
 .searchBtn{
 	width:60px;
-	background-color: olive;
+	color:white;
+	background-color: #6200EE;
 	border: 0px;
-	border-radius: 2px;
+	border-radius: 3px;
 	margin-left: 10px;
 }
 
@@ -57,6 +58,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0;
+}
+/* 카테고리 링크 */
+.category_item{
+	
 }
 
 /* 로그인여부, 버튼 div */
@@ -99,7 +104,7 @@
 	border-radius: 5px;
 	cursor: pointer;
 	color:white;
-	background-color: #8080ff;
+	background-color: #6200EE;
 }
 .nav_login {
 
