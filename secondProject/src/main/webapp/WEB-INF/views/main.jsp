@@ -75,6 +75,4 @@
 		</c:when>
 	</c:choose>
 	</span>
-
-
 </html>

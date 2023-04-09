@@ -10,7 +10,10 @@
 	justify-content: center;
 	align-items: center;
 }
+/* 이미지 div  */
+.ProductImage{
 
+}
 /* 캐러샐 버튼  */
 .carousel-control-prev, .carousel-control-next{
 	border: 0px;
