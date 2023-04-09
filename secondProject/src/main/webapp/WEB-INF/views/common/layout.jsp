@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/common/layout_style.css">
 <meta charset="UTF-8">
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
@@ -24,7 +24,6 @@
 		<div id="content">
 			<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		</div>
-
 		<div id="footer">
 			<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 		</div>

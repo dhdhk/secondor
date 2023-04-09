@@ -79,6 +79,15 @@ public class BoardControllerImpl implements BoardController {
 			mav.addObject("productMap", productMap);
 			return mav;
 		}
+		
+		@RequestMapping(value="test.do", method= {RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView test(HttpServletRequest request, HttpServletResponse response) throws Exception {
+			// TODO Auto-generated method stub
+	
+			String viewName = (String) request.getAttribute("viewName");
+			ModelAndView mav = new ModelAndView(viewName);
+			return mav;
+		}
 
 
 }

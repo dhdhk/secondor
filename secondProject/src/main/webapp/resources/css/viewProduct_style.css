@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.ProductTop{
+	display: grid;
+    grid-template-columns: 500px 700px;
+    height: 500px;
+	text-align: left;
+	margin-top: 30px;
+	justify-content: center;
+	align-content: center;
+}
+.ProductSummary{
+	padding-left: 40px;
+	display: flex;
+    flex-direction: column;
+}
+.ProductCondition, .ProductSellerId{
+	display: flex;
+}
+.ProductCondition_1, .ProductSellerId_1{
+	width:150px;
+}
+
+.ProductInfo{
+	font-size: 20px;
+}
+.ProductTitle{
+	height : 150px;
+	font:bolder;
+	font-size: 45px;
+}
+.ProductPrice{
+	font:bolder;
+	font-size: 60px;
+}
+.ProductContent{
+	font-size: 20px;
+}
+.buttons{
+    position: relative;
+    bottom: -233px;
+    height: 50px;
+    justify-content: center;
+    display: flex;
+}
+.chatLink{
+	width: 30%;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #5a7eff;
+    color: white;
+    border-radius: 5px;
+}
+.articleCtrl{
+    justify-content: center;
+}
+
+.prevProduct, .toList, .nextProduct{
+	padding-left: 5px;
+    padding-right: 5px;
+}

@@ -18,6 +18,11 @@
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
+	<definition name="test" extends="baseLayout">
+		<put-attribute name="title" value="메인페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/common/test.jsp" />
+	</definition>
+	
 	<definition name="/write/writeForm" extends="baseLayout">
 		<put-attribute name="title" value="글작성창" />
 		<put-attribute name="body" value="/WEB-INF/views/write/writeForm.jsp" />
@@ -30,7 +35,7 @@
 	
 	<definition name="/product/viewProduct" extends="baseLayout">
 		<put-attribute name="title" value="상세글" />
-		<put-attribute name="body" value="/WEB-INF/views/board/viewProduct_2.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/board/viewProduct.jsp" />
 	</definition>
 <!-- 	
 	<definition name="/board/articleForm" extends="baseLayout">

@@ -6,39 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/style.css">
+<link rel="stylesheet"
+	href="${contextPath }/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/view_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-/* 리스트카드 이미지 크기 */
-.card-img-top{
-	height: 15rem;
-	object-fit: cover;
-	padding-bottom: 5px;
-}
-/* 리스트카드 크기  */
-.card-body{
-	height: 70px;
-	padding:0px;
-}
-/* 리스트카드 내용 텍스트(가격,regDate)  */
-.card-text{
-	height:10px;
-	padding:0px;
-} 
-/* 리스트카드 제목 */
-.card-title{
-	padding-bottom: 0px;
-}
-/* 메인 페이징  */
-.pageNum{
-	clear: both;
-	margin-top: auto;
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-}
-</style>
 </head>
 <body>
 <!-- 부트스트랩 card 적용-->

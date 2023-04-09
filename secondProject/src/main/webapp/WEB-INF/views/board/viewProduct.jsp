@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%
    request.setCharacterEncoding("utf-8");
 %>
@@ -11,73 +13,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/viewProduct_style.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    function backToList(obj){
       obj.action="${contextPath}/board/listArticles.do";
       obj.submit();
    }
-   
 </script>
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.ProductTop{
-	display: grid;
-    grid-template-columns: 500px 700px;
-	text-align: left;
-	margin-top: 30px;
-	justify-content: center
-}
-.ProductSummary{
-	padding-left: 40px;
-	display: flex;
-    flex-direction: column;
-}
-.ProductCondition, .ProductSellerId{
-	display: flex;
-}
-.ProductCondition_1, .ProductSellerId_1{
-	width:150px;
-}
-.ProductInfo{
-	font-size: 20px;
-}
-.ProductTitle{
-	font:bolder;
-	font-size: 45px;
-}
-.ProductPrice{
-	font:bolder;
-	font-size: 60px;
-}
-.buttons{
-    position: relative;
-    bottom: -233px;
-    height: 50px;
-    justify-content: center;
-    display: flex;
-}
-.chatLink{
-	width: 30%;
-    justify-content: center;
-    align-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #5a7eff;
-    color: white;
-    border-radius: 5px;
-}
-.articleCtrl{
-	display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-</style>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
-<body>	
+<body>
+	
 	<div class="ProductTop">
 		<div class="ProductImage">
 			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -133,32 +82,34 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<div class="chatLink" href="#">
+				<span class="chatLink" href="#">
 					1대1 채팅
-				</div>
+				</span>
 			</div>
 		</div>
 	</div>
 		<div class="ProductContent">
 			${product.pr_content }
 		</div>
-		<div>
-			<input type="button" name="modArticle" value="수정하기">
-		</div>
-		<div>
-			<input type="button" name="removeArticle" value="삭제하기">
+		<div class="logonActiveButtons">
+			<span>
+				<input type="button" name="modArticle" value="수정하기">
+			</span>
+			<span>
+				<input type="button" name="removeArticle" value="삭제하기">
+			</span>
 		</div>
 		<div class="articleCtrl">	
-			<div>
+			<span class="prevProduct">
 				이전글
-			</div>
-			<div>
+			</span>
+			<span class="toList">
 				목록으로
-			</div>
-			<div>
+			</span>
+			<span class="nextProduct">
 				다음글
-			</div>
+			</span>
 		</div>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-	</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
 </html>
