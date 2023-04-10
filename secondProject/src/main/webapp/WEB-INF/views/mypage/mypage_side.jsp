@@ -11,10 +11,10 @@
 
 <br><br>
 <h5>
-	<a href="${contextPath }/mypage/modInfo.do" class="no-underline" style="color: black;">내 정보 관리</a><br><br>
-	<a href="${contextPath }/mypage/myArticles.do" class="no-underline" style="color: black;">내 상품</a><br><br>
-	<a href="${contextPath }/mypage/myChatlist.do" class="no-underline" style="color: black;">1대1 채팅</a><br><br><br><br><br><br><br><br><br><br><br><br>
+	<a href="${contextPath }/mypage/modInfoForm.do" class="no-underline" style="color: black;">내 정보 관리</a><br><br>
+	<a href="${contextPath }/mypage/myArticlesForm.do" class="no-underline" style="color: black;">내 상품</a><br><br>
+	<a href="${contextPath }/mypage/myChatlistForm.do" class="no-underline" style="color: black;">1대1 채팅</a><br><br><br><br><br><br><br><br><br><br><br><br>
 </h5>
 <h6>
-	<a href="${contextPath }/mypage/dropOut.do" class="no-underline" style="color: black;">회원 탈퇴</a><br>
+	<a href="${contextPath }/mypage/dropOutForm.do" class="no-underline" style="color: black;">회원 탈퇴</a><br>
 </h6>

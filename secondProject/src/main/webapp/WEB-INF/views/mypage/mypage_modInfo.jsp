@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
-    <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 <body>
 <br><br><br><br><br><br><br>
 	<div align="center">
-	<form method="post" action="${contextPath }/member/modMember.do">
+	<form method="post" action="${contextPath }/mypage/modInfo.do">
 	<table>
 		<tr>
 			<td align="center"><h4>정보 수정</h4></td>
@@ -29,7 +30,7 @@
 			<td><input type="text" placeholder="${member.user_name }" name="user_name"></td>
 		</tr>
 		<tr>
-			<td>비밀번호</td>
+			<td>비밀번호</td>	
 		</tr>
 		<tr>
 			<td><input type="password" placeholder="${member.user_pw }" name="user_pw"></td>
