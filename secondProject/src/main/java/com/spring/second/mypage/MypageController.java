@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
 
@@ -66,6 +67,8 @@ public class MypageController {
 		//임시아이디지정
 		String id = "hong";
 		MemberDTO dto = memberService.selectMember(id);
+		List<BoardDTO> bto = mypageService.selectMyList(id);
+		mav.addObject("myList",bto);
 		mav.addObject("member", dto);
 		mav.addObject("result", result);
 		return mav;
@@ -145,7 +148,7 @@ public class MypageController {
 		return resEnt;
 	}
 	@RequestMapping(value = "/mypage/myArticles.do")
-	public ModelAndView myArticles(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView myArticles(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);

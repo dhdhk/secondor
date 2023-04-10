@@ -73,6 +73,11 @@
 			select * from board where regNum=#{regNum}
 		]]>
 	</select>
+	<select id="selectMyList" parameterType="String" resultMap="articleResult">
+		<![CDATA[
+			select * from board where seller_id=#{seller_id} order by regNum desc
+		]]>
+	</select>
 	
 <!-- 	<select id="selectImageFileList" parameterType="int" resultType="imageDTO">
     	<![CDATA[

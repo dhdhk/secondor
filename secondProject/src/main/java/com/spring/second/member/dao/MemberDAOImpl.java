@@ -37,7 +37,6 @@ public class MemberDAOImpl implements MemberDAO{
 	public MemberDTO selectMember(String id) {
 		// TODO Auto-generated method stub
 		MemberDTO dto = (MemberDTO) sqlSession.selectOne("mapper.member.selectMember", id);
-		System.out.println(dto.getUser_id());
 		return dto;
 	}
 
