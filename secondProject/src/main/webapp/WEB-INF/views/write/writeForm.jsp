@@ -41,7 +41,7 @@
 			<table align="center" >
 		  		<tr>
 		  			<td colspan="4">
-						<input type="text" name="pr_title" placeholder="제목을 입력하세요." size="118" maxlength="15">
+						<input type="text" name="pr_title" placeholder="제목을 입력하세요." size="118" maxlength="15" required="required">
 		  			</td>	
 		  		</tr>
 		  		<tr>
@@ -66,10 +66,10 @@
 		  		<tr>
 		  			<td>상품 가격</td>
 		  			<td >
-		  				<input type="text" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();">
+		  				<input type="text" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();" required="required">
 		  			</td>
 		  			<td>
-		  				<input type="range" name="pr_condition" min="1" max="3">
+		  				<input type="range" name="pr_condition" min="1" max="3" required="required">
 		  			</td>
 		  			
 		  		</tr>

@@ -61,7 +61,7 @@
 				${product.pr_title}
 			</div>
 			<div class="ProductPrice">
-				${product.pr_price }
+				${product.pr_price }원
 			</div>
 			<div class="ProductInfo">
 				<div class="ProductSellerId">
@@ -83,7 +83,7 @@
 			</div>
 			<div class="buttons">
 				<div class="chatLink" onclick="location.href='#';">
-					1대1 채팅
+					메세지 보내기
 				</div>
 			</div>
 		</div>
