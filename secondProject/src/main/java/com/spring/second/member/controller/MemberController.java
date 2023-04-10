@@ -1,5 +1,7 @@
 package com.spring.second.member.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.*;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,8 +20,10 @@ public interface MemberController {
 	public ModelAndView modMember(@ModelAttribute("member") MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView login(@ModelAttribute("member") MemberDTO member, RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView logout(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView findId(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws IOException;
+	public ModelAndView findPw(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
+			throws Exception;
 	public ModelAndView findIdForm(@ModelAttribute("member") HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView findId(HttpServletRequest request, HttpServletResponse response)throws Exception;
 	public ModelAndView findIdShow(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ModelAndView findPw(HttpServletRequest request, HttpServletResponse response)throws Exception;
 }

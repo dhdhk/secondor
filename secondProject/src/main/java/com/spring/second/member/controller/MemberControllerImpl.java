@@ -172,7 +172,9 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/findId.do", method=RequestMethod.POST)
-	public ModelAndView findId(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView findId(RedirectAttributes rAttr,
+			HttpServletRequest request, 
+			HttpServletResponse response) throws IOException {
 		String user_name = request.getParameter("user_name");
 		String user_email = request.getParameter("user_email");
 		Map<String, String> searchId=new HashMap<String, String>();
@@ -190,7 +192,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		if(id!=null) {
 			mav.setViewName("/member/findIdShow");
 		}else {
-			
+			rAttr.addAttribute("result", "findIdFailed");
 			mav.setViewName("redirect:/member/findIdForm.do");
 		}
 		return mav;
@@ -206,7 +208,9 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/findPw.do", method=RequestMethod.POST)
-	public ModelAndView findPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView findPw(RedirectAttributes rAttr,
+			HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
 		String user_id = request.getParameter("user_id");
 		String user_email = request.getParameter("user_email");
 		Map<String, String> searchPw = new HashMap<String, String>();
@@ -219,7 +223,8 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		if(pw!=null) {
 			mav.setViewName("/member/findPwShow");
 		}else {
-			mav.setViewName("redirect:member/findPwForm.do");
+			rAttr.addAttribute("result", "findPwFailed");
+			mav.setViewName("redirect:/member/findPwForm.do");
 		}
 		
 		return mav;

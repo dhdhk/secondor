@@ -2,7 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
-<!--<c:set var="result" value="${param.result }"/>-->
+<c:set var="result" value="${param.result }"/>
+<c:if test="${result == 'findIdFailed' }">
+	<script>
+	window.onload = function(){
+		alert("등록된 회원정보가 없습니다. ")
+	}
+	</script>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
