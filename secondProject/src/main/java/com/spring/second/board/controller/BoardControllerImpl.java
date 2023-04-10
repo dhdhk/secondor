@@ -1,6 +1,5 @@
 package com.spring.second.board.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CPageHandler;
+import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.PageHandler;
+import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
 
 @Controller
@@ -26,22 +28,23 @@ public class BoardControllerImpl implements BoardController {
 
 
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public String listArticles(@RequestParam(defaultValue ="1") Integer page , Model m,
+	public String listArticles(SearchCondition sc , Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception
 	{ 
 
-		int totalCnt = boardService.getCount();
+		int totalCnt = boardService.getSerchCount(sc);
 		m.addAttribute("totalCnt",totalCnt);
 		System.out.println(totalCnt);
+		System.out.println(sc);
+		sc.setStart();
+		sc.setEnd();
+		System.out.println("page : " + sc.getPage());
+		System.out.println("start : " + sc.getStart());
+		System.out.println("end : " + sc.getEnd());
+		PageHandler pageHandler = new PageHandler(totalCnt,sc);
 
-		PageHandler pageHandler = new PageHandler(totalCnt, page);
 
-
-		Map map  = new HashMap();
-		map.put("start", 1+ (page-1)*20);
-		map.put("end", 20*page);
-
-		List<BoardDTO> boardList = boardService.getPage(map);
+		List<BoardDTO> boardList = boardService.getSerchSelectPage(sc);
 		m.addAttribute("boardList", boardList);
 		m.addAttribute("ph", pageHandler);
 
@@ -53,17 +56,33 @@ public class BoardControllerImpl implements BoardController {
 
 	@Override
 	@RequestMapping(value="/viewList.do", method= {RequestMethod.GET, RequestMethod.POST})
-	public ModelAndView listArticlesByCategory(@RequestParam("category_name") String category_name,
+	public String listArticlesByCategory(CategoryCondition cc,Model m,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
+		
+		int totalCnt = boardService.getCategoryPagecount(cc);
+		m.addAttribute("totalCnt",totalCnt);
+		System.out.println("c_totalCnt: "+totalCnt);
+		System.out.println("cc: "+cc);
+		cc.setStart();
+		cc.setEnd();
+		System.out.println("page : " + cc.getPage());
+		System.out.println("start : " + cc.getStart());
+		System.out.println("end : " + cc.getEnd());
+		CPageHandler cpageHandler = new CPageHandler(totalCnt,cc);
 
-		String viewName = (String) request.getAttribute("viewName");
-		List<BoardDTO> ListByCategory = boardService.listArticlesByCategory(category_name);
 
-		ModelAndView mav = new ModelAndView(viewName);
-		mav.addObject("ListByCategory", ListByCategory);
-		return mav;
-	}
+
+
+		List<BoardDTO> ListByCategory = boardService.getselectByCategoryPage(cc);
+		m.addAttribute("ListByCategory", ListByCategory);
+		m.addAttribute("ch", cpageHandler);
+
+		return "viewList";
+
+
+	}	
 
 
 		@Override
