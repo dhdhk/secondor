@@ -5,7 +5,7 @@
 <br><br><br>
 <div style="background-color: orange;" >
 <img class="profileImg" src="${contextPath }/resources/image/newjeans.png" alt="Bootstrap" width="100" height="100"><br>
-<h6> 김다희 님</h6>
+<h6> ${member.user_name } 님</h6>
 </div>
 
 
