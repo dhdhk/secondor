@@ -7,6 +7,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/common/layout_style.css">
+<link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title><tiles:insertAttribute name="title"></tiles:insertAttribute></title>
 </head>
