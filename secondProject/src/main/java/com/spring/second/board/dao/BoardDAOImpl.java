@@ -19,38 +19,6 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-
-	@Override
-	public List<BoardDTO> selectAllArticlesList() throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllArticleList");
-
-		return boardList;
-	}
-
-
-	@Override
-	public List<BoardDTO> selectArticlesByCategory(String category_name) throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<BoardDTO> ListByCategory = sqlSession.selectList("mapper.board.selectArticleByCategory", category_name);
-		return ListByCategory;
-	}
-
-
-	@Override
-	public int count() {
-	   // TODO Auto-generated method stub
-	    return sqlSession.selectOne("mapper.board.count");
-
-	}
-
-
-	@Override
-	public List<BoardDTO> selectPage(Map map) {
-	   // TODO Auto-generated method stub
-	    return sqlSession.selectList("mapper.board.selectPage", map);
-	}
-
 //검색
 	@Override
 	public List<BoardDTO> serchSelectPage(SearchCondition sc) {
@@ -81,9 +49,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
-	
-	
-	
+//상세페이지
 	@Override
 	public Map<String, Object> viewProduct(int regNum) {
 		// TODO Auto-generated method stub

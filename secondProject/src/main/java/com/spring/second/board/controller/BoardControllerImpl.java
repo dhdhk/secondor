@@ -91,6 +91,7 @@ public class BoardControllerImpl implements BoardController {
 				HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
 	
+			System.out.println("regNum: " + regNum);
 			String viewName = (String) request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
 	
