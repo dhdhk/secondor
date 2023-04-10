@@ -18,7 +18,6 @@
 <br><br><br><br><br>
 <form>
 <p>회원님의 아이디는  ${requestScope.user_pw } 입니다</p>
-
 				<input type="button" value="로그인 화면" onclick="backToLogin(this.form)">
 </form>
 </body>
