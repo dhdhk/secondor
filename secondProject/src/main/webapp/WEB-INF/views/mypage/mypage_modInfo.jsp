@@ -17,6 +17,7 @@
 	<form method="post" action="${contextPath }/mypage/modInfo.do">
 	<table>
 		<tr>
+		
 			<td align="center"><h4>정보 수정</h4></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>

@@ -75,6 +75,7 @@ public class MypageController {
 	public ResponseEntity modInfo(String id,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
 		String message;
 		ResponseEntity<String> resEnt = null;
 		HttpHeaders responseHeaders = new HttpHeaders();
