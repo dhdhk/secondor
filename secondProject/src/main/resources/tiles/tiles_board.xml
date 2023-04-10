@@ -7,8 +7,9 @@
 	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
-		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="sidebar-left" value="/WEB-INF/views/common/side-left.jsp" />
 		<put-attribute name="body" value="" />
+		<put-attribute name="sidebar-right" value="/WEB-INF/views/common/side-right.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
@@ -31,8 +32,8 @@
 		<put-attribute name="title" value="상세글" />
 		<put-attribute name="body" value="/WEB-INF/views/board/viewProduct.jsp" />
 	</definition>
-	
-	<!-- <definition name="/board/articleForm" extends="baseLayout">
+<!-- 	
+	<definition name="/board/articleForm" extends="baseLayout">
 		<put-attribute name="title" value="새글입력창" />
 		<put-attribute name="body" value="/WEB-INF/views/board/articleForm.jsp" />
 	</definition>

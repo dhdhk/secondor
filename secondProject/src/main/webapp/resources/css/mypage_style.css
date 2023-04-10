@@ -1,18 +1,5 @@
 @charset "UTF-8";
 
-#container {
-	width: 100%;
-	margin: 0 auto;
-	text-align: center;
-	border: 0px solid #bcbcbc;
-}
-
-#header {
-	padding: 5px;
-	margin-bottom: 5px;
-	border: 0px solid #bcbcbc;
-}
-
 body{
 	margin:0 auto;
 	padding-top : 78px;
@@ -28,30 +15,6 @@ body{
 	background-color: silver;
 	border: 0px solid #bcbcbc;
 	font-size: 10px;
-}
-
-#content {
-	padding: 5px;
-	margin-top: 100px;
-	margin-right: 5px;
-	border: 0px solid #bcbcbc;
-	margin:0 auto;
-}
-
-#footer {
-	clear: both;
-	padding: 5px;
-	border: 0px solid #bcbcbc;
-	background-color: lightblue;
-}
-
-.no-underline {
-	text-decoration: none;
-}
-
-.footer_p {
-	text-align: center;
-	font-size: 15px;
 }
 
 .sel-page {
