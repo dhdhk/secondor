@@ -8,13 +8,7 @@ import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
 
 public interface BoardService {
-	public List<BoardDTO> listArticles();
 
-	public List<BoardDTO> listArticlesByCategory(String category_name);
-
-	public int getCount();
-
-	public List<BoardDTO> getPage(Map map);
 	
 	List<BoardDTO> getSerchSelectPage(SearchCondition sc);
 

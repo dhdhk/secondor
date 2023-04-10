@@ -85,19 +85,20 @@ public class BoardControllerImpl implements BoardController {
 	}	
 
 
-		@Override
-		@RequestMapping(value="/product/viewProduct.do", method= {RequestMethod.GET, RequestMethod.POST})
-		public ModelAndView viewProduct(@RequestParam("regNum") int regNum,
-				HttpServletRequest request, HttpServletResponse response) throws Exception {
-			// TODO Auto-generated method stub
+	@Override
+	@RequestMapping(value="/product/viewProduct.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView viewProduct(@RequestParam("regNum") int regNum,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		
+		System.out.println("regNum: " + regNum);
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
 	
-			String viewName = (String) request.getAttribute("viewName");
-			ModelAndView mav = new ModelAndView(viewName);
-	
-			Map<String, Object> productMap = boardService.viewProduct(regNum); 
-			mav.addObject("productMap", productMap);
-			return mav;
-		}
+		Map<String, Object> productMap = boardService.viewProduct(regNum); 
+		mav.addObject("productMap", productMap);
+		return mav;
+	}
 
 
 }

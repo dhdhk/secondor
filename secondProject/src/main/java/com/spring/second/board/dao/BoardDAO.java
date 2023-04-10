@@ -11,14 +11,6 @@ import com.spring.second.board.dto.SearchCondition;
 
 public interface BoardDAO {
 
-	List<BoardDTO> selectAllArticlesList() throws DataAccessException;
-
-	List<BoardDTO> selectArticlesByCategory(String category_name)throws DataAccessException;
-
-	public int count();
-
-	public List<BoardDTO> selectPage(Map map);
-	
 	int serchcount(SearchCondition sc);
 
 	List<BoardDTO> serchSelectPage(SearchCondition sc);

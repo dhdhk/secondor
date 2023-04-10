@@ -22,29 +22,12 @@
 
    
    
-   <select id="selectAllArticleList" resultMap="articleResult">
-      <![CDATA[
-         select * from board order by regDate desc
-      ]]>
-   </select>
-   
- 	<!-- 전체 리스트 메인 페이징  -->
- 	<select id="selectPage" parameterType="java.util.Map" resultMap="articleResult">
-       <![CDATA[  
-         select * from board_view where num between  #{start} and #{end}
-      ]]>
-   </select>
-   
-     <select id="count" resultType="int">
-        <![CDATA[
-          SELECT count(*) FROM board
-         ]]>
-    </select>
+
     
     <!-- 검색  페이징-->
   	<select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
-        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) where rnum between  #{start} and #{end}
+        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate ,regnum from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) where rnum between  #{start} and #{end}
        
       ]]>
      
@@ -60,19 +43,13 @@
 
 	
 	
-	
-	<!-- 전체 카테고리 불러오기 -->
-	<select id="selectArticleByCategory" parameterType="String" resultMap="articleResult">
-		<![CDATA[
-			select * from board where category_name=#{category_name} order by regNum desc
-		]]>
-	</select>
+
 	
 	
 	<!-- 카데고리 페이징  -->
    <select id="selectByCategoryPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
-        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate from board where category_name like '%' || #{category_name} || '%' order by regNum desc) where rnum between  #{start} and #{end}
+        select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate, regnum from board where category_name like '%' || #{category_name} || '%' order by regNum desc) where rnum between  #{start} and #{end}
        
       ]]>
      
