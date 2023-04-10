@@ -14,18 +14,17 @@
 		<%-- 로고 --%>
 		<div class="logo">
 			<a href="${contextPath }/main.do">
-			<img src="${contextPath }/resources/image/duke_swing.gif" width="100px" height="100px">
+			<img src="${contextPath }/resources/image/secondor_logo.png" height="100px">
 			</a>
  		</div>
 		<div class="bar">
 			<%-- 검색 --%>
 			<div class="navbar_top">
 				<div class="container-fluid">
-					<form action="<c:url value="/main.do" />"
-						class="d-flex translate-middle" role="search" style="width: 100%">
-						<input class="form-control me-2" type="search" placeholder="검색어를 입력해주세요" aria-label="Search">
-						<button class="searchBtn" type="submit">검색</button>
-					</form>
+					<form action="<c:url value="/main.do" />"   class="d-flex translate-middle" role="search" style="width: 100%">
+		       			 <input class="form-control me-2 " name="keyword" type="text" placeholder="상품명을 검색해주세요" value="${ph.sc.keyword}" aria-label="Search" >
+		       			 <button class="searchBtn" type="submit">검색</button>
+		        	</form>
 				</div>
 			</div>
 			<%-- 카테고리 --%>
