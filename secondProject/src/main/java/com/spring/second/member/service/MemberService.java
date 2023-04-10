@@ -13,4 +13,5 @@ public interface MemberService {
 	void modMember(MemberDTO member);
 	MemberDTO login(MemberDTO member);
 	public String find_id(Map<String, String> searchId);
+	public String find_pw(Map<String, String> searchPw);
 }

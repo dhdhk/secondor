@@ -55,4 +55,9 @@ public class MemberServiceImpl implements MemberService{
 		
 		return memberDAO.find_id(searchId);
 	}
+
+	@Override
+	public String find_pw(Map<String, String> searchPw) {
+		return memberDAO.find_pw(searchPw);
+	}
 }

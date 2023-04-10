@@ -60,6 +60,12 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return sqlSession.selectOne("mapper.member.find_id",searchId);
 	}
+
+	@Override
+	public String find_pw(Map<String, String> searchPw) {
+		
+		return sqlSession.selectOne("mapper.member.find_pw",searchPw);
+	}
 	
 	
 }

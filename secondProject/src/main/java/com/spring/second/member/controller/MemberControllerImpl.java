@@ -205,13 +205,24 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	}
 
 	@Override
+	@RequestMapping(value="/member/findPw.do", method=RequestMethod.POST)
 	public ModelAndView findPw(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String user_id = request.getParameter("user_id");
 		String user_email = request.getParameter("user_email");
 		Map<String, String> searchPw = new HashMap<String, String>();
 		searchPw.put("user_id", user_id);
 		searchPw.put("user_email", user_email);
-		return null;
+		
+		String pw = memberService.find_pw(searchPw);
+		request.setAttribute("user_pw", pw);
+		ModelAndView mav = new ModelAndView();
+		if(pw!=null) {
+			mav.setViewName("/member/findPwShow");
+		}else {
+			mav.setViewName("redirect:member/findPwForm.do");
+		}
+		
+		return mav;
 	}
 }
 
