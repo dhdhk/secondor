@@ -28,7 +28,7 @@
 				<c:forEach var="ListByCategory" items="${ListByCategory }" >
 					<div class="col-md-3 mt-4 mb-4">
 					<!-- **카드 선택 시 상세페이지로 이동할 수 있게 설정해야함 -->
-						<a href="#">
+						<a href="${contextPath }/product/viewProduct.do?regNum=${ListByCategory.regNum}">
 							<div class="card">
 							<!-- **이미지 지정파일 정해지면 수정해야함 -->
 								<img src="${ListByCategory.pr_img1 }" class="card-img-top" alt="...">
