@@ -23,7 +23,7 @@
 		<div class="mypageSidebar">
 			<div class="profile" >
 				<img class="profileImg" src="${contextPath }/resources/image/newjeans.png">
-				user_name 님
+				${member.user_name } 님 
 			</div>
 			
 			<div class="mypageMenu">
