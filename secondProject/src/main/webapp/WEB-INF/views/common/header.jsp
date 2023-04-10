@@ -14,7 +14,7 @@
 		<%-- 로고 --%>
 		<div class="logo">
 			<a href="${contextPath }/main.do">
-			<img src="${contextPath }/resources/image/duke_swing.gif" width="100px" height="100px">
+			<img src="${contextPath }/resources/image/secondor8.png" width="150px" height="75px">
 			</a>
  		</div>
 		<div class="bar">
