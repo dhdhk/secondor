@@ -20,13 +20,13 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    width: 130px;
+    width:180px;
     height: 130px;
 }
 
 .bar{
 	position: absolute;
-    left: 130px;
+    left: 180px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;

@@ -37,12 +37,12 @@
 	<div class="writeForm">
 		<form name="write" method="post" action="${contextPath }/write/addNewArticle.do" enctype="multipart/form-data">
 			<table align="center" >
-		  		<tr>
+		  		<tr style="height: 40px;">
 		  			<td colspan="4">
 						<input type="text" name="pr_title" placeholder="제목을 입력하세요." size="118" maxlength="15" required="required">
 		  			</td>	
 		  		</tr>
-		  		<tr>
+		  		<tr style="height: 40px;">
 		  			<td>카테고리</td>
 		  			<td>
 		  				<select class="choiceCategory_name" name="category_name">
@@ -61,10 +61,10 @@
 		  				하&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상
 		  			</td>
 		  		</tr>
-		  		<tr>
+		  		<tr style="height: 40px;">
 		  			<td>상품 가격</td>
 		  			<td >
-		  				<input type="text" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();" required="required">
+		  				<input type="text" style="width: 70%;" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();" required="required">
 		  			</td>
 		  			<td>
 		  				<input type="range" name="pr_condition" min="1" max="3" required="required">
@@ -78,7 +78,7 @@
 		  				</textarea>
 		  			</td>
 		  		</tr>
-		  		<tr>
+		  		<tr style="height: 40px;">
 		  			<td align="left" colspan="2" >
 		  				사진 첨부 &nbsp;
 		  				<input type="button" name="addFile" value="파일 추가" onclick="fn_addFile()" >
