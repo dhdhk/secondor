@@ -28,10 +28,10 @@
 			
 			<div class="mypageMenu">
 			
-				<a href="#" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">내 상품</a>
-				<a href="#" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">회원 탈퇴</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
+				<a href="${contextPath }/mypage/myArticlesForm.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
+				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref">회원 탈퇴</a>
 		
 			</div>
 		</div>

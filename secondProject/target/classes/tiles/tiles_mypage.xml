@@ -17,4 +17,20 @@
 		<put-attribute name="title" value="마이페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp" />
 	</definition>
+	<definition name="/mypage/modInfoForm" extends="mypageLayout">
+		<put-attribute name="title" value="내 정보 수정" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_modInfo.jsp" />
+	</definition>
+	<definition name="/mypage/myArticlesForm" extends="mypageLayout">
+		<put-attribute name="title" value="내 상품 목록" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_myArticles.jsp" />
+	</definition>
+	<definition name="/mypage/myChatlistForm" extends="mypageLayout">
+		<put-attribute name="title" value="내 채팅 목록" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_myChatlist.jsp" />
+	</definition>
+	<definition name="/mypage/dropOutForm" extends="mypageLayout">
+		<put-attribute name="title" value="회원탈퇴" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_dropOut.jsp" />
+	</definition>
 </tiles-definitions>

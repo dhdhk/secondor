@@ -54,7 +54,7 @@
 				</div>
 				<div class="nav_buttons">
 
-						<div class="nav_login" onclick="location.href='#';">
+						<div class="nav_login" onclick="location.href='${contextPath}/mypage/mypageMain.do';">
 							마이페이지
 						</div>
 

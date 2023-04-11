@@ -16,6 +16,12 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+function backToList(obj){
+		obj.action = "${contextPath}/mypage/mypageMain.do";
+		obj.submit();
+	}
+</script>
 </head>
 <body>
 	<div class="mypageBody">
@@ -28,10 +34,10 @@
 			
 			<div class="mypageMenu">
 			
-				<a href="#" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">내 상품</a>
-				<a href="#" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">회원 탈퇴</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
+				<a href="${contextPath }/mypage/myArticlesForm.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
+				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref">회원 탈퇴</a>
 		
 			</div>
 		</div>
@@ -41,7 +47,9 @@
 				회원 탈퇴
 			</div>
 			<div class="menuContent">
-				회원 탈퇴 content
+				<h3>회원 탈퇴 하시겠습니까?</h3>
+					<input type="button" value="탈퇴하기" onclick="${contextPath}/member/removeMember.do">
+					<input type="button" value="돌아가기" onclick="backToList(this.form)">
 			</div>
 		</div>
 	</div>
