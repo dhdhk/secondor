@@ -34,7 +34,7 @@ public class BoardControllerImpl implements BoardController {
 
 		int totalCnt = boardService.getSerchCount(sc);
 		m.addAttribute("totalCnt",totalCnt);
-		System.out.println(totalCnt);
+		System.out.println("totalCnt:"+totalCnt);
 		System.out.println(sc);
 		sc.setStart();
 		sc.setEnd();
