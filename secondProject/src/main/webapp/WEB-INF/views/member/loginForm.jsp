@@ -38,7 +38,7 @@
 			<td></td>
 			<td><input type="submit" value="로그인"> 
 				<input type="reset" value="다시입력">
-				<button type="button" onclick="location.href='${contextPath }/member/memberForm.do';">회원가입</button>
+				<button type="button" onclick="location.href='${contextPath }/member/memberForm.do';">회원가입*</button>
 			</td>
 
 		</tr>
