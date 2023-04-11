@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.member">
+	<resultMap type="memberDTO" id="memResult">
+		<result property="user_id" column="user_id" />
+		<result property="user_pw" column="user_pw" />
+		<result property="user_name" column="user_name" />
+		<result property="user_email" column="user_email" />
+		<result property="user_address" column="user_address" />
+		<result property="user_birth" column="user_birth" />
+		<result property="user_phone" column="user_phone" />
+		<result property="joinDate" column="joinDate" />
+		<result property="profileimg" column="profileimg" />
+	</resultMap>
+
+	<select id="selectAllMemberList" resultMap="memResult">
+		<![CDATA[
+			select * from users order by joinDate desc
+		]]>
+	</select>
+	
+	<insert id="insertMember" parameterType="memberDTO">
+		<![CDATA[
+			insert into users values(#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_address}, #{user_birth}, #{user_phone}, sysdate, '프로필 이미지')
+		]]>
+	</insert>
+	
+	<delete id="deleteMember" parameterType="String">
+		<![CDATA[
+			delete from users where user_id=#{user_id}
+		]]>
+	</delete>
+	
+	<select id="selectMember" parameterType="String" resultType="memberDTO">
+		<![CDATA[
+			select * from users where user_id=#{user_id}
+		]]>
+	</select>
+	
+	<update id="updateMember" parameterType="memberDTO">
+		<![CDATA[
+			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address}, user_birth=#{user_birth}, user_phone=#{user_phone}, profileimg=#{profileimg} where user_id=#{user_id}
+		]]>
+	</update>
+	
+	<select id="loginById" parameterType="memberDTO" resultType="memberDTO">
+		<![CDATA[
+			select * from users where user_id=#{user_id} and user_pw=#{user_pw}
+		]]>
+	</select>
+	
+	<select id="find_id" parameterType="java.util.Map" resultType="String">
+		<![CDATA[
+			select user_id from users where user_name=#{user_name} and user_email=#{user_email}
+		]]>
+	</select>
+	
+	<select id="find_pw" parameterType="java.util.Map" resultType="String">
+		<![CDATA[
+			select user_pw from users where user_id=#{user_id} and user_email=#{user_email}
+		]]>
+	</select>
+</mapper>
