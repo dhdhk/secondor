@@ -44,13 +44,16 @@ public class MypageController {
 //		HttpSession session = request.getSession();
 //		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		//임시아이디 지정
+		System.out.println("1111");
 		id = "hong";
 //		String name= member.getUser_name();
 		
 		MemberDTO dto = memberService.selectMember(id);
+		System.out.println("2222");
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("member", dto);
+		System.out.println("3333");
 		return mav;
 	}
 	

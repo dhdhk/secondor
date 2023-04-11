@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +75,9 @@ public class WriteControllerImpl implements WriteController{
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
 		//판매자 이름 임시 지정
-		String user_id="test";
+		HttpSession session = multipartRequest.getSession();
+		
+		String user_id=(String) session.getAttribute("user_id");
 		boardDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
 		int regNum=writeService.addNewRegNum();
