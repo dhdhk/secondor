@@ -50,7 +50,7 @@
 		<c:when test="${isLogOn == true && member != null }">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
-					환영합니다. ${member.user_name }님!
+					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!(로그아웃) 
 				</div>
 				<div class="nav_buttons">
 
@@ -74,10 +74,10 @@
 		<c:otherwise>
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id" >
-					<a href="#">로그인</a>이 필요합니다.
+					<a href="${contextPath }/member/loginForm.do">로그인</a>이 필요합니다.
 				</div>
 				<div class="nav_buttons">
-					<div class="nav_login" onclick="location.href='#';">
+					<div class="nav_login" onclick="location.href='${contextPath }/member/loginForm.do';">
 						로그인
 					</div>
 					<div class="nav_writeProduct" onclick="location.href='${contextPath }/write/writeForm.do';">
