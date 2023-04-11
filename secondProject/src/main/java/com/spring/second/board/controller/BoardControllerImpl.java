@@ -97,6 +97,7 @@ public class BoardControllerImpl implements BoardController {
 	
 			Map<String, Object> productMap = boardService.viewProduct(regNum); 
 			mav.addObject("productMap", productMap);
+			mav.addObject("pageName", request.getParameter("pageName"));
 			return mav;
 		}
 
