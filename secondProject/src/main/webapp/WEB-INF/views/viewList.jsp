@@ -53,8 +53,8 @@
 						<a href="${contextPath }/viewList.do${ch.cc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
 					</c:if>
 					<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 ( css에서) -->
-					<c:if test="${beginPage<=1 }">
-						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')">&lt;</span>
+					<c:if test="${beginPage<1 }">
+						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')"></span>
 					</c:if>
 					<c:forEach var="i" begin="0" end="4">
 						<c:if test="${beginPage+i  <= endPage }">
