@@ -73,9 +73,7 @@
 		  		</tr>
 		  		<tr>
 		  			<td colspan="4" >
-		  				<textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요."
-		  					wrap="hard" style="resize: none;" >
-		  				</textarea>
+		  				<textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요." wrap="hard" style="resize: none;" ></textarea>
 		  			</td>
 		  		</tr>
 		  		<tr style="height: 40px;">
@@ -94,7 +92,7 @@
 				</tr>
 				<tr>
 					<td colspan="4" align="center">
-						<input type="submit" value="글쓰기">&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="글쓰기">
 						<input type="button" value="취소" onclick="backToList(this.form)">
 					</td>
 				</tr>

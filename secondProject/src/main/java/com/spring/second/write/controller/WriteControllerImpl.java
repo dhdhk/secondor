@@ -111,7 +111,7 @@ public class WriteControllerImpl implements WriteController{
 			}
 			message = "<script>";
 			message += "alert('새글을 추가했습니다.');";
-			message += "location.href='" + multipartRequest.getContextPath() +"/board/viewArticle.do';";
+			message += "location.href='" + multipartRequest.getContextPath() +"/product/viewProduct.do?regNum="+ regNum +"';";
 			message += "</script>";
 			resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
 		} catch(Exception e) {
