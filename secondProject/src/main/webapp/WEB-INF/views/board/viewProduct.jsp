@@ -26,8 +26,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<div class="ProductTop">
+	<div class="ProductContent">
+		<!-- <div class="ProductTop"> -->
 		<div class="ProductImage">
 			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
 					<div class="carousel-indicators">
@@ -80,25 +80,42 @@
 						${product.pr_condition }
 					</div>		
 				</div>
+				<div class="ProductRegDate">
+					<div class="ProductRegDate_1">
+						등록일
+					</div>
+					<div class="ProductCondition_2">
+						${product.regDate }
+					</div>		
+				</div>
 			</div>
 			<div class="buttons">
 				<div class="chatLink" onclick="location.href='#';">
 					메세지 보내기
 				</div>
 			</div>
+			
 		</div>
-	</div>
-		<div class="ProductContent">
+		<div class="ProductBottom">
 			${product.pr_content }
 		</div>
-		<div class="logonActiveButtons">
-			<span>
-				<input type="button" name="modArticle" value="수정하기">
-			</span>
-			<span>
-				<input type="button" name="removeArticle" value="삭제하기">
-			</span>
-		</div>
+		<c:choose>
+			<%-- 로그인 상태 버튼 --%>
+			<c:when test="${isLogOn == true && member != null }">
+				<div class="logonActiveButtons">
+					<span>
+						<input type="button" name="modArticle" value="수정하기">
+					</span>
+					<span>
+						<input type="button" name="removeArticle" value="삭제하기">
+					</span>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div></div>
+			</c:otherwise>
+		</c:choose>
+	</div>
 		<div class="articleCtrl">	
 			<div class="prevProduct" onclick="location.href='#';">
 				이전글

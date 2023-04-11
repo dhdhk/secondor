@@ -28,7 +28,7 @@ body{
 #side-left {
 	float:left;
 	width: 150px;
-	height: 300px;
+	height: 800px;
 	background-color: white;
 }
 
@@ -40,7 +40,7 @@ body{
 #side-right{
 	float:right;
 	width: 150px;
-	height: 300px;
+	height: 800px;
 	background-color: white;
 }
 

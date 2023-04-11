@@ -50,7 +50,7 @@
 		<c:when test="${isLogOn == true && member != null }">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
-					환영합니다. ${member.name }님!
+					환영합니다. ${member.user_name }님!
 				</div>
 				<div class="nav_buttons">
 
