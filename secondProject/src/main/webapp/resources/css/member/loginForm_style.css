@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.loginTable{
+	margin-top: 200px;
+}
+
+
+.loginTable > tr{
+	height: 70px;
+}
