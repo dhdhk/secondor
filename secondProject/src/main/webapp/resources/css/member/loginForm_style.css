@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/*
+	#5A7EFF -> 파랑 
+	#FFCD4A -> 노랑
+*/
+
+.loginFormTitle{
+	margin-top: 180px;
+}
+
+
+.loginTable{
+	margin-top: 30px;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+
+tr{
+	height: 70px;
+}
