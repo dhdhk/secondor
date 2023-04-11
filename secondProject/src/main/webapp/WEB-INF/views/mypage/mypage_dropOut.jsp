@@ -34,7 +34,7 @@ function backToList(obj){
 				<c:if test="${member.profileimg != ' '}">
 					<img class="profileImg" src="${contextPath }/resources/image/noImage.png">
 				</c:if>
-			${member.profileimg } ${member.user_name} 님
+			${member.user_name} 님
 			</div>
 			
 			<div class="mypageMenu">
