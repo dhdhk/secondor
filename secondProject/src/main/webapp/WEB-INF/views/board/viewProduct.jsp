@@ -10,6 +10,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <c:set var="product" value="${productMap.product }" />
 <c:set var="imageFileList" value="${productMap.imageFileList }" />
+<c:set var="category_name" value="${product.category_name }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -117,15 +118,22 @@
 		</c:choose>
 	</div>
 		<div class="articleCtrl">	
-			<div class="prevProduct" onclick="location.href='#';">
+			<!-- <div class="prevProduct" onclick="location.href='#';">
 				이전글
-			</div>
-			<div class="toList" onclick="location.href='#';">
+			</div> -->
+			<c:if test="${pageName != null }">
+			<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">
 				목록으로
 			</div>
-			<div class="nextProduct" onclick="location.href='#';">
-				다음글
+			</c:if>
+			<c:if test="${pageName == null }">
+			<div class="toList" onclick="location.href='${contextPath }/main.do';">
+				목록으로
 			</div>
+			</c:if>
+			<!-- <div class="nextProduct" onclick="location.href='#';">
+				다음글
+			</div> -->
 		</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

@@ -94,9 +94,11 @@ public class BoardControllerImpl implements BoardController {
 			System.out.println("regNum: " + regNum);
 			String viewName = (String) request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);
-	
+			
+			
 			Map<String, Object> productMap = boardService.viewProduct(regNum); 
 			mav.addObject("productMap", productMap);
+			mav.addObject("pageName", request.getParameter("pageName"));
 			return mav;
 		}
 
