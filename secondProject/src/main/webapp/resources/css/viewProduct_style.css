@@ -112,6 +112,12 @@
     margin-top:50px;
     margin-left:40px;
     text-align: left;
+    border-bottom: 2px solid #d0d0d0;
+}
+
+/* 댓글 구역  */
+.commentContent{
+	
 }
 
 /* 글 이동 버튼  div */
@@ -121,11 +127,12 @@
     align-items: center;
 }
 /* 글 이동 버튼  */
-.prevProduct, .toList, .nextProduct{
+.toList{
 	margin: 5px;
-    width:70px;
     background-color: #6200EE;
     color:white;
     border-radius: 3px;
     cursor: pointer;
+    width: 80px;
+    height: 30px;
 }

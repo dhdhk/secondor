@@ -118,7 +118,10 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-		 <div class="articleCtrl">	
+	<div class="commentContent">
+		댓글 구역
+	</div>
+	<div class="articleCtrl">	
 			<div class="toList" onclick="location.href='#';">
 				<c:if test="${pageName != null }">
 					<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">목록으로</div>
@@ -127,7 +130,7 @@
 					<div class="toList" onclick="location.href='${contextPath }/main.do';">목록으로</div>
 				</c:if>
 			</div>
-		</div> 
+	</div> 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
