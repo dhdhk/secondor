@@ -1,66 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" isELIgnored="false"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%
    request.setCharacterEncoding("utf-8");
 %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<c:set var="product" value="${productMap.product }" />
+<c:set var="imageFileList" value="${productMap.imageFileList }" />
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/viewProduct_style.css">
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    function backToList(obj){
       obj.action="${contextPath}/board/listArticles.do";
       obj.submit();
    }
 </script>
-<link rel="stylesheet" href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
-<br>
-<br>
-<br>
-<br>
-<form name="frmArticle" method="post" enctype="multipart/form-data">
-   <table border="9" align="center">
-      <tr>
-         <td colspan="3"></td>
-         <td align="right"><input type="button" name="modArticle" value="수정하기"><input type="button" name="removeArticle" value="삭제하기"></td>
-      </tr>
-      <tr>
-         <td rowspan="8" colspan="2">이미지</td>
-         <td rowspan="4" colspan="2">제목</td>
-      </tr>
-      <tr></tr>
-      <tr></tr>
-      <tr></tr>
-      <tr>
-         <td rowspan="2">작성자</td>
-         <td rowspan="2">상태</td>
-      </tr>
-      <tr></tr>
-      <tr>
-         <td rowspan="2">가격</td>
-         <td rowspan="2">1대1챗</td>
-      </tr>
-      <tr></tr>
-      <tr>
-         <td colspan="4" rowspan="15">
-            <textarea rows="15" cols="120" style="resize: none;" disabled="disabled" placeholder="임시내용입니다."></textarea>
-         </td>
-      </tr>
-      <tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr><tr></tr>
-      <tr>
-         <td colspan="4"> </td>
-      </tr>
-      <tr>
-         <td colspan="4"><input type="button" value="<"><input type="button" value="목록으로" onclick="backToList(this.form)"><input type="button" value=">"></td>
-      </tr>
-   </table>
-   </form>
+	
+	<div class="ProductTop">
+		<div class="ProductImage">
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+					<div class="carousel-indicators">
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+					</div>
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img src="${product.pr_img1}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="${product.pr_img2}" class="d-block w-100" alt="...">
+						</div>
+						<div class="carousel-item">
+							<img src="${product.pr_img3}" class="d-block w-100" alt="...">
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="visually-hidden">Next</span>
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					</button>
+				</div>
+		</div>
+		<div class="ProductSummary">
+			<div class="ProductTitle">
+				${product.pr_title}
+			</div>
+			<div class="ProductPrice">
+				${product.pr_price }원
+			</div>
+			<div class="ProductInfo">
+				<div class="ProductSellerId">
+					<div class="ProductSellerId_1">
+						판매자
+					</div>
+					<div class="ProductSellerId_2">
+						${product.seller_id }
+					</div>		
+				</div>
+				<div class="ProductCondition">
+					<div class="ProductCondition_1">
+						상품 상태
+					</div>
+					<div class="ProductCondition_2">
+						${product.pr_condition }
+					</div>		
+				</div>
+			</div>
+			<div class="buttons">
+				<div class="chatLink" onclick="location.href='#';">
+					메세지 보내기
+				</div>
+			</div>
+		</div>
+	</div>
+		<div class="ProductContent">
+			${product.pr_content }
+		</div>
+		<div class="logonActiveButtons">
+			<span>
+				<input type="button" name="modArticle" value="수정하기">
+			</span>
+			<span>
+				<input type="button" name="removeArticle" value="삭제하기">
+			</span>
+		</div>
+		<div class="articleCtrl">	
+			<div class="prevProduct" onclick="location.href='#';">
+				이전글
+			</div>
+			<div class="toList" onclick="location.href='#';">
+				목록으로
+			</div>
+			<div class="nextProduct" onclick="location.href='#';">
+				다음글
+			</div>
+		</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

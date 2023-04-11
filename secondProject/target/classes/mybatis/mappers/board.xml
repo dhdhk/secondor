@@ -20,50 +20,71 @@
       <result property="category_name" column="category_name" />
    </resultMap>
 
-   
-   
-   <select id="selectAllArticleList" resultMap="articleResult">
-      <![CDATA[
-         select * from board order by regDate desc
+      
+      
+    <!-- 검색  페이징-->
+  	<select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
+       <![CDATA[  
+			select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate ,regnum from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) 
+			where rnum between  #{start} and #{end}       
       ]]>
-   </select>
-   
- 	<select id="selectPage" parameterType="java.util.Map" resultMap="articleResult">
-       <![CDATA[
-         select * from (select rownum num, B.* from(select * from board order by regNum desc) B ) 
-         where num between #{start} and #{end}
-      ]]>
-   </select>
-   
-     <select id="count" resultType="int">
+     
+    </select> 
+
+
+    <select id="serchcount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
-          SELECT count(*) FROM board
+         	 select count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
+          
          ]]>
     </select>
 
 	
-	<select id="selectArticleByCategory" parameterType="String" resultMap="articleResult">
-		<![CDATA[
-			select * from board where category_name=#{category_name} order by regNum desc
-		]]>
-	</select>
+			
+	<!-- 카데고리 페이징  -->
+   <select id="selectByCategoryPage" parameterType="SearchCondition" resultMap="articleResult">
+       <![CDATA[  
+			 select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate, regnum from board where category_name like '%' || #{category_name} || '%' order by regNum desc) 
+			 where rnum between  #{start} and #{end}       
+      ]]>
+     
+   </select> 
+   
+   <select id="CategoryPagecount" parameterType="SearchCondition" resultType="int">
+        <![CDATA[
+         	 select count(*) FROM board where category_name=#{category_name}
+          
+         ]]>
+    </select>
 	
-	<select id="selectProduct" parameterType="String" >
+	<!-- 상세페이지 -->
+	<select id="selectProduct" parameterType="int" resultType="boardDTO">
 		<![CDATA[
 			select * from board where regNum=#{regNum}
 		]]>
 	</select>
 	
-	
-	<!--  <select id="selectAllArticleList" resultMap="articleResult">
+		
+	<select id="ProductList" resultMap="articleResult" parameterType="String">	
 		<![CDATA[
-			select level, articleNo, parentNo, title, content, writeDate, imageFileName, id from t_board
-			start with parentNo=0
-			connect by prior articleNo=parentNo
-			order siblings by articleNo desc
+			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board
 		]]>
 	</select>
 	
+	
+	
+	<select id="selectProductdelete" resultMap="articleResult" parameterType="String">	
+		<![CDATA[
+			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board where pr_title like '%' || #{pr_title} || '%'
+		]]>
+	</select>
+	<delete id="prdelete" parameterType="int">
+		<![CDATA[
+			delete from board where regNum=#{regNum}
+		]]>
+	</delete>
+	
+	<!-- 
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[
 			insert into t_board(articleNo, title, content, imageFileName, id)

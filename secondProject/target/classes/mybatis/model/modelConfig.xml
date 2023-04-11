@@ -7,5 +7,6 @@
 		<typeAlias type="com.spring.second.board.dto.BoardDTO" alias="boardDTO" />
 		<typeAlias type="com.spring.second.write.dto.ImageDTO" alias="imageDTO"/>
 		<typeAlias type="com.spring.second.member.dto.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.spring.second.board.dto.SearchCondition" alias="SearchCondition" />
 	</typeAliases>
 </configuration>

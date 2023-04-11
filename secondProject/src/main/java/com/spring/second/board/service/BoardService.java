@@ -4,15 +4,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryCondition;
+import com.spring.second.board.dto.SearchCondition;
 
 public interface BoardService {
-	public List<BoardDTO> listArticles();
+	
+	List<BoardDTO> getSerchSelectPage(SearchCondition sc);
 
-	public List<BoardDTO> listArticlesByCategory(String category_name);
+	int getSerchCount(SearchCondition sc);
 
-	public int getCount();
+	List<BoardDTO> getselectByCategoryPage(CategoryCondition cc);
 
-	public List<BoardDTO> getPage(Map map);
+	int getCategoryPagecount(CategoryCondition cc);
 	
 	public Map<String, Object> viewProduct(int regNum);
 }

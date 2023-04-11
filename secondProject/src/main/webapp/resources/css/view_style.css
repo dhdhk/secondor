@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* 리스트카드 이미지 크기 */
+.card-img-top{
+	height: 15rem;
+	object-fit: cover;
+	padding-bottom: 5px;
+}
+
+/* 리스트카드 크기  */
+.card-body{
+	height: 70px;
+	padding:0px;
+}
+
+/* 리스트카드 내용 텍스트(가격,regDate)  */
+.card-text{
+	height:10px;
+	padding:0px;
+} 
+
+/* 리스트카드 제목 */
+.card-title{
+	padding-bottom: 0px;
+}
+
+/* 메인 페이징  */
+.pageNum{
+	clear: both;
+	margin-top: auto;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+.page {
+    color: black;
+    }
+.paging-active{
+   background-color: rgb(216, 216, 216);
+   border-radius: 5px;
+   color: rgb(24, 24, 24);
+} 

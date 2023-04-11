@@ -10,6 +10,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryCondition;
+import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.write.dto.ImageDTO;
 
 @Repository
@@ -17,49 +19,46 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-
+//검색
 	@Override
-	public List<BoardDTO> selectAllArticlesList() throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<BoardDTO> boardList = sqlSession.selectList("mapper.board.selectAllArticleList");
-
-		return boardList;
-	}
-
-
-	@Override
-	public List<BoardDTO> selectArticlesByCategory(String category_name) throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<BoardDTO> ListByCategory = sqlSession.selectList("mapper.board.selectArticleByCategory", category_name);
-		System.out.println(category_name + "3");
-		return ListByCategory;
-	}
-
-
-	@Override
-	public int count() {
+	public List<BoardDTO> serchSelectPage(SearchCondition sc) {
 	   // TODO Auto-generated method stub
-	    return sqlSession.selectOne("mapper.board.count");
-
+	    return sqlSession.selectList("mapper.board.serchSelectPage", sc);
 	}
-
 
 	@Override
-	public List<BoardDTO> selectPage(Map map) {
+	public int serchcount(SearchCondition sc) {
 	   // TODO Auto-generated method stub
-	    return sqlSession.selectList("mapper.board.selectPage", map);
+	    return sqlSession.selectOne("mapper.board.serchcount",sc);
+
+	}
+
+//카데고리
+	
+	@Override
+	public List<BoardDTO> selectByCategoryPage(CategoryCondition cc) {
+	   // TODO Auto-generated method stub
+	    return sqlSession.selectList("mapper.board.selectByCategoryPage", cc);
+	}
+
+	@Override
+	public int CategoryPagecount(CategoryCondition cc) {
+	   // TODO Auto-generated method stub
+	    return sqlSession.selectOne("mapper.board.CategoryPagecount",cc);
+
 	}
 
 
+//상세페이지
 	@Override
 	public Map<String, Object> viewProduct(int regNum) {
 		// TODO Auto-generated method stub
 		BoardDTO product = sqlSession.selectOne("mapper.board.selectProduct", regNum);
-		List<ImageDTO> imageFileList = sqlSession.selectList("mapper.board.selectImageFileList", regNum);
+		//List<ImageDTO> imageFileList = sqlSession.selectList("mapper.board.selectImageFileList", regNum);
 		
 		Map<String, Object> productMap = new HashMap<String, Object>();
 		productMap.put("product", product);
-		productMap.put("imageFileList", imageFileList);
+		//productMap.put("imageFileList", imageFileList);
 		return productMap;
 	}
 }

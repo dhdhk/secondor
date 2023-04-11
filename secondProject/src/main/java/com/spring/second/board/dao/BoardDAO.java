@@ -6,16 +6,18 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.board.dto.CategoryCondition;
+import com.spring.second.board.dto.SearchCondition;
 
 public interface BoardDAO {
+	
+	int serchcount(SearchCondition sc);
 
-	List<BoardDTO> selectAllArticlesList() throws DataAccessException;
+	List<BoardDTO> serchSelectPage(SearchCondition sc);
 
-	List<BoardDTO> selectArticlesByCategory(String category_name)throws DataAccessException;
+	List<BoardDTO> selectByCategoryPage(CategoryCondition cc);
 
-	public int count();
-
-	public List<BoardDTO> selectPage(Map map);
+	int CategoryPagecount(CategoryCondition cc);
 	
 	public Map<String, Object> viewProduct(int regNum);
 }
