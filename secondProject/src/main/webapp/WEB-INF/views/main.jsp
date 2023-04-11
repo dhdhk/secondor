@@ -34,7 +34,7 @@
 						<a href="${contextPath }/product/viewProduct.do?regNum=${board.regNum}">
 							<div class="card">
 							<!-- **이미지 지정파일 정해지면 수정해야함 -->
-								<img src="${board.pr_img1 }" class="card-img-top" alt="...">
+								<img src="/image/${board.regNum }/${board.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
 									<h5 class="card-title"> ${board.pr_title }, ${board.pr_sold }</h5>
