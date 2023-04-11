@@ -77,7 +77,9 @@
 						상품 상태
 					</div>
 					<div class="ProductCondition_2">
-						${product.pr_condition }
+							<c:if test="${product.pr_condition =='1' }">하</c:if>
+							<c:if test="${product.pr_condition =='2' }">중</c:if>
+							<c:if test="${product.pr_condition =='3' }">상</c:if>
 					</div>		
 				</div>
 				<div class="ProductRegDate">
@@ -116,17 +118,13 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-		<div class="articleCtrl">	
-			<div class="prevProduct" onclick="location.href='#';">
-				이전글
-			</div>
+		<!-- <div class="articleCtrl">	
+			
 			<div class="toList" onclick="location.href='#';">
 				목록으로
 			</div>
-			<div class="nextProduct" onclick="location.href='#';">
-				다음글
-			</div>
-		</div>
+			
+		</div> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>
