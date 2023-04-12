@@ -90,7 +90,6 @@
 									<c:if test="${beginPage>1 }">
 										<a href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
 									</c:if>
-									<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 (css에서) -->
 									<c:if test="${beginPage<1 }">
 										<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')"></span>
 									</c:if>
