@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +21,15 @@ import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.PageHandler;
 import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
+import com.spring.second.member.dto.MemberDTO;
 
 @Controller
 public class BoardControllerImpl implements BoardController {
 	@Autowired
 	BoardService boardService;
 
+	@Autowired
+	MemberDTO memberDTO;
 
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public String listArticles(SearchCondition sc , Model m,
@@ -91,6 +95,8 @@ public class BoardControllerImpl implements BoardController {
 				HttpServletRequest request, HttpServletResponse response) throws Exception {
 			// TODO Auto-generated method stub
 	
+			
+			
 			System.out.println("regNum: " + regNum);
 			String viewName = (String) request.getAttribute("viewName");
 			ModelAndView mav = new ModelAndView(viewName);

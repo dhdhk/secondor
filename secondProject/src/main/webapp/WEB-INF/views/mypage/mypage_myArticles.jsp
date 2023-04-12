@@ -60,7 +60,14 @@
 						<c:when test="${myList != null }">
 							<c:forEach var="myList" items="${myList }" >
 								<tr align="center">
-									<td width="10%">${myList.category_name }</td>
+									<td width="10%">
+										<c:if test="${myList.category_name =='living' }">거실</c:if>
+										<c:if test="${myList.category_name =='dining' }">주방</c:if>
+										<c:if test="${myList.category_name =='bedroom' }">침실</c:if>
+										<c:if test="${myList.category_name =='bathroom' }">화장실</c:if>
+										<c:if test="${myList.category_name =='study' }">서재</c:if>
+										<c:if test="${myList.category_name =='etc' }">기타</c:if>
+									</td>
 									<td align="left" width="50%">
 										<span style="padding-right:30px;"></span>
 										
