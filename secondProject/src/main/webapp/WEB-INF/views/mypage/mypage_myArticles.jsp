@@ -29,7 +29,7 @@
 			<div class="mypageMenu">
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="${contextPath }/mypage/myArticlesForm.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref">회원 탈퇴</a>
 		
@@ -73,16 +73,46 @@
 									<td width="10%">${myList.pr_sold }</td>
 									<td width="7%"><input type="checkbox" name="deleteBoard" value="${myList.regNum}"></td>
 								</tr>
+								
 							</c:forEach>
+								<tr>
+									<td colspan="5" align="right" style="border-left: none; border-bottom: none; border-right: none;">
+										<input type="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
+									</td>
+								</tr>
+							
+							<!-- 페이징 -->
+							<c:set var="page" value="${mh.mp.page}"/> 
+							<c:set var="beginPage" value="${mh.beginPage }" />
+							<c:set var="endPage" value="${mh.endPage}"/>
+							<div class="pageNum">            
+								<div class="">
+									<c:if test="${beginPage>1 }">
+										<a href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
+									</c:if>
+									<!-- 1,2,3,4,5 일때는 이전버튼 안보이게 만들어야함 (css에서) -->
+									<c:if test="${beginPage<1 }">
+										<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')"></span>
+									</c:if>
+									<c:forEach var="i" begin="0" end="4">
+										<c:if test="${beginPage+i  <= endPage }">
+											<a class="page ${(page==beginPage+i)? 'paging-active' : ''}" href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage+i)}">${beginPage+i }</a>
+										</c:if>
+									</c:forEach>
+									<c:if test="${beginPage+4<endPage }">
+										<a href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
+									</c:if>
+									<c:if test="${beginPage+4>=endPage }">
+										<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">&gt;</span>
+									</c:if>
+								</div>
+							</div>   
 						</c:when> 
 					</c:choose>
-					<tr>
-						<td colspan="5" align="right" style="border-left: none; border-bottom: none; border-right: none;">
-							<input type="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
-						</td>
-					</tr>
+					
 				</table>
 			</div>
+			
 		</div>
 	</div>
 </body>
