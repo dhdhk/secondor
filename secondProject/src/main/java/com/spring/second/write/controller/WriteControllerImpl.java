@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.write.dto.ImageDTO;
 import com.spring.second.write.file.FileUploadController;
 import com.spring.second.write.service.WriteService;
@@ -75,8 +76,9 @@ public class WriteControllerImpl implements WriteController{
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
 		//판매자 이름 지정
-		HttpSession session = multipartRequest.getSession();
-		String user_id=(String) session.getAttribute("user_id");
+	      HttpSession session = multipartRequest.getSession();
+	      MemberDTO memberDTO=(MemberDTO) session.getAttribute("member");
+	      String user_id= memberDTO.getUser_id();
 		boardDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
 		int regNum=writeService.addNewRegNum();

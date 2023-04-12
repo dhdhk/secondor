@@ -122,17 +122,24 @@ public class MypageControllerImpl implements MypageController{
 	@RequestMapping(value = "/mypage/myArticles.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public String myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
+		//member id값을 seller_id 에 넣어줘야함
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		String id= member.getUser_id();
+		mp.setSeller_id(id);
+		
 		int totalCnt = mypageService.getProductListCount(mp);
-		m.addAttribute("totalCnt", totalCnt);
+		m.addAttribute("my_totalCnt", totalCnt);
 		System.out.println("totalCnt:"+totalCnt);
 		System.out.println(mp);
 		
 		mp.setStart();
 		mp.setEnd();
 		
-		System.out.println("page : " + mp.getPage());
-		System.out.println("start : " + mp.getStart());
-		System.out.println("end : " + mp.getEnd());
+		System.out.println("my_page : " + mp.getPage());
+		System.out.println("my_start : " + mp.getStart());
+		System.out.println("my_end : " + mp.getEnd());
 		
 		MypageHandler mypageHandler = new MypageHandler(totalCnt, mp);
 		
