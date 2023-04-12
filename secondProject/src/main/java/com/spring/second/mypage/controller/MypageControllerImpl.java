@@ -1,6 +1,8 @@
-package com.spring.second.mypage;
+package com.spring.second.mypage.controller;
 
 import java.util.Enumeration;
+
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +17,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,16 +26,22 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
+import com.spring.second.mypage.dto.MypageHandler;
+import com.spring.second.mypage.dto.MyproductlistPage;
+import com.spring.second.mypage.service.MypageService;
+
 
 @Controller
-public class MypageController {
+public class MypageControllerImpl implements MypageController{
+	
 	 @Autowired
 	 MemberService memberService;
+	 
 	 @Autowired
 	 MypageService mypageService;
 	 
-	@Autowired
-	MemberDTO memberDTO;
+	 @Autowired
+	 MemberDTO memberDTO;
 	 
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView mypageMain(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -61,8 +70,8 @@ public class MypageController {
 		String id= member.getUser_id();
 		ModelAndView mav = new ModelAndView(viewName);
 		MemberDTO dto = memberService.selectMember(id);
-		List<BoardDTO> bto = mypageService.selectMyList(id);
-		mav.addObject("myList",bto);
+//		List<BoardDTO> bto = mypageService.selectMyList(id);
+//		mav.addObject("myList",bto);
 		mav.addObject("member", dto);
 		mav.addObject("result", result);
 		return mav;
@@ -108,13 +117,30 @@ public class MypageController {
 
 		return resEnt;
 	}
+	
+//내 상품 리스트 
 	@RequestMapping(value = "/mypage/myArticles.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView myArticles(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public String myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
-		ModelAndView mav = new ModelAndView(viewName);
+		int totalCnt = mypageService.getProductListCount(mp);
+		m.addAttribute("totalCnt", totalCnt);
+		System.out.println("totalCnt:"+totalCnt);
+		System.out.println(mp);
 		
-		return mav;
+		mp.setStart();
+		mp.setEnd();
+		
+		System.out.println("page : " + mp.getPage());
+		System.out.println("start : " + mp.getStart());
+		System.out.println("end : " + mp.getEnd());
+		
+		MypageHandler mypageHandler = new MypageHandler(totalCnt, mp);
+		
+		List<BoardDTO> myList = mypageService.getselectMyList(mp);
+		m.addAttribute("myList", myList);
+		m.addAttribute("mh", mypageHandler);
+		
+		return "/mypage/myArticles";
 	}
 	@RequestMapping(value = "/mypage/myChatlist.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {

@@ -22,7 +22,7 @@
 
       
       
-    <!-- 검색  페이징-->
+    <!-- 검색  페이징 (메인리스트, 검색리스트)-->
   	<select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
 			select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate ,regnum from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) 
@@ -31,17 +31,17 @@
      
     </select> 
 
-
+	<!-- 검색  페이징 (메인, 검색후 총 리스트 갯수)-->
     <select id="serchcount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
-         	 select count(*) FROM board where pr_title like '%' || #{keyword} || '%' 
+         	 select count(*) from board where pr_title like '%' || #{keyword} || '%' 
           
          ]]>
     </select>
 
 	
 			
-	<!-- 카데고리 페이징  -->
+	<!-- 카데고리 페이징 (카데고리별 리스트) -->
    <select id="selectByCategoryPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
 			 select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate, regnum from board where category_name like '%' || #{category_name} || '%' order by regNum desc) 
@@ -50,9 +50,10 @@
      
    </select> 
    
+   <!-- 카데고리 페이징 (카데고리별 리스트 총 갯수) -->
    <select id="CategoryPagecount" parameterType="SearchCondition" resultType="int">
         <![CDATA[
-         	 select count(*) FROM board where category_name=#{category_name}
+         	 select count(*) from board where category_name=#{category_name}
           
          ]]>
     </select>
@@ -83,12 +84,25 @@
 			delete from board where regNum=#{regNum}
 		]]>
 	</delete>
-	<!-- 마이페이지 내 상품 리스트 불러오기 -->
-	<select id="selectMyList" parameterType="String" resultMap="articleResult">
+	
+	<!-- 마이페이지 내 상품 리스트 불러오기 (상품리스트)-->
+	<select id="selectMyList" parameterType="MyproductlistPage" resultMap="articleResult">
 		<![CDATA[
-			select * from board where seller_id=#{seller_id} order by regNum desc
+			select * from (select rownum as rnum, pr_title, pr_sold, regdate ,regnum, category_name from board where seller_id like '%' || #{seller_id} || '%' order by regNum desc) 
+			where rnum between  #{start} and #{end} 
+		
 		]]>
 	</select>
+	
+	<!-- 마이페이지 내 상품 리스트 불러오기 (상품리스트 갯수)-->
+	<select id="MyProductListCount" parameterType="MyproductlistPage" resultType="int">
+        <![CDATA[
+         	 select count(*) from board where seller_id like '%' || #{seller_id} || '%' 
+         ]]>
+    </select>
+	
+	
+	
 	<!-- 
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[

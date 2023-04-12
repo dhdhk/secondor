@@ -1,7 +1,9 @@
 package com.spring.second.board.dto;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
+@Component
 public class CategoryCondition {
 
 	private String category_name="";
@@ -55,7 +57,7 @@ public class CategoryCondition {
 	}
 
 	public void setStart() {
-		this.start = 1+ (this.page-1)*20;;
+		this.start = 1+ (this.page-1)*20;
 	}
 
 	public Integer getEnd() {
