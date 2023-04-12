@@ -28,10 +28,10 @@ function backToList(obj){
 		<!-- 사이드바 -->
 		<div class="mypageSidebar">
 			<div class="profile" >
-				<c:if test="${member.profileimg == ' '}">
-					<img class="profileImg" src="${contextPath }/resources/image/newjeans.png">
+				<c:if test="${member.profileimg == null}">
+					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
 				</c:if>
-				<c:if test="${member.profileimg != ' '}">
+				<c:if test="${member.profileimg != null}">
 					<img class="profileImg" src="${contextPath }/resources/image/noImage.png">
 				</c:if>
 			${member.user_name} 님

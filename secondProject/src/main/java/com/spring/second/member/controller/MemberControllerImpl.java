@@ -1,8 +1,10 @@
 package com.spring.second.member.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -14,11 +16,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -30,6 +35,7 @@ import com.spring.second.write.dto.ImageDTO;
 @Controller
 @EnableAspectJAutoProxy
 public class MemberControllerImpl extends MultiActionController implements MemberController{
+	private static final String IMAGE_PATH = "C:\\image";
 	@Autowired
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class); 
@@ -52,16 +58,47 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/addMember.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView addMember(@ModelAttribute("member") MemberDTO member,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ResponseEntity addMember(@ModelAttribute("member") MemberDTO member,
+			MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-
-
-
+		multipartRequest.setCharacterEncoding("utf-8");
+		
+		if(member.getProfileimg().length()!=0) {
+		//프로필 이미지 있을때
+			String profile = upload(multipartRequest);
+			
+			
 		memberService.addMember(member);
 
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/memberForm.do");}
+		else {
+			//없을 때
+			ModelAndView mav = new ModelAndView("redirect:/member/memberForm.do");}
+		
+		ModelAndView mav = new ModelAndView("redirect:/member/memberForm.do");
 		return mav;
+	}
+
+	private String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+		// TODO Auto-generated method stub
+		Iterator<String> fileNames = multipartRequest.getFileNames();
+		while(fileNames.hasNext()) {
+			String fileName = fileNames.next();
+			MultipartFile mFile = multipartRequest.getFile(fileName);
+			String originalFileName = mFile.getOriginalFilename();
+			
+			File file = new File(IMAGE_PATH+"\\"+fileName);
+			if(mFile.getSize()!=0) {
+				if(!file.exists()) {
+					if(file.getParentFile().mkdirs()) {
+						file.createNewFile();
+					}
+				}
+				mFile.transferTo(new File(IMAGE_PATH+"\\temp\\"+originalFileName));
+			}
+		}
+		
+		return null;
 	}
 
 	@Override
