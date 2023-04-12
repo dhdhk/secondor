@@ -103,7 +103,7 @@
 		</div>
 		<c:choose>
 			<%-- 로그인 상태 버튼 --%>
-			<c:when test="${isLogOn == true && member != null }">
+			<%-- <c:when test="${isLogOn == true && member != null }">
 				<div class="logonActiveButtons">
 					<span>
 						<input type="button" name="modArticle" value="수정하기">
@@ -112,7 +112,7 @@
 						<input type="button" name="removeArticle" value="삭제하기">
 					</span>
 				</div>
-			</c:when>
+			</c:when> --%>
 			<c:otherwise>
 				<div></div>
 			</c:otherwise>
