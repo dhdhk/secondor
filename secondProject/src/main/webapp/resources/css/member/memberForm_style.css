@@ -1,7 +1,13 @@
 @charset "UTF-8";
 
+/*
+	#5A7EFF -> 파랑 
+	#FFCD4A -> 노랑
+*/
+
 .memberFormTitle{
 	margin-top: 180px;
+	font-size: 45px;
 }
 
 .div_memberForm {
@@ -15,3 +21,5 @@
 tr{
 	text-align: left;
 }
+
+

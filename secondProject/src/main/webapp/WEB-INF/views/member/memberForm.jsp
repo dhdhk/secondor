@@ -30,7 +30,7 @@
 </head>
 <body> 
 	<div class="memberFormTitle">
-		<h1 style="text-align:center">회원 가입</h1>
+		회원 가입
 	</div>
 	<div class="div_memberForm">
 		<form method="post" action="/second/member/addMember.do">

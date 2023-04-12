@@ -1,0 +1,10 @@
+https://hangeul.naver.com/font/nanum
+
+font-family: 'NanumSquareNeoLight';
+font-family: 'NanumSquareNeo';
+font-family: 'NanumSquareNeoBold';
+font-family: 'NanumSquareNeoExtraBold';
+font-family: 'NanumSquareNeoHeavy';
+
+#5A7EFF -> 파랑 
+#FFCD4A -> 노랑

@@ -12,9 +12,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<link rel="stylesheet"
-	href="${contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextPath }/resources/css/member/loginForm_style.css">
 
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
@@ -43,7 +40,7 @@
 
 </head>
 	<div class="loginFormTitle">
-		<h1 style="text-align:center">로그인</h1>
+		로그인
 	</div>
 	<div class="loginTable">
 	<form method="post" action="${contextPath }/member/login.do">

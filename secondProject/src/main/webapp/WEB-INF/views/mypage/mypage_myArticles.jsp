@@ -12,7 +12,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/mypage_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
