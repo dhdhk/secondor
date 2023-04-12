@@ -15,26 +15,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath }/resources/css/member/findForm_style.css">
 </head>
 <body>
-<form method="post" action="/second/member/findId.do">
-	<table align="center">
-		<tr >
-			<td width="200"><p align="right">이름</p></td>
-			<td width="400"><input type="text" name="user_name"></td>
-		</tr>
-		<tr >
-			<td width="200"><p align="right">이메일</p></td>
-			<td width="400"><input type="text" name="user_email"></td>
-		</tr>
-		<tr >
-			<td><p align="right">&nbsp;</p></td>
-			<td>
-				<input type="submit" value="아이디 찾기">
-				<input type="reset" value="다시입력">
-			</td>		
-		</tr>
-	</table>
-</form>
+	<div class="findTitle">
+		아이디 찾기
+	</div>
+	<div class="findTable">
+		<form method="post" action="/second/member/findId.do">
+			<table align="center">
+				<tr >
+					<td width="150" align="right">
+						이름
+					</td>
+					<td width="400">
+						<input type="text" name="user_name" required="required">
+					</td>
+				</tr>
+				<tr >
+					<td width="150" align="right">
+						이메일
+					</td>
+					<td width="400">
+						<input type="email" name="user_email" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" class="button" value="아이디 찾기">
+					</td>		
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

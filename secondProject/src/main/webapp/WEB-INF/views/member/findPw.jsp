@@ -15,26 +15,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${contextPath }/resources/css/member/findForm_style.css">
 </head>
 <body>
-<form method="post" action="/second/member/findPw.do">
-	<table align="center">
-		<tr >
-			<td width="200"><p align="right">아이디</p></td>
-			<td width="400"><input type="text" name="user_id"></td>
-		</tr>
-		<tr >
-			<td width="200"><p align="right">이메일</p></td>
-			<td width="400"><input type="text" name="user_email"></td>
-		</tr>
-		<tr >
-			<td><p align="right">&nbsp;</p></td>
-			<td>
-				<input type="submit" value="비밀번호 찾기">
-				<input type="reset" value="다시입력">
-			</td>		
-		</tr>
-	</table>
-</form>
+	<div class="findTitle">
+		비밀번호 찾기
+	</div>
+	<div class="findTable">
+		<form method="post" action="/second/member/findPw.do">
+			<table align="center">
+				<tr >
+					<td width="150" align="right">
+						아이디
+					</td>
+					<td width="400">
+						<input type="text" name="user_id" required="required">
+					</td>
+				</tr>
+				<tr >
+					<td width="150" align="right">
+						이메일
+					</td>
+					<td width="400">
+						<input type="text" name="user_email" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" class="button" value="비밀번호 찾기">
+					</td>		
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

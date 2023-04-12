@@ -17,14 +17,20 @@
 		obj.submit();
 	}
 </script>
+<link rel="stylesheet" href="${contextPath }/resources/css/member/findForm_style.css">
 </head>
 <body>
-<br><br><br><br><br>
-<form>
-<p>회원님의 아이디는  ${requestScope.user_id } 입니다</p>
-
-				<input type="button" value="비밀번호 찾기" onclick="findPw(this.form)">
-				<input type="button" value="로그인 화면" onclick="backToLogin(this.form)">
-</form>
+	<div class="findTitle">
+		아이디 찾기
+	</div>
+	<div class="findResult">
+		<span>회원님의 아이디는 <span class="result"> ${requestScope.user_id }</span> 입니다. </span>
+		<form>
+			<div class="buttons" style="margin-top: 23px;">
+				<input type="button" class="button" value="비밀번호 찾기" onclick="findPw(this.form)">
+				<input type="button" class="button" value="로그인" onclick="backToLogin(this.form)">
+   			</div>
+		</form>
+	</div>
 </body>
 </html>

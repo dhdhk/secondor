@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* 찾기 제목 div */
+.findTitle{
+	margin-top: 180px;
+	font-size: 45px;
+	
+}
+
+/* 찾기 테이블 div*/
+.findTable{
+	margin-top: 30px;
+	display: flex;
+	flex-shrink: 0;
+	justify-content: center;
+	align-items: center;
+}
+tr{
+	height: 70px;
+}
+
+/* 찾은 결과 div*/
+.findResult{
+	margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.result{
+	font-family: 'NanumSquareNeoExtraBold';
+}
+
+.buttons{
+	height: 90px;
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.button{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 120px;
+	height: 35px;
+}
