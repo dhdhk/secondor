@@ -60,7 +60,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 		memberService.addMember(member);
 
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/loginForm.do");
 		return mav;
 	}
 
