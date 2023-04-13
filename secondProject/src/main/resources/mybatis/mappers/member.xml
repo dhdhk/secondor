@@ -56,6 +56,13 @@
 			select * from users where user_id=#{user_id} and user_pw=#{user_pw}
 		]]>
 	</select>
+	
+	<!-- 아이디 중복 체크 -->
+	<select id="idCheck" parameterType="memberDTO" resultType="int">
+		<![CDATA[
+			select count(*) from users where user_id=#{user_id}
+		]]>	
+	</select>
 
 	<select id="find_id" parameterType="java.util.Map" resultType="String">
 		<![CDATA[

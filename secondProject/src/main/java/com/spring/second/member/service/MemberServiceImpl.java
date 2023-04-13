@@ -65,4 +65,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		memberDAO.insertMemberNoimg(memberMap);
 	}
+
+	@Override
+	public int idCheck(String id) throws Exception {
+		// TODO Auto-generated method stub
+		int result = memberDAO.idCheck(id);
+		return result;
+	}
 }

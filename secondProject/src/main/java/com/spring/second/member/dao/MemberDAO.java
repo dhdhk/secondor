@@ -17,4 +17,5 @@ public interface MemberDAO {
 	String find_id(Map<String, String> searchId);
 	String find_pw(Map<String, String> searchPw);
 	void insertMemberNoimg(Map<String, Object> memberMap);
+	int idCheck(String id);
 }
