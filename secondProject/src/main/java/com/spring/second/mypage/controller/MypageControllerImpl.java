@@ -93,6 +93,8 @@ public class MypageControllerImpl implements MypageController{
 		System.out.println(request.getParameter("user_email"));
 		System.out.println(request.getParameter("user_pw"));
 		System.out.println(request.getParameter("user_address"));
+		System.out.println(request.getParameter("user_phone"));
+		memberDTO.setUser_phone(request.getParameter("user_phone"));
 		memberDTO.setUser_id(request.getParameter("user_id"));
 		memberDTO.setUser_name(request.getParameter("user_name"));
 		memberDTO.setUser_email(request.getParameter("user_email"));

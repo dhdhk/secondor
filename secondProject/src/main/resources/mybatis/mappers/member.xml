@@ -59,7 +59,7 @@
 	<!-- 회원 정보 업데이트 -->
 	<update id="updateMember" parameterType="memberDTO">
 		<![CDATA[
-			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} where user_id=#{user_id}
+			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} , user_phone=#{user_phone} where user_id=#{user_id}
 		]]>
 	</update>
 	
