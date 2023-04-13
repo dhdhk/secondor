@@ -93,11 +93,14 @@ public class MypageControllerImpl implements MypageController{
 		System.out.println(request.getParameter("user_email"));
 		System.out.println(request.getParameter("user_pw"));
 		System.out.println(request.getParameter("user_address"));
+		System.out.println(request.getParameter("user_phone"));
+		memberDTO.setUser_phone(request.getParameter("user_phone"));
 		memberDTO.setUser_id(request.getParameter("user_id"));
 		memberDTO.setUser_name(request.getParameter("user_name"));
 		memberDTO.setUser_email(request.getParameter("user_email"));
 		memberDTO.setUser_pw(request.getParameter("user_pw"));
 		memberDTO.setUser_address(request.getParameter("user_address"));
+		
 		mypageService.modInfo(memberDTO);
 		message = "<script>";
 		message += "alert('수정이 완료되었습니다.');";
