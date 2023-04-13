@@ -11,8 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/modInfo_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -23,7 +22,8 @@
 		<div class="mypageSidebar">
 			<div class="profile" >
 				<c:if test="${member.profileimg == null}">
-					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
+					<div class="noProfileImg">No Image</div>
+					<%-- <img class="profileImg" src="${contextPath }/resources/image/noprofile.png"> --%>
 				</c:if>
 				<c:if test="${member.profileimg != null}">
 					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
@@ -43,54 +43,74 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				메뉴 이름
+				 회원 정보 수정
 			</div>
 			<div class="menuContent">
 				<form method="post" action="${contextPath }/mypage/modInfo.do">
 					<table>
 						<tr>
-						
-							<td align="center"><h4>정보 수정</h4></td>
+							<td class="modTableLabel">아이디</td>
+							<td class="modTableContent">
+								<input type="text" placeholder="${member.user_id }" readonly="readonly">
+								<input type="hidden" name="user_id" value="${member.user_id }">
+							</td>
+							<td class="modTableLabel">
+								이름
+							</td>
+							<td class="modTableContent">
+								<input type="text" value="${member.user_name }" name="user_name">
+							</td>
 						</tr>
-						<tr><td>&nbsp;</td></tr>
+
 						<tr>
-							<td>아이디</td>
-						</tr>
-						<tr>
-							<td><input type="text" placeholder="${member.user_id }" readonly="readonly"><input type="hidden" name="user_id" value="${member.user_id }"></td>
-						</tr>
-						<tr>
-							<td>이름</td>
-						</tr>
-						<tr>
-							<td><input type="text" value="${member.user_name }" name="user_name"></td>
-						</tr>
-						<tr>
-							<td>비밀번호</td>	
-						</tr>
-						<tr>
-							<td><input type="password" value="${member.user_pw }" name="user_pw"></td>
-						</tr>
-						<tr>
-							<td>비밀번호 확인</td>	
-						</tr>
-						<tr>
-							<td><input type="password" name="pwcheck"></td>
-						</tr>
-						<tr>
-							<td>이메일</td>
+							<td class="modTableLabel">
+								비밀번호
+							</td>
+							<td class="modTableContent">
+								<input type="password" value="${member.user_pw }" name="user_pw">
+							</td>
+							<td class="modTableLabel">
+								비밀번호 확인
+							</td>
+							<td class="modTableContent">
+								<input type="password" name="pwcheck">
+							</td>
 						</tr>
 						<tr>
-							<td><input type="email" value="${member.user_email }" name="user_email"></td>
+							<td class="modTableLabel">
+								생년월일
+							</td>
+							<td class="modTableContent">
+								<input type="email"  placeholder="${member.user_birth }" name="user_birth" readonly="readonly">
+							</td>
+							<td class="modTableLabel">
+								전화번호
+							</td>
+							<td class="modTableContent">
+								<input type="text" value="${member.user_phone }" name="user_phone">
+							</td>
 						</tr>
 						<tr>
-							<td>주소</td>
+							<td class="modTableLabel">
+								이메일
+							</td>
+							<td class="modTableContent">
+								<input type="email" value="${member.user_email }" name="user_email">
+							</td>
+							<td class="modTableLabel">
+								주소
+							</td>
+							<td class="modTableContent">
+								<input type="text" value="${member.user_address }" name="user_address">
+							</td>
 						</tr>
 						<tr>
-							<td><input type="text" value="${member.user_address }" name="user_address"></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="수정하기"><input type="button" value="돌아가기"></td>
+							<td colspan="4" align="center">
+								<div class="buttons">
+									<input type="submit" value="수정하기" class="button">
+									<input type="button" value="돌아가기" class="button">
+								</div>
+							</td>
 						</tr>
 					</table>
 				</form>

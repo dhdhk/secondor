@@ -96,3 +96,33 @@ font-size: 40px;
 	display: flex;
     flex-shrink: 0;
 }
+
+tr{
+	height: 70px;
+}
+
+.modTableLabel{
+	width: 120px;
+	text-align: right;
+	
+}
+.modTableContent{
+	width:270px;
+	text-align: center;
+}
+
+.buttons{
+    padding-left: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.button{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 120px;
+	height: 35px;
+}
