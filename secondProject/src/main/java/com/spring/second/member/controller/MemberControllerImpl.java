@@ -315,7 +315,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	@Override
 	@ResponseBody
 	@RequestMapping(value="/member/idCheck.do",  method= {RequestMethod.GET,RequestMethod.POST})
-	public String idCheck(@RequestParam("regId")String id) throws Exception {
+	public String idCheck(@RequestParam("user_id")String id) throws Exception {
 		// TODO Auto-generated method stub
 
 		int result = memberService.idCheck(id);

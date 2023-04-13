@@ -28,5 +28,5 @@ public interface MemberController {
 			throws Exception;
 	public ModelAndView findIdForm(@ModelAttribute("member") HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView findIdShow(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public String idCheck(@RequestParam("regId") String id) throws Exception;
+	public String idCheck(@RequestParam("user_id") String id) throws Exception;
 }

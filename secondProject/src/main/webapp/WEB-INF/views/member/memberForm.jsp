@@ -30,25 +30,25 @@
 </script>
 <script>
 function fn_regIdCheck() {
-	let _id = $("#regId").val();
+	let _id = $("#user_id").val();
 	if(_id == "") {
 		alert("아이디를 입력하세요.");
-		$("#regId").focus();
+		$("#user_id").focus();
 		return;
 	}
 	$.ajax({
 		type:"post",
 		url : '/second/member/idCheck.do',
 		dataType:"text",
-		data:{regId:_id},
+		data:{user_id:_id},
 		success:function(data, textStatus){
 			if(data=='unusable') {
 				alert("사용할 수 없는 아이디입니다.");
-				$('#regId').attr('style', 'color:red');
+				$('#user_id').attr('style', 'color:red');
 				return;
 			} else if(data == 'usable') {
 				alert("사용할 수 있는 아이디입니다.");
-				$('#regId').attr('style', 'color:#5A7EFF');
+				$('#user_id').attr('style', 'color:#5A7EFF');
 			}
 		}, error:function(data, textStatus){
 			alert("에러가 발생했습니다.")
@@ -64,7 +64,7 @@ function fn_regIdCheck() {
 		회원 가입
 	</div>
 	<div class="div_memberForm">
-		<form method="post" action="/second/member/addMember.do">
+		<form method="post" action="/second/member/addMember.do" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td rowspan="4" width="400" height="200" align="center">
@@ -75,7 +75,7 @@ function fn_regIdCheck() {
 						아이디
 					</td>
 					<td width="400">
-						<input type="text" name="regId" id="regId" required="required" style="">
+						<input type="text" name="user_id" id="user_id" required="required" style="">
 						<input type="button" class="regIdCheck" value="중복 확인" onclick="fn_regIdCheck();">
 					</td>
 				</tr>
