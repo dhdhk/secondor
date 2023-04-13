@@ -147,12 +147,15 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 	@Override
 	@RequestMapping(value="/member/removeMember.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView removeMember(@RequestParam("user_id") String id,
+	public ModelAndView removeMember(RedirectAttributes rAttr,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		String id= member.getUser_id();
 		memberService.removeMember(id);
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
-
+		session.removeAttribute("member");
+		ModelAndView mav = new ModelAndView("redirect:/main.do");
+		rAttr.addFlashAttribute("msg","회원탈퇴가 완료되었습니다.");
 		return mav;
 	}
 
