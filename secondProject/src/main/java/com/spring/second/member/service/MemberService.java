@@ -14,4 +14,5 @@ public interface MemberService {
 	MemberDTO login(MemberDTO member);
 	public String find_id(Map<String, String> searchId);
 	public String find_pw(Map<String, String> searchPw);
+	int idCheck (String id) throws Exception;
 }

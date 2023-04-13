@@ -1,6 +1,7 @@
 package com.spring.second.member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -56,14 +59,45 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 
-
-
 		memberService.addMember(member);
 
-		ModelAndView mav = new ModelAndView("redirect:/member/listMembers.do");
+		ModelAndView mav = new ModelAndView("redirect:/member/loginForm.do");
 		return mav;
 	}
 
+
+		/*			if (result.equals("usable")) {
+				memberService.addMember(member);
+				// 로그인 화면으로 이동 수정 필요
+				ModelAndView mav = new ModelAndView("redirect:/member/login.do");
+				return mav;
+			} else {
+				ModelAndView mav = new ModelAndView("redirect:/member/memberForm.do");
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script language='javascript'>");
+				out.println("alert('사용할 수 없는 아이디입니다.')");
+				out.println("</script>");
+				out.close();
+				return mav;
+			}
+			*/
+//			try {
+//				if(result.equals("unusable")) {
+//					ModelAndView mav = new ModelAndView("redirect:/member/memberForm.do");
+//					return mav;
+//				}else if(result.equals("usable")) {
+//					memberService.addMember(member);
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			ModelAndView mav = new ModelAndView("redirect:/member/login.do");
+//			return mav;
+//	}
+
+		
+		
 	@Override
 	@RequestMapping(value="/member/removeMember.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView removeMember(@RequestParam("user_id") String id,
@@ -229,4 +263,17 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 		return mav;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/member/idCheck.do", method=RequestMethod.POST)
+	public String idCheck(@RequestParam("regId") String id) throws Exception{
+		
+		int result = memberService.idCheck(id);
+			if(result == 1) {
+				return "unusable";
+			} else {
+				return "usable";
+			}		
+	}
+		
 }

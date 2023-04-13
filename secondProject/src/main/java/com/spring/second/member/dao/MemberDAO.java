@@ -16,4 +16,5 @@ public interface MemberDAO {
 	MemberDTO loginById(MemberDTO member);
 	String find_id(Map<String, String> searchId);
 	String find_pw(Map<String, String> searchPw);
+	int idCheck(String id);
 }

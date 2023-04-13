@@ -67,5 +67,11 @@ public class MemberDAOImpl implements MemberDAO{
 		return sqlSession.selectOne("mapper.member.find_pw",searchPw);
 	}
 
+	@Override
+	public int idCheck(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.idCheck" ,id);
+	}
+
 
 }

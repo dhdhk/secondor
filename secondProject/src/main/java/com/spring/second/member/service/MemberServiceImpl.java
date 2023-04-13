@@ -60,4 +60,11 @@ public class MemberServiceImpl implements MemberService{
 	public String find_pw(Map<String, String> searchPw) {
 		return memberDAO.find_pw(searchPw);
 	}
+
+	@Override
+	public int idCheck(String id) throws Exception {
+		// TODO Auto-generated method stub
+		int result = memberDAO.idCheck(id);
+		return result;
+	}
 }
