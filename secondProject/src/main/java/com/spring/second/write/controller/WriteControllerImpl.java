@@ -43,6 +43,7 @@ public class WriteControllerImpl implements WriteController{
 	@RequestMapping(value = "/write/writeForm.do")
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
+		
 		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
 		
@@ -135,7 +136,7 @@ public class WriteControllerImpl implements WriteController{
 			e.printStackTrace();
 		}}else {
 			message = "<script>";
-			message += "alert('사진은 반드시 1장 이상 첨부 되어야 합니다.');";
+			message += "alert('첫번째 사진은 반드시 첨부되어야 합니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
 				+"/write/writeForm.do';";
 			message += "</script>";

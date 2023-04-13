@@ -51,8 +51,10 @@ function backToList(obj){
 			</div>
 			<div class="menuContent">
 				<h3>회원 탈퇴 하시겠습니까?</h3>
-					<input type="button" value="탈퇴하기" onclick="${contextPath}/member/removeMember.do">
+				<form>
+					<input type="submit" value="탈퇴하기" onclick="${contextPath}/member/removeMember.do">
 					<input type="button" value="돌아가기" onclick="backToList(this.form)">
+				</form>
 			</div>
 		</div>
 	</div>
