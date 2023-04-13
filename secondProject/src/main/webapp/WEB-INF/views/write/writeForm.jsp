@@ -14,7 +14,7 @@
 <script>
 	var cnt=1;
 	function fn_addFile(){
-		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*'>");
+		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*' onchange='readURL(this);'><br><img id='preview' src='${contextPath }/resources/image/noImage.png' width='100' height='100'><input type='button' value='X' onclick='remove(this.form)'>");
 		cnt++;}
 		if(cnt==4){$("#d_file").append("<br>사진은 최대 3장까지 등록할 수 있습니다.");
 		cnt++;}

@@ -22,8 +22,13 @@
 		<!-- 사이드바 -->
 		<div class="mypageSidebar">
 			<div class="profile" >
-				<img class="profileImg" src="${contextPath }/resources/image/newjeans.png">
-				${member.user_name } 님 
+				<c:if test="${member.profileimg == null}">
+					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
+				</c:if>
+				<c:if test="${member.profileimg != null}">
+					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
+				</c:if>
+			${member.user_name} 님
 			</div>
 			
 			<div class="mypageMenu">

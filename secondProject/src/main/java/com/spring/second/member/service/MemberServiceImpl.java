@@ -21,9 +21,9 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public void addMember(MemberDTO member) {
+	public void addMember(Map<String, Object> memberMap) {
 		// TODO Auto-generated method stub
-		memberDAO.insertMember(member);
+		memberDAO.insertMember(memberMap);
 	}
 
 	@Override
@@ -59,5 +59,10 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public String find_pw(Map<String, String> searchPw) {
 		return memberDAO.find_pw(searchPw);
+	}
+	@Override
+	public void addMemberNoimg(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		memberDAO.insertMemberNoimg(memberMap);
 	}
 }

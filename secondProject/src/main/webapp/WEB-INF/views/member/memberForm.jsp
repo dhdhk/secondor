@@ -33,11 +33,11 @@
 		회원 가입
 	</div>
 	<div class="div_memberForm">
-		<form method="post" action="/second/member/addMember.do">
+		<form method="post" action="/second/member/addMember.do" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td rowspan="4" width="400" height="200" align="center">
-						<img id="preview" src="#" width="200" height="200">
+						<td><img id="preview" src="${contextPath }/resources/image/noprofile.png" width="200" height="200"></td>
 					</td>
 					<td width="150">
 						아이디
@@ -73,7 +73,7 @@
 				<tr>
 					<td rowspan="3" width="300" align="center">
 						<p>프로필 사진</p>
-						<input type="file" name="profileimg" onchange="readURL(this);" >
+						<input type="file" name="profileimg" onchange="readURL(this);" accept='image/*'>
 					</td>
 					<td height="50">
 						전화번호

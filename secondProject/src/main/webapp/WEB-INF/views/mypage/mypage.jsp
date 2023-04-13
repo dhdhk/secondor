@@ -26,8 +26,7 @@
 					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
 				</c:if>
 				<c:if test="${member.profileimg != null}">
-				<!-- 프로필사진 있는 경로로 수정 예정 -->
-					<img class="profileImg" src="${contextPath }/resources/image/noImage.png">
+					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
 				</c:if>
 				${member.user_name} 님
 			</div>
