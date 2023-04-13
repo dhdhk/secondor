@@ -22,3 +22,22 @@ tr{
 	text-align: left;
 }
 
+/* 중복체크 버튼 */
+.regIdCheck{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 90px;
+	height: 30px;
+}
+
+/* 회원가입 버튼 */
+.joinButton{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 100px;
+	height: 40px;
+}

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
@@ -13,7 +14,6 @@
 <meta charset="UTF-8">
 <title>회원 가입창</title>
 <link rel="stylesheet" href="${contextPath }/resources/css/member/memberForm_style.css">
-
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	function readURL(input) {
@@ -21,10 +21,41 @@
 			let reader = new FileReader();
 			reader.onload = function(e) {
 				$('#preview').attr('src', e.target.result);
+				$('#preview').attr('style', '' );
+				$('#none').attr('style', 'display:none');
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
+</script>
+<script>
+function fn_regIdCheck() {
+	let _id = $("#user_id").val();
+	if(_id == "") {
+		alert("아이디를 입력하세요.");
+		$("#user_id").focus();
+		return;
+	}
+	$.ajax({
+		type:"post",
+		url : '/second/member/idCheck.do',
+		dataType:"text",
+		data:{user_id:_id},
+		success:function(data, textStatus){
+			if(data=='unusable') {
+				alert("사용할 수 없는 아이디입니다.");
+				$('#user_id').attr('style', 'color:red');
+				return;
+			} else if(data == 'usable') {
+				alert("사용할 수 있는 아이디입니다.");
+				$('#user_id').attr('style', 'color:#5A7EFF');
+			}
+		}, error:function(data, textStatus){
+			alert("에러가 발생했습니다.")
+		}
+	});
+}
+
 </script>
 
 </head>
@@ -37,13 +68,15 @@
 			<table>
 				<tr>
 					<td rowspan="4" width="400" height="200" align="center">
-						<td><img id="preview" src="${contextPath }/resources/image/noprofile.png" width="200" height="200"></td>
+						<img id="none" src="${contextPath }/resources/image/noImage.png" width="200" height="200" style="">
+						<img id="preview" src="#" width="200" height="200" style="display:none;">
 					</td>
 					<td width="150">
 						아이디
 					</td>
 					<td width="400">
-						<input type="text" name="user_id" required="required">
+						<input type="text" name="user_id" id="user_id" required="required" style="">
+						<input type="button" class="regIdCheck" value="중복 확인" onclick="fn_regIdCheck();">
 					</td>
 				</tr>
 				<tr>
@@ -73,7 +106,7 @@
 				<tr>
 					<td rowspan="3" width="300" align="center">
 						<p>프로필 사진</p>
-						<input type="file" name="profileimg" onchange="readURL(this);" accept='image/*'>
+						<input type="file" name="profileimg" onchange="readURL(this);" >
 					</td>
 					<td height="50">
 						전화번호
@@ -100,8 +133,7 @@
 				</tr>
 				<tr>
 					<td height="70" colspan="3" align="center">
-						<input type="submit" value="가입하기" style="background-color: #5A7EFF; border-style: none;
-	   					 	color: white; border-radius: 3px; width: 100px; height: 40px;">
+						<input type="submit" class="joinButton" value="가입하기">
 					</td>
 				</tr>
 			</table>

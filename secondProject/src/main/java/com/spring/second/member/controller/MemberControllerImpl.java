@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -309,5 +310,19 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		}
 
 		return mav;
+	}
+
+	@Override
+	@ResponseBody
+	@RequestMapping(value="/member/idCheck.do",  method= {RequestMethod.GET,RequestMethod.POST})
+	public String idCheck(@RequestParam("user_id")String id) throws Exception {
+		// TODO Auto-generated method stub
+
+		int result = memberService.idCheck(id);
+			if(result == 1) {
+				return "unusable";
+			} else {
+				return "usable";
+			}		
 	}
 }

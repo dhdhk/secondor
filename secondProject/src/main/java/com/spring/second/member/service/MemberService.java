@@ -15,4 +15,5 @@ public interface MemberService {
 	public String find_id(Map<String, String> searchId);
 	public String find_pw(Map<String, String> searchPw);
 	void addMemberNoimg(Map<String, Object> memberMap);
+	int idCheck (String id) throws Exception;
 }

@@ -71,5 +71,12 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		sqlSession.insert("mapper.member.insertMemberNoimg", memberMap);
 	}
+	
+	@Override
+	public int idCheck(String id) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("mapper.member.idCheck" ,id);
+	}
+
 
 }
