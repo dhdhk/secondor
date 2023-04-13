@@ -32,7 +32,7 @@ function backToList(obj){
 					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
 				</c:if>
 				<c:if test="${member.profileimg != null}">
-					<img class="profileImg" src="${contextPath }/resources/image/noImage.png">
+					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
 				</c:if>
 			${member.user_name} 님
 			</div>
