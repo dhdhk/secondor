@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.write.dto.ImageDTO;
 import com.spring.second.write.file.FileUploadController;
 import com.spring.second.write.service.WriteService;
@@ -73,11 +75,15 @@ public class WriteControllerImpl implements WriteController{
 		}
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
-		//판매자 이름 임시 지정
-		String user_id="test";
+		//판매자 이름 지정
+		HttpSession session = multipartRequest.getSession();
+		MemberDTO memberDTO=(MemberDTO) session.getAttribute("member");
+		String user_id= memberDTO.getUser_id();
+		System.out.println(user_id);
 		boardDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
 		int regNum=writeService.addNewRegNum();
+		System.out.println(regNum);
 		articleMap.put("regNum", regNum);
 		if(fileList != null && fileList.size() != 0) {
 			int i=1;

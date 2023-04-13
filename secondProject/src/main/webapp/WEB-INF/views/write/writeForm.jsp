@@ -14,7 +14,7 @@
 <script>
 	var cnt=1;
 	function fn_addFile(){
-		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*'>");
+		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*' onchange='readURL(this);'><br><img id='preview' src='${contextPath }/resources/image/noImage.png' width='100' height='100'><input type='button' value='X' onclick='remove(this.form)'>");
 		cnt++;}
 		if(cnt==4){$("#d_file").append("<br>사진은 최대 3장까지 등록할 수 있습니다.");
 		cnt++;}
@@ -25,8 +25,15 @@
 		obj.action = "${contextPath}/main.do";
 		obj.submit();
 	}
-</script>
-<script>
+	function readURL(input) {
+		if(input.files && input.files[0]){
+			let reader = new FileReader();
+			reader.onload = function(e) {
+				$('#preview').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 	function onlyNumber(){
         if((event.keyCode<48)||(event.keyCode>57))
            event.returnValue=false;

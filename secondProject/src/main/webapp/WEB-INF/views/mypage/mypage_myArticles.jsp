@@ -79,13 +79,14 @@
 									<td width="7%"><input type="checkbox" name="deleteBoard" value="${myList.regNum}"></td>
 								</tr>
 							</c:forEach>
+							<tr>
+								<td colspan="5" align="right" style="border-left: none; border-bottom: none; border-right: none;">
+									<input type="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
+								</td>
+							</tr>
 						</c:when> 
 					</c:choose>
-					<tr>
-						<td colspan="5" align="right" style="border-left: none; border-bottom: none; border-right: none;">
-							<input type="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
-						</td>
-					</tr>
+					
 				</table>
 			</div>
 		</div>

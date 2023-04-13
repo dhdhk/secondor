@@ -15,7 +15,7 @@ import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberController {
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
-	public ResponseEntity addMember(@ModelAttribute("member") MemberDTO member, MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
+	public ResponseEntity addMember( MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 	public ModelAndView removeMember(@RequestParam("user_id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;	
 	public ModelAndView modMemberForm(@RequestParam("user_id") String id, HttpServletRequest request, HttpServletResponse response) throws Exception;

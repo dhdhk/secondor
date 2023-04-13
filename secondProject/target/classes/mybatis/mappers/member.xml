@@ -21,9 +21,15 @@
 		]]>
 	</select>
 
-	<insert id="insertMember" parameterType="memberDTO">
+	<insert id="insertMember" parameterType="java.util.Map">
 		<![CDATA[
-			insert into users values(#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_address}, #{user_birth}, #{user_phone}, sysdate, '프로필 이미지')
+			insert into users values(#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_address}, #{user_birth}, #{user_phone}, sysdate, #{profileimg})
+		]]>
+	</insert>
+	<insert id="insertMemberNoimg" parameterType="java.util.Map">
+		<![CDATA[
+			insert into users (user_id, user_pw, user_name, user_email, user_address, user_birth, user_phone, joinDate) 
+			values(#{user_id}, #{user_pw}, #{user_name}, #{user_email}, #{user_address}, #{user_birth}, #{user_phone}, sysdate)
 		]]>
 	</insert>
 

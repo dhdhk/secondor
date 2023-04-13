@@ -23,9 +23,9 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public void insertMember(MemberDTO member) {
+	public void insertMember(Map<String, Object> memberMap) {
 		// TODO Auto-generated method stub
-		int result = sqlSession.insert("mapper.member.insertMember", member);
+		sqlSession.insert("mapper.member.insertMember", memberMap);
 	}
 
 	@Override
@@ -65,6 +65,12 @@ public class MemberDAOImpl implements MemberDAO{
 	public String find_pw(Map<String, String> searchPw) {
 
 		return sqlSession.selectOne("mapper.member.find_pw",searchPw);
+	}
+
+	@Override
+	public void insertMemberNoimg(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		sqlSession.insert("mapper.member.insertMemberNoimg", memberMap);
 	}
 
 

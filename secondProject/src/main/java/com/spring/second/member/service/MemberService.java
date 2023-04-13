@@ -7,11 +7,12 @@ import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberService {
 	List<MemberDTO> listMembers();
-	void addMember(MemberDTO member);
+	void addMember(Map<String, Object> memberMap);
 	void removeMember(String id);
 	MemberDTO selectMember(String id);
 	void modMember(MemberDTO member);
 	MemberDTO login(MemberDTO member);
 	public String find_id(Map<String, String> searchId);
 	public String find_pw(Map<String, String> searchPw);
+	void addMemberNoimg(Map<String, Object> memberMap);
 }
