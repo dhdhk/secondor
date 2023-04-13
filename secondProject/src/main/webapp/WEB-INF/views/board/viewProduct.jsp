@@ -101,8 +101,8 @@
 		<div class="ProductBottom">
 			${product.pr_content }
 		</div>
-		<c:choose>
-			<%-- 로그인 상태 버튼 --%>
+		<%-- <c:choose>
+			로그인 상태 버튼 --%>
 			<%-- <c:when test="${isLogOn == true && member != null }">
 				<div class="logonActiveButtons">
 					<span>
@@ -112,15 +112,71 @@
 						<input type="button" name="removeArticle" value="삭제하기">
 					</span>
 				</div>
-			</c:when> --%>
+			</c:when> 
 			<c:otherwise>
 				<div></div>
 			</c:otherwise>
-		</c:choose>
+		</c:choose>--%>
 	</div>
-	<div class="commentContent">
-		댓글 구역
+	<div class="commentContent"><!-- 댓글 part(지저분함) -->
+		<form name="comment" method="post" action="" enctype="multipart/form-data">
+		<div class="commentViewer">
+			<table align="center" border="1px" width="60%">
+			<c:choose>
+				<c:when test="${isLogOn == true }"><!-- 로그인 시 댓글보임 -->
+					<c:choose>
+						<c:when test="${empty commentList }"><!-- 댓 없음 -->
+						</c:when>
+						<c:when test="${not empty commentList  }"><!-- 댓 있음 -->
+							<c:choose>
+								<c:when test="${member.user_id==product.seller_id }"><!-- 판매자한테 댓글 모두 보임 -->
+									<c:forEach var="commentList" items="${commentList }">
+									 <tr>
+										<td align="left" rowspan="2" >${commentList.buyer_id } ${commentList.regDate }</td>
+										<td align="right"><a href="">삭제</a></td>
+									</tr>
+									<tr>
+										<td align="right"><a href="">수정</a></td>
+									</tr>
+									<tr>
+										<td align="left" colspan="2">${commentList.comment_content }</td>
+									</tr>
+									<tr></tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise><!-- 판매자가 아닐 시 -->
+									<c:forEach var="buyerComments" items="${buyerComments }">
+									 <tr>
+										<td align="left" rowspan="2" >${buyerComments.buyer_id } ${buyerComments.regDate }</td>
+										<td align="right"><a href="">삭제</a></td>
+									</tr>
+									<tr>
+										<td align="right"><a href="">수정</a></td>
+									</tr>
+									<tr>
+										<td align="left" colspan="2">${buyerComments.comment_content }</td>
+									</tr>
+									<tr></tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+					</c:choose>
+					<tr>
+						<td>
+							<input type="text" style="width: 100%;" name="comment_content" placeholder="댓글을 입력하세요">
+						</td>
+						<td>
+							<input type="submit" value="댓글 작성">
+						</td>
+					</tr>
+				</c:when>
+			</c:choose>
+			</table>
+		</div>
+	</form>
 	</div>
+	<!-- 테스트용 --><a href="${contextPath }/modify/modPro.do?regNum=${product.regNum}">수정 이동</a><!-- 수정창 테스트용 -->
 	<div class="articleCtrl">	
 			<div class="toList" onclick="location.href='#';">
 				<c:if test="${pageName != null }">

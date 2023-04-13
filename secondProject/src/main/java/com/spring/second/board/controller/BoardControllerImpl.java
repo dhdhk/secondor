@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.PageHandler;
 import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
+import com.spring.second.comment.dto.CommentDTO;
+import com.spring.second.member.dto.MemberDTO;
 
 @Controller
 public class BoardControllerImpl implements BoardController {
@@ -85,21 +88,35 @@ public class BoardControllerImpl implements BoardController {
 	}	
 
 
-		@Override
-		@RequestMapping(value="/product/viewProduct.do", method= {RequestMethod.GET, RequestMethod.POST})
-		public ModelAndView viewProduct(@RequestParam("regNum") int regNum,
-				HttpServletRequest request, HttpServletResponse response) throws Exception {
-			// TODO Auto-generated method stub
-	
-			System.out.println("regNum: " + regNum);
-			String viewName = (String) request.getAttribute("viewName");
-			ModelAndView mav = new ModelAndView(viewName);
-	
-			Map<String, Object> productMap = boardService.viewProduct(regNum); 
-			mav.addObject("productMap", productMap);
-			mav.addObject("pageName", request.getParameter("pageName"));
-			return mav;
+	@Override
+	@RequestMapping(value="/product/viewProduct.do", method= {RequestMethod.GET, RequestMethod.POST})
+	public ModelAndView viewProduct(@RequestParam("regNum") int regNum,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+
+		System.out.println("regNum: " + regNum);
+		String viewName = (String) request.getAttribute("viewName");
+		HttpSession session = request.getSession();
+		MemberDTO member = (MemberDTO)session.getAttribute("member");
+		String user_id=null;
+		
+		ModelAndView mav = new ModelAndView(viewName);
+		
+		Map<String, Object> productMap = boardService.viewProduct(regNum);
+		List<CommentDTO> commentList = boardService.viewComment(regNum);
+		
+		mav.addObject("productMap", productMap);
+		mav.addObject("commentList", commentList);
+		if(member!=null) {
+			user_id= member.getUser_id();
+			System.out.println("user id: "+user_id);
+			List<CommentDTO> buyerComments=boardService.viewbuyerComments(regNum, user_id);
+			mav.addObject("buyerComments", buyerComments);
 		}
+		mav.addObject("pageName", request.getParameter("pageName"));
+		return mav;
+	}
+
 
 
 }

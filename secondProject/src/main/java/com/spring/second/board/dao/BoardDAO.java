@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
+import com.spring.second.comment.dto.CommentDTO;
 
 public interface BoardDAO {
 	
@@ -20,4 +21,8 @@ public interface BoardDAO {
 	int CategoryPagecount(CategoryCondition cc);
 	
 	public Map<String, Object> viewProduct(int regNum);
+	
+	public List<CommentDTO> commentGet(int regNum);
+	
+	public List<CommentDTO> buyerCommentsGet(int regNum, String user_id);
 }

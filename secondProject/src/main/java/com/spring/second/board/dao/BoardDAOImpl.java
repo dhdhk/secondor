@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
+import com.spring.second.comment.dto.CommentDTO;
 import com.spring.second.write.dto.ImageDTO;
 
 @Repository
@@ -60,5 +61,23 @@ public class BoardDAOImpl implements BoardDAO {
 		productMap.put("product", product);
 		//productMap.put("imageFileList", imageFileList);
 		return productMap;
+	}
+	
+	//댓글용
+	@Override
+	public List<CommentDTO> commentGet(int regNum) {
+		// TODO Auto-generated method stub
+		List<CommentDTO> commentList=sqlSession.selectList("mapper.comment.commentList", regNum);
+		return commentList;
+	}
+
+	@Override
+	public List<CommentDTO> buyerCommentsGet(int regNum, String user_id) {
+		// TODO Auto-generated method stub
+		Map<String, Object> buyerComments= new HashMap<String, Object>();
+		buyerComments.put("regNum", regNum);
+		buyerComments.put("buyer_id", user_id);
+		List<CommentDTO> buyerCommentList=sqlSession.selectList("mapper.comment.buyercommentList",buyerComments);
+		return buyerCommentList;
 	}
 }

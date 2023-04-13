@@ -11,6 +11,7 @@ import com.spring.second.board.dao.BoardDAO;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
+import com.spring.second.comment.dto.CommentDTO;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -49,5 +50,19 @@ public class BoardServiceImpl implements BoardService {
 		   
 		   return boardDAO.CategoryPagecount(cc);
 		}
+		
+		//댓글
+		@Override
+		public List<CommentDTO> viewComment(int regNum) {
+			// TODO Auto-generated method stub
+			return boardDAO.commentGet(regNum);
+		}
+
+		@Override
+		public List<CommentDTO> viewbuyerComments(int regNum, String user_id) {
+			// TODO Auto-generated method stub
+			return boardDAO.buyerCommentsGet(regNum, user_id);
+		}
+
 
 }

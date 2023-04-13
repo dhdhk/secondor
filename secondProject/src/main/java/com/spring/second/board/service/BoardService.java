@@ -6,6 +6,7 @@ import java.util.Map;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.dto.CategoryCondition;
 import com.spring.second.board.dto.SearchCondition;
+import com.spring.second.comment.dto.CommentDTO;
 
 public interface BoardService {
 	
@@ -18,4 +19,8 @@ public interface BoardService {
 	int getCategoryPagecount(CategoryCondition cc);
 	
 	public Map<String, Object> viewProduct(int regNum);
+	
+	public List<CommentDTO> viewComment(int regNum);
+	
+	public List<CommentDTO> viewbuyerComments(int regNum, String user_id);
 }
