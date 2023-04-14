@@ -57,7 +57,7 @@ function backToList(obj){
 			<div class="menuContent">
 				<h3>로그아웃 하시겠습니까?</h3>
 				<div class="buttons">
-					<input type="button" value="로그아웃 하기" class="button" onclick="#">
+					<input type="button" value="로그아웃 하기" class="button" onclick="">
 				</div>
 			</div>
 		</div>
