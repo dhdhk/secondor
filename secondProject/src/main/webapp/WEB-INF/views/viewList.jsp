@@ -34,7 +34,7 @@
 								<c:if test="${ListByCategory.pr_sold =='2' }">
 									<div class="onSellDisplay" style="color: #e45b68;">거래완료</div>
 								</c:if>
-								<img src="${ListByCategory.pr_img1 }" class="card-img-top" alt="...">
+								<img src="/image/${ListByCategory.regNum }/${ListByCategory.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price, regDate  -->
 									<h5 class="card-title"> ${ListByCategory.pr_title }</h5>
