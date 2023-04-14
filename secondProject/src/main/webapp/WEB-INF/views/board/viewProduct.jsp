@@ -194,7 +194,17 @@
 	<div class="articleCtrl">	
 			<div class="toList" onclick="location.href='#';">
 				<c:if test="${pageName != null }">
-					<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">목록으로</div>
+					<!-- 마이페이지에서 내상품 상세보기에서 다시 내상품 리스트로 돌아가려면 받아올 값이 없으므로 
+						<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}&pageName=mypage">
+				        pageName을 mypage로 입력해서 쿼리값을 받아옴
+					 -->
+					<c:if test='${pageName == "mypage" }'>
+						<div class="toList" onclick="location.href='${contextPath }/mypage/myArticles.do';">목록으로</div>
+					</c:if>
+					<!-- 카데고리 상세페이지는 pageName 값을 category_name은 db값으로 받아오니까이렇게 둘 수 있음 -->
+					<c:if test='${pageName != "mypage" }'>
+						<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">목록으로</div>
+					</c:if>
 			    </c:if>
 				<c:if test="${pageName == null }">
 					<div class="toList" onclick="location.href='${contextPath }/main.do';">목록으로</div>

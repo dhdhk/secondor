@@ -79,7 +79,7 @@
 									</td>
 									<td align="left">
 										<span style="padding-right:30px;"></span>
-										<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}">
+										<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}&pageName=mypage">
 											${myList.pr_title }
 										</a>
 									</td>
@@ -87,7 +87,9 @@
 										<fmt:formatDate value="${myList.regDate }" />
 									</td>
 									<td>
-										${myList.pr_sold }
+										<c:if test="${myList.pr_sold =='0' }">거래 가능</c:if>
+										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
+										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
 									</td>
 									<td>
 										<input type="checkbox" name="deleteBoard" value="${myList.regNum}">
