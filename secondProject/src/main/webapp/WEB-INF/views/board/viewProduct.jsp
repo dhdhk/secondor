@@ -49,6 +49,12 @@
 							<img src="/image/${product.regNum }/${product.pr_img3}" class="d-block w-100" alt="...">
 						</div>
 						</c:if>
+						<c:if test="${product.pr_sold == 1 }">
+							<div class="onSellDisplay" style="color: #FFCD4A;">거래 중</div>
+						</c:if>
+						<c:if test="${product.pr_sold == 2 }">
+							<div class="onSellDisplay" style="color: #e45b68;">거래 완료</div>
+						</c:if>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
