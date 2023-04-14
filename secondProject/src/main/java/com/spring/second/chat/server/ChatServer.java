@@ -87,7 +87,7 @@ public class ChatServer {
 				
 			} 
 		} else if (no.equals("3")) {
-			// 누군가 접속 > 3#아무개
+			// 누군가 접속
 			for (Session s : list) {
 				
 				if (s != session) { // 현재 접속자가 아닌 나머지 사람들
