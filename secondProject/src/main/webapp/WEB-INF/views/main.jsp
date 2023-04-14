@@ -55,8 +55,8 @@
 					<c:if test="${beginPage>1 }">
 						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
 					</c:if>
-					<c:if test="${beginPage<1 }">
-						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')"></span>
+					<c:if test="${beginPage<=1 }">
+						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')" style="visibility: hidden;">&lt;</span>
 					</c:if>
 					<c:forEach var="i" begin="0" end="4">
 						<c:if test="${beginPage+i  <= endPage }">
