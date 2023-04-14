@@ -14,7 +14,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/viewProduct_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    function backToList(obj){
