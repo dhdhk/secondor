@@ -1,5 +1,7 @@
 package com.spring.second.chat.dto;
 
+import java.sql.Date;
+
 public class ChatDTO {
 	private String chat_id;
 	private String pr_id;
@@ -7,6 +9,7 @@ public class ChatDTO {
 	private String seller_id;
 	private String buyer_id;
 	private String chat_content;
+	private Date chat_Time;
 	
 	public String getChat_id() {
 		return chat_id;
@@ -43,5 +46,11 @@ public class ChatDTO {
 	}
 	public void setChat_content(String chat_content) {
 		this.chat_content = chat_content;
+	}
+	public Date getChat_Time() {
+		return chat_Time;
+	}
+	public void setChat_Time(Date chat_Time) {
+		this.chat_Time = chat_Time;
 	}
 }

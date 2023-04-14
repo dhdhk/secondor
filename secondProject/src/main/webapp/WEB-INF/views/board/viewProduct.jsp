@@ -135,9 +135,8 @@
 				</div>
 			</div>
 			<div class="buttons">
-				<div class="chatLink" href="#">
-					1대1 채팅
-				</div>
+				<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}
+				&&regNum=${product.regNum}&&pr_title=${product.pr_title}">1:1 채팅</a>
 			</div>
 		</div>
 	</div>

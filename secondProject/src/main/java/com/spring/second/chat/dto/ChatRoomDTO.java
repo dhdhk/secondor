@@ -1,14 +1,13 @@
 package com.spring.second.chat.dto;
 
 public class ChatRoomDTO {
-	private int room_id;
+	private int id;
 
-	public int getRoom_id() {
-		return room_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setRoom_id(int room_id) {
-		this.room_id = room_id;
+	public void setId(int id) {
+		this.id = id;
 	}
-
 }
