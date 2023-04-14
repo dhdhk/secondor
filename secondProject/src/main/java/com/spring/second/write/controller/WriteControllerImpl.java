@@ -86,10 +86,13 @@ public class WriteControllerImpl implements WriteController{
 		if(fileList != null && fileList.size() != 0) {
 			int i=1;
 			for(String fileName : fileList) {
+				if(fileName.length()==0) {
+					articleMap.put("pr_img"+i, null );
+				}else {
 				ImageDTO image = new ImageDTO();
 				image.setImageFileName(fileName);
 				imageFileList.add(image);
-				articleMap.put("pr_img"+i, fileName );
+				articleMap.put("pr_img"+i, fileName );}
 				i++;
 			}
 			articleMap.put("imageFileList", imageFileList);
@@ -102,15 +105,16 @@ public class WriteControllerImpl implements WriteController{
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
 		//-----
-		if(imageFileList != null && imageFileList.size() != 0) {
+		
 		try {
 			writeService.addNewArticle(articleMap);
 			
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
-					File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
-					File destDir = new File(IMAGE_PATH + "\\" + regNum);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					if(imageDTO.getImageFileName()!=null) {
+						File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
+						File destDir = new File(IMAGE_PATH + "\\" + regNum);
+						FileUtils.moveFileToDirectory(srcFile, destDir, true);}
 				}
 			}
 			message = "<script>";
@@ -121,8 +125,9 @@ public class WriteControllerImpl implements WriteController{
 		} catch(Exception e) {
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
-					File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
-					srcFile.delete();
+					if(imageDTO.getImageFileName()!=null) {
+						File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
+						srcFile.delete();}
 				}
 			}
 			
@@ -133,14 +138,6 @@ public class WriteControllerImpl implements WriteController{
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
-		}}else {
-			message = "<script>";
-			message += "alert('사진은 반드시 1장 이상 첨부 되어야 합니다.');";
-			message += "location.href='" + multipartRequest.getContextPath()
-				+"/write/writeForm.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			
 		}
 		return resEnt;
 	}

@@ -12,24 +12,71 @@
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-	var cnt=1;
-	function fn_addFile(){
-		if(cnt<4){$("#d_file").append("<br><input type='file' name='pr_img"+cnt+"' accept='image/*' onchange='readURL(this);'><br><img id='preview' src='${contextPath }/resources/image/noImage.png' width='100' height='100'><input type='button' value='X' onclick='remove(this.form)'>");
-		cnt++;}
-		if(cnt==4){$("#d_file").append("<br>사진은 최대 3장까지 등록할 수 있습니다.");
-		cnt++;}
-		if(cnt>5){}
-		
-	}
+	
 	function backToList(obj){
 		obj.action = "${contextPath}/main.do";
 		obj.submit();
 	}
-</script>
-<script>
+	function readURL1(input) {
+		if(input.files && input.files[0]){
+			let reader = new FileReader();
+			reader.onload = function(e) {
+				$('#preview1').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	function readURL2(input) {
+		if(input.files && input.files[0]){
+			let reader = new FileReader();
+			reader.onload = function(e) {
+				$('#preview2').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+	function readURL3(input) {
+		if(input.files && input.files[0]){
+			let reader = new FileReader();
+			reader.onload = function(e) {
+				$('#preview3').attr('src', e.target.result);
+			}
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
 	function onlyNumber(){
         if((event.keyCode<48)||(event.keyCode>57))
            event.returnValue=false;
+	}
+	function remove1(){
+		var agent = navigator.userAgent.toLowerCase();
+		//파일초기화
+		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+		    $("#pr_img1").replaceWith($("#pr_img1").clone(true));
+		}else{
+		    $("#pr_img1").val("");
+		    $('#preview1').attr('src','${contextPath }/resources/image/noImage.png');
+		}
+	}
+	function remove2(){
+		var agent = navigator.userAgent.toLowerCase();
+		//파일초기화
+		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+		    $("#pr_img2").replaceWith($("#pr_img2").clone(true));
+		}else{
+		    $("#pr_img2").val("");
+		    $('#preview2').attr('src','${contextPath }/resources/image/noImage.png');
+		}
+	}
+	function remove3(){
+		var agent = navigator.userAgent.toLowerCase();
+		//파일초기화
+		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+		    $("#pr_img3").replaceWith($("#pr_img3").clone(true));
+		}else{
+		    $("#pr_img3").val("");
+		    $('#preview3').attr('src','${contextPath }/resources/image/noImage.png');
+		}
 	}
 </script>
 </head>
@@ -43,8 +90,8 @@
 		  			</td>	
 		  		</tr>
 		  		<tr style="height: 40px;">
-		  			<td>카테고리</td>
-		  			<td>
+		  			<td >카테고리</td>
+		  			<td >
 		  				<select class="choiceCategory_name" name="category_name">
 		  					<option value="living">거실</option>
 		  					<option value="bedroom">침실</option>
@@ -57,13 +104,13 @@
 		  			<td rowspan="2">
 		  				상품 상태
 		  			</td>
-		  			<td>
+		  			<td >
 		  				하&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;중&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;상
 		  			</td>
 		  		</tr>
 		  		<tr style="height: 40px;">
 		  			<td>상품 가격</td>
-		  			<td >
+		  			<td>
 		  				<input type="text" style="width: 70%;" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();" required="required">
 		  			</td>
 		  			<td>
@@ -77,23 +124,34 @@
 		  			</td>
 		  		</tr>
 		  		<tr style="height: 40px;">
-		  			<td align="left" colspan="2" >
-		  				사진 첨부 &nbsp;
-		  				<input type="button" name="addFile" value="파일 추가" onclick="fn_addFile()" >
-		  			</td>
-		  			<td>
-		  				
-		  			</td>
+		  			<td>첫 번째 사진 첨부 <label style="color: red;">(필수)</label></td>
+		  			<td>두 번째 사진 첨부</td>
+		  			<td colspan="2">세 번째 사진 첨부</td>
 		  		</tr>
 		  		<tr>
-					<td colspan="4" align="left">
-						<div id="d_file"></div>
+					<td align="center" >
+					<div style="max-width: 75%">
+							<input type="file" name="pr_img1" accept="image/*" onchange="readURL1(this);" id="pr_img1" required="required"><br>
+							<img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove1()">
+					</div>
+					</td>
+					<td align="center">
+					<div style="max-width: 75%">
+							<input type="file" name="pr_img2" accept="image/*" onchange="readURL2(this);"><br>
+							<img id="preview2" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" value="×" onclick="remove2()">
+					</div>
+					</td>
+					<td align="center" colspan="2" >
+					<div style="max-width: 75%">
+							<input type="file" name="pr_img3" accept="image/*" onchange="readURL3(this);"><br>
+							<img id="preview3" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" value="×" onclick="remove3()">
+					</div>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4" align="center">
 						<input type="submit" value="글쓰기">
-						<input type="button" value="취소" onclick="backToList(this.form)">
+						<input type="button" value="돌아가기" onclick="backToList(this.form)">
 					</td>
 				</tr>
 			</table>
