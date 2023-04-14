@@ -74,6 +74,7 @@ public class WriteControllerImpl implements WriteController{
 			System.out.println(name+" : "+value);
 			articleMap.put(name, value);
 		}
+		
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
 		//판매자 이름 지정
