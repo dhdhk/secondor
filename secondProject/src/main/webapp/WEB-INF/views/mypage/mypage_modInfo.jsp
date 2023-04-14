@@ -15,6 +15,31 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function readURL(input) {
+	if(input.files && input.files[0]){
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			$('#preview').attr('src', e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+		}
+	}
+	function remove(){
+		var agent = navigator.userAgent.toLowerCase();
+		//파일초기화
+		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+		    $("#proimgfile").replaceWith($("#proimgfile").clone(true));
+		}else{
+		    $('#preview').attr('src','${contextPath }/resources/image/noprofile.png');
+		    $('#proimgfile').val("");
+		}
+	}
+	function modProfile(){
+		$("#proimg").empty();
+		$("#proimg").append("<input type='file' id='proimgfile' name='profileimg' accept='image/*' onchange='readURL(this)'>");
+	}
+</script>
 </head>
 <body>
 	<div class="mypageBody">
@@ -34,10 +59,10 @@
 				<div class="mypageMenu">
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
+				<a href="${contextPath }/mypage/modProfileForm.do" class="mypageMenuHref">프로필 수정</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -49,8 +74,24 @@
 				 회원 정보 수정
 			</div>
 			<div class="menuContent">
-				<form method="post" action="${contextPath }/mypage/modInfo.do">
+				<form method="post" action="${contextPath }/mypage/modInfo.do" enctype="multipart/form-data">
 					<table>
+						<tr>
+							<td colspan="4" align="center">
+								<c:if test="${member.profileimg != null }">
+									<img src="/image/member/${member.user_id }/${member.profileimg}" id="preview" class="profileImg">
+									<input type="button" value="x" onclick="remove()"><br>
+									<div id="proimg"><input type="button" value="변경하기" onclick="modProfile()" >
+									</div>
+								</c:if>
+								<c:if test="${member.profileimg == null }">
+									<img id="preview" src="${contextPath }/resources/image/noprofile.png" class="profileImg">
+									<input type="button" value="x" onclick="remove()"><br>
+									<div id="proimg"><input type="button" value="추가하기" onclick="modProfile()">
+									</div>
+								</c:if>
+							</td>
+						</tr>
 						<tr>
 							<td class="modTableLabel">아이디</td>
 							<td class="modTableContent">

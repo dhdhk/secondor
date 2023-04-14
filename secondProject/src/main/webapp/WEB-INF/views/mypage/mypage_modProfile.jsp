@@ -40,10 +40,10 @@ function backToList(obj){
 				<div class="mypageMenu">
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
+				<a href="${contextPath }/mypage/modProfileForm.do" class="mypageMenuHref">프로필 수정</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
