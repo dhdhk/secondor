@@ -1,0 +1,139 @@
+/*
+	border:2px solid #d0d0d0;
+*/
+/*
+	#5A7EFF -> 파랑 
+	#FFCD4A -> 노랑
+*/
+
+
+.mypageBody{
+	margin-top: 150px;
+    display: flex;
+    flex-direction: row;
+    min-height: 600px;
+}
+
+.mypageSidebar {
+	display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    width: 300px;
+    float: left;
+    padding-right:5px;
+    border-right: 2px solid #d0d0d0;
+}
+
+.profile {
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	width: 300px;
+	height: 300px;
+	font-size: 20px;
+}
+
+.noProfileImg{
+	display: flex;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    /* border: 3px solid #FFCD4A; */
+    font-family: 'NanumSquareNeoHeavy';
+    color: #5A7EFF;
+    background-color: #FFCD4A;
+}
+
+
+.profileImg{
+	margin-top:5px;
+	margin-bottom:20px;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	/* border: 4px solid #FFCD4A; */
+}
+
+.mypageMenu{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+.mypageMenuHref {
+	font-size:20px;
+	color: black;
+	margin-bottom: 5px;
+}
+.mypageContent{
+	width: 100%;
+    margin-left: 60px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction:column;
+    flex-shrink: 0;
+	width: 800px;
+}
+.menuTitle{
+font-size: 40px;
+    text-align: left;
+    padding-left: 30px;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: 10px;
+    display: flex;
+    flex-shrink: 0;
+}
+.menuContent{
+	padding-top: 40px;
+    text-align: left;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+/* 표 항목 tr */
+.TableTop{
+	height: 40px;
+	border-top: 2px solid #d0d0d0;
+	border-bottom: 2px solid #d0d0d0;
+}
+/* 표 tr */
+tr{
+	height: 30px;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+/* 삭제하기 tr*/
+.trDelete{
+	height:40px;
+	border: none;
+	
+}
+
+/* 삭제하기 버튼 */
+.button{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 90px;
+	height: 33px;
+}
+
+/* 페이지 */
+.trPaging{
+	border:none;
+}
+.pageButton{
+	background-color: #5A7EFF;
+    padding: 0.25rem 0.5rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}

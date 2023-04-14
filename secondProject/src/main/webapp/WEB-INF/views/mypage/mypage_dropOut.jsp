@@ -11,8 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/dropOut_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -27,13 +26,16 @@ function backToList(obj){
 	<div class="mypageBody">
 		<!-- 사이드바 -->
 		<div class="mypageSidebar">
-			<c:if test="${member.profileimg == null}">
-					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
+			<div class="profile" >
+				<c:if test="${member.profileimg == null}">
+					<div class="noProfileImg">No Image</div>
+					<%-- <img class="profileImg" src="${contextPath }/resources/image/noprofile.png"> --%>
 				</c:if>
 				<c:if test="${member.profileimg != null}">
 					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
 				</c:if>
-			${member.user_name} 님
+				${member.user_name } 님 
+			</div>
 			
 			<div class="mypageMenu">
 			
@@ -51,8 +53,10 @@ function backToList(obj){
 			</div>
 			<div class="menuContent">
 				<h3>회원 탈퇴 하시겠습니까?</h3>
-					<input type="button" value="탈퇴하기" onclick="${contextPath}/member/removeMember.do">
-					<input type="button" value="돌아가기" onclick="backToList(this.form)">
+				<div class="buttons">
+					<input type="button" value="탈퇴하기" class="button" onclick="${contextPath}/member/removeMember.do">
+					<input type="button" value="돌아가기" class="button" onclick="backToList(this.form)">
+				</div>
 			</div>
 		</div>
 	</div>

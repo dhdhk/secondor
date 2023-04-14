@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/*
+	border:2px solid #d0d0d0;
+*/
+/*
+	#5A7EFF -> 파랑 
+	#FFCD4A -> 노랑
+*/
+
 /* 리스트카드 이미지 크기 */
 .card-img-top{
 	height: 15rem;
