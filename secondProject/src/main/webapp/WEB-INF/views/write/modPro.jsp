@@ -151,12 +151,19 @@
   				판매 여부&nbsp;
   				<select name="pr_sold">
   					<c:if test="${proInf.pr_sold=='0' }">
-  					<option value="0" selected="selected">판매되지 않음</option>
-  					<option value="1">판매 됨</option>
+  						<option value="0" selected="selected">거래 가능</option>
+	  					<option value="1">거래 중</option>
+	  					<option value="2">거래 완료</option>
   					</c:if>
   					<c:if test="${proInf.pr_sold=='1' }">
-  					<option value="0" >판매되지 않음</option>
-  					<option value="1" selected="selected">판매 됨</option>
+  						<option value="0">거래 가능</option>
+	  					<option value="1" selected="selected">거래 중</option>
+	  					<option value="2">거래 완료</option>
+  					</c:if>
+  					<c:if test="${proInf.pr_sold=='2' }">
+	  					<option value="0" >거래 가능</option>
+	  					<option value="1">거래 중</option>
+	  					<option value="2" selected="selected">거래 완료</option>
   					</c:if>
   				</select>
   			</td>

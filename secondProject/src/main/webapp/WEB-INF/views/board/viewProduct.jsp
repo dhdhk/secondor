@@ -88,7 +88,17 @@
 					</div>
 					<div class="ProductCondition_2">
 						${product.regDate }
-					</div>		
+					</div>	
+				</div>
+				<div class="ProductSold">
+					<div class="ProductSold_1">
+						판매상태
+					</div>
+					<div class="ProductSold_2">
+						<c:if test="${product.pr_sold =='0' }">거래 가능</c:if>
+						<c:if test="${product.pr_sold =='1' }">거래 중</c:if>
+						<c:if test="${product.pr_sold =='2' }">거래 완료</c:if>
+				</div>		
 				</div>
 			</div>
 			<div class="buttons">
