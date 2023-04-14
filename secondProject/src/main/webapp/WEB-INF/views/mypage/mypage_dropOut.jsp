@@ -23,6 +23,7 @@ function backToList(obj){
 </script>
 </head>
 <body>
+<form  method="post" action="/second/member/removeMember.do">
 	<div class="mypageBody">
 		<!-- 사이드바 -->
 		<div class="mypageSidebar">
@@ -54,11 +55,12 @@ function backToList(obj){
 			<div class="menuContent">
 				<h3>회원 탈퇴 하시겠습니까?</h3>
 				<div class="buttons">
-					<input type="button" value="탈퇴하기" class="button" onclick="${contextPath}/member/removeMember.do">
-					<input type="button" value="돌아가기" class="button" onclick="backToList(this.form)">
+					<input type="submit" value="탈퇴하기">
+					<input type="button" value="돌아가기" onclick="backToList(this.form)">
 				</div>
 			</div>
 		</div>
 	</div>
+</form>
 </body>
 </html>

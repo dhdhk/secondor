@@ -44,6 +44,11 @@
 	</insert>
 
 	<!-- 회원 정보 삭제 -->
+	<delete id="deleteBoardbyId" parameterType="String">
+		<![CDATA[
+			delete from board where seller_id=#{user_id}
+		]]>
+	</delete>
 	<delete id="deleteMember" parameterType="String">
 		<![CDATA[
 			delete from users where user_id=#{user_id}
