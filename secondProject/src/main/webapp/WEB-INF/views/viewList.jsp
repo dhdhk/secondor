@@ -34,7 +34,11 @@
 								<img src="${ListByCategory.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
-									<h5 class="card-title"> ${ListByCategory.pr_title }, ${ListByCategory.pr_sold }</h5>
+									<h5 class="card-title"> ${ListByCategory.pr_title }, 
+										<c:if test="${ListByCategory.pr_sold =='0' }">거래 가능</c:if>
+										<c:if test="${ListByCategory.pr_sold =='1' }">거래 중</c:if>
+										<c:if test="${ListByCategory.pr_sold =='2' }">거래 완료</c:if>
+									</h5>
 									<p class="card-text"> ${ListByCategory.pr_price } , ${ListByCategory.regDate } </p>
 								</div>
 							</div>

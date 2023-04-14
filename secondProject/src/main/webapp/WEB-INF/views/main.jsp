@@ -37,7 +37,11 @@
 								<img src="/image/${board.regNum }/${board.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
-									<h5 class="card-title"> ${board.pr_title }, ${board.pr_sold }</h5>
+									<h5 class="card-title"> ${board.pr_title }, 
+										<c:if test="${board.pr_sold =='0' }">거래 가능</c:if>
+										<c:if test="${board.pr_sold =='1' }">거래 중</c:if>
+										<c:if test="${board.pr_sold =='2' }">거래 완료</c:if>
+									</h5>
 									<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
 								</div>
 							</div>
