@@ -88,10 +88,13 @@ public class WriteControllerImpl implements WriteController{
 		if(fileList != null && fileList.size() != 0) {
 			int i=1;
 			for(String fileName : fileList) {
+				if(fileName.length()==0) {
+					articleMap.put("pr_img"+i, null );
+				}else {
 				ImageDTO image = new ImageDTO();
 				image.setImageFileName(fileName);
 				imageFileList.add(image);
-				articleMap.put("pr_img"+i, fileName );
+				articleMap.put("pr_img"+i, fileName );}
 				i++;
 			}
 			articleMap.put("imageFileList", imageFileList);
@@ -104,15 +107,15 @@ public class WriteControllerImpl implements WriteController{
 		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
 		
 		//-----
-		if(imageFileList != null && imageFileList.size() != 0) {
 		try {
 			writeService.addNewArticle(articleMap);
 			
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
+					if(imageDTO.getImageFileName()!=null) {
 					File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
 					File destDir = new File(IMAGE_PATH + "\\" + regNum);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);}
 				}
 			}
 			message = "<script>";
@@ -123,8 +126,9 @@ public class WriteControllerImpl implements WriteController{
 		} catch(Exception e) {
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
+					if(imageDTO.getImageFileName()!=null) {
 					File srcFile = new File(IMAGE_PATH + "\\" + "temp" + "\\" + imageDTO.getImageFileName());
-					srcFile.delete();
+					srcFile.delete();}
 				}
 			}
 			
@@ -135,14 +139,6 @@ public class WriteControllerImpl implements WriteController{
 			message += "</script>";
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			e.printStackTrace();
-		}}else {
-			message = "<script>";
-			message += "alert('첫번째 사진은 반드시 첨부되어야 합니다.');";
-			message += "location.href='" + multipartRequest.getContextPath()
-				+"/write/writeForm.do';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			
 		}
 		return resEnt;
 	}

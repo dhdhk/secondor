@@ -131,7 +131,7 @@
 		  		<tr>
 					<td align="center" >
 					<div style="max-width: 75%">
-							<input type="file" name="pr_img1" accept="image/*" onchange="readURL1(this);" id="pr_img1"><br>
+							<input type="file" name="pr_img1" accept="image/*" onchange="readURL1(this);" id="pr_img1" required="required"><br>
 							<img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove1()">
 					</div>
 					</td>
