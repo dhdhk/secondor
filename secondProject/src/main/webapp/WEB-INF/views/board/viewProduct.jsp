@@ -39,12 +39,16 @@
 						<div class="carousel-item active">
 							<img src="/image/${product.regNum }/${product.pr_img1}" class="d-block w-100" alt="...">
 						</div>
+						<c:if test="${product.pr_img2 != null}">
 						<div class="carousel-item">
 							<img src="/image/${product.regNum }/${product.pr_img2}" class="d-block w-100" alt="...">
 						</div>
+						</c:if>
+						<c:if test="${product.pr_img3 != null}">
 						<div class="carousel-item">
 							<img src="/image/${product.regNum }/${product.pr_img3}" class="d-block w-100" alt="...">
 						</div>
+						</c:if>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>

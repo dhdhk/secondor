@@ -106,7 +106,7 @@ function fn_regIdCheck() {
 				<tr>
 					<td rowspan="3" width="300" align="center">
 						<p>프로필 사진</p>
-						<input type="file" name="profileimg" onchange="readURL(this);" >
+						<input type="file" name="profileimg" onchange="readURL(this);" accept="image/*">
 					</td>
 					<td height="50">
 						전화번호
