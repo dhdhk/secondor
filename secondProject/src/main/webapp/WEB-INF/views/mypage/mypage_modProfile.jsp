@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage/dropOut_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/modProfile_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -52,14 +52,10 @@ function backToList(obj){
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				회원 탈퇴
+				프로필 수정
 			</div>
 			<div class="menuContent">
-				<h3>회원 탈퇴 하시겠습니까?</h3>
-				<div class="buttons">
-					<input type="button" value="탈퇴하기" class="button" onclick="${contextPath}/member/removeMember.do">
-					<input type="button" value="돌아가기" class="button" onclick="backToList(this.form)">
-				</div>
+				프로필 수정 content
 			</div>
 		</div>
 	</div>

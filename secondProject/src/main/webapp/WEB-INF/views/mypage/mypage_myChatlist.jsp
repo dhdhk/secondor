@@ -12,7 +12,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/mypageMain_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -23,7 +23,8 @@
 		<div class="mypageSidebar">
 			<div class="profile" >
 				<c:if test="${member.profileimg == null}">
-					<img class="profileImg" src="${contextPath }/resources/image/noprofile.png">
+					<div class="noProfileImg">No Image</div>
+					<%-- <img class="profileImg" src="${contextPath }/resources/image/noprofile.png"> --%>
 				</c:if>
 				<c:if test="${member.profileimg != null}">
 					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
@@ -31,12 +32,15 @@
 				${member.user_name } 님 
 			</div>
 			
-			<div class="mypageMenu">
+				<div class="mypageMenu">
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
+				<a href="#" class="mypageMenuHref">프로필 수정</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref">회원 탈퇴</a>
+				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<br><br><br><br>
+				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
 			</div>
 		</div>

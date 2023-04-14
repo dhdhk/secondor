@@ -15,7 +15,7 @@
 	
 	<definition name="/mypage/mypageMain" extends="mypageLayout">
 		<put-attribute name="title" value="마이페이지" />
-		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage.jsp" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_main.jsp" />
 	</definition>
 	<definition name="/mypage/modInfoForm" extends="mypageLayout">
 		<put-attribute name="title" value="내 정보 수정" />
