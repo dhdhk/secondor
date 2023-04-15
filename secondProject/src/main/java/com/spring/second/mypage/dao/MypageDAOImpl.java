@@ -16,11 +16,7 @@ public class MypageDAOImpl implements MypageDAO{
 	@Autowired
 	SqlSession sqlSession;
 
-	public void updateInfo(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-
-		sqlSession.update("mapper.member.updateMember", memberDTO);
-	}
+	
 
 	/*public List<BoardDTO> selectMyList(String id) {
 		// TODO Auto-generated method stub
@@ -37,6 +33,18 @@ public class MypageDAOImpl implements MypageDAO{
 	public  List<BoardDTO> selectMyList(MyproductlistPage mp) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.board.selectMyList",mp);
+	}
+
+	@Override
+	public void updateInfo(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		sqlSession.update("mapper.member.updateMember", memberMap);
+	}
+
+	@Override
+	public void updateInfoNoimg(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		sqlSession.update("mapper.member.updateMemberNoimg", memberMap);
 	}
 
 }

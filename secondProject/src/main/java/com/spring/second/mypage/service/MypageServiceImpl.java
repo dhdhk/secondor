@@ -19,11 +19,7 @@ public class MypageServiceImpl implements MypageService{
 	@Autowired
 	MypageDAO mypageDAO;
 	
-	public void modInfo(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		mypageDAO.updateInfo(memberDTO);
-		
-	}
+	
 //	public List<BoardDTO> selectMyList(String id) {
 //		// TODO Auto-generated method stub
 //		return mypageDAO.selectMyList(id);
@@ -39,6 +35,18 @@ public class MypageServiceImpl implements MypageService{
 	public  List<BoardDTO> getselectMyList(MyproductlistPage mp) {
 		// TODO Auto-generated method stub
 		return mypageDAO.selectMyList(mp);
+	}
+
+	@Override
+	public void modInfo(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		mypageDAO.updateInfo(memberMap);
+	}
+
+	@Override
+	public void modInfoNoimg(Map<String, Object> memberMap) {
+		// TODO Auto-generated method stub
+		mypageDAO.updateInfoNoimg(memberMap);
 	}
 	
 
