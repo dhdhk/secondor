@@ -81,7 +81,7 @@ public class WriteControllerImpl implements WriteController{
 	      String user_id= memberDTO.getUser_id();
 		boardDTO.setSeller_id(user_id);
 		articleMap.put("seller_id", user_id);
-		int regNum=writeService.addNewRegNum();
+		int regNum = writeService.addNewRegNum();
 		articleMap.put("regNum", regNum);
 		if(fileList != null && fileList.size() != 0) {
 			int i=1;

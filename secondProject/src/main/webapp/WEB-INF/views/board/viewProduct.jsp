@@ -101,22 +101,12 @@
 		<div class="ProductBottom">
 			${product.pr_content }
 		</div>
-		<c:choose>
-			<%-- 로그인 상태 버튼 --%>
-			<%-- <c:when test="${isLogOn == true && member != null }">
-				<div class="logonActiveButtons">
-					<span>
-						<input type="button" name="modArticle" value="수정하기">
-					</span>
-					<span>
-						<input type="button" name="removeArticle" value="삭제하기">
-					</span>
-				</div>
-			</c:when> --%>
+		<%-- <c:choose>
+	
 			<c:otherwise>
 				<div></div>
 			</c:otherwise>
-		</c:choose>
+		</c:choose> --%>
 	</div>
 	<div class="commentContent">
 		댓글 구역
