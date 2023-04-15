@@ -12,6 +12,7 @@ public interface AdminController {
 
 	ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	ResponseEntity removeMember(RedirectAttributes rAttr, HttpServletRequest request, HttpServletResponse response)
-			throws Exception;
-}
+	ModelAndView deleteMember(String user_id, RedirectAttributes rAttr, HttpServletRequest request,
+			HttpServletResponse response) throws Exception;
+
+  }

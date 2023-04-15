@@ -6,7 +6,7 @@ import java.util.Map;
 import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberService {
-	List<MemberDTO> listMembers();
+	
 	void addMember(Map<String, Object> memberMap);
 	void removeMember(String id);
 	MemberDTO selectMember(String id);
@@ -16,4 +16,5 @@ public interface MemberService {
 	public String find_pw(Map<String, String> searchPw);
 	void addMemberNoimg(Map<String, Object> memberMap);
 	int idCheck (String id) throws Exception;
+	
 }

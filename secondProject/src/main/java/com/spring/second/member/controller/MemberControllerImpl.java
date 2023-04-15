@@ -148,7 +148,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return originalFileName;
 	}
 
-	/* 회원삭제하기 기능 관리자모드로 이동
+	
 	@Override
 	@RequestMapping(value="/member/removeMember.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ResponseEntity removeMember(RedirectAttributes rAttr,
@@ -168,7 +168,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		message += "</script>";
 		resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
 		return resEnt;
-	}*/
+	}
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method= {RequestMethod.GET,RequestMethod.POST})

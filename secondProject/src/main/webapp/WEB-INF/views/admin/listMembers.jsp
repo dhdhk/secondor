@@ -19,6 +19,14 @@
 	</script>
 </c:if>
 
+<c:if test="${msg == 'admindeleteMember'}">
+	<script>
+		window.onload = function(){
+			alert('회원이 삭제되었습니다.');
+		}
+	</script>
+</c:if>
+
 </head>
 <body>
 	<table border="1" align="center" width="80%">
@@ -45,7 +53,7 @@
 				<td>${member.user_birth }</td>
 				<td>${member.user_phone }</td>
 				<td>${member.joinDate }</td>
-				<td><a href="${contextPath }/admin/removeMember.do?user_id=${member.user_id}">삭제하기</a>	
+				<td><a href="${contextPath }/admin/deleteMember.do?user_id=${member.user_id}">삭제하기</a>	
 			</tr>
 		</c:forEach>
 	</table>

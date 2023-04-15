@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -93,7 +94,7 @@ public class AdminControllerImpl implements AdminController{
 		// TODO Auto-generated method stub
 
 		String viewName = (String) request.getAttribute("viewName");
-		List<MemberDTO> membersList = memberService.listMembers();
+		List<MemberDTO> membersList = adminService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 
 		logger.info("viewName : " + viewName);
@@ -105,25 +106,15 @@ public class AdminControllerImpl implements AdminController{
 	
 	//회원 삭제 
 	@Override
-	@RequestMapping(value="/admin/removeMember.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ResponseEntity removeMember(RedirectAttributes rAttr,
+	@RequestMapping(value="/admin/deleteMember.do", method=RequestMethod.GET)
+	public ModelAndView deleteMember(@RequestParam("user_id") String user_id,RedirectAttributes rAttr,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		HttpSession session = request.getSession();
-		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		String id= member.getUser_id();
-		memberService.removeMember(id);
-		
-		System.out.println("admin_id: "+id);
-		session.removeAttribute("member");
-		String message;
-		ResponseEntity<String> resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		message = "<script>";
-		message += "alert('회원 삭제가 완료되었습니다.');";
-		message += "location.href='" + request.getContextPath() +"/main.do';";
-		message += "</script>";
-		resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
-		return resEnt;
+		// TODO Auto-generated method stub
+		adminService.admindeleteMember(user_id);
+		rAttr.addAttribute("msg", "admindeleteMember");
+		ModelAndView mav = new ModelAndView("redirect:/admin/listMembers.do");
+				
+		return mav;
 	}
+
 }
