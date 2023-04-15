@@ -16,12 +16,6 @@
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-   function backToList(obj){
-      obj.action="${contextPath}/board/listArticles.do";
-      obj.submit();
-   }
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
