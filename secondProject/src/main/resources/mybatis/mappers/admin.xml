@@ -34,7 +34,7 @@
    
    <select id="ProductList" resultMap="admin" parameterType="String">	
 		<![CDATA[
-			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board
+			select regNum, seller_id, category_name, pr_title, pr_price, regDate, pr_condition, pr_sold from board order by regNum desc
 		]]>
 	</select>
 	
