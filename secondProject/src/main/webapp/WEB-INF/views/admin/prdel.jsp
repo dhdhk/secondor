@@ -9,7 +9,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -20,9 +19,10 @@
 </script>
 </head>
 <body>
-  	<br><br><br><br><br>
+	<br>
+	<br>
   	<form name="prdel" method="post" action="${contextPath }/admin/deletePr.do" enctype="multipart/form-data">
-<table align="center" border="1" width="100%">
+	<table align="center" border="1" width="70%">
 		<tr height="10" align="center" bgcolor="lightgreen">
 			<td width="7%">글번호</td>
 			<td width="15%">작성자</td>
