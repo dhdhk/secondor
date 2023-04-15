@@ -13,6 +13,12 @@
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
+/* 숫자필드 오른쪽에 증감화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 .filebox label {	/* 수정버튼 스타일*/
   display: inline-block;
   padding: .5em .75em;
@@ -99,12 +105,6 @@
 		obj.action = "${contextPath}/main.do";
 		obj.submit();
 	}
-	function onlyNumber(){
-
-        if((event.keyCode<48)||(event.keyCode>57))
-
-           event.returnValue=false;
-	}
 </script>
 </head>
 <body>
@@ -180,7 +180,7 @@
 		  		<tr style="height: 40px;">
 		  			<td>상품 가격</td>
 		  			<td >
-		  				<input type="text" style="width: 70%;" name="pr_price"  value="${proInf.pr_price }"  onkeypress="onlyNumber();" required="required">
+		  				<input type="number" style="width: 70%;" name="pr_price"  value="${proInf.pr_price }"  required="required">
 		  			</td>
 		  			<td>
 		  				<input type="range" name="pr_condition" value="${proInf.pr_condition }" min="1" max="3" required="required">
