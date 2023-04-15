@@ -31,6 +31,9 @@ import com.spring.second.member.service.MemberService;
 @Controller
 @EnableAspectJAutoProxy
 public class AdminControllerImpl implements AdminController{
+	
+	private static final String IMAGE_PATH = "C:\\image";
+	
 	@Autowired
 	AdminService adminService;
 	

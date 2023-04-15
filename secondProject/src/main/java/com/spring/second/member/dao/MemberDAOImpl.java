@@ -31,9 +31,11 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void deleteMember(String id) {
 		// TODO Auto-generated method stub
-		sqlSession.delete("mapper.member.deleteBoardbyId",id);
+		/* sqlSession.delete("mapper.member.deleteBoardbyId",id); */
 		sqlSession.delete("mapper.member.deleteMember", id);
 	}
+	
+	
 
 	@Override
 	public MemberDTO selectMember(String id) {

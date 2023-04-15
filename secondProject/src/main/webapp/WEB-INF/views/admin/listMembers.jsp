@@ -37,7 +37,7 @@
 		<c:forEach var="member" items="${membersList}">
 			<tr align="center">
 				<td>${member.profileimg }</td>
-				<%-- <td><a href="${contextPath}/member/modMemberForm.do?user_id=${member.user_id}">${member.user_id }</a></td> --%>
+				<td><%-- <a href="${contextPath}/member/modMemberForm.do?user_id=${member.user_id}"> --%>${member.user_id }</a></td> 
 				<td>${member.user_pw }</td>
 				<td>${member.user_name }</td>
 				<td>${member.user_email }</td>
