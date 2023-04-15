@@ -15,6 +15,30 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.filebox label {	/* 수정버튼 스타일*/
+  display: inline-block;
+  padding: .5em .75em;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+</style>
 <script>
 	function readURL(input) {
 	if(input.files && input.files[0]){
@@ -35,10 +59,7 @@
 		    $('#proimgfile').val("");
 		}
 	}
-	function modProfile(){
-		$("#proimg").empty();
-		$("#proimg").append("<input type='file' id='proimgfile' name='profileimg' accept='image/*' onchange='readURL(this)'>");
-	}
+	
 	function backToList(obj){
 		obj.action = "${contextPath}/mypage/mypageMain.do";
 		obj.submit();
@@ -63,10 +84,9 @@
 				<div class="mypageMenu">
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -84,16 +104,16 @@
 							<td colspan="4" align="center">
 								<c:if test="${member.profileimg != null }">
 									<img src="/image/member/${member.user_id }/${member.profileimg}" id="preview" class="profileImg">
-									<input type="button" value="x" onclick="remove()"><br>
-									<div id="proimg"><input type="button" value="변경하기" onclick="modProfile()" >
-									</div>
 								</c:if>
 								<c:if test="${member.profileimg == null }">
 									<img id="preview" src="${contextPath }/resources/image/noprofile.png" class="profileImg">
-									<input type="button" value="x" onclick="remove()"><br>
-									<div id="proimg"><input type="button" value="추가하기" onclick="modProfile()">
-									</div>
 								</c:if>
+									<input type="button" value="×" onclick="remove()"><br>
+									<div id="proimg" class="filebox">
+										<label for="profileimg">변경하기</label>
+										<input type="file" id="profileimg" name="profileimg" accept="image/*"  onchange="readURL(this)" >
+										<input type="hidden" name="profileimg" value="${member.profileimg }">
+									</div>
 							</td>
 						</tr>
 						<tr>
