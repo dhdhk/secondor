@@ -37,5 +37,8 @@ public class MypageDAOImpl implements MypageDAO{
 		// TODO Auto-generated method stub
 		sqlSession.update("mapper.member.updateMemberNoimg", memberMap);
 	}
-
+	
+	public String getprofilename(MemberDTO member) {
+		return sqlSession.selectOne("mapper.member.getprofilename",member);
+	}
 }

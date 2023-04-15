@@ -30,6 +30,7 @@ import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.member.controller.MemberControllerImpl;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
+import com.spring.second.mypage.dao.MypageDAOImpl;
 import com.spring.second.mypage.dto.MypageHandler;
 import com.spring.second.mypage.dto.MyproductlistPage;
 import com.spring.second.mypage.service.MypageService;
@@ -116,6 +117,9 @@ public class MypageControllerImpl implements MypageController{
 		HttpSession session = multipartRequest.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		String user_id= member.getUser_id();
+		
+		String old = mypageService.getprofilename(member);
+		member.setProfileimg(old);
 		String user_pw=multipartRequest.getParameter("user_pw");
 		String pwcheck=multipartRequest.getParameter("pwcheck");
 		System.out.println(user_pw);
@@ -130,6 +134,7 @@ public class MypageControllerImpl implements MypageController{
 			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
 			return resEnt;
 		}
+		System.out.println(member.getProfileimg());
 		try {
 		
 			if(filename==null && member.getProfileimg()==null) {

@@ -42,6 +42,12 @@ public class MypageServiceImpl implements MypageService{
 			// TODO Auto-generated method stub
 			mypageDAO.updateInfoNoimg(memberMap);
 		}
+
+		@Override
+		public String getprofilename(MemberDTO member) {
+			// TODO Auto-generated method stub
+			return mypageDAO.getprofilename(member);
+		}
 	
 
 }

@@ -73,7 +73,12 @@
 			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} , user_phone=#{user_phone}, profileimg='' where user_id=#{user_id}
 		]]>
 	</update>
-	
+	<!-- 사진이름 가져오기 -->
+	<select id="getprofilename" parameterType="memberDTO" resultType="String">
+		<![CDATA[
+			select profileimg from users where user_id=#{user_id}
+		]]>
+	</select>
 	<!-- 로그인 -->
 	<select id="loginById" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[
