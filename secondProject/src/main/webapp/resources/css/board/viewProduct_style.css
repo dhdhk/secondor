@@ -43,11 +43,6 @@
 	align-items: center;
 }
 
-.carousel-item active{
-	max-height: 450px;
-	max-width: 450px;
-}
-
 .onSellDisplay{
 	position: absolute;
     display: flex;
