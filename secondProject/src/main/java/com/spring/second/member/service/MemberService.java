@@ -6,7 +6,6 @@ import java.util.Map;
 import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberService {
-	List<MemberDTO> listMembers();
 	void addMember(Map<String, Object> memberMap);
 	void removeMember(String id);
 	MemberDTO selectMember(String id);

@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberController {
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ResponseEntity addMember( MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 	public ResponseEntity removeMember(RedirectAttributes rAttr,HttpServletRequest request, HttpServletResponse response) throws Exception;
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception;	
