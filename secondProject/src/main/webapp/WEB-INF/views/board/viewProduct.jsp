@@ -14,7 +14,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/viewProduct_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
    function backToList(obj){
@@ -48,6 +48,12 @@
 						<div class="carousel-item">
 							<img src="/image/${product.regNum }/${product.pr_img3}" class="d-block w-100" alt="...">
 						</div>
+						</c:if>
+						<c:if test="${product.pr_sold == 1 }">
+							<div class="onSellDisplay" style="color: #FFCD4A;">거래 중</div>
+						</c:if>
+						<c:if test="${product.pr_sold == 2 }">
+							<div class="onSellDisplay" style="color: #e45b68;">거래 완료</div>
 						</c:if>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -194,7 +200,17 @@
 	<div class="articleCtrl">	
 			<div class="toList" onclick="location.href='#';">
 				<c:if test="${pageName != null }">
-					<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">목록으로</div>
+					<!-- 마이페이지에서 내상품 상세보기에서 다시 내상품 리스트로 돌아가려면 받아올 값이 없으므로 
+						<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}&pageName=mypage">
+				        pageName을 mypage로 입력해서 쿼리값을 받아옴
+					 -->
+					<c:if test='${pageName == "mypage" }'>
+						<div class="toList" onclick="location.href='${contextPath }/mypage/myArticles.do';">목록으로</div>
+					</c:if>
+					<!-- 카데고리 상세페이지는 pageName 값을 category_name은 db값으로 받아오니까이렇게 둘 수 있음 -->
+					<c:if test='${pageName != "mypage" }'>
+						<div class="toList" onclick="location.href='${contextPath }/viewList.do?category_name=${pageName}';">목록으로</div>
+					</c:if>
 			    </c:if>
 				<c:if test="${pageName == null }">
 					<div class="toList" onclick="location.href='${contextPath }/main.do';">목록으로</div>

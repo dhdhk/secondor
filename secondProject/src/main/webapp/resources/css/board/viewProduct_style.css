@@ -6,6 +6,7 @@
 /*
 	#5A7EFF -> 파랑 
 	#FFCD4A -> 노랑
+	#e45b68 -> 빨강
 */
 /*
 	font-family: 'NanumSquareNeoLight';
@@ -24,6 +25,7 @@
     grid-template-columns: 450px 700px;
     grid-template-rows: 450px 200px;
 }
+
 /* 상품 정보 상부  */
 /* .ProductTop{
     height: 500px;
@@ -34,8 +36,25 @@
 } */
 /* 이미지 div  */
 .ProductImage{
-	grid-row:1;
-	grid-column:1;
+	grid-row: 1;
+	grid-column: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.onSellDisplay{
+	position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+	background-color: #d0d0d06e;
+    opacity: 0.9;
+    z-index: 1;
+    font-size: 50px;
+    font-family: 'NanumSquareNeoHeavy';
 }
 /* 캐러샐 버튼  */
 .carousel-control-prev, .carousel-control-next{
@@ -54,7 +73,7 @@
 
 /* 상품 이름  */
 .ProductTitle{
-   height: 120px;
+   height: 110px;
     font-size: 45px;
     align-items: center;
     display: flex;
@@ -62,7 +81,7 @@
 
 /* 상품 가격  */
 .ProductPrice{
-    height: 110px;
+    height: 90px;
     font-size: 60px;
 }
 
@@ -74,12 +93,12 @@
 }
 
 
-.ProductCondition_1, .ProductSellerId_1, .ProductRegDate_1{
+.ProductCondition_1, .ProductSellerId_1, .ProductRegDate_1, .ProductSold_1{
 	width:150px;
 	height: 40px;
 }
 
-.ProductCondition, .ProductSellerId, .ProductRegDate{
+.ProductCondition, .ProductSellerId, .ProductRegDate, .ProductSold{
 	display: flex;
 	flex-direction:row;
 	height: 40px;
