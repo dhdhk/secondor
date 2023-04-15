@@ -83,8 +83,8 @@
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
 				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
@@ -95,7 +95,7 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				 회원 정보 수정
+				 내 정보 관리
 			</div>
 			<div class="menuContent">
 				<form method="post" action="${contextPath }/mypage/modInfo.do" enctype="multipart/form-data">
