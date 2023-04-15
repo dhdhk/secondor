@@ -111,7 +111,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return resEnt;
 	}
 
-	private String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+	public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
 		// TODO Auto-generated method stub
 		Iterator<String> fileNames = multipartRequest.getFileNames();
 		String fileName=fileNames.next();
