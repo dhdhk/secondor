@@ -51,8 +51,14 @@
 						<td width="24%"><a href="${contextPath }/product/viewProduct.do?regNum=${productList.regNum}">${productList.pr_title }</a></td>
 						<td width="10%">${productList.pr_price }</td>
 						<td width="10%"><fmt:formatDate value="${productList.regDate }" /></td>
-						<td width="7%">${productList.pr_condition }</td>
-						<td width="7%">${productList.pr_sold }</td>
+						<td width="7%">
+							<c:if test="${productList.pr_condition =='1' }">하</c:if>
+							<c:if test="${productList.pr_condition =='2' }">중</c:if>
+							<c:if test="${productList.pr_condition =='3' }">상</c:if>
+						<td width="7%">
+							<c:if test="${productList.pr_sold =='0' }">거래 가능</c:if>
+							<c:if test="${productList.pr_sold =='1' }">거래 중</c:if>
+							<c:if test="${productList.pr_sold =='2' }">거래 완료</c:if>
 						<td width="7%"><input type="checkbox" name="deleteselection" value="${productList.regNum }"/></td>
 					</tr>
 				</c:forEach>

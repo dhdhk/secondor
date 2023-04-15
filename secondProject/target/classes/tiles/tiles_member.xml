@@ -13,10 +13,11 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 
-	<definition name="/member/listMembers" extends="baseLayout">
+<!-- 관리자 모드에서 회원리스트 보이게 맵핑함 -->
+<!--<definition name="/member/listMembers" extends="baseLayout">
 		<put-attribute name="title" value="회원목록창" />
 		<put-attribute name="body" value="/WEB-INF/views/member/listMembers.jsp" />
-	</definition>
+	</definition> -->
 
 	<definition name="/member/memberForm" extends="baseLayout">
 		<put-attribute name="title" value="회원가입창" />

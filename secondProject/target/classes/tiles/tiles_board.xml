@@ -13,6 +13,7 @@
 		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
 	
+	<!-- board 메인  -->
 	<definition name="main" extends="baseLayout">
 		<put-attribute name="title" value="메인페이지" />
 		<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
@@ -32,11 +33,20 @@
 		<put-attribute name="title" value="상세글" />
 		<put-attribute name="body" value="/WEB-INF/views/board/viewProduct.jsp" />
 	</definition>
+	
+	<!-- 관리자모드 -->
 	<definition name="/admin/prdel" extends="baseLayout">
 		<put-attribute name="title" value="글관리창" />
 		<put-attribute name="body" value="/WEB-INF/views/admin/prdel.jsp" />
 	</definition>
-<definition name="/modify/modPro" extends="baseLayout">
+	
+	<definition name="/admin/listMembers" extends="baseLayout">
+		<put-attribute name="title" value="회원목록창" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listMembers.jsp" />
+	</definition> 
+	
+	
+	<definition name="/modify/modPro" extends="baseLayout">
 		<put-attribute name="title" value="글수정창" />
 		<put-attribute name="body" value="/WEB-INF/views/write/modPro.jsp" />
 	</definition>

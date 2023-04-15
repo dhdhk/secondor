@@ -1,6 +1,7 @@
 package com.spring.second.member.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -45,6 +46,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class); 
 
+	/* 관리자 모드에서 회원리스트 볼 수 있게 맴핑함
 	@Override
 	@RequestMapping(value="/member/listMembers.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -59,7 +61,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 		mav.addObject("membersList", membersList);
 		return mav;
-	}
+	}*/
 
 	@Override
 	@RequestMapping(value="/member/addMember.do", method= {RequestMethod.GET,RequestMethod.POST})
@@ -146,6 +148,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return originalFileName;
 	}
 
+	/* 회원삭제하기 기능 관리자모드로 이동
 	@Override
 	@RequestMapping(value="/member/removeMember.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ResponseEntity removeMember(RedirectAttributes rAttr,
@@ -165,7 +168,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		message += "</script>";
 		resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
 		return resEnt;
-	}
+	}*/
 
 	@Override
 	@RequestMapping(value="/member/*Form.do", method= {RequestMethod.GET,RequestMethod.POST})
