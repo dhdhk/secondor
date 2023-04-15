@@ -28,16 +28,16 @@
 					<td width="150" align="right">
 						아이디
 					</td>
-					<td width="400">
-						<input type="text" name="user_id" required="required">
+					<td width="450">
+						<input type="text" name="user_id" style="width: 250px;" required="required">
 					</td>
 				</tr>
 				<tr >
 					<td width="150" align="right">
 						이메일
 					</td>
-					<td width="400">
-						<input type="text" name="user_email" required="required">
+					<td width="450">
+						<input type="text" name="user_email" style="width: 250px;" required="required">
 					</td>
 				</tr>
 				<tr>
