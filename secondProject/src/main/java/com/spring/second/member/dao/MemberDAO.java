@@ -8,7 +8,6 @@ import org.springframework.dao.DataAccessException;
 import com.spring.second.member.dto.MemberDTO;
 
 public interface MemberDAO {
-	List<MemberDTO> selectAllMemberList() throws DataAccessException;
 	void insertMember(Map<String, Object> memberMap);
 	void deleteMember(String id);
 	MemberDTO selectMember(String id);

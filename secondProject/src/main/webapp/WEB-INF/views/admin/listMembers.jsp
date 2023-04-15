@@ -19,6 +19,14 @@
 	</script>
 </c:if>
 
+<c:if test="${msg == 'adminDeleteMember'}">
+	<script>
+		window.onload = function(){
+			alert('회원이 삭제되었습니다.');
+		}
+	</script>
+</c:if>
+
 </head>
 <body>
 	<table border="1" align="center" width="80%">
@@ -37,7 +45,7 @@
 		<c:forEach var="member" items="${membersList}">
 			<tr align="center">
 				<td>${member.profileimg }</td>
-				<td><a href="${contextPath}/member/modMemberForm.do?user_id=${member.user_id}">${member.user_id }</a></td>
+				<td><%-- <a href="${contextPath}/member/modMemberForm.do?user_id=${member.user_id}"> --%>${member.user_id }</a></td> 
 				<td>${member.user_pw }</td>
 				<td>${member.user_name }</td>
 				<td>${member.user_email }</td>
@@ -45,10 +53,10 @@
 				<td>${member.user_birth }</td>
 				<td>${member.user_phone }</td>
 				<td>${member.joinDate }</td>
-				<td><a href="${contextPath }/member/removeMember.do?user_id=${member.user_id}">삭제하기</a>	
+				<td><a href="${contextPath }/admin/deleteMember.do?user_id=${member.user_id}">삭제</a>	
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="${contextPath }/member/memberForm.do"><h1 style="text-align:center;">회원가입</h1></a>
+
 </body>
 </html>

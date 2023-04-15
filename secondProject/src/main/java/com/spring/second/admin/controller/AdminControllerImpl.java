@@ -7,19 +7,33 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.second.admin.service.AdminService;
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.member.dto.MemberDTO;
+import com.spring.second.member.service.MemberService;
 
 @Controller
 public class AdminControllerImpl implements AdminController{
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	MemberService memberService;
+	
+	@Autowired
+	MemberDTO member;
+	
+	private static final Logger logger = LoggerFactory.getLogger(AdminControllerImpl.class); 
 	
 	@Override
 	@RequestMapping(value="/admin/prdel.do")
@@ -60,5 +74,35 @@ public class AdminControllerImpl implements AdminController{
 		mav.addObject("productList", productList);
 		
 		return mav;	
+	}
+
+	//회원리스트 불러오기
+	@Override
+	@RequestMapping(value="/admin/listMembers.do", method= {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+
+		String viewName = (String) request.getAttribute("viewName");
+		List<MemberDTO> membersList = adminService.listMembers();
+		ModelAndView mav = new ModelAndView(viewName);
+
+		logger.info("viewName : " + viewName);
+		logger.debug("viewName : " + viewName);
+
+		mav.addObject("membersList", membersList);
+		return mav;
+	}
+		
+	//회원 삭제 
+	@Override
+	@RequestMapping(value="/admin/deleteMember.do", method=RequestMethod.GET)
+	public ModelAndView deleteMember(@RequestParam("user_id") String user_id,RedirectAttributes rAttr,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		adminService.adminDeleteMember(user_id);
+		rAttr.addAttribute("msg", "adminDeleteMember");
+		ModelAndView mav = new ModelAndView("redirect:/admin/listMembers.do");
+				
+		return mav;
 	}
 }

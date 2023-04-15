@@ -15,12 +15,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Autowired
 	private SqlSession sqlSession;
 
-	@Override
-	public List<MemberDTO> selectAllMemberList() throws DataAccessException {
-		// TODO Auto-generated method stub
-		List<MemberDTO> membersList = sqlSession.selectList("mapper.member.selectAllMemberList");
-		return membersList;
-	}
+	
 
 	@Override
 	public void insertMember(Map<String, Object> memberMap) {

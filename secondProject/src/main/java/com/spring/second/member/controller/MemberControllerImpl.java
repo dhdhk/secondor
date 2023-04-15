@@ -45,22 +45,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class); 
 
-	@Override
-	@RequestMapping(value="/member/listMembers.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-
-		String viewName = (String) request.getAttribute("viewName");
-		List<MemberDTO> membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-
-		logger.info("viewName : " + viewName);
-		logger.debug("viewName : " + viewName);
-
-		mav.addObject("membersList", membersList);
-		return mav;
-	}
-
+	
 	@Override
 	@RequestMapping(value="/member/addMember.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ResponseEntity addMember(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
