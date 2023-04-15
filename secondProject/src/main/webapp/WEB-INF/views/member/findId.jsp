@@ -33,7 +33,7 @@
 					</td>
 				</tr>
 				<tr >
-					<td width="150" align="right">
+				 	<td width="150" align="right">
 						이메일
 					</td>
 					<td width="400">
