@@ -55,7 +55,6 @@
 						<td width="50%">제목</td>
 						<td width="15%">작성일자</td>
 						<td width="10%">판매상태</td>
-						<td width="7%">선택</td>
 					</tr>
 					<c:choose>
 						<c:when test="${myList == null }">
@@ -90,7 +89,7 @@
 										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
 										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
 									</td>
-s								</tr>
+								</tr>
 							</c:forEach>
 								
 								<!-- 페이징 -->
