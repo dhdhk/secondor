@@ -72,4 +72,28 @@ public class CommentServiceImpl implements CommentService{
 				// TODO Auto-generated method stub
 				commentDAO.userCntAddd(seller_id);
 			}
+
+			@Override
+			public void addUser(String user_id) {
+				// TODO Auto-generated method stub
+				commentDAO.userAdd(user_id);
+			}
+
+			@Override
+			public void addArticle(int regNum) {
+				// TODO Auto-generated method stub
+				commentDAO.articleAdd(regNum);
+			}
+
+			@Override
+			public int getBoardCommentCnt(int regNum) {
+				// TODO Auto-generated method stub
+				return commentDAO.boardCommentCntGet(regNum);
+			}
+
+			@Override
+			public void minusUserCommentCnt(String seller_id, int brdcmtcnt) {
+				// TODO Auto-generated method stub
+				commentDAO.userCommentCntMinus(seller_id, brdcmtcnt);
+			}
 }

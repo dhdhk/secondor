@@ -59,6 +59,16 @@
     		delete from comments where commentNo=#{commentNo}
     	]]>
     </delete>
+    <insert id="addUser" parameterType="String"><!--알림 카운트용 유저 추가-->
+    	<![CDATA[
+    		insert into userCommentCnt values(#{user_id}, 0)
+    	]]>	
+    </insert>
+    <insert id="addArticle" parameterType="int"><!--알림 카운트용 글 추가-->
+    	<![CDATA[
+    		insert into boardCommentCnt values(#{regNum}, 0)
+    	]]>	
+    </insert>
     <update id="addBoardCnt" parameterType="int"><!-- 글 당 댓글알림 count -->
     	<![CDATA[
     		update boardCommentCnt set boardCommentCount=(boardCommentCount)+1 where regNum=#{regNum}
@@ -67,6 +77,26 @@
      <update id="addUserCnt" parameterType="String"><!--유저 당 댓글알림 count -->
     	<![CDATA[
     		update userCommentCnt set userCommentCount=(userCommentCount)+1 where user_id=#{user_id}
+    	]]>	
+    </update>
+    <select id="getBoardCommentCnt" parameterType="int" resultType="int"><!-- 글 댓글수 출력 -->
+    	<![CDATA[
+    		select boardCommentCount from boardCommentCnt where regNum=#{regNum}
+    	]]>
+    </select>
+    <update id="clearBoardCnt" parameterType="int"><!-- 글 당 댓글수 초기화 -->
+    	<![CDATA[
+    		update boardCommentCnt set boardCommentCount=0 where regNum=#{regNum}
+    	]]>	
+    </update>
+    <select id="getUserCommentCnt" parameterType="int" resultType="int"><!-- 유저 알림수 출력-->
+    	<![CDATA[
+    		select userCommentCount from userCommentCnt where user_id=#{user_id}
+    	]]>
+    </select>
+    <update id="calUserCnt" parameterType="java.util.Map"><!-- 유저 댓글 카운트 차감 -->
+    	<![CDATA[
+    		update userCommentCnt set userCommentCount=#{userCommentCount} where user_id=#{user_id}
     	]]>	
     </update>
 </mapper>

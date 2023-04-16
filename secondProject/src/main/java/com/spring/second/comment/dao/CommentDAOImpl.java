@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.comment.dto.CommentDTO;
+
+import oracle.net.aso.f;
 @Repository
 public class CommentDAOImpl implements CommentDAO{
 	@Autowired
@@ -90,5 +92,37 @@ public class CommentDAOImpl implements CommentDAO{
 			// TODO Auto-generated method stub
 			sqlSession.update("mapper.comment.addUserCnt", user_id);
 			System.out.println(user_id);
+		}
+
+		@Override
+		public void userAdd(String user_id) {
+			// TODO Auto-generated method stub
+			sqlSession.insert("mapper.comment.addUser", user_id);
+		}
+
+		@Override
+		public void articleAdd(int regNum) {
+			// TODO Auto-generated method stub
+			sqlSession.insert("mapper.comment.addArticle", regNum);
+		}
+
+		@Override
+		public int boardCommentCntGet(int regNum) {
+			// TODO Auto-generated method stub
+			int num=sqlSession.selectOne("mapper.comment.getBoardCommentCnt", regNum);
+			sqlSession.update("mapper.comment.clearBoardCnt", regNum);
+			System.out.println(num);
+			return num;
+		}
+
+		@Override
+		public void userCommentCntMinus(String user_id, int brdcmtcnt) {
+			// TODO Auto-generated method stub
+			int userCommentCount=sqlSession.selectOne("mapper.comment.getUserCommentCnt", user_id);
+			userCommentCount=userCommentCount-brdcmtcnt;
+			Map<String,Object> finalCnt=new HashMap<String, Object>();
+			finalCnt.put("user_id", user_id);
+			finalCnt.put("userCommentCount", userCommentCount);
+			sqlSession.update("mapper.comment.calUserCnt", finalCnt);
 		}
 }

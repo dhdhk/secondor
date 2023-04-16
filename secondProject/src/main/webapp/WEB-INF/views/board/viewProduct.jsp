@@ -137,22 +137,21 @@ td>a{
 		<div class="ProductBottom">
 			${product.pr_content }
 		</div>
-		<%-- <c:choose>
-			로그인 상태 버튼 --%>
-			<%-- <c:when test="${isLogOn == true && member != null }">
+		<c:choose>
+			<c:when test="${isLogOn == true && member.user_id==product.seller_id }">
 				<div class="logonActiveButtons">
 					<span>
-						<input type="button" name="modArticle" value="수정하기">
+						<input type="button" name="modArticle" value="수정하기" onclick="location.href='${contextPath }/modify/modPro.do?regNum=${product.regNum}';">
 					</span>
-					<span>
+					<!--  <span>
 						<input type="button" name="removeArticle" value="삭제하기">
-					</span>
+					</span>-->
 				</div>
 			</c:when> 
 			<c:otherwise>
 				<div></div>
 			</c:otherwise>
-		</c:choose>--%>
+		</c:choose>
 	</div>
 	<div class="commentContent"><!-- 댓글 part(지저분함) -->
 		<span class="commentViewer">
@@ -563,7 +562,6 @@ td>a{
 			</c:choose>		
 		</div>
 	</div>
-	<!-- 테스트용 --><a href="${contextPath }/modify/modPro.do?regNum=${product.regNum}">수정 이동</a><!-- 수정창 테스트용 -->
 	<div class="articleCtrl">	
 		<c:if test="${pageName != null }">
 			<!-- 마이페이지에서 내상품 상세보기에서 다시 내상품 리스트로 돌아가려면 받아올 값이 없으므로 

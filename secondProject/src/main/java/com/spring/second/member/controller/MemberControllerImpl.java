@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.second.comment.service.CommentService;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
 import com.spring.second.write.dto.ImageDTO;
@@ -44,7 +45,8 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	@Autowired
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class); 
-
+	@Autowired
+	CommentService commentService;
 	
 	@Override
 	@RequestMapping(value="/member/addMember.do", method= {RequestMethod.GET,RequestMethod.POST})
@@ -83,7 +85,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 				memberService.addMember(memberMap);
 				
 			}
-			
+			commentService.addUser(user_id);
 			message = "<script>";
 			message += "alert('회원가입이 완료되었습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath() +"/member/loginForm.do';";

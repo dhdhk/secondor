@@ -106,7 +106,10 @@ public class BoardControllerImpl implements BoardController {
 		
 		Map<String, Object> productMap = boardService.viewProduct(regNum);
 		List<CommentDTO> commentList = boardService.viewComment(regNum);
+		String seller_id=commentService.getSellerId(regNum);
+
 		
+
 		mav.addObject("productMap", productMap);
 		mav.addObject("commentList", commentList);
 		if(buyers.size()!=0) {
@@ -120,6 +123,10 @@ public class BoardControllerImpl implements BoardController {
 			user_id= member.getUser_id();
 			System.out.println("user id: "+user_id);
 			List<CommentDTO> buyerComments=boardService.viewbuyerComments(regNum, user_id);
+			if(seller_id.equals(user_id)) {
+				int brdcmtcnt=commentService.getBoardCommentCnt(regNum);
+				commentService.minusUserCommentCnt(seller_id, brdcmtcnt);
+			}
 			mav.addObject("buyerComments", buyerComments);
 		}
 		mav.addObject("pageName", request.getParameter("pageName"));
