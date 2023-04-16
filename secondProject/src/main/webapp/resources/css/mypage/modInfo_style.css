@@ -6,7 +6,7 @@
 	#FFCD4A -> 노랑
 */
 
-
+/* 마이페이지 전체 영역 */
 .mypageBody{
 	margin-top: 150px;
     display: flex;
@@ -14,6 +14,7 @@
     min-height: 600px;
 }
 
+/* 마이페이지 사이드바 영역 */
 .mypageSidebar {
 	display: flex;
     flex-direction: column;
@@ -24,6 +25,7 @@
     border-right: 2px solid #d0d0d0;
 }
 
+/* 마이페이지 사이드바 프로필 영역 */
 .profile {
 	display:flex;
 	flex-direction:column;
@@ -34,6 +36,7 @@
 	font-size: 20px;
 }
 
+/* 마이페이지 사이드바 프로필 사진 없을 경우*/
 .noProfileImg{
 	display: flex;
     margin-top: 5px;
@@ -49,7 +52,7 @@
     background-color: #FFCD4A;
 }
 
-
+/* 마이페이지 사이드바 프로필 사진 있을 경우*/
 .profileImg{
 	margin-top:5px;
 	margin-bottom:20px;
@@ -59,6 +62,7 @@
 	/* border: 4px solid #FFCD4A; */
 }
 
+/* 마이페이지 사이드바 메뉴*/
 .mypageMenu{
 	display: flex;
     flex-direction: column;
@@ -66,11 +70,14 @@
     align-items: center;
     padding: 5px;
 }
+/* 마이페이지 사이드바 메뉴 링크*/
 .mypageMenuHref {
 	font-size:20px;
 	color: black;
 	margin-bottom: 5px;
 }
+
+/* 마이페이지 본문 영역*/
 .mypageContent{
 	width: 100%;
     margin-left: 60px;
@@ -80,8 +87,9 @@
     flex-shrink: 0;
 	width: 800px;
 }
+/* 마이페이지 본문 제목*/
 .menuTitle{
-font-size: 40px;
+	font-size: 40px;
     text-align: left;
     padding-left: 30px;
     border-bottom: 1px solid #d0d0d0;
@@ -89,33 +97,85 @@ font-size: 40px;
     display: flex;
     flex-shrink: 0;
 }
+/* 마이페이지 본문 내용 영역*/
 .menuContent{
-	padding-top: 20px;
-	text-align: left;
-	padding-left: 30px;
-	display: flex;
+	padding-top: 30px;
+    text-align: left;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
 }
 
 tr{
-	height: 70px;
+   height: 70px;
 }
 
 .modTableLabel{
-	width: 120px;
-	text-align: right;
-	
+   width: 120px;
+   text-align: right;
+   
 }
 .modTableContent{
-	width:270px;
-	text-align: center;
+   width:270px;
+   text-align: center;
+}
+
+/* 정보 수정 프로필 사진 영역*/
+.modProfile{
+	display: flex;
+    width: 150px;
+    height: 150px;
+	margin-bottom: 25px;
+    align-items: center;
+    justify-content: center;
+}
+/* 정보 수정 프로필 사진 있을 경우*/
+.modProfileImg{
+	display: flex;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFCD4A;
+    
+}
+/* 정보 수정 프로필 사진 없을 경우*/
+.modNoProfileImg{
+	display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+    font-family: 'NanumSquareNeoBold';
+    color: #5A7EFF;
+    background-color: #FFCD4A;
+}
+
+/* 프로필 사진 파일 삭제 버튼*/
+.fileCancle{
+    color: white;
+    border: none;
+    background: #5A7EFF;
+    border-radius: 3px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
 }
 
 .buttons{
-    padding-left: 60px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    width: 300px;
 }
 
 .button{

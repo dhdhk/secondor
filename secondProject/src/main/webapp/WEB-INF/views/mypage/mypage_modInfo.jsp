@@ -17,16 +17,16 @@
 <title>Insert title here</title>
 <style>
 .filebox label {	/* 수정버튼 스타일*/
-  display: inline-block;
-  padding: .5em .75em;
-  font-size: inherit;
-  line-height: normal;
-  vertical-align: middle;
-  background-color: #fdfdfd;
-  cursor: pointer;
-  border: 1px solid #ebebeb;
-  border-bottom-color: #e2e2e2;
-  border-radius: .25em;
+	display: inline-flex;
+    background-color: #5a7eff;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 78px;
 }
 .filebox input[type="file"] {  /* 파일 필드 숨기기 */
   position: absolute;
@@ -45,17 +45,23 @@
 		let reader = new FileReader();
 		reader.onload = function(e) {
 			$('#preview').attr('src', e.target.result);
+			$('#preview').attr('style', '' );
+			$('#none1').attr('style', 'display:none');
+			$('#none2').attr('style', 'display:none');
 		}
 		reader.readAsDataURL(input.files[0]);
 		}
 	}
+	
 	function remove(){
 		var agent = navigator.userAgent.toLowerCase();
 		//파일초기화
 		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
 		    $("#proimgfile").replaceWith($("#proimgfile").clone(true));
 		}else{
-		    $('#preview').attr('src','${contextPath }/resources/image/noprofile.png');
+		    $('#preview').attr('src','');
+		    $('#preview').attr('style', 'display:none' );
+		    $('#none1').attr('style', '');
 		    $('#proimgfile').val("");
 		}
 	}
@@ -102,18 +108,24 @@
 					<table>
 						<tr>
 							<td colspan="4" align="center">
+							<div class="modProfile">
 								<c:if test="${member.profileimg != null }">
-									<img src="/image/member/${member.user_id }/${member.profileimg}" id="preview" class="profileImg">
+									<div class="modNoProfileImg" id="none1" style="display: none;">No Image</div>
+									<img src="/image/member/${member.user_id }/${member.profileimg}" name="profileimg" id="preview" class="modProfileImg">
 								</c:if>
-								<c:if test="${member.profileimg == null }">
-									<img id="preview" src="${contextPath }/resources/image/noprofile.png" class="profileImg">
+									<c:if test="${member.profileimg == null }">
+									<div class="modNoProfileImg" id="none2" style="">No Image</div>
+									<img id="preview" src="" class="modProfileImg" style="display:none;">
 								</c:if>
-									<input type="button" value="×" onclick="remove()"><br>
-									<div id="proimg" class="filebox">
-										<label for="profileimg">변경하기</label>
-										<input type="file" id="profileimg" name="profileimg" accept="image/*"  onchange="readURL(this)" >
-										<input type="hidden" name="profileimg" value="${member.profileimg }">
-									</div>
+							</div>
+							<span>
+								<input type="button" class="fileCancle" value="×" onclick="remove()">
+							</span>
+							<span id="proimg" class="filebox">
+								<label for="profileimg">변경하기</label>
+								<input type="file" id="profileimg" name="profileimg" accept="image/*"  onchange="readURL(this)" >
+								<input type="hidden" name="profileimg" value="${member.profileimg }">
+							</span>
 							</td>
 						</tr>
 						<tr>
