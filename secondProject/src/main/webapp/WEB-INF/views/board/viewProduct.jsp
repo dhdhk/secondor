@@ -13,15 +13,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style type="text/css">
+.carousel-item > img{
+    width: 450px;
+    height: 450px;
+    object-fit: contain;
+}
+</style>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script>
-   function backToList(obj){
-      obj.action="${contextPath}/board/listArticles.do";
-      obj.submit();
-   }
-</script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -29,7 +30,7 @@
 	<div class="ProductContent">
 		<!-- <div class="ProductTop"> -->
 		<div class="ProductImage">
-			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true" style="max-height: 450px; width: 450px;">
 					<div class="carousel-indicators">
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -53,7 +54,10 @@
 							<div class="onSellDisplay" style="color: #FFCD4A;">거래 중</div>
 						</c:if>
 						<c:if test="${product.pr_sold == 2 }">
-							<div class="onSellDisplay" style="color: #e45b68;">거래 완료</div>
+							<div class="onSellDisplay" style="color: #f34a5a;">거래 완료</div>
+						</c:if>
+						<c:if test="${product.pr_sold == 3 }">
+							<div class="onSellDisplay" style="color: black;">거래 불가능</div>
 						</c:if>
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -108,6 +112,7 @@
 						<c:if test="${product.pr_sold =='0' }">거래 가능</c:if>
 						<c:if test="${product.pr_sold =='1' }">거래 중</c:if>
 						<c:if test="${product.pr_sold =='2' }">거래 완료</c:if>
+						<c:if test="${product.pr_sold =='3' }">거래 불가능</c:if>
 				</div>		
 				</div>
 			</div>
