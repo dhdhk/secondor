@@ -91,8 +91,6 @@
 
 			saveContent(temp, obj.chat_id);
 			$("#messageArea").append(temp);
-			
-			$('#messageArea').scrollTop($('#messageArea').prop('scrollHeight'));
 		}
 
 		// 서버와 연결 끊음 -> 채팅창 나감
@@ -107,8 +105,9 @@
 #chatArea {
 	position: absolute;
 	width: 300px;
-	height: 330px;
-	right: 2%;
+	height: 460px;
+	right: 50%;
+	left: 50%;
 	bottom: 20%;
 	border: 1px solid black;
 	text-align: center;
@@ -116,7 +115,7 @@
 
 #messageArea {
 	width: 290px;
-	height: 250px;
+	height: 380px;
 	text-align: right;
 }
 </style>
@@ -124,15 +123,14 @@
 	<div id="chatArea">
 		<div id="op">
 			<c:if test="${id == chatDTO.buyer_id}">
-				<td>${chatDTO.seller_id } 님 과의 채팅</td>
+				<td><h3>${chatDTO.seller_id } 님 과의 채팅</h3></td>
 			</c:if>
 			<c:if test="${id == chatDTO.seller_id}">
-				<td>${chatDTO.buyer_id } 님 과의 채팅</td>
+				<td><h3>${chatDTO.buyer_id } 님 과의 채팅</h3></td>
 			</c:if>
 		</div>
-		<div id="messageArea"></div>
-		<input type="text" id="message" /> <input type="button" id="sendBtn"
-			value="전송" />
+		<div id="messageArea" style="overflow-y:scroll" ></div>
+		<input type="text" id="message" /> <input type="button" id="sendBtn" value="전송" />
 	</div>
 </body>
 </html>
