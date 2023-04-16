@@ -41,7 +41,11 @@ public class CommentDAOImpl implements CommentDAO{
 		@Override
 		public int commentNoGet() {
 			// TODO Auto-generated method stub
-			return sqlSession.selectOne("mapper.comment.NewCommentNo");
+			int commentNo=0;
+			if(sqlSession.selectOne("mapper.comment.NewCommentNo")!=null) {
+				commentNo=sqlSession.selectOne("mapper.comment.NewCommentNo");
+			}
+			return commentNo;
 		}
 
 		@Override
