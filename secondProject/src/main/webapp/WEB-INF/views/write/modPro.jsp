@@ -278,7 +278,6 @@ input[type="number"]::-webkit-inner-spin-button {
 					<td colspan="3" align="center" style="height: 60px;">
 						<div class="buttons">
 							<input type="submit" value="글수정" class="button">
-							&nbsp;&nbsp;&nbsp;
 							<input type="button" value="취소" class="button" onclick="backToList(this.form)">
 						</div>
 					</td>
