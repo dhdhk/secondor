@@ -41,7 +41,7 @@
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price, regDate  -->
 									<h5 class="card-title"> ${board.pr_title }</h5>
-									<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
+									<p class="card-text"> ${board.pr_price }원 , ${board.regDate } </p>
 								</div>
 							</div>
 						</div>
