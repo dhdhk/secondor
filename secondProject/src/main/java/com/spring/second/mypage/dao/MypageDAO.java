@@ -13,4 +13,5 @@ public interface MypageDAO {
 	List<BoardDTO> selectMyList(MyproductlistPage mp);
 	public void updateInfoNoimg(Map<String, Object> memberMap);
 	public String getprofilename(MemberDTO member);
+
 }

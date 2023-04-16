@@ -10,6 +10,7 @@ public class MyproductlistPage {
 
 	private Integer page=1;
 	private String seller_id="";
+	private int regNum;
 	private Integer start = 1+ (page-1)*10;
     private Integer end =10*page;
     

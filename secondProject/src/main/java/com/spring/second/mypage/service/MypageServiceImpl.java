@@ -19,7 +19,7 @@ public class MypageServiceImpl implements MypageService{
 	@Autowired
 	MypageDAO mypageDAO;
 	
-	//내상품 페이지 (총 상품 갯수)
+		//내상품 페이지 (총 상품 갯수)
 		public  int getProductListCount(MyproductlistPage mp) {
 			// TODO Auto-generated method stub
 			return mypageDAO.ProductListCount(mp);
@@ -30,7 +30,8 @@ public class MypageServiceImpl implements MypageService{
 			// TODO Auto-generated method stub
 			return mypageDAO.selectMyList(mp);
 		}
-
+		
+		
 		@Override
 		public void modInfo(Map<String, Object> memberMap) {
 			// TODO Auto-generated method stub
@@ -48,6 +49,8 @@ public class MypageServiceImpl implements MypageService{
 			// TODO Auto-generated method stub
 			return mypageDAO.getprofilename(member);
 		}
+
+		
 	
 
 }
