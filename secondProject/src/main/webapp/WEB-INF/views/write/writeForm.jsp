@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/write_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/write/write_style.css">
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
