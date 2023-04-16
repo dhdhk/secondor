@@ -82,6 +82,8 @@ input[type="number"]::-webkit-inner-spin-button {
 		}else{
 		    $("#pr_img1").val("");
 		    $('#preview1').attr('src','${contextPath }/resources/image/noImage.png');
+		    //기존에있던 사진을 삭제했을 경우 이전값까지 없애게 함
+		    $("#old1").val("");
 		}
 	}
 	function remove2(){
@@ -92,6 +94,7 @@ input[type="number"]::-webkit-inner-spin-button {
 		}else{
 		    $("#pr_img2").val("");
 		    $('#preview2').attr('src','${contextPath }/resources/image/noImage.png');
+		    $("#old2").val("");
 		}
 	}
 	function remove3(){
@@ -102,6 +105,7 @@ input[type="number"]::-webkit-inner-spin-button {
 		}else{
 		    $("#pr_img3").val("");
 		    $('#preview3').attr('src','${contextPath }/resources/image/noImage.png');
+		    $("#old3").val("");
 		}
 	}
 	function backToList(obj){
@@ -229,8 +233,8 @@ input[type="number"]::-webkit-inner-spin-button {
 						<div style="max-width: 75%; position: relative;">
 							<div id="d_file1" class="filebox">
 								<label class="modLabel" for="pr_img1">변경하기</label>
-								<input type="file" id="pr_img1" name="pr_img1" accept="image/*"  onchange="readURL1(this);" required="required">
-								<input type="hidden" name="pr_img1" value="${proInf.pr_img1 }">
+								<input type="file" id="pr_img1" name="pr_img1" accept="image/*"  onchange="readURL1(this);" >
+								<input type="hidden" id="old1" name="old1" value="${proInf.pr_img1 }">
 							</div>
 							<c:if test="${proInf.pr_img1 ==null }">
 								<img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150">
@@ -246,7 +250,7 @@ input[type="number"]::-webkit-inner-spin-button {
 							<div id="d_file2" class="filebox">
 								<label for="pr_img2">변경하기</label>
 								<input type="file" id="pr_img2" name="pr_img2" accept="image/*"  onchange="readURL2(this);">
-								<input type="hidden" name="pr_img2" value="${proInf.pr_img2 }">
+								<input type="hidden" id="old2" name="old2" value="${proInf.pr_img2 }">
 							</div>
 							<c:if test="${proInf.pr_img2 ==null }">
 								<img id="preview2" src="${contextPath }/resources/image/noImage.png" width="150" height="150">
@@ -261,8 +265,8 @@ input[type="number"]::-webkit-inner-spin-button {
 						<div style="max-width: 75%; position: relative;">
 							<div id="d_file3" class="filebox">
 								<label for="pr_img3">변경하기</label>
-								<input type="file" id="pr_img3" name="pr_img3" accept="image/*"  onchange="readURL2(this);">
-								<input type="hidden" name="pr_img3" value="${proInf.pr_img3 }">
+								<input type="file" id="pr_img3" name="pr_img3" accept="image/*"  onchange="readURL3(this);">
+								<input type="hidden" id="old3" name="old3" value="${proInf.pr_img3 }">
 							</div>
 							<c:if test="${proInf.pr_img3 ==null }">
 								<img id="preview3" src="${contextPath }/resources/image/noImage.png" width="150" height="150">

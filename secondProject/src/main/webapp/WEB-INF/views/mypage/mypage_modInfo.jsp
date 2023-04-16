@@ -111,7 +111,7 @@
 							<div class="modProfile">
 								<c:if test="${member.profileimg != null }">
 									<div class="modNoProfileImg" id="none1" style="display: none;">No Image</div>
-									<img src="/image/member/${member.user_id }/${member.profileimg}" name="profileimg" id="preview" class="modProfileImg">
+									<img src="/image/member/${member.user_id }/${member.profileimg}" id="preview" class="modProfileImg">
 								</c:if>
 									<c:if test="${member.profileimg == null }">
 									<div class="modNoProfileImg" id="none2" style="">No Image</div>
