@@ -45,9 +45,14 @@
 	</select>
 	<delete id="prdelete" parameterType="int">
 		<![CDATA[
-			delete from board where regNum=#{regNum}
+			update board set pr_sold='3' where regNum=#{regNum}
 		]]>
 	</delete>
+	<select id="selectSellerId" resultType="String" parameterType="int">
+		<![CDATA[
+			select seller_id from board where regNum=#{regNum}
+		]]>
+	</select>
 	
 	<!-- 관리자모드- 회원리스트 불러오기 -->
 	<select id="selectAllMemberList" resultMap="memResult">

@@ -1,27 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
 
 <mapper namespace="mapper.comment">
 
  	<resultMap type="commentDTO" id="commentResult">
       <result property="commentNo" column="commentNo" />
+      <result property="comment_plusNo" column="comment_plusNo" />
       <result property="buyer_id" column="buyer_id" />
-      <result property="solder_id" column="solder_id" />
+      <result property="seller_id" column="seller_id" />
+      <result property="comment_writer" column="comment_writer" />
       <result property="regNum" column="regNum" />
       <result property="regDate" column="regDate" />
       <result property="comment_content" column="comment_content" />
    </resultMap>
+   <resultMap type="boardCommentCntDTO" id="boardCommentCntRes">
+   		<result property="regNum" column="regNum"/>
+   		<result property="boardCommentCount" column="boardCommentCount"/>
+   </resultMap>
+   <resultMap type="userCommentCntDTO" id="userCommentCntRes">
+   		<result property="user_id" column="user_id"/>
+   		<result property="userCommentCount" column="userCommentCount"/>
+   </resultMap>
    
-   	<select id="commentList" resultType="commentDTO" parameterType="int">	
+   	<select id="commentList" resultType="commentDTO" parameterType="int">	<!-- 판매자용 댓글 가져옴 -->
 		<![CDATA[
 			select * from comments where regNum=#{regNum}
 		]]>
 	</select>
-	<select id="buyercommentList" resultType="commentDTO" parameterType="java.util.Map">
+	<select id="buyercommentList" resultType="commentDTO" parameterType="java.util.Map"><!-- 구매자용 댓글 가져옴 -->
 		<![CDATA[
 			select * from comments where regNum=#{regNum} and buyer_id=#{buyer_id}
 		]]>
 	</select>
+	<select id="buyers" resultType="String" parameterType="int"><!-- 특정 글의 구매자 리스트(판매자뷰에서 사용) -->
+		<![CDATA[
+			select buyer_id from comments where regNum=#{regNum} and comment_plusNo=1
+		]]>
+	</select>
+	 <select id="NewCommentNo" resultType="int"><!-- 댓글 번호  -->
+        <![CDATA[
+            select max(commentNo) from comments
+        ]]>
+    </select>
+     <select id="NewCommentPlusNo" resultType="int" parameterType="java.util.Map"><!-- 특정 구매자와읟 댓글 번호 -->
+        <![CDATA[
+            select max(comment_plusNo) from comments where buyer_id=#{buyer_id} and regNum=#{regNum}
+        ]]>
+    </select>
+     <insert id="addPlusComment" parameterType="java.util.Map"><!-- 댓글 추가 -->
+        <![CDATA[
+            insert into comments(commentNo, comment_plusNo, buyer_id, seller_id, comment_writer, regNum, regDate, comment_content)
+                values(#{commentNo}, #{comment_plusNo}, #{buyer_id}, #{seller_id}, #{comment_writer}, #{regNum}, sysdate,#{comment_content})
+        ]]>
+    </insert>
+    <delete id="deleteComment" parameterType="int"><!-- 댓삭 -->
+    	<![CDATA[
+    		delete from comments where commentNo=#{commentNo}
+    	]]>
+    </delete>
+    <update id="addBoardCnt" parameterType="int"><!-- 글 당 댓글알림 count -->
+    	<![CDATA[
+    		update boardCommentCnt set boardCommentCount=(boardCommentCount)+1 where regNum=#{regNum}
+    	]]>	
+    </update>
+     <update id="addUserCnt" parameterType="String"><!--유저 당 댓글알림 count -->
+    	<![CDATA[
+    		update userCommentCnt set userCommentCount=(userCommentCount)+1 where user_id=#{user_id}
+    	]]>	
+    </update>
 </mapper>

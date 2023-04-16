@@ -32,7 +32,7 @@ public class AdminDAOImpl implements AdminDAO{
 	public void prdelete(String[] deleteselection) {
 		// TODO Auto-generated method stub
 		for(int i=0;i<deleteselection.length;i++) {
-			sqlSession.delete("mapper.admin.prdelete", Integer.parseInt(deleteselection[i]));
+			sqlSession.update("mapper.admin.prdelete", Integer.parseInt(deleteselection[i]));
 		}
 	}
 	

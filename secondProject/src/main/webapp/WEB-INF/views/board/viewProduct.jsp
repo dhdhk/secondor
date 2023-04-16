@@ -144,62 +144,413 @@
 		</c:choose>--%>
 	</div>
 	<div class="commentContent"><!-- 댓글 part(지저분함) -->
-		<form name="comment" method="post" action="" enctype="multipart/form-data">
 		<div class="commentViewer">
-			<table align="center" border="1px" width="60%">
 			<c:choose>
 				<c:when test="${isLogOn == true }"><!-- 로그인 시 댓글보임 -->
 					<c:choose>
-						<c:when test="${empty commentList }"><!-- 댓 없음 -->
-						</c:when>
-						<c:when test="${not empty commentList  }"><!-- 댓 있음 -->
-							<c:choose>
-								<c:when test="${member.user_id==product.seller_id }"><!-- 판매자한테 댓글 모두 보임 -->
-									<c:forEach var="commentList" items="${commentList }">
-									 <tr>
-										<td align="left" rowspan="2" >${commentList.buyer_id } ${commentList.regDate }</td>
-										<td align="right"><a href="">삭제</a></td>
-									</tr>
-									<tr>
-										<td align="right"><a href="">수정</a></td>
-									</tr>
-									<tr>
-										<td align="left" colspan="2">${commentList.comment_content }</td>
-									</tr>
-									<tr></tr>
+						<c:when test="${member.user_id==product.seller_id }"><!-- 판매자한테 댓글 모두 보임 -->
+							<form name="comment" method="post" action="${contextPath }/product/SellerWriteComment.do?regNum=${product.regNum}" enctype="multipart/form-data">
+								<table align="center" border="1px" width="60%">
+									<c:forEach var="sellerCommentsView0" items="${sellerCommentsView0 }"><!-- 판매자에게는 ForEach문 기준으로 10개(10명분,0~9) 반복됨, 데이터 없으면 보이지 않음-->
+								  	 	<tr>
+											<td align="left"  >
+												<!-- 댓글 작성자 구분용 -->
+												<c:choose>
+													<c:when test="${sellerCommentsView0.comment_writer=='buyer' }">${sellerCommentsView0.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView0.comment_writer=='seller' }">${sellerCommentsView0.seller_id}</c:when>
+												</c:choose>
+												${sellerCommentsView0.regDate }
+											</td>
+											<td align="right"><!-- 삭제 버튼 -->
+												<c:choose>
+													<c:when test="${sellerCommentsView0.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView0.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2"><!-- 댓글 내용 -->
+												${sellerCommentsView0.comment_content }	
+											</td>
+										</tr>
 									</c:forEach>
-								</c:when>
-								<c:otherwise><!-- 판매자가 아닐 시 -->
-									<c:forEach var="buyerComments" items="${buyerComments }">
-									 <tr>
-										<td align="left" rowspan="2" >${buyerComments.buyer_id } ${buyerComments.regDate }</td>
-										<td align="right"><a href="">삭제</a></td>
-									</tr>
-									<tr>
-										<td align="right"><a href="">수정</a></td>
-									</tr>
-									<tr>
-										<td align="left" colspan="2">${buyerComments.comment_content }</td>
-									</tr>
-									<tr></tr>
+									<!-- 댓글입력창 -->
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView0 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content0" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView1" items="${sellerCommentsView1 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView1.comment_writer=='buyer' }">${sellerCommentsView1.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView1.comment_writer=='seller' }">${sellerCommentsView1.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView1.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView1.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView1.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView1.comment_content }
+											</td>
+										</tr>
 									</c:forEach>
-								</c:otherwise>
-							</c:choose>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView1 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content1" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView2" items="${sellerCommentsView2 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView2.comment_writer=='buyer' }">${sellerCommentsView2.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView2.comment_writer=='seller' }">${sellerCommentsView2.seller_id}</c:when>
+												</c:choose>
+												${sellerCommentsView2.regDate }
+											</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView2.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView2.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView2.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView2 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content2" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView3" items="${sellerCommentsView3 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView3.comment_writer=='buyer' }">${sellerCommentsView3.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView3.comment_writer=='seller' }">${sellerCommentsView3.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView3.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView3.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView3.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView3.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView3 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content3" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView4" items="${sellerCommentsView4 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView4.comment_writer=='buyer' }">${sellerCommentsView4.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView4.comment_writer=='seller' }">${sellerCommentsView4.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView4.regDate}
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView4.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView4.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView4.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView4 and (product.pr_sold==0 or product.pr_sold==1) }">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content4" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView5" items="${sellerCommentsView5 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView5.comment_writer=='buyer' }">${sellerCommentsView5.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView5.comment_writer=='seller' }">${sellerCommentsView5.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView5.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView5.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView5.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView5.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView5 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content5" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView6" items="${sellerCommentsView6 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView6.comment_writer=='buyer' }">${sellerCommentsView6.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView6.comment_writer=='seller' }">${sellerCommentsView6.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView6.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView6.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView6.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView6.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView6 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content6" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView7" items="${sellerCommentsView7 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView7.comment_writer=='buyer' }">${sellerCommentsView7.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView7.comment_writer=='seller' }">${sellerCommentsView7.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView7.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView7.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView7.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView7.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView7 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content7" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView8" items="${sellerCommentsView8 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView8.comment_writer=='buyer' }">${sellerCommentsView8.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView8.comment_writer=='seller' }">${sellerCommentsView8.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView8.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView8.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView8.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView8.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView8 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content8" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+									<c:forEach var="sellerCommentsView9" items="${sellerCommentsView9 }">
+								  		<tr>
+											<td align="left"  >
+												<c:choose>
+													<c:when test="${sellerCommentsView9.comment_writer=='buyer' }">${sellerCommentsView9.buyer_id}</c:when>
+													<c:when test="${sellerCommentsView9.comment_writer=='seller' }">${sellerCommentsView9.seller_id}</c:when>
+										 		</c:choose>
+										 		${sellerCommentsView9.regDate }
+										 	</td>
+											<td align="right">
+												<c:choose>
+													<c:when test="${sellerCommentsView9.comment_writer=='seller' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${sellerCommentsView9.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr>
+											<td align="left" colspan="2">
+												${sellerCommentsView9.comment_content }
+											</td>
+										</tr>
+									</c:forEach>
+									<c:choose>
+										<c:when test="${not empty sellerCommentsView9 and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content9" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+								</table>
+							</form>
 						</c:when>
+						<c:otherwise><!-- 판매자가 아닐 시 -->
+							<form name="comment" method="post" action="${contextPath }/product/buyerWriteComment.do?regNum=${product.regNum}" enctype="multipart/form-data">
+								<table align="center" border="1px" width="60%">
+									<c:forEach var="buyerComments" items="${buyerComments }"><!-- 구매자용 출력 창/form태그 사용, when태그 사용으로 인해 판매자용과 미묘하게 다른 형태를 취하고 있음 -->
+										<tr>
+											<td align="left" >
+												<!-- 댓글 작성자 표시용 -->
+												<c:choose>
+													<c:when test="${buyerComments.comment_writer=='buyer' }">${buyerComments.buyer_id}</c:when>
+													<c:when test="${buyerComments.comment_writer=='seller' }">${buyerComments.seller_id}</c:when>
+										 		</c:choose> 
+										 		${buyerComments.regDate }
+										 	</td>
+											<td align="right"><!-- 삭제 버튼 -->
+												<c:choose>
+													<c:when test="${buyerComments.comment_writer=='buyer' }">
+														<a href="${contextPath }/product/deleteComment.do?regNum=${product.regNum}&commentNo=${buyerComments.commentNo }">삭제</a>
+													</c:when>
+												</c:choose>
+											</td>
+										</tr>
+										<tr><!-- 댓글 내용 -->
+											<td align="left" colspan="2">${buyerComments.comment_content }</td>
+										</tr>
+									</c:forEach>
+									<!-- 댓글 입력 창, 댓글 내용이 보이는가에 대해 상관없이 구매자에게는 무조건 출력되어야 함 -->
+									<c:choose>
+										<c:when test="${isLogOn == true and member.user_id!=product.seller_id and (product.pr_sold==0 or product.pr_sold==1)}">
+											<tr>
+												<td>
+													<input type="text" style="width: 100%;" name="comment_content10" placeholder="댓글을 입력하세요">
+												</td>
+												<td>
+													<input type="submit" value="댓글 작성">
+												</td>
+											</tr>
+										</c:when>
+									</c:choose>
+								</table>
+							</form>
+						</c:otherwise>
 					</c:choose>
-					<tr>
-						<td>
-							<input type="text" style="width: 100%;" name="comment_content" placeholder="댓글을 입력하세요">
-						</td>
-						<td>
-							<input type="submit" value="댓글 작성">
-						</td>
-					</tr>
 				</c:when>
-			</c:choose>
-			</table>
+			</c:choose>		
 		</div>
-	</form>
 	</div>
 	<!-- 테스트용 --><a href="${contextPath }/modify/modPro.do?regNum=${product.regNum}">수정 이동</a><!-- 수정창 테스트용 -->
 	<div class="articleCtrl">	

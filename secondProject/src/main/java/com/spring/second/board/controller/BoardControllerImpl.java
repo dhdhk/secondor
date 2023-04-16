@@ -22,13 +22,15 @@ import com.spring.second.board.dto.PageHandler;
 import com.spring.second.board.dto.SearchCondition;
 import com.spring.second.board.service.BoardService;
 import com.spring.second.comment.dto.CommentDTO;
+import com.spring.second.comment.service.CommentService;
 import com.spring.second.member.dto.MemberDTO;
 
 @Controller
 public class BoardControllerImpl implements BoardController {
 	@Autowired
 	BoardService boardService;
-
+	@Autowired
+	CommentService commentService;
 
 	@RequestMapping(value="main.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public String listArticles(SearchCondition sc , Model m,
@@ -99,7 +101,7 @@ public class BoardControllerImpl implements BoardController {
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		String user_id=null;
-		
+		List<String> buyers= commentService.buyerCounting(regNum);
 		ModelAndView mav = new ModelAndView(viewName);
 		
 		Map<String, Object> productMap = boardService.viewProduct(regNum);
@@ -107,6 +109,13 @@ public class BoardControllerImpl implements BoardController {
 		
 		mav.addObject("productMap", productMap);
 		mav.addObject("commentList", commentList);
+		if(buyers.size()!=0) {
+			for(int i=0;i<buyers.size();i++) {
+				System.out.println(buyers.get(i));
+				List<CommentDTO> sellerCommentsView=commentService.viewbuyerComments(regNum, buyers.get(i));
+				mav.addObject("sellerCommentsView"+i, sellerCommentsView);
+			}
+		}
 		if(member!=null) {
 			user_id= member.getUser_id();
 			System.out.println("user id: "+user_id);
@@ -116,7 +125,4 @@ public class BoardControllerImpl implements BoardController {
 		mav.addObject("pageName", request.getParameter("pageName"));
 		return mav;
 	}
-
-
-
 }
