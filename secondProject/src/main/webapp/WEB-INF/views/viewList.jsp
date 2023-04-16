@@ -13,6 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="viewListTitle">
+		${param.category_name}
+	</div>
 <!-- 부트스트랩 card 적용-->
 	<!-- 카테고리 별 리스트 -->
 	<c:choose>

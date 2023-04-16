@@ -16,6 +16,12 @@
 	font-family: 'NanumSquareNeoHeavy';
 */
 
+.viewListTitle{
+	font-size: 35px;
+	font-family: 'NanumSquareNeoExtraBold';
+}
+
+
 /* 리스트카드 이미지 크기 */
 .card-img-top{
 	height: 15rem;

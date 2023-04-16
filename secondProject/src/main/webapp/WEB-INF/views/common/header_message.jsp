@@ -14,35 +14,6 @@
 	}
 
 </script>
-<script type="text/javascript">
-/* 	var left = {
-		pageSubmitFn : function(menu){
-			 if(menu === "home"){
-				$("#frm").attr("action", "/"); //form 의 action 값을 /로 변경
-				$("#pageName").val("home");
-			}else if(menu==="profile"){
-				$("#frm").attr("action", "home2"); //form 의 action 값을 home2로 변경
-				$("#pageName").val("profile");
-			}
-			$("#frm").submit();
-		}
-	}
- */
-/* 	$(function(){
-		$(".nav-item").removeClass("active");
-		var category_name = "<c:out value='${param.category_name}' />";	
-		$("#"+category_name).addClass("active"); 	
-		$(".nav-item").click(function(){
-			var menu = $(this).attr("id");		
-			left.pageSubmitFn(menu);
-		})
-	}) */
-</script>
-<style type="text/css">
-.active {
-	background-color: red;
-}
-</style>
 </head>
 <body>
 	<nav class="nav_bar">
@@ -65,17 +36,17 @@
 			<%-- 카테고리 --%>
 			<div class="navbar_bottom">
 				<ul class="nav_category">
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=living">거실</a></li>
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=dining">주방</a></li>
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=bedroom">침실</a></li>
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=bathroom">화장실</a></li>
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=study">서재</a></li>
-					<li class="category_item"><a class="nav-link" id="categoryLink"
+					<li class="category_item"><a class="nav-link"
 						href="${contextPath }/viewList.do?category_name=etc">기타</a></li>
 				</ul>
 			</div>
@@ -88,12 +59,20 @@
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!(로그아웃) 
 				</div>
 				<div class="nav_buttons">
+
 						<div class="nav_login" onclick="location.href='${contextPath}/mypage/mypageMain.do';">
 							마이페이지
 						</div>
+
 						<div class="nav_writeProduct" onclick="location.href='${contextPath }/write/writeForm.do';">
 							상품 등록
 						</div>
+
+
+						<div class="nav_message" onclick="location.href='#';">
+							메세지
+						</div>
+
 				</div>
 			</div>
 		</c:when>
@@ -110,6 +89,10 @@
 					<div class="nav_writeProduct" onclick="fn_needLogin();">
 						상품 등록
 					</div>
+					<div class="nav_message" onclick="fn_needLogin();">
+						메세지
+					</div>
+
 				</div>
 			</div>
 		</c:otherwise>
