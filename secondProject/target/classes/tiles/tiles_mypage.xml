@@ -33,4 +33,8 @@
 		<put-attribute name="title" value="회원탈퇴" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_dropOut.jsp" />
 	</definition>
+	<definition name="/mypage/logoutForm" extends="mypageLayout">
+		<put-attribute name="title" value="회원탈퇴" />
+		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_logout.jsp" />
+	</definition>
 </tiles-definitions>

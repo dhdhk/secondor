@@ -23,6 +23,7 @@ function backToList(obj){
 </script>
 </head>
 <body>
+<form  method="post" action="/second/member/removeMember.do">
 	<div class="mypageBody">
 		<!-- 사이드바 -->
 		<div class="mypageSidebar">
@@ -39,11 +40,10 @@ function backToList(obj){
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -57,11 +57,12 @@ function backToList(obj){
 			<div class="menuContent">
 				<h3>회원 탈퇴 하시겠습니까?</h3>
 				<div class="buttons">
-					<input type="button" value="탈퇴하기" class="button" onclick="${contextPath}/member/removeMember.do">
-					<input type="button" value="돌아가기" class="button" onclick="backToList(this.form)">
+					<input type="submit" value="탈퇴하기">
+					<input type="button" value="돌아가기" onclick="backToList(this.form)">
 				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 </body>
 </html>

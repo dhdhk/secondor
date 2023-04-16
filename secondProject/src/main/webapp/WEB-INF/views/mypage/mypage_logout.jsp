@@ -39,11 +39,10 @@ function backToList(obj){
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -57,7 +56,9 @@ function backToList(obj){
 			<div class="menuContent">
 				<h3>로그아웃 하시겠습니까?</h3>
 				<div class="buttons">
-					<input type="button" value="로그아웃 하기" class="button" onclick="">
+					<form method="post" action="${contextPath }/member/logout.do">
+					<input type="submit" value="로그아웃 하기" class="button">
+				</form>
 				</div>
 			</div>
 		</div>

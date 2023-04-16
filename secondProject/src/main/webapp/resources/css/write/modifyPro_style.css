@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/*
+	border:2px solid #d0d0d0;
+*/
+/*
+	#5A7EFF -> 파랑 
+	#FFCD4A -> 노랑
+*/
+
+
+.writeForm{
+	margin-top: 180px;
+}
+
+.choiceCategory_name{
+	background: silver;
+	width: 70%;
+	text-align: center;
+}
+
+.filecancle{
+	position: absolute;
+    top: 100px;
+    right: 0;
+    color: white;
+    border: none;
+    background: #5A7EFF;
+    border-radius: 3px;
+    height: 28px;
+    width: 28px;
+}
+     
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    width: 300px;
+}
+
+.button{
+	background-color: #5A7EFF;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 120px;
+	height: 35px;
+}

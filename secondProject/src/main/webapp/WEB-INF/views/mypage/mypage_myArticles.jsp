@@ -34,11 +34,10 @@
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -47,7 +46,7 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				작성글
+				작성글 관리
 			</div>
 			<div class="menuContent">
 				<table align="center" width="700px;">
@@ -125,7 +124,7 @@
 													<a href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage+5)}" class="btn btn-sm btn-success" style="background-color: #5A7EFF; border: none;">&gt;</a>
 												</c:if>
 												<c:if test="${beginPage+4>=endPage }">
-													<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')" style="background-color: #5A7EFF; border: none;">&gt;</span>
+													<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')" style="background-color: #5A7EFF; border: none;">&gt;</span>
 												</c:if>
 											</div>
 										</div>

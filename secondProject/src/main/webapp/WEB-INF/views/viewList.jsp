@@ -66,7 +66,7 @@
 						<a href="${contextPath }/viewList.do${ch.cc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
 					</c:if>
 					<c:if test="${beginPage+4>=endPage }">
-						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">&gt;</span>
+						<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')">&gt;</span>
 					</c:if>
 				</div>
 			</div>    
