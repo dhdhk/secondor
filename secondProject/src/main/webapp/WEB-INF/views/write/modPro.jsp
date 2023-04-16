@@ -12,19 +12,38 @@
 <link rel="stylesheet" href="${contextPath }/resources/css/write_style.css">
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+/* 숫자필드 오른쪽에 증감화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.filebox label {	/* 수정버튼 스타일*/
+  display: inline-block;
+  padding: .5em .75em;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+</style>
 <script type="text/javascript">
-	function modImg1(){
-		$("#d_file1").empty();
-		$("#d_file1").append("<input type='file' name='pr_img1' accept='image/*'  onchange='readURL1(this);' id='pr_img1' required='required'>");
-	}
-	function modImg2(){
-		$("#d_file2").empty();
-		$("#d_file2").append("<input type='file' name='pr_img2' accept='image/*' onchange='readURL2(this);'>");
-	}
-	function modImg3(){
-		$("#d_file3").empty();
-		$("#d_file3").append("<input type='file' name='pr_img3' accept='image/*' onchange='readURL3(this);'>");
-	}
+	
 	function readURL1(input) {
 		if(input.files && input.files[0]){
 			let reader = new FileReader();
@@ -85,14 +104,6 @@
 	function backToList(obj){
 		obj.action = "${contextPath}/main.do";
 		obj.submit();
-	}
-</script>
-<script>
-	function onlyNumber(){
-
-        if((event.keyCode<48)||(event.keyCode>57))
-
-           event.returnValue=false;
 	}
 </script>
 </head>
@@ -169,7 +180,7 @@
 		  		<tr style="height: 40px;">
 		  			<td>상품 가격</td>
 		  			<td >
-		  				<input type="text" style="width: 70%;" name="pr_price"  value="${proInf.pr_price }"  onkeypress="onlyNumber();" required="required">
+		  				<input type="number" style="width: 70%;" name="pr_price"  value="${proInf.pr_price }"  required="required">
 		  			</td>
 		  			<td>
 		  				<input type="range" name="pr_condition" value="${proInf.pr_condition }" min="1" max="3" required="required">
@@ -186,35 +197,41 @@
 				  	<td colspan="2">세 번째 사진 첨부</td>
 				</tr>
 				<tr>
-					<!-- 이미지 쪽의 문제
-					수정 창에서 file을 사용 시, 기존의 데이터를 보안상 가져오는 것이 안된다. 
-					그래서 임시로 hidden을 사용해 기존 값을 저장하고 텍스트로 보여주는 방식으로
-					꼼수를 써서 가져오고 수정 버튼을 통해, writeform과 비슷한 형식으로 만들었다. 
-					그러나, 하나하나씩 바뀌기 때문에 css도 이상하고, 데이터도 이상하게 처리되고,
-				 	img src로 기존 파일을 불러왔는데 안보인다... 
-					-->
+					<!-- input type file 자체의 가로사이즈때문에 table정렬이 자꾸 틀어지더라고요. 그래서 옆에 파일이름나오는 부분을 아예지워버렸습니다.   -->
 					<td align="center">
 						<div style="max-width: 75%">
-							<div id="d_file1" >
-								<input type="button" value="수정" onclick="modImg1()"><input type="hidden" name="pr_img1" value="${proInf.pr_img1 }">${proInf.pr_img1 }
+							<div id="d_file1" class="filebox">
+								<label for="pr_img1">변경하기</label>
+								<input type="file" id="pr_img1" name="pr_img1" accept="image/*"  onchange="readURL1(this);" required="required">
+								<input type="hidden" name="pr_img1" value="${proInf.pr_img1 }">
 							</div>
-							<img id="preview1" src="file:///C:/image/${proInf.regNum }/${proInf.pr_img1 }" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove1()">
+							<c:if test="${proInf.pr_img1 ==null }"><img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150"></c:if>
+							<c:if test="${proInf.pr_img1 !=null }"><img id="preview1" src="/image/${proInf.regNum }/${proInf.pr_img1 }" width="150" height="150"></c:if>
+							 <input type="button" id="filecancle" value="×" onclick="remove1()">
 						</div>
 					</td>
 					<td align="center">
 						<div style="max-width: 75%">
-							<div id="d_file2" >
-								<input type="button" value="수정" onclick="modImg2()"><input type="hidden" name="pr_img2" value="${proInf.pr_img2 }">${proInf.pr_img2 }
+							<div id="d_file2" class="filebox">
+								<label for="pr_img2">변경하기</label>
+								<input type="file" id="pr_img2" name="pr_img2" accept="image/*"  onchange="readURL2(this);">
+								<input type="hidden" name="pr_img2" value="${proInf.pr_img2 }">
 							</div>
-							<img id="preview2" src="file:///C:/image/${proInf.regNum }/${proInf.pr_img1 }" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove2()">
+							<c:if test="${proInf.pr_img2 ==null }"><img id="preview2" src="${contextPath }/resources/image/noImage.png" width="150" height="150"></c:if>
+							<c:if test="${proInf.pr_img2 !=null }"><img id="preview2" src="/image/${proInf.regNum }/${proInf.pr_img2 }" width="150" height="150"></c:if>
+							<input type="button" id="filecancle" value="×" onclick="remove2()">
 						</div>
 					</td>
 					<td align="center" colspan="2">
 						<div style="max-width: 75%">
-							<div id="d_file3" >
-								<input type="button" value="수정" onclick="modImg3()"><input type="hidden" name="pr_img3" value="${proInf.pr_img3 }">${proInf.pr_img3 }
+							<div id="d_file3" class="filebox">
+								<label for="pr_img3">변경하기</label>
+								<input type="file" id="pr_img3" name="pr_img3" accept="image/*"  onchange="readURL2(this);">
+								<input type="hidden" name="pr_img3" value="${proInf.pr_img3 }">
 							</div>
-							<img id="preview3" src="file:///C:/image/${proInf.regNum }/${proInf.pr_img1 }" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove3()">
+							<c:if test="${proInf.pr_img3 ==null }"><img id="preview3" src="${contextPath }/resources/image/noImage.png" width="150" height="150"></c:if>
+							<c:if test="${proInf.pr_img3 !=null }"><img id="preview3" src="/image/${proInf.regNum }/${proInf.pr_img3 }" width="150" height="150"></c:if>
+							<input type="button" id="filecancle" value="×" onclick="remove3()">
 						</div>	
 					</td>
 		  		</tr>
