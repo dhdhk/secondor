@@ -64,6 +64,7 @@
 							<c:if test="${productList.pr_sold =='0' }">거래 가능</c:if>
 							<c:if test="${productList.pr_sold =='1' }">거래 중</c:if>
 							<c:if test="${productList.pr_sold =='2' }">거래 완료</c:if>
+							<c:if test="${productList.pr_sold =='3' }">거래 불가능</c:if>
 						</td>
 						<td width="7%"><input type="checkbox" name="deleteselection" value="${productList.regNum }"/></td>
 					</tr>

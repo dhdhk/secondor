@@ -25,7 +25,7 @@ public interface MypageController {
 			HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	public ResponseEntity modInfo(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
-	public String myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception;
 

@@ -195,13 +195,18 @@ public class MypageControllerImpl implements MypageController{
 	
 	//내 상품 리스트 
 	@RequestMapping(value = "/mypage/myArticles.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public String myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		
 		//member id값을 seller_id 에 넣어줘야함
 		HttpSession session = request.getSession();
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
 		String id= member.getUser_id();
+		MemberDTO dto = memberService.selectMember(id);
+		String viewName = (String) request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("member", dto);
+		mav.addObject("viewName","/mypage/myArticles");
 		mp.setSeller_id(id);
 		
 		int totalCnt = mypageService.getProductListCount(mp);
@@ -222,7 +227,8 @@ public class MypageControllerImpl implements MypageController{
 		m.addAttribute("myList", myList);
 		m.addAttribute("mh", mypageHandler);
 		
-		return "/mypage/myArticles";
+		
+		return mav;
 	}
 	@RequestMapping(value = "/mypage/myChatlist.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
