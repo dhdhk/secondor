@@ -82,9 +82,8 @@
          	 select count(*) from board where seller_id like '%' || #{seller_id} || '%' 
          ]]>
     </select>
-	
-	
-	
+    
+    
 	<!-- 
 	<insert id="insertNewArticle" parameterType="java.util.Map">
 		<![CDATA[

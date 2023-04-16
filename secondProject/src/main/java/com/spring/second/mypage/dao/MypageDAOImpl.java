@@ -16,15 +16,19 @@ public class MypageDAOImpl implements MypageDAO{
 	@Autowired
 	SqlSession sqlSession;
 
+	//마이페이지 페이징 (내상품 리스트 갯수)
 	public  int ProductListCount(MyproductlistPage mp) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("mapper.board.MyProductListCount",mp);
 	}
 
+	//마이페이지 페이징 (내상품 리스트 불러오기)
 	public  List<BoardDTO> selectMyList(MyproductlistPage mp) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("mapper.board.selectMyList",mp);
 	}
+	
+	
 
 	@Override
 	public void updateInfo(Map<String, Object> memberMap) {
@@ -41,4 +45,8 @@ public class MypageDAOImpl implements MypageDAO{
 	public String getprofilename(MemberDTO member) {
 		return sqlSession.selectOne("mapper.member.getprofilename",member);
 	}
+
+	
+	
+	
 }

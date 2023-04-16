@@ -51,6 +51,7 @@ public class MypageControllerImpl implements MypageController{
 	 @Autowired
 	 MemberControllerImpl mc;
 	 
+
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView mypageMain(String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -192,7 +193,7 @@ public class MypageControllerImpl implements MypageController{
 		return resEnt;
 	}
 	
-//내 상품 리스트 
+	//내 상품 리스트 
 	@RequestMapping(value = "/mypage/myArticles.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public String myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
@@ -239,5 +240,9 @@ public class MypageControllerImpl implements MypageController{
 		
 		return mav;
 	}
+	
+	
+
+
 	
 }

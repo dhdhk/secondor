@@ -90,16 +90,8 @@
 										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
 										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
 									</td>
-									<td>
-										<input type="checkbox" name="deleteBoard" value="${myList.regNum}">
-									</td>
-								</tr>
+s								</tr>
 							</c:forEach>
-								<tr class="trDelete" >
-									<td colspan="5" align="right" >
-										<input type="button" class="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
-									</td>
-								</tr>
 								
 								<!-- 페이징 -->
 								<c:set var="page" value="${mh.mp.page}"/> 

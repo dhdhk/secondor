@@ -13,4 +13,5 @@ public interface MypageService {
 	public List<BoardDTO> getselectMyList(MyproductlistPage mp);
 	public void modInfoNoimg(Map<String, Object> memberMap);
 	public String getprofilename(MemberDTO member);
+	
 }
