@@ -105,12 +105,12 @@
 				</div>		
 				</div>
 			</div>
-			<div class="buttons">
-				<div class="chatLink" onclick="location.href='#';">
-					메세지 보내기
-				</div>
+			<c:if test="${member.user_id != product.seller_id }">
+				<div class="buttons">
+				<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}
+				&&regNum=${product.regNum}&&pr_title=${product.pr_title}">메세지 보내기</a>
 			</div>
-			
+			</c:if>
 		</div>
 		<div class="ProductBottom">
 			${product.pr_content }

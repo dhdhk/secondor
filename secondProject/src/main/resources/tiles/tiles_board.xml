@@ -50,14 +50,4 @@
 		<put-attribute name="title" value="답글창" />
 		<put-attribute name="body" value="/WEB-INF/views/board/replyForm.jsp" />
 	</definition> -->
-	
-	<definition name="/chat/chatList" extends="baseLayout">
-		<put-attribute name="title" value="채팅 목록" />
-		<put-attribute name="body" value="/WEB-INF/views/chat/chatList.jsp" />
-	</definition>
-	
-	<definition name="/chat/chatForm" extends="baseLayout">
-		<put-attribute name="title" value="채팅방" />
-		<put-attribute name="body" value="/WEB-INF/views/chat/chatForm.jsp" />
-	</definition>
 </tiles-definitions>

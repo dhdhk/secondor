@@ -63,7 +63,7 @@
 						</div>
 
 
-						<div class="nav_message" onclick="location.href='#';">
+						<div class="nav_message" onclick="location.href='${contextPath }/chat/chatList.do?id=${member.user_id }';">
 							메세지
 						</div>
 

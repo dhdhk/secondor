@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.chat">
+	<resultMap type="chatDTO" id="chatResult">
+      <result property="chat_id" column="chat_id" />
+      <result property="pr_id" column="pr_id" />
+      <result property="pr_title" column="pr_title" />
+      <result property="seller_id" column="seller_id" />
+      <result property="buyer_id" column="buyer_id" />
+      <result property="chat_content" column="chat_content" />
+      <result property="chat_Time" column="chat_Time" />
+	</resultMap>
+
+   	<resultMap type="chatroomDTO" id="chatroomResult">
+   		<result property="id" column="id"/>
+   	</resultMap>
+   
+   <select id="selectChatRoom" parameterType="java.util.Map" resultType="chatDTO">
+   		<![CDATA[	
+			select * from chat where buyer_id=#{id} and pr_id=#{pr_id}
+		]]>		
+   </select>
+   
+   <insert id="insertNewChatRoom" parameterType="java.util.Map">
+		<![CDATA[	
+			insert into chat(chat_id, pr_id, pr_title, seller_id, buyer_id, chat_content, chat_Time)
+				values(#{chatId}, #{pr_id}, #{pr_title}, #{seller_id}, #{id}, '', sysdate)
+		]]>		
+	</insert>
+	
+	<select id="selectNewChatId" resultType="int">
+		<![CDATA[
+			select max(chat_id)+1 from chat
+		]]>
+	</select>
+	
+	<select id="selectAllChatList" resultMap="chatResult">
+		<![CDATA[
+			select * from chat where seller_id=#{id} or buyer_id=#{id} order by chat_id asc
+		]]>
+	</select>
+	
+	<update id="insertChatContent" parameterType="java.util.Map">
+		<![CDATA[
+			update chat set chat_content=concat(chat_content, #{content}) where chat_id=#{id}
+		]]>
+	</update>
+	
+</mapper>
