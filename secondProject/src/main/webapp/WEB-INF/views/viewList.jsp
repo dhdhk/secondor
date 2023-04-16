@@ -13,6 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="viewListTitle">
+		${param.category_name}
+	</div>
 <!-- 부트스트랩 card 적용-->
 	<!-- 카테고리 별 리스트 -->
 	<c:choose>
@@ -38,7 +41,7 @@
 								<div class="card-body">
 								<!-- 카드 내용: ,pr_title, pr_price, regDate  -->
 									<h5 class="card-title"> ${ListByCategory.pr_title }</h5>
-									<p class="card-text"> ${ListByCategory.pr_price }원 , ${ListByCategory.regDate } </p>
+									<p class="card-text"> ${ListByCategory.pr_price } , ${ListByCategory.regDate } </p>
 								</div>
 							</div>
 					</div>
