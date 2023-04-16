@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.writeForm{
+	margin-top: 180px;
+}
+
+.choiceCategory_name{
+	background: silver;
+	width: 70%;
+	text-align: center;
+}

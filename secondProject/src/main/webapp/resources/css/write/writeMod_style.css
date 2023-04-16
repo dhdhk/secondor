@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.writeModForm{
+	margin-top: 180px;
+}
+
+.choiceCategory_name{
+	background: silver;
+	width: 70%;
+	text-align: center;
+}
+
+.d_file{
+	display: flex;
+	flex-direction: row;
+}
+
+.d_file1, .d_file2, .d_file3{
+	display: flex;
+	flex-direction: column;
+	
+}
