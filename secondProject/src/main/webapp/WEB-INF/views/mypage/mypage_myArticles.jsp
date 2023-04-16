@@ -55,7 +55,6 @@
 						<td width="50%">제목</td>
 						<td width="15%">작성일자</td>
 						<td width="10%">판매상태</td>
-						<td width="7%">선택</td>
 					</tr>
 					<c:choose>
 						<c:when test="${myList == null }">
@@ -90,16 +89,8 @@
 										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
 										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
 									</td>
-									<td>
-										<input type="checkbox" name="deleteBoard" value="${myList.regNum}">
-									</td>
 								</tr>
 							</c:forEach>
-								<tr class="trDelete" >
-									<td colspan="5" align="right" >
-										<input type="button" class="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
-									</td>
-								</tr>
 								
 								<!-- 페이징 -->
 								<c:set var="page" value="${mh.mp.page}"/> 
