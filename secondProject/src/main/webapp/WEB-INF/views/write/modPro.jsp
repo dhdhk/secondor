@@ -111,12 +111,12 @@ input[type="number"]::-webkit-inner-spin-button {
 </script>
 </head>
 <body>
-	<div class="writeForm">
 	  	<form name="write" method="post" action="${contextPath }/modify/modifyProduct.do?regNum=${proInf.regNum}" enctype="multipart/form-data">
+	  		<div class="writeForm">
 	  		<table align="center" style="width: 1200px;">
 		  		<tr style="height: 40px;">
 		  			<td colspan="4">
-		  				<input type="text" name="pr_title" value="${proInf.pr_title } " size="118" maxlength="15">
+		  				<input type="text" name="pr_title" value="${proInf.pr_title }" size="118" maxlength="15">
 		  			</td>
 		  		</tr>
 		  		<tr style="height: 40px;">
@@ -189,15 +189,10 @@ input[type="number"]::-webkit-inner-spin-button {
 		  				<input type="range" name="pr_condition" value="${proInf.pr_condition }" min="1" max="3" required="required">
 		  			</td>
 		  		</tr>
-		  		<tr>
-		  			<td colspan="4" >
-		  				<textarea rows="15" cols="120" maxlength="4000" name="pr_content"  wrap="hard" style="resize: none;">${proInf.pr_content }</textarea>
-		  			</td>
-		  		</tr>
-				<tr>
+				<tr style="height: 40px;">
 		  			<td colspan="4" align="right">
 		  				판매 여부&nbsp;
-		  				<select name="pr_sold">
+		  				<select name="pr_sold" style="margin-right: 50px;">
 		  					<c:if test="${proInf.pr_sold=='0' }">
 		  						<option value="0" selected="selected">거래 가능</option>
 			  					<option value="1">거래 중</option>
@@ -216,10 +211,17 @@ input[type="number"]::-webkit-inner-spin-button {
 		  				</select>
 		  			</td>
 		  		</tr>
+		  		<tr>
+		  			<td colspan="4" >
+		  				<textarea rows="15" cols="120" maxlength="4000" name="pr_content"  wrap="hard" style="resize: none;">${proInf.pr_content }</textarea>
+		  			</td>
+		  		</tr>		  		
+		  		</table>
+		  		<table align="center" style="width: 1200px;">
 		  		<tr style="height: 40px;">
 		  			<td>첫 번째 사진 첨부 <label style="color: red;">(필수)</label></td>
 				  	<td>두 번째 사진 첨부</td>
-				  	<td colspan="2">세 번째 사진 첨부</td>
+				  	<td>세 번째 사진 첨부</td>
 				</tr>
 				<tr>
 					<!-- input type file 자체의 가로사이즈때문에 table정렬이 자꾸 틀어지더라고요. 그래서 옆에 파일이름나오는 부분을 아예지워버렸습니다.   -->
@@ -255,7 +257,7 @@ input[type="number"]::-webkit-inner-spin-button {
 							<input type="button" class="filecancle" id="filecancle" value="×" onclick="remove2()">
 						</div>
 					</td>
-					<td align="center" colspan="2" style="width: 400px;">
+					<td align="center" style="width: 400px;">
 						<div style="max-width: 75%; position: relative;">
 							<div id="d_file3" class="filebox">
 								<label for="pr_img3">변경하기</label>
@@ -273,7 +275,7 @@ input[type="number"]::-webkit-inner-spin-button {
 					</td>
 		  		</tr>
 				<tr height="">
-					<td colspan="4" align="center">
+					<td colspan="3" align="center" style="height: 60px;">
 						<div class="buttons">
 							<input type="submit" value="글수정" class="button">
 							&nbsp;&nbsp;&nbsp;
@@ -282,8 +284,9 @@ input[type="number"]::-webkit-inner-spin-button {
 					</td>
 				</tr>
 			</table>
+			</div>
 	  </form>
-  </div>
+
 </body>
 </html>
 		

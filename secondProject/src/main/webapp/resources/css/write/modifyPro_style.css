@@ -11,6 +11,8 @@
 
 .writeForm{
 	margin-top: 180px;
+    display: flex;
+    flex-direction: column;
 }
 
 .choiceCategory_name{
@@ -40,6 +42,7 @@
     align-items: center;
     height: 80px;
     width: 300px;
+    margin-top: 20px;
 }
 
 .button{
