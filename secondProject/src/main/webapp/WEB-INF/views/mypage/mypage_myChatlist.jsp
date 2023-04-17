@@ -48,8 +48,24 @@
 			<div class="menuTitle" >
 				1대1 채팅 목록
 			</div>
-			<div class="menuContent">
-				메세지 목록 content
+				<div class="menuContent">
+						<table border="1" align="center" width="50%">
+					<tr align="center" bgcolor="lightgreen">
+					<c:forEach var="chat" items="${chatList}">
+						<tr align="left">
+							<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 -->
+								<td>${chat.seller_id }<br>${chat.pr_title }</td>
+							</c:if>
+							<c:if test="${param.id == chat.seller_id}"> <!-- 내가 판매자면 -->
+								<td>${chat.buyer_id }<br>${chat.pr_title }</td>
+							</c:if>
+							<td><img src="/image/${chat.pr_id }/${chat.pr_img1 }"
+								class="d-block w-100" alt="...">
+							</td>
+						</tr>
+					</c:forEach>
+				</tr>
+			</table>
 			</div>
 		</div>
 	</div>

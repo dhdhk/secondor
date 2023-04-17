@@ -27,6 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.chat.dto.ChatDTO;
+import com.spring.second.chat.service.ChatService;
 import com.spring.second.member.controller.MemberControllerImpl;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
@@ -50,6 +52,9 @@ public class MypageControllerImpl implements MypageController{
 	 
 	 @Autowired
 	 MemberControllerImpl mc;
+	 
+	 @Autowired
+	private ChatService chatservice;
 	 
 
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
@@ -79,6 +84,8 @@ public class MypageControllerImpl implements MypageController{
 		String id= member.getUser_id();
 		ModelAndView mav = new ModelAndView(viewName);
 		MemberDTO dto = memberService.selectMember(id);
+		List<ChatDTO> chatList = chatservice.listchats(id);
+		mav.addObject("chatList", chatList);
 //		List<BoardDTO> bto = mypageService.selectMyList(id);
 //		mav.addObject("myList",bto);
 		mav.addObject("member", dto);
@@ -231,11 +238,15 @@ public class MypageControllerImpl implements MypageController{
 		return mav;
 	}
 	@RequestMapping(value = "/mypage/myChatlist.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView myChatlist(@RequestParam("user_id")String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
+		System.out.println(id + "�� chatList");
+		String viewName = (String)request.getAttribute("viewName");
+		List<ChatDTO> chatList = chatservice.listchats(id);
+
 		ModelAndView mav = new ModelAndView(viewName);
-		
+		mav.addObject("chatList", chatList);
+
 		return mav;
 	}
 	@RequestMapping(value = "/mypage/dropOut.do", method= {RequestMethod.GET,RequestMethod.POST})

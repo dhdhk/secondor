@@ -24,7 +24,7 @@ tr{
 
 /* 중복체크 버튼 */
 .regIdCheck{
-	background-color: #5A7EFF;
+	background-color:  #F2F2F2;
 	border-style: none;
 	color: white;
 	border-radius: 3px;
@@ -34,7 +34,7 @@ tr{
 
 /* 회원가입 버튼 */
 .joinButton{
-	background-color: #5A7EFF;
+	background-color: #F2F2F2;
 	border-style: none;
 	color: white;
 	border-radius: 3px;

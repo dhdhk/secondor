@@ -27,7 +27,7 @@ public interface MypageController {
 	public ResponseEntity modInfo(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception;
 	public ModelAndView myArticles(MyproductlistPage mp,Model m, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView myChatlist(@RequestParam("user_id")String id, HttpServletRequest request, HttpServletResponse response) throws Exception;
 
 	public ModelAndView dropOut(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
