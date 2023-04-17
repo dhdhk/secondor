@@ -21,6 +21,10 @@
 	text-align: center;
 }
 
+#preview1, #preview2, #preview3{
+	object-fit: contain;
+}
+
 .filecancle{
 	position: absolute;
     top: 100px;
