@@ -12,5 +12,7 @@
 		<typeAlias type="com.spring.second.comment.dto.BoardCommentCntDTO" alias="boardCommentCntDTO"/>
 		<typeAlias type="com.spring.second.comment.dto.UserCommentCntDTO" alias="userCommentCntDTO"/>
 		<typeAlias type="com.spring.second.mypage.dto.MyproductlistPage" alias="MyproductlistPage"/>
+		<typeAlias type="com.spring.second.chat.dto.ChatDTO" alias="chatDTO"/>
+		<typeAlias type="com.spring.second.chat.dto.ChatRoomDTO" alias="chatroomDTO"/>
 	</typeAliases>
 </configuration>
