@@ -77,7 +77,7 @@ public class WriteControllerImpl implements WriteController{
 		}
 		List<String> fileList = upload(multipartRequest);
 		List<ImageDTO> imageFileList = new ArrayList<ImageDTO>();
-		//�뙋留ㅼ옄 �씠由� 吏��젙
+		//판매자 이름 지정
 	      HttpSession session = multipartRequest.getSession();
 	      MemberDTO memberDTO=(MemberDTO) session.getAttribute("member");
 	      String user_id= memberDTO.getUser_id();
@@ -120,7 +120,7 @@ public class WriteControllerImpl implements WriteController{
 				}
 			}
 			message = "<script>";
-			message += "alert('�깉湲��쓣 異붽��뻽�뒿�땲�떎.');";
+			message += "alert('새 상품이 등록되었습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath() +"/product/viewProduct.do?regNum="+ regNum +"';";
 			message += "</script>";
 			resEnt = new ResponseEntity<String>(message, responseHeaders, HttpStatus.OK);
@@ -134,7 +134,7 @@ public class WriteControllerImpl implements WriteController{
 			}
 			
 			message = "<script>";
-			message += "alert('�삤瑜섍� 諛쒖깮�뻽�뒿�땲�떎. �떎�떆 �떆�룄�빐 二쇱꽭�슂.');";
+			message += "alert('새 상품을 등록하는 데 실패하였습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath()
 				+"/write/writeForm.do';";
 			message += "</script>";
