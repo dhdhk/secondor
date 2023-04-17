@@ -16,7 +16,7 @@
 		<tr align="center" bgcolor="lightgreen">
 			<c:forEach var="chat" items="${chatList}">
 				<tr align="left">
-					<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 -->
+					<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 (param 수정해야 함)-->
 						<td>구매</td>
 						<td onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'">
 						${chat.seller_id }<br>${chat.pr_title }</td>
