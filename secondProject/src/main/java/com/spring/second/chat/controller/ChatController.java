@@ -64,10 +64,10 @@ public class ChatController {
 		BoardDTO board = sqlSession.selectOne("mapper.board.selectProduct", regNum);
 //		System.out.println("regNum : " + board.getRegNum());
 		ids.put("pr_id", board.getRegNum());
-//		ids.put("seller_id", board.getSeller_id());
-//		ids.put("pr_title", board.getPr_title());
+		ids.put("seller_id", board.getSeller_id());
+		ids.put("pr_title", board.getPr_title());
 //		ids.put("pr_id", board.getRegNum());
-//		ids.put("pr_img1", board.getPr_img1());
+		ids.put("pr_img1", board.getPr_img1());
 		System.out.println("pr_img1 : " + board.getPr_img1());
 
 		ChatDTO chatDTO = new ChatDTO();
