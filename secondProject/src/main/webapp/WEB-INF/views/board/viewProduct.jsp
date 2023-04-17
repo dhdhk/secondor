@@ -31,6 +31,13 @@ td>a{
 }
 
 </style>
+<script>
+	function fn_needLogin(){
+		alert("로그인이 필요합니다.");
+		location.href='${contextPath }/member/loginForm.do';
+	}
+
+</script>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -127,13 +134,26 @@ td>a{
 				</div>		
 				</div>
 			</div>
-			<c:if test="${member.user_id != product.seller_id }">
-				<div class="buttons">
-				<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}
+			<c:choose>
+				<c:when test="${isLogOn == true && member != null }">
+					<c:if test="${member.user_id != product.seller_id }">
+						<div class="buttons">
+ 							<div class="chatLink" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}&&regNum=${product.regNum}&&pr_title=${product.pr_title}&&pr_sold=${product.pr_sold}&&pr_price=${product.pr_price}&&pr_img1=${product.pr_img1}';">
+								메세지 보내기
+							</div>
+						<%-- 	<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}
 				&&regNum=${product.regNum}&&pr_title=${product.pr_title}&&pr_sold=${product.pr_sold}&&pr_price=${product.pr_price}
-				&&pr_img1=${product.pr_img1}">메세지 보내기</a>
-			</div>
-			</c:if>
+				&&pr_img1=${product.pr_img1}">메세지 보내기</a> --%>
+							
+						</div>
+					</c:if>
+				</c:when>
+				<c:otherwise>
+					<div class="buttons">
+						<div class="chatLink" onclick="fn_needLogin();">메세지 보내기</div>
+					</div>
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div class="ProductBottom">
 			${product.pr_content }
