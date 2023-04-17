@@ -90,6 +90,7 @@
 			temp += '</div>';
 			console.log(4);
 
+			alert("메세지가 도착했습니다요");
 			saveContent(temp, obj.chat_id);
 			$("#messageArea").append(temp);
 		}
