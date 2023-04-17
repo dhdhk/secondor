@@ -45,9 +45,10 @@
 		let reader = new FileReader();
 		reader.onload = function(e) {
 			$('#preview').attr('src', e.target.result);
-			$('#preview').attr('style', '' );
 			$('#none1').attr('style', 'display:none');
 			$('#none2').attr('style', 'display:none');
+			$('#preview').attr('style', '' );
+			$('#preview').attr('style', 'object-fit: cover;' );
 		}
 		reader.readAsDataURL(input.files[0]);
 		}
