@@ -129,9 +129,8 @@ td>a{
 			</div>
 			<c:if test="${member.user_id != product.seller_id }">
 				<div class="buttons">
-				<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}&&seller_id=${product.seller_id}
-				&&regNum=${product.regNum}&&pr_title=${product.pr_title}&&pr_sold=${product.pr_sold}&&pr_price=${product.pr_price}
-				&&pr_img1=${product.pr_img1}">메세지 보내기</a>
+				<a class="btn btn-primary" href="${contextPath }/chat/chatForm.do?buyer_id=${member.user_id}
+				&&regNum=${product.regNum}">메세지 보내기</a>
 			</div>
 			</c:if>
 		</div>

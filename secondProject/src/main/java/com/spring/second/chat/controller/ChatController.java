@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.second.board.dao.BoardDAO;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.board.service.BoardService;
 import com.spring.second.chat.dto.ChatDTO;
@@ -30,6 +32,10 @@ import com.spring.second.member.service.MemberService;
 public class ChatController {
 	@Autowired
 	private ChatService chatservice;
+	@Autowired
+	private BoardDAO boarddao;
+	@Autowired
+	SqlSession sqlSession;
 
 	@RequestMapping(value="/chat/*Form.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -42,7 +48,7 @@ public class ChatController {
 
 	@RequestMapping(value = "/chat/chatForm.do", method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public ModelAndView chat(@RequestParam("buyer_id") String id, @ModelAttribute("board") BoardDTO board,
+	public ModelAndView chat(@RequestParam("buyer_id") String id, @RequestParam("regNum") int regNum,
 			HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		/* 
 		 * 1:1 채팅은 buyer과 seller간 id 하나
@@ -56,10 +62,14 @@ public class ChatController {
 
 		Map<String, Object> ids = new HashMap<String, Object>();
 		ids.put("id", id);
-		ids.put("seller_id", board.getSeller_id());
-		ids.put("pr_title", board.getPr_title());
+		// regNum만 받아와서
+		BoardDTO board = sqlSession.selectOne("mapper.board.selectProduct", regNum);
+//		System.out.println("regNum : " + board.getRegNum());
 		ids.put("pr_id", board.getRegNum());
-		ids.put("pr_img1", board.getPr_img1());
+//		ids.put("seller_id", board.getSeller_id());
+//		ids.put("pr_title", board.getPr_title());
+//		ids.put("pr_id", board.getRegNum());
+//		ids.put("pr_img1", board.getPr_img1());
 		System.out.println("pr_img1 : " + board.getPr_img1());
 
 		ChatDTO chatDTO = new ChatDTO();

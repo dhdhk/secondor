@@ -132,7 +132,7 @@
 		</div>
 		<div align="left">
 			<img src="/image/${product.regNum }/${product.pr_img1}" class="d-block w-100" alt="...">
-			${board.pr_sold } || ${board.pr_title }${board.pr_price }
+			${board.pr_sold } || ${board.pr_title } ${board.pr_price }원
 		</div>
 		<div id="messageArea" style="overflow-y:scroll" > <!-- 날짜 표기 추가 -->
 		</div>
