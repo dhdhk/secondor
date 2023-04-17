@@ -25,7 +25,7 @@
 		<put-attribute name="title" value="내 상품 목록" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_myArticles.jsp" />
 	</definition>
-	<definition name="/mypage/myChatlistForm" extends="mypageLayout">
+	<definition name="/chat/chatList" extends="mypageLayout">
 		<put-attribute name="title" value="내 채팅 목록" />
 		<put-attribute name="body" value="/WEB-INF/views/mypage/mypage_myChatlist.jsp" />
 	</definition>
