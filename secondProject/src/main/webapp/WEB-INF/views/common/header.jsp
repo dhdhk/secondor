@@ -72,7 +72,9 @@
 		<c:when test="${isLogOn == true && member != null }">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
-					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!<div id="newComments">8</div>
+					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!
+					<!-- 코멘트 갯수 없으면 div 안뜨도록 -->
+					<div id="newComments">8</div>
 				</div>
 				<div class="nav_buttons">
 					<div class="nav_login" onclick="location.href='${contextPath}/mypage/mypageMain.do';">
