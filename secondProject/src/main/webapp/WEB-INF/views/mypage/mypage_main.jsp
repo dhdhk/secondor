@@ -24,7 +24,6 @@
 			<div class="profile" >
 				<c:if test="${member.profileimg == null}">
 					<div class="noProfileImg">No Image</div>
-					<%-- <img class="profileImg" src="${contextPath }/resources/image/noprofile.png"> --%>
 				</c:if>
 				<c:if test="${member.profileimg != null}">
 					<img class="profileImg" src="/image/member/${member.user_id }/${member.profileimg}">
