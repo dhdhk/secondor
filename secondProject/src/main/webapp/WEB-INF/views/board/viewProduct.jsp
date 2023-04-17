@@ -40,6 +40,12 @@ td>a{
 </script>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="${contextPath }/resources/css/board/viewProduct_style.css">
+<script>
+	function fn_needLogin(){
+		alert("로그인이 필요합니다.");
+		location.href='${contextPath }/member/loginForm.do';
+	}
+</script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -135,6 +141,7 @@ td>a{
 				</div>
 			</div>
 			<c:choose>
+
 				<c:when test="${isLogOn == true && member != null }">
 					<c:if test="${member.user_id != product.seller_id }">
 						<div class="buttons">

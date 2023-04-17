@@ -122,7 +122,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
+<<<<<<< HEAD
     background-color: #5A7EFF;
+=======
+     background-color: #5A7EFF;
+>>>>>>> branch 'master' of https://github.com/eumssooo/acornSecondProject.git
     color: white;
     border-radius: 5px;
     cursor: pointer;

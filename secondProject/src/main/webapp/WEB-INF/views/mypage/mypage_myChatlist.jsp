@@ -46,7 +46,7 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				1대1 채팅 목록
+				채팅 목록
 			</div>
 			<div class="menuContent">
 				메세지 목록 content
