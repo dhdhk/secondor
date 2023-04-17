@@ -33,8 +33,6 @@ public class ChatController {
 	@Autowired
 	private ChatService chatservice;
 	@Autowired
-	private BoardDAO boarddao;
-	@Autowired
 	SqlSession sqlSession;
 
 	@RequestMapping(value="/chat/*Form.do", method= {RequestMethod.GET, RequestMethod.POST})
