@@ -82,7 +82,7 @@ public class ChatController {
 	public ModelAndView chatList(@RequestParam("id")String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		// TODO Auto-generated method stub
-		System.out.println(id + "�� chatList");
+		System.out.println(id + ": chatList");
 		String viewName = (String)request.getAttribute("viewName");
 		List<ChatDTO> chatList = chatservice.listchats(id);
 

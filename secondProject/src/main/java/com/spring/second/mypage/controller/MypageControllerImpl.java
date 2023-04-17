@@ -27,6 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.chat.dto.ChatDTO;
+import com.spring.second.chat.service.ChatService;
 import com.spring.second.member.controller.MemberControllerImpl;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
@@ -41,15 +43,10 @@ public class MypageControllerImpl implements MypageController{
 	private static final String IMAGE_PATH = "C:\\image";
 	 @Autowired
 	 MemberService memberService;
-	 
-	 @Autowired
 	 MypageService mypageService;
-	 
-	 @Autowired
 	 MemberDTO memberDTO;
-	 
-	 @Autowired
 	 MemberControllerImpl mc;
+	 private ChatService chatservice;
 	 
 
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
@@ -230,11 +227,16 @@ public class MypageControllerImpl implements MypageController{
 		
 		return mav;
 	}
+	
 	@RequestMapping(value = "/mypage/myChatlist.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView myChatlist(@RequestParam("id")String id, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		String viewName = (String) request.getAttribute("viewName");
+		System.out.println(id + " : chatList");
+		String viewName = (String)request.getAttribute("viewName");
+		List<ChatDTO> chatList = chatservice.listchats(id);
+
 		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("chatList", chatList);
 		
 		return mav;
 	}

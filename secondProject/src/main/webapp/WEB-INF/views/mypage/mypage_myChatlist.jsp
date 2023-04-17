@@ -36,7 +36,7 @@
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
-				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
+				<a href="${contextPath }/chat/chatList.do?id=${member.user_id }" class="mypageMenuHref">1대1 채팅</a>
 				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
@@ -49,7 +49,27 @@
 				1대1 채팅 목록
 			</div>
 			<div class="menuContent">
-				메세지 목록 content
+				<table border="1" align="center" width="50%">
+					<tr align="center" bgcolor="lightgreen">
+						<c:forEach var="chat" items="${chatList}">
+							<tr align="left">
+								<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 (param 수정해야 함)-->
+									<td>구매</td>
+									<td onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'">
+									${chat.seller_id }<br>${chat.pr_title }</td>
+								</c:if>
+								<c:if test="${param.id == chat.seller_id}"> <!-- 내가 판매자면 -->
+									<td>판매</td>
+									<td onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }'">
+									${chat.buyer_id }<br>${chat.pr_title }</td>
+								</c:if>
+								<td><img src="/image/${chat.pr_id }/${chat.pr_img1 }"
+									class="d-block w-100" alt="...">
+								</td>
+							</tr>
+						</c:forEach>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
