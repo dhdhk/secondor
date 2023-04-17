@@ -14,11 +14,7 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDAO memberDAO;
 
-	@Override
-	public List<MemberDTO> listMembers() {
-		// TODO Auto-generated method stub
-		return memberDAO.selectAllMemberList();
-	}
+	
 
 	@Override
 	public void addMember(Map<String, Object> memberMap) {

@@ -59,15 +59,14 @@ public class ChatController {
 		ids.put("seller_id", board.getSeller_id());
 		ids.put("pr_title", board.getPr_title());
 		ids.put("pr_id", board.getRegNum());
-//		System.out.println("id : " + id);
-//		System.out.println("seller_id : " + board.getSeller_id());
-//		System.out.println("pr_title : " + board.getPr_title());
-//		System.out.println("pr_id : " + board.getRegNum());
+		ids.put("pr_img1", board.getPr_img1());
+		System.out.println("pr_img1 : " + board.getPr_img1());
 
 		ChatDTO chatDTO = new ChatDTO();
 		chatDTO = chatservice.searchChatRoom(ids);
 
 		mav.addObject("chatDTO", chatDTO);
+		mav.addObject("board", board);
 		mav.addObject("id", id);
 		return mav;
 	}

@@ -19,27 +19,38 @@ public class MypageServiceImpl implements MypageService{
 	@Autowired
 	MypageDAO mypageDAO;
 	
-	public void modInfo(MemberDTO memberDTO) {
-		// TODO Auto-generated method stub
-		mypageDAO.updateInfo(memberDTO);
+		//내상품 페이지 (총 상품 갯수)
+		public  int getProductListCount(MyproductlistPage mp) {
+			// TODO Auto-generated method stub
+			return mypageDAO.ProductListCount(mp);
+		}
+
+		//내상품 페이지 리스트
+		public  List<BoardDTO> getselectMyList(MyproductlistPage mp) {
+			// TODO Auto-generated method stub
+			return mypageDAO.selectMyList(mp);
+		}
 		
-	}
-//	public List<BoardDTO> selectMyList(String id) {
-//		// TODO Auto-generated method stub
-//		return mypageDAO.selectMyList(id);
-//	}
+		
+		@Override
+		public void modInfo(Map<String, Object> memberMap) {
+			// TODO Auto-generated method stub
+			mypageDAO.updateInfo(memberMap);
+		}
 
-	//내상품 페이지 (총 상품 갯수)
-	public  int getProductListCount(MyproductlistPage mp) {
-		// TODO Auto-generated method stub
-		return mypageDAO.ProductListCount(mp);
-	}
+		@Override
+		public void modInfoNoimg(Map<String, Object> memberMap) {
+			// TODO Auto-generated method stub
+			mypageDAO.updateInfoNoimg(memberMap);
+		}
 
-	//내상품 페이지 리스트
-	public  List<BoardDTO> getselectMyList(MyproductlistPage mp) {
-		// TODO Auto-generated method stub
-		return mypageDAO.selectMyList(mp);
-	}
+		@Override
+		public String getprofilename(MemberDTO member) {
+			// TODO Auto-generated method stub
+			return mypageDAO.getprofilename(member);
+		}
+
+		
 	
 
 }

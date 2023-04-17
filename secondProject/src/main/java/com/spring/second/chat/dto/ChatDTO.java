@@ -13,6 +13,7 @@ public class ChatDTO {
 	private String buyer_id;
 	private String chat_content;
 	private Date chat_Time;
+	private String pr_img1;
 	
 	public String getChat_id() {
 		return chat_id;
@@ -55,5 +56,11 @@ public class ChatDTO {
 	}
 	public void setChat_Time(Date chat_Time) {
 		this.chat_Time = chat_Time;
+	}
+	public String getPr_img1() {
+		return pr_img1;
+	}
+	public void setPr_img1(String pr_img1) {
+		this.pr_img1 = pr_img1;
 	}
 }

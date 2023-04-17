@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.comment.service.CommentService;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.write.dto.ImageDTO;
 import com.spring.second.write.file.FileUploadController;
@@ -37,7 +38,8 @@ public class WriteControllerImpl implements WriteController{
 	WriteService writeService;
 	@Autowired
 	BoardDTO boardDTO;
-	
+	@Autowired
+	CommentService commentService;
 	
 	@Override
 	@RequestMapping(value = "/write/writeForm.do")
@@ -108,7 +110,7 @@ public class WriteControllerImpl implements WriteController{
 		
 		try {
 			writeService.addNewArticle(articleMap);
-			
+			commentService.addArticle(regNum);
 			if(imageFileList != null && imageFileList.size() != 0) {
 				for(ImageDTO imageDTO : imageFileList) {
 					if(imageDTO.getImageFileName()!=null) {

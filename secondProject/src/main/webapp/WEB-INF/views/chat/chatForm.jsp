@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }" />
 <%
 	request.setCharacterEncoding("utf-8");
@@ -129,8 +130,13 @@
 				<td><h3>${chatDTO.buyer_id } 님 과의 채팅</h3></td>
 			</c:if>
 		</div>
-		<div id="messageArea" style="overflow-y:scroll" ></div>
-		<input type="text" id="message" /> <input type="button" id="sendBtn" value="전송" />
+		<div align="left">
+			<img src="/image/${product.regNum }/${product.pr_img1}" class="d-block w-100" alt="...">
+			${board.pr_sold } || ${board.pr_title }${board.pr_price }
+		</div>
+		<div id="messageArea" style="overflow-y:scroll" > <!-- 날짜 표기 추가 -->
+		</div>
+		<input type="text" id="message" placeholder="메세지 보내기"/> <input type="button" id="sendBtn" value="전송" />
 	</div>
 </body>
 </html>

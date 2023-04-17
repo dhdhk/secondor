@@ -29,24 +29,22 @@
 		<c:when test="${boardList != null }">
 			<div class="row">
 				<c:forEach var="board" items="${boardList }" >
-					<div class="col-md-3 mt-4 mb-4">
-					<!-- **카드 선택 시 상세페이지로 이동할 수 있게 설정해야함 -->
-						<a href="${contextPath }/product/viewProduct.do?regNum=${board.regNum}">
+					<div class="col-md-3 mt-4 mb-4" style="cursor: pointer;" onclick="location.href='${contextPath }/product/viewProduct.do?regNum=${board.regNum}';"> 
 							<div class="card">
-							<!-- **이미지 지정파일 정해지면 수정해야함 -->
+								<c:if test="${board.pr_sold =='1' }">
+									<div class="onSellDisplay" style="color: #FFCD4A;">거래중</div>
+								</c:if>
+								<c:if test="${board.pr_sold =='2' }">
+									<div class="onSellDisplay" style="color: #e45b68;">거래완료</div>
+								</c:if>
 								<img src="/image/${board.regNum }/${board.pr_img1 }" class="card-img-top" alt="...">
 								<div class="card-body">
-								<!-- 카드 내용: ,pr_title, pr_price , pr_sold, regDate  -->
-									<h5 class="card-title"> ${board.pr_title }, 
-										<c:if test="${board.pr_sold =='0' }">거래 가능</c:if>
-										<c:if test="${board.pr_sold =='1' }">거래 중</c:if>
-										<c:if test="${board.pr_sold =='2' }">거래 완료</c:if>
-									</h5>
-									<p class="card-text"> ${board.pr_price } , ${board.regDate } </p>
+								<!-- 카드 내용: ,pr_title, pr_price, regDate  -->
+									<h5 class="card-title"> ${board.pr_title }</h5>
+									<p class="card-text"> ${board.pr_price }원 , ${board.regDate } </p>
 								</div>
 							</div>
-						</a>
-					</div>
+						</div>
 				</c:forEach>
 			</div>
 			
@@ -71,7 +69,7 @@
 						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
 					</c:if>
 					<c:if test="${beginPage+4>=endPage }">
-						<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')">&gt;</span>
+						<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')">&gt;</span>
 					</c:if>
 				</div>
 			</div>   

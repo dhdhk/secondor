@@ -34,11 +34,10 @@
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -47,7 +46,7 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				작성글
+				작성글 관리
 			</div>
 			<div class="menuContent">
 				<table align="center" width="700px;">
@@ -56,7 +55,6 @@
 						<td width="50%">제목</td>
 						<td width="15%">작성일자</td>
 						<td width="10%">판매상태</td>
-						<td width="7%">선택</td>
 					</tr>
 					<c:choose>
 						<c:when test="${myList == null }">
@@ -79,7 +77,7 @@
 									</td>
 									<td align="left">
 										<span style="padding-right:30px;"></span>
-										<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}">
+										<a class="clas1" href="${contextPath }/product/viewProduct.do?regNum=${myList.regNum}&pageName=mypage">
 											${myList.pr_title }
 										</a>
 									</td>
@@ -87,18 +85,12 @@
 										<fmt:formatDate value="${myList.regDate }" />
 									</td>
 									<td>
-										${myList.pr_sold }
-									</td>
-									<td>
-										<input type="checkbox" name="deleteBoard" value="${myList.regNum}">
+										<c:if test="${myList.pr_sold =='0' }">거래 가능</c:if>
+										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
+										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
 									</td>
 								</tr>
 							</c:forEach>
-								<tr class="trDelete" >
-									<td colspan="5" align="right" >
-										<input type="button" class="button" onclick="${contextPath}/mypage/deleteMyArticle.do" value="삭제하기">
-									</td>
-								</tr>
 								
 								<!-- 페이징 -->
 								<c:set var="page" value="${mh.mp.page}"/> 
@@ -123,7 +115,7 @@
 													<a href="${contextPath }/mypage/myArticles.do${mh.mp.getQueryString(beginPage+5)}" class="btn btn-sm btn-success" style="background-color: #5A7EFF; border: none;">&gt;</a>
 												</c:if>
 												<c:if test="${beginPage+4>=endPage }">
-													<span class="btn btn-sm btn-info" onclick="alert('다음 페이지가 없습니다')" style="background-color: #5A7EFF; border: none;">&gt;</span>
+													<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')" style="background-color: #5A7EFF; border: none;">&gt;</span>
 												</c:if>
 											</div>
 										</div>

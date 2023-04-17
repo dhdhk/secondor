@@ -21,7 +21,7 @@
 /* 로고 */
 .logo{
 	position: absolute;
-    left: 0;
+    left: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,7 +32,7 @@
 
 .bar{
 	position: absolute;
-    left: 180px;
+    left: 220px;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -41,7 +41,7 @@
 
 .navbar_top{
 	margin-bottom: 10px;
-	width:550px;
+	width:500px;
 }
 
 /* 검색 버튼 */
@@ -65,6 +65,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0;
+    font-size: 19px;
 }
 /* 카테고리 링크 */
 .category_item{

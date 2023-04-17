@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.member.dto.MemberDTO;
 @Repository
 public class ModifyDAOImpl implements ModifyDAO{
 	@Autowired
@@ -27,6 +28,13 @@ public class ModifyDAOImpl implements ModifyDAO{
 		if(articleMap.get("pr_img3")!=null) {
 			sqlSession.update("mapper.modify.modifyImg3", articleMap);
 		}
+	}
+
+	@Override
+	public BoardDTO getfilename(int regNum) {
+		// TODO Auto-generated method stub
+		boardDTO=sqlSession.selectOne("mapper.modify.getfilename", regNum);
+		return boardDTO;
 	}
 
 }

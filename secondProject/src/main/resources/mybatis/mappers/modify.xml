@@ -39,4 +39,9 @@
    			update board set pr_img3=#{pr_img3} where regNum=#{regNum}
    		]]>
    </update>
+   <select id="getfilename" parameterType="int" resultMap="modify">
+   		<![CDATA[
+   			select pr_img1,pr_img2,pr_img3 from board where regNum=#{regNum}
+   		]]>
+   </select>
 </mapper>

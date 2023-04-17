@@ -15,6 +15,62 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+.filebox label {	/* 수정버튼 스타일*/
+	display: inline-flex;
+    background-color: #5a7eff;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 15px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 78px;
+}
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+</style>
+<script>
+	function readURL(input) {
+	if(input.files && input.files[0]){
+		let reader = new FileReader();
+		reader.onload = function(e) {
+			$('#preview').attr('src', e.target.result);
+			$('#preview').attr('style', '' );
+			$('#none1').attr('style', 'display:none');
+			$('#none2').attr('style', 'display:none');
+		}
+		reader.readAsDataURL(input.files[0]);
+		}
+	}
+	
+	function remove(){
+		var agent = navigator.userAgent.toLowerCase();
+		//파일초기화
+		if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+		    $("#proimgfile").replaceWith($("#proimgfile").clone(true));
+		}else{
+		    $('#preview').attr('src','');
+		    $('#preview').attr('style', 'display:none' );
+		    $('#none1').attr('style', '');
+		    $('#proimgfile').val("");
+		}
+	}
+	
+	function backToList(obj){
+		obj.action = "${contextPath}/mypage/mypageMain.do";
+		obj.submit();
+	}
+</script>
 </head>
 <body>
 	<div class="mypageBody">
@@ -33,11 +89,10 @@
 			
 				<div class="mypageMenu">
 			
-				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보 관리</a>
-				<a href="#" class="mypageMenuHref">프로필 수정</a>
-				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">내 상품</a>
+				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
+				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
 				<a href="${contextPath }/mypage/myChatlistForm.do" class="mypageMenuHref">1대1 채팅</a>
-				<a href="#" class="mypageMenuHref">로그아웃</a>
+				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
 		
@@ -46,11 +101,33 @@
 		<!-- 본문 -->
 		<div class="mypageContent">
 			<div class="menuTitle" >
-				 회원 정보 수정
+				 내 정보 관리
 			</div>
 			<div class="menuContent">
-				<form method="post" action="${contextPath }/mypage/modInfo.do">
+				<form method="post" action="${contextPath }/mypage/modInfo.do" enctype="multipart/form-data">
 					<table>
+						<tr>
+							<td colspan="4" align="center">
+							<div class="modProfile">
+								<c:if test="${member.profileimg != null }">
+									<div class="modNoProfileImg" id="none1" style="display: none;">No Image</div>
+									<img src="/image/member/${member.user_id }/${member.profileimg}" id="preview" class="modProfileImg">
+								</c:if>
+									<c:if test="${member.profileimg == null }">
+									<div class="modNoProfileImg" id="none2" style="">No Image</div>
+									<img id="preview" src="" class="modProfileImg" style="display:none;">
+								</c:if>
+							</div>
+							<span>
+								<input type="button" class="fileCancle" value="×" onclick="remove()">
+							</span>
+							<span id="proimg" class="filebox">
+								<label for="profileimg">변경하기</label>
+								<input type="file" id="profileimg" name="profileimg" accept="image/*"  onchange="readURL(this)" >
+								<input type="hidden" name="profileimg" value="${member.profileimg }">
+							</span>
+							</td>
+						</tr>
 						<tr>
 							<td class="modTableLabel">아이디</td>
 							<td class="modTableContent">
@@ -111,7 +188,7 @@
 							<td colspan="4" align="center">
 								<div class="buttons">
 									<input type="submit" value="수정하기" class="button">
-									<input type="button" value="돌아가기" class="button">
+									<input type="button" value="돌아가기" class="button" onclick="backToList(this.form)">
 								</div>
 							</td>
 						</tr>

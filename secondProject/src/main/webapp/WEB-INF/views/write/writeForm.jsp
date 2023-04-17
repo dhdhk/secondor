@@ -8,9 +8,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${contextPath }/resources/css/write_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/write/write_style.css">
 <meta charset="UTF-8">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+/* 숫자필드 오른쪽에 증감화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
 <script>
 	
 	function backToList(obj){
@@ -43,10 +51,6 @@
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
-	}
-	function onlyNumber(){
-        if((event.keyCode<48)||(event.keyCode>57))
-           event.returnValue=false;
 	}
 	function remove1(){
 		var agent = navigator.userAgent.toLowerCase();
@@ -81,9 +85,10 @@
 </script>
 </head>
 <body>
-	<div class="writeForm">
+	
 		<form name="write" method="post" action="${contextPath }/write/addNewArticle.do" enctype="multipart/form-data">
-			<table align="center" >
+			<div class="writeForm">
+			<table align="center" style="width: 1200px;">
 		  		<tr style="height: 40px;">
 		  			<td colspan="4">
 						<input type="text" name="pr_title" placeholder="제목을 입력하세요." size="118" maxlength="15" required="required">
@@ -111,7 +116,7 @@
 		  		<tr style="height: 40px;">
 		  			<td>상품 가격</td>
 		  			<td>
-		  				<input type="text" style="width: 70%;" name="pr_price"  placeholder="가격을 입력하세요."  onkeypress="onlyNumber();" required="required">
+		  				<input type="number" style="width: 70%;" name="pr_price"  placeholder="가격을 입력하세요."  required="required">
 		  			</td>
 		  			<td>
 		  				<input type="range" name="pr_condition" min="1" max="3" required="required">
@@ -120,42 +125,51 @@
 		  		</tr>
 		  		<tr>
 		  			<td colspan="4" >
+		  				<!-- 본문 작성 -->
 		  				<textarea rows="15" cols="120" maxlength="4000" name="pr_content" placeholder="내용을 입력하세요." wrap="hard" style="resize: none;" ></textarea>
 		  			</td>
 		  		</tr>
+		  		</table>
+		  		<table align="center" style="width: 1200px;">
 		  		<tr style="height: 40px;">
 		  			<td>첫 번째 사진 첨부 <label style="color: red;">(필수)</label></td>
 		  			<td>두 번째 사진 첨부</td>
-		  			<td colspan="2">세 번째 사진 첨부</td>
+		  			<td>세 번째 사진 첨부</td>
 		  		</tr>
 		  		<tr>
-					<td align="center" >
-					<div style="max-width: 75%">
+		  			<!-- 파일 업로드 -->
+					<td align="center" style="width: 400px;">
+					<div style="max-width: 75%; position: relative;">
 							<input type="file" name="pr_img1" accept="image/*" onchange="readURL1(this);" id="pr_img1" required="required"><br>
-							<img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" id="filecancle" value="×" onclick="remove1()">
+							<img id="preview1" src="${contextPath }/resources/image/noImage.png" width="150" height="150">
+							<input type="button" class="fileCancle" id="filecancle" value="×" onclick="remove1()">
 					</div>
 					</td>
-					<td align="center">
-					<div style="max-width: 75%">
+					<td align="center" style="width: 400px;">
+					<div style="max-width: 75%; position: relative;">
 							<input type="file" name="pr_img2" accept="image/*" onchange="readURL2(this);"><br>
-							<img id="preview2" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" value="×" onclick="remove2()">
+							<img id="preview2" src="${contextPath }/resources/image/noImage.png" width="150" height="150">
+							<input type="button" class="fileCancle" id="filecancle" value="×" onclick="remove2()">
 					</div>
 					</td>
-					<td align="center" colspan="2" >
-					<div style="max-width: 75%">
+					<td align="center" style="width: 400px;">
+					<div style="max-width: 75%; position: relative;">
 							<input type="file" name="pr_img3" accept="image/*" onchange="readURL3(this);"><br>
-							<img id="preview3" src="${contextPath }/resources/image/noImage.png" width="150" height="150"><input type="button" value="×" onclick="remove3()">
+							<img id="preview3" src="${contextPath }/resources/image/noImage.png" width="150" height="150">
+							<input type="button" class="fileCancle" id="filecancle" value="×" onclick="remove3()">
 					</div>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center">
-						<input type="submit" value="글쓰기">
-						<input type="button" value="돌아가기" onclick="backToList(this.form)">
+					<td colspan="3" align="center">
+						<div class="buttons">
+							<input type="submit" value="글쓰기" class="button">
+							<input type="button" value="돌아가기" onclick="backToList(this.form)" class="button">
+						</div>
 					</td>
 				</tr>
 			</table>
+			</div>
 		</form>
-	</div>
 </body>
 </html>

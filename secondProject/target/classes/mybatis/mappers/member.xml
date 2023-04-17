@@ -61,13 +61,24 @@
 		]]>
 	</select>
 	
-	<!-- 회원 정보 업데이트 -->
-	<update id="updateMember" parameterType="memberDTO">
+	<!-- 회원 정보 업데이트 사진있을때-->
+	<update id="updateMember" parameterType="java.util.Map">
 		<![CDATA[
-			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} , user_phone=#{user_phone} where user_id=#{user_id}
+			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} , user_phone=#{user_phone}, profileimg=#{profileimg} where user_id=#{user_id}
 		]]>
 	</update>
-	
+	<!-- 사진없을때 -->
+	<update id="updateMemberNoimg" parameterType="java.util.Map">
+		<![CDATA[
+			update users set user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, user_address=#{user_address} , user_phone=#{user_phone}, profileimg='' where user_id=#{user_id}
+		]]>
+	</update>
+	<!-- 사진이름 가져오기 -->
+	<select id="getprofilename" parameterType="memberDTO" resultType="String">
+		<![CDATA[
+			select profileimg from users where user_id=#{user_id}
+		]]>
+	</select>
 	<!-- 로그인 -->
 	<select id="loginById" parameterType="memberDTO" resultType="memberDTO">
 		<![CDATA[

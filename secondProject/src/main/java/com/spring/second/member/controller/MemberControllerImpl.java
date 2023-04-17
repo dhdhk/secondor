@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.spring.second.comment.service.CommentService;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
 import com.spring.second.write.dto.ImageDTO;
@@ -44,23 +45,9 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 	@Autowired
 	private MemberService memberService;
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class); 
-
-	@Override
-	@RequestMapping(value="/member/listMembers.do", method= {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-
-		String viewName = (String) request.getAttribute("viewName");
-		List<MemberDTO> membersList = memberService.listMembers();
-		ModelAndView mav = new ModelAndView(viewName);
-
-		logger.info("viewName : " + viewName);
-		logger.debug("viewName : " + viewName);
-
-		mav.addObject("membersList", membersList);
-		return mav;
-	}
-
+	@Autowired
+	CommentService commentService;
+	
 	@Override
 	@RequestMapping(value="/member/addMember.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ResponseEntity addMember(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
@@ -98,7 +85,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 				memberService.addMember(memberMap);
 				
 			}
-			
+			commentService.addUser(user_id);
 			message = "<script>";
 			message += "alert('회원가입이 완료되었습니다.');";
 			message += "location.href='" + multipartRequest.getContextPath() +"/member/loginForm.do';";
@@ -126,7 +113,7 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 		return resEnt;
 	}
 
-	private String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
+	public String upload(MultipartHttpServletRequest multipartRequest) throws Exception{
 		// TODO Auto-generated method stub
 		Iterator<String> fileNames = multipartRequest.getFileNames();
 		String fileName=fileNames.next();

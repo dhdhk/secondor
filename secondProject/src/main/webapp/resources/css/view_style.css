@@ -6,13 +6,41 @@
 /*
 	#5A7EFF -> 파랑 
 	#FFCD4A -> 노랑
+	#e45b68 -> 빨강
 */
+/*
+	font-family: 'NanumSquareNeoLight';
+	font-family: 'NanumSquareNeo';
+	font-family: 'NanumSquareNeoBold';
+	font-family: 'NanumSquareNeoExtraBold';
+	font-family: 'NanumSquareNeoHeavy';
+*/
+
+.viewListTitle{
+	font-size: 35px;
+	font-family: 'NanumSquareNeoExtraBold';
+}
+
 
 /* 리스트카드 이미지 크기 */
 .card-img-top{
 	height: 15rem;
 	object-fit: cover;
 	padding-bottom: 5px;
+}
+.onSellDisplay{
+	position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 235px;
+    background-color: #d0d0d06e;
+    opacity: 0.9;
+    z-index: 1;
+    font-size: 35px;
+    font-family: 'NanumSquareNeoExtraBold';
+    color: white;
 }
 
 /* 리스트카드 크기  */

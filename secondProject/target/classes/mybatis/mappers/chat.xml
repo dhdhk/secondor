@@ -25,8 +25,8 @@
    
    <insert id="insertNewChatRoom" parameterType="java.util.Map">
 		<![CDATA[	
-			insert into chat(chat_id, pr_id, pr_title, seller_id, buyer_id, chat_content, chat_Time)
-				values(#{chatId}, #{pr_id}, #{pr_title}, #{seller_id}, #{id}, '', sysdate)
+			insert into chat(chat_id, pr_id, pr_title, seller_id, buyer_id, chat_content, chat_Time, pr_img1)
+				values(#{chatId}, #{pr_id}, #{pr_title}, #{seller_id}, #{id}, '', sysdate, #{pr_img1})
 		]]>		
 	</insert>
 	

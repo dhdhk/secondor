@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.second.admin.DAO.AdminDAO;
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.member.dto.MemberDTO;
 
 @Service
 public class AdminServiceImpl implements AdminService{
@@ -23,4 +24,17 @@ public class AdminServiceImpl implements AdminService{
 		adminDAO.prdelete(deleteselection);
 	}
 
+	//관리자모드- member리스트 불러오기
+	@Override
+	public List<MemberDTO> listMembers() {
+		// TODO Auto-generated method stub
+		return adminDAO.selectAllMemberList();
+	}
+
+	//관리자모드- 회원삭제
+	@Override
+	public void adminDeleteMember(String user_id) {
+		// TODO Auto-generated method stub
+		adminDAO.adminDeleteMember(user_id);
+	}
 }
