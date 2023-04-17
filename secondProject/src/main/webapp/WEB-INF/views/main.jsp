@@ -55,10 +55,10 @@
 			<div class="pageNum">            
 				<div class="">
 					<c:if test="${beginPage>1 }">
-						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info">&lt;</a> 
+						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage-5)}" class="btn btn-sm btn-info" style="border: none;background-color: #5A7EFF;">&lt;</a> 
 					</c:if>
 					<c:if test="${beginPage<=1 }">
-						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')" style="visibility: hidden;">&lt;</span>
+						<span class="btn btn-sm btn-info" onclick="alert('이전 페이지가 없습니다')" style="visibility: hidden; border: none; background-color: #5A7EFF;">&lt;</span>
 					</c:if>
 					<c:forEach var="i" begin="0" end="4">
 						<c:if test="${beginPage+i  <= endPage }">
@@ -66,10 +66,10 @@
 						</c:if>
 					</c:forEach>
 					<c:if test="${beginPage+4<endPage }">
-						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success">&gt;</a>
+						<a href="${contextPath }/main.do${ph.sc.getQueryString(beginPage+5)}" class="btn btn-sm btn-success" style="border: none;background-color: #5A7EFF;">&gt;</a>
 					</c:if>
 					<c:if test="${beginPage+4>=endPage }">
-						<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')">&gt;</span>
+						<span class="btn btn-sm btn-info" onclick="alert('더이상 불러올 페이지가 없습니다')" style="border: none;background-color: #5A7EFF;">&gt;</span>
 					</c:if>
 				</div>
 			</div>   
