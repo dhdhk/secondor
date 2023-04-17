@@ -1,5 +1,6 @@
 package com.spring.second.board.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,10 +21,16 @@ public class BoardDAOImpl implements BoardDAO {
 	@Autowired
 	SqlSession sqlSession;
 
-//검색
+//寃��깋
 	@Override
 	public List<BoardDTO> serchSelectPage(SearchCondition sc) {
 	   // TODO Auto-generated method stub
+		List<BoardDTO> test = new ArrayList<BoardDTO>();
+		test = sqlSession.selectList("mapper.board.serchSelectPage", sc);
+		for(int i = 0; i < test.size(); i++) {
+			System.out.println((i+1) + "번째 : " + test.get(i).getRegNum());
+		}
+		
 	    return sqlSession.selectList("mapper.board.serchSelectPage", sc);
 	}
 
@@ -34,7 +41,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	}
 
-//카데고리
+//移대뜲怨좊━
 	
 	@Override
 	public List<BoardDTO> selectByCategoryPage(CategoryCondition cc) {
@@ -50,7 +57,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
-//상세페이지
+//�긽�꽭�럹�씠吏�
 	@Override
 	public Map<String, Object> viewProduct(int regNum) {
 		// TODO Auto-generated method stub
@@ -63,7 +70,7 @@ public class BoardDAOImpl implements BoardDAO {
 		return productMap;
 	}
 	
-	//댓글용
+	//�뙎湲��슜
 	@Override
 	public List<CommentDTO> commentGet(int regNum) {
 		// TODO Auto-generated method stub
