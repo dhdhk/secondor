@@ -28,35 +28,61 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-</script>
-<script>
-function fn_regIdCheck() {
-	let _id = $("#user_id").val();
-	if(_id == "") {
-		alert("아이디를 입력하세요.");
-		$("#user_id").focus();
-		return;
-	}
-	$.ajax({
-		type:"post",
-		url : '/second/member/idCheck.do',
-		dataType:"text",
-		data:{user_id:_id},
-		success:function(data, textStatus){
-			if(data=='unusable') {
-				alert("사용할 수 없는 아이디입니다.");
-				$('#user_id').attr('style', 'color:red');
-				return;
-			} else if(data == 'usable') {
-				alert("사용할 수 있는 아이디입니다.");
-				$('#user_id').attr('style', 'color:#5A7EFF');
-			}
-		}, error:function(data, textStatus){
-			alert("에러가 발생했습니다.")
+	function fn_regIdCheck() {
+		let _id = $("#user_id").val();
+		if(_id == "") {
+			alert("아이디를 입력하세요.");
+			$("#user_id").focus();
+			return;
 		}
-	});
-}
-
+		$.ajax({
+			type:"post",
+			url : '/second/member/idCheck.do',
+			dataType:"text",
+			data:{user_id:_id},
+			success:function(data, textStatus){
+				if(data=='unusable') {
+					alert("사용할 수 없는 아이디입니다.");
+					$('#user_id').attr('style', 'color:red');
+					return;
+				} else if(data == 'usable') {
+					alert("사용할 수 있는 아이디입니다.");
+					$('#user_id').attr('style', 'color:#5A7EFF');
+					$('#idck').val('');
+				}
+			}, error:function(data, textStatus){
+				alert("에러가 발생했습니다.")
+			}
+		});
+	}
+	function ready() {
+		//var user_id = $('#user_id').val();
+		//var user_pw = $('#user_pw').val();
+		//var user_name = $('#user_name').val();
+		//var user_email = $('#user_email').val();
+		//var user_address = $('#user_address').val();
+		//var user_birth = $('#user_birth').val();
+		//var user_phone = $('#user_phone').val();
+		//var idck= $('#idck').val();
+		
+		
+		
+		if((user_id.length!=0) && (user_pw.length!=0) && (user_name.length!=0) && (user_email.length!=0) && (user_address.length!=0) && (user_birth.length!=0) && (user_phone.length!=0) && (idck.length==0)){
+			alert("1111")
+			document.getElementById('frm').submit();
+			
+		}else if(user_id.length!=0){
+			alert("아이디 중복확인이 필요합니다.")
+		}else{
+			alert("필수사항을 입력하세요.")
+		}
+	}
+	//아이디 중복확인을 하고나서 아이디 수정했을때
+	function checkagain() { 	
+		$('#idck').val('NO');
+		$('#user_id').attr('style','');
+	}
+	
 </script>
 
 </head>
@@ -65,7 +91,7 @@ function fn_regIdCheck() {
 		회원 가입
 	</div>
 	<div class="div_memberForm">
-		<form method="post" action="/second/member/addMember.do" enctype="multipart/form-data">
+		<form method="post" action="/second/member/addMember.do" enctype="multipart/form-data" id="frm">
 			<table>
 				<tr>
 					<td rowspan="4" width="400" height="200" align="center">
@@ -76,8 +102,9 @@ function fn_regIdCheck() {
 						아이디
 					</td>
 					<td width="400">
-						<input type="text" name="user_id" id="user_id" required="required" style="">
+						<input type="text" name="user_id" id="user_id" required="required" style="" onkeypress="checkagain();">
 						<input type="button" class="regIdCheck" value="중복 확인" onclick="fn_regIdCheck();">
+						<input type="hidden" id="idck" value="NO">
 					</td>
 				</tr>
 				<tr>
@@ -134,7 +161,7 @@ function fn_regIdCheck() {
 				</tr>
 				<tr>
 					<td height="70" colspan="3" align="center">
-						<input type="submit" class="joinButton" value="가입하기">
+						<input type="button" class="regIdCheck" value="가입하기" onclick="ready();">
 					</td>
 				</tr>
 			</table>

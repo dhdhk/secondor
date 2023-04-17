@@ -1,5 +1,6 @@
 package com.spring.second.board.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,10 +23,17 @@ public class BoardDAOImpl implements BoardDAO {
 
 //검색
 	@Override
-	public List<BoardDTO> serchSelectPage(SearchCondition sc) {
-	   // TODO Auto-generated method stub
-	    return sqlSession.selectList("mapper.board.serchSelectPage", sc);
-	}
+	   public List<BoardDTO> serchSelectPage(SearchCondition sc) {
+	      // TODO Auto-generated method stub
+	      
+	        List<BoardDTO> test = new ArrayList<BoardDTO>();
+	         test = sqlSession.selectList("mapper.board.serchSelectPage", sc);
+	         for(int i = 0; i < test.size(); i++) {
+	            System.out.println((i+1) + "번쨰  : " + test.get(i).getRegNum());
+	         }
+	       return sqlSession.selectList("mapper.board.serchSelectPage", sc);
+	       
+	   }
 
 	@Override
 	public int serchcount(SearchCondition sc) {
