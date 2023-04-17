@@ -142,7 +142,7 @@ td>a{
 			<c:when test="${isLogOn == true && member.user_id==product.seller_id }">
 				<div class="logonActiveButtons">
 					<span>
-						<input type="button" name="modArticle" value="수정하기" onclick="location.href='${contextPath }/modify/modPro.do?regNum=${product.regNum}';">
+						<input type="button" class="modButton" name="modArticle" value="수정하기" onclick="location.href='${contextPath }/modify/modPro.do?regNum=${product.regNum}';">
 					</span>
 					<!--  <span>
 						<input type="button" name="removeArticle" value="삭제하기">
@@ -155,7 +155,7 @@ td>a{
 		</c:choose>
 	</div>
 	<div class="commentContent"><!-- 댓글 part(지저분함) -->
-		<span class="commentViewer">
+		<div class="commentViewer">
 			<c:choose>
 				<c:when test="${isLogOn == true }"><!-- 로그인 시 댓글보임 -->
 					<c:choose>
