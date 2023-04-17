@@ -50,13 +50,18 @@ function fn_regIdCheck() {
 			} else if(data == 'usable') {
 				alert("사용할 수 있는 아이디입니다.");
 				$('#user_id').attr('style', 'color:#5A7EFF');
+				$('#joinButton').prop('disabled', false);
 			}
 		}, error:function(data, textStatus){
 			alert("에러가 발생했습니다.")
 		}
 	});
 }
-
+//아이디 중복확인을 하고나서 아이디 수정했을때
+function checkagain() { 
+	$('#user_id').attr('style','');
+	$('#joinButton').attr('disabled','disabled');
+}
 </script>
 
 </head>
@@ -76,7 +81,7 @@ function fn_regIdCheck() {
 						아이디
 					</td>
 					<td width="400">
-						<input type="text" name="user_id" id="user_id" required="required" style="">
+						<input type="text" name="user_id" id="user_id" required="required" style="" onkeypress="checkagain();">
 						<input type="button" class="regIdCheck" value="중복 확인" onclick="fn_regIdCheck();">
 					</td>
 				</tr>
@@ -134,7 +139,7 @@ function fn_regIdCheck() {
 				</tr>
 				<tr>
 					<td height="70" colspan="3" align="center">
-						<input type="submit" class="joinButton" value="가입하기">
+						<input type="submit" class="joinButton" id="joinButton" value="가입하기" disabled="disabled">
 					</td>
 				</tr>
 			</table>
