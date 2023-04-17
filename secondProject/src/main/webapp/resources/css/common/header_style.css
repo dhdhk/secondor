@@ -90,7 +90,20 @@
     height: 30px;
     padding-top: 10px;
     font-size: 13px;
-    
+}
+
+#newComments{
+	margin-left: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-family: 'NanumSquareNeoHeavy';
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav_buttons{

@@ -52,26 +52,40 @@
 			</div>
 		</div>
 		<c:choose>
-		<%-- 로그인 상태 버튼 --%>
-		<c:when test="${isLogOn == true && member != null }">
+		<%-- 어드민 상태 버튼 --%>
+<%-- 		<c:when test="">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!(로그아웃) 
 				</div>
 				<div class="nav_buttons">
-
-						<div class="nav_login" onclick="location.href='${contextPath}/mypage/mypageMain.do';">
-							마이페이지
+						<div class="nav_writeProduct" onclick="location.href='${contextPath }/admin/listMembers.do';">
+							회원 전체 목록
 						</div>
-
-						<div class="nav_writeProduct" onclick="location.href='${contextPath }/write/writeForm.do';">
-							상품 등록
+						<div class="nav_message" onclick="location.href='${contextPath }/admin/prdel.do';">
+							글 전체 목록
 						</div>
-
-
-						<div class="nav_message" onclick="location.href='${contextPath }/chat/chatList.do?id=${member.user_id }';">
-							메세지
-						</div>
+				</div>
+			</div>
+		</c:when> --%>
+		<%-- 로그인 상태 버튼 --%>
+		<c:when test="${isLogOn == true && member != null }">
+			<div class="nav_right">
+				<div class="nav_welcomeUser_id">
+					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!
+					<!-- 코멘트 갯수 없으면 div 안뜨도록 -->
+					<div id="newComments">8</div>
+				</div>
+				<div class="nav_buttons">
+					<div class="nav_login" onclick="location.href='${contextPath}/mypage/mypageMain.do';">
+						마이페이지
+					</div>
+					<div class="nav_writeProduct" onclick="location.href='${contextPath }/write/writeForm.do';">
+						상품 등록
+					</div>
+					<div class="nav_message" onclick="location.href='${contextPath }/chat/chatList.do?id=${member.user_id }';">
+						메세지
+					</div>
 
 				</div>
 			</div>
