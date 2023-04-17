@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${contextPath }/resources/css/chat/chatForm_style.css">
 <meta charset="UTF-8">
 <!--<link rel="stylesheet" href="/resources/style.css"> !-->
 <script
@@ -63,13 +64,15 @@
 		// 메시지 전송
 		function sendMessage() {
 			console.log(1);
-
+			
+			var options = { hour: "numeric", minute: "numeric", hour12: false };
+			
 			let temp = '';
-			temp += '<div style="margin-bottom:3px;" align="right">';
+			temp += '<div id="sMA"><div id="sM">';
 			temp += $("#message").val();
-			temp += ' <span style="font-size:11px;color:#999;">'
-					+ new Date().toLocaleTimeString() + '</span>';
-			temp += '</div>';
+			temp += ' <span id="sS">'
+					+ new Date().toLocaleTimeString("en-US",options) + '</span>';
+			temp += '</div></div>';
 			console.log(2);
 
 			saveContent(temp, obj.chat_id);
@@ -81,13 +84,14 @@
 		function onMessage(msg) {
 			console.log(3);
 			var data = msg.data;
+			var options = { hour: "numeric", minute: "numeric", hour12: false };
 
 			let temp = '';
-			temp += '<div style="margin-bottom:3px;" align="left">';
+			temp += '<div id="rMA"><div id="rM">';
 			temp += data;
-			temp += ' <span style="font-size:11px;color:#777;">'
-					+ new Date().toLocaleTimeString() + '</span>';
-			temp += '</div>';
+			temp += ' <span id="rS">'
+					+ new Date().toLocaleTimeString("en-US",options) + '</span>';
+			temp += '</div></div>';
 			console.log(4);
 
 			saveContent(temp, obj.chat_id);
@@ -97,46 +101,63 @@
 		// 서버와 연결 끊음 -> 채팅창 나감
 		function onClose(evt) {
 			$("#messageArea").append("연결 끊김");
-
 		}
 	});
 </script>
 </head>
-<style>
-#chatArea {
-	position: absolute;
-	width: 300px;
-	height: 460px;
-	right: 50%;
-	left: 50%;
-	bottom: 20%;
-	border: 1px solid black;
-	text-align: center;
-}
-
-#messageArea {
-	width: 290px;
-	height: 380px;
-	text-align: right;
-}
-</style>
 <body>
-	<div id="chatArea">
-		<div id="op">
-			<c:if test="${id == chatDTO.buyer_id}">
-				<td><h3>${chatDTO.seller_id } 님 과의 채팅</h3></td>
-			</c:if>
-			<c:if test="${id == chatDTO.seller_id}">
-				<td><h3>${chatDTO.buyer_id } 님 과의 채팅</h3></td>
-			</c:if>
+	<div class="chatTitle">
+		메세지 보내기
+	</div>
+	<div class="chatContent">
+		<div id="chatArea">
+			<div id="op">
+
+			</div>
+			<div class="chatUpper" align="left">
+				<div class="chatImg">
+					<img src="/image/${board.regNum }/${board.pr_img1}" class="d-block w-100" alt="...">
+				</div>
+				<div class="chatSummary">
+					<div class="chatWith">
+						<c:if test="${id == chatDTO.buyer_id}">
+							${chatDTO.seller_id } 님 과의 채팅
+						</c:if>
+						<c:if test="${id == chatDTO.seller_id}">
+							${chatDTO.buyer_id } 님 과의 채팅
+						</c:if>
+					</div>
+					<div class="chatInfo">
+						<div class="chatPr_sold">
+							<c:if test="${board.pr_sold == 0 }">
+								<div class="onSellDisplay" style="color:#5A7EFF;">판매 중</div>
+							</c:if>
+							<c:if test="${board.pr_sold == 1 }">
+								<div class="onSellDisplay" style="color: #FFCD4A;">거래 중</div>
+							</c:if>
+							<c:if test="${board.pr_sold == 2 }">
+								<div class="onSellDisplay" style="color: #f34a5a;">거래 완료</div>
+							</c:if>
+							<c:if test="${board.pr_sold == 3 }">
+								<div class="onSellDisplay" style="color: black;">거래 불가능</div>
+							</c:if>
+						</div>
+						<div class="chatPr_title">
+							${board.pr_title }
+						</div>
+					</div>
+					<div class="chatPr_price">
+						${board.pr_price }원
+					</div>
+				</div>
+			</div>
+				<div id="messageArea" style="overflow-y:scroll" > <!-- 날짜 표기 추가 -->
+			</div>
+			<div class="sendingArea">
+				<div class="inputMessage"><input type="text" id="message" placeholder="메세지 보내기"/></div>
+				<div class="sendingButton"><input type="button" id="sendBtn" value="전송" /></div>
+			</div>
 		</div>
-		<div align="left">
-			<img src="/image/${product.regNum }/${product.pr_img1}" class="d-block w-100" alt="...">
-			${board.pr_sold } || ${board.pr_title }${board.pr_price }
-		</div>
-		<div id="messageArea" style="overflow-y:scroll" > <!-- 날짜 표기 추가 -->
-		</div>
-		<input type="text" id="message" placeholder="메세지 보내기"/> <input type="button" id="sendBtn" value="전송" />
 	</div>
 </body>
 </html>
