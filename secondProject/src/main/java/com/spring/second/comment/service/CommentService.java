@@ -3,6 +3,7 @@ package com.spring.second.comment.service;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.second.comment.dto.BoardCommentCntDTO;
 import com.spring.second.comment.dto.CommentDTO;
 
 public interface CommentService {
@@ -33,4 +34,8 @@ public List<CommentDTO> viewComment(int regNum);
 	public int getBoardCommentCnt(int regNum);
 	
 	public void minusUserCommentCnt(String seller_id, int brdcmtcnt);
+	
+	public List<BoardCommentCntDTO> getAllCommentCnt();
+	
+	public int findUserCommentCnt(String user_id);
 }

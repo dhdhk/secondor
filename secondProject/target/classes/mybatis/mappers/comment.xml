@@ -99,4 +99,14 @@
     		update userCommentCnt set userCommentCount=#{userCommentCount} where user_id=#{user_id}
     	]]>	
     </update>
+    <select id="getAllCommentCnt" resultMap="boardCommentCntRes">
+    	<![CDATA[
+    		select regNum, boardCommentCount from boardCommentCnt
+    	]]>
+    </select>
+    <select id="findUserComment" parameterType="String" resultType="int">
+    	<![CDATA[
+    		select userCommentCount from userCommentCnt where user_id=#{user_id}
+    	]]>
+    </select>
 </mapper>

@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.second.comment.dto.BoardCommentCntDTO;
 import com.spring.second.comment.dto.CommentDTO;
 
 import oracle.net.aso.f;
@@ -124,5 +125,18 @@ public class CommentDAOImpl implements CommentDAO{
 			finalCnt.put("user_id", user_id);
 			finalCnt.put("userCommentCount", userCommentCount);
 			sqlSession.update("mapper.comment.calUserCnt", finalCnt);
+		}
+
+		@Override
+		public List<BoardCommentCntDTO> allCommentCntGet() {
+			// TODO Auto-generated method stub
+			List<BoardCommentCntDTO> commentCnt=sqlSession.selectList("mapper.comment.getAllCommentCnt");
+			return commentCnt;
+		}
+
+		@Override
+		public int userCommentFind(String user_id) {
+			// TODO Auto-generated method stub
+			return sqlSession.selectOne("mapper.comment.findUserComment", user_id);
 		}
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.second.comment.dao.CommentDAO;
+import com.spring.second.comment.dto.BoardCommentCntDTO;
 import com.spring.second.comment.dto.CommentDTO;
 @Service
 public class CommentServiceImpl implements CommentService{
@@ -96,4 +97,18 @@ public class CommentServiceImpl implements CommentService{
 				// TODO Auto-generated method stub
 				commentDAO.userCommentCntMinus(seller_id, brdcmtcnt);
 			}
+
+			@Override
+			public List<BoardCommentCntDTO> getAllCommentCnt() {
+				// TODO Auto-generated method stub
+				return commentDAO.allCommentCntGet();
+			}
+
+			@Override
+			public int findUserCommentCnt(String user_id) {
+				// TODO Auto-generated method stub
+				return commentDAO.userCommentFind(user_id);
+			}
+			
+			
 }
