@@ -73,40 +73,11 @@ public class ModifyControllerImpl implements ModifyController{
 			System.out.println(name+" : "+value);
 			articleMap.put(name, value);
 		}
-		
-		System.out.println(articleMap.get("pr_img1"));
-		System.out.println(articleMap.get("pr_img2"));
-		System.out.println(articleMap.get("pr_img3"));
-		System.out.println("old1 : " +articleMap.get("old1"));
-		String message;
-		ResponseEntity<String> resEnt = null;
-		HttpHeaders responseHeaders = new HttpHeaders();
-		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
-		//첫번째사진없으면 경고창뜨면서 돌아오게함
-		if(articleMap.get("old1")==null) {
-			message = "<script>";
-			message += "alert('첫 번째 사진을 반드시 첨부해주세요.');";
-			message += "location.href='" + multipartRequest.getContextPath()
-				+"/modify/modPro.do?regNum="+regNum+"';";
-			message += "</script>";
-			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
-			return resEnt;
-		}
-		//이 밑으로 첫이미지없으면 or 이미지 리스트가없다는 조건 전부삭제했습니다.
-		//판매자 이름 지정
-		HttpSession session = multipartRequest.getSession();
-	    MemberDTO memberDTO=(MemberDTO) session.getAttribute("member");
-	    String user_id= memberDTO.getUser_id();
-	    //boardDTO에 regNum값을 넣어서 이미지파일 이름들을 가져옴
+		//boardDTO에 regNum값을 넣어서 이미지파일 이름들을 가져옴
 	    boardDTO=modifyservice.getfilename(regNum);
 	    String old1=boardDTO.getPr_img1();
 	    String old2=boardDTO.getPr_img2();
 	    String old3=boardDTO.getPr_img3();
-	    
-		articleMap.put("seller_id", user_id);
-		articleMap.put("regNum", regNum);
-		
-		
 		//Map에 파일이름 받아와서 넣기
 		for(String fileName : fileList) {
 			ImageDTO image = new ImageDTO();
@@ -114,7 +85,7 @@ public class ModifyControllerImpl implements ModifyController{
 			imageFileList.add(image);
 			//사진 수정안했을때 old파일이 존재 > old파일을 pr_img값으로
 			if((articleMap.get("pr_img1")==null && articleMap.get("old1")!=null)&&fileName.length()==0) {
-				articleMap.put("pr_img1", old1 );
+			articleMap.put("pr_img1", old1 );
 			}
 			//수정했을때 
 			else if(articleMap.get("pr_img1")==null){
@@ -132,6 +103,36 @@ public class ModifyControllerImpl implements ModifyController{
 			}
 		}
 		articleMap.put("imageFileList", imageFileList);
+		System.out.println("pr_img1 : "+articleMap.get("pr_img1"));
+		System.out.println("pr_img2 : "+articleMap.get("pr_img2"));
+		System.out.println("pr_img3 : "+articleMap.get("pr_img3"));
+		System.out.println("old1 : " +articleMap.get("old1"));
+		String message;
+		ResponseEntity<String> resEnt = null;
+		HttpHeaders responseHeaders = new HttpHeaders();
+		responseHeaders.add("Content-Type", "text/html;charset=utf-8");
+		//첫번째사진없으면 경고창뜨면서 돌아오게함
+		if(articleMap.get("old1")==null&&articleMap.get("pr_img1")==null) {
+			message = "<script>";
+			message += "alert('첫 번째 사진을 반드시 첨부해주세요.');";
+			message += "location.href='" + multipartRequest.getContextPath()
+				+"/modify/modPro.do?regNum="+regNum+"';";
+			message += "</script>";
+			resEnt = new ResponseEntity(message, responseHeaders, HttpStatus.CREATED);
+			return resEnt;
+		}
+		//이 밑으로 첫이미지없으면 or 이미지 리스트가없다는 조건 전부삭제했습니다.
+		//판매자 이름 지정
+		HttpSession session = multipartRequest.getSession();
+	    MemberDTO memberDTO=(MemberDTO) session.getAttribute("member");
+	    String user_id= memberDTO.getUser_id();
+	    
+	    
+		articleMap.put("seller_id", user_id);
+		articleMap.put("regNum", regNum);
+		
+		
+		
 		//사진을 수정했을경우 (이전파일이름과 현재파일이름이 다를때) 이전사진을 삭제
 		
 		String pr_img1 = (String) articleMap.get("pr_img1");
