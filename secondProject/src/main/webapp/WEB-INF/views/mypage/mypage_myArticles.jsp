@@ -52,9 +52,10 @@
 				<table align="center" width="700px;">
 					<tr class="TableTop" height="40px;" align="center" bgcolor="#FFCD4A">
 						<td width="11%">카테고리</td>
-						<td width="50%">제목</td>
+						<td width="42%">제목</td>
 						<td width="15%">작성일자</td>
 						<td width="10%">판매상태</td>
+						<td width="8%">새 댓글</td>
 					</tr>
 					<c:choose>
 						<c:when test="${myList == null }">
@@ -88,6 +89,11 @@
 										<c:if test="${myList.pr_sold =='0' }">거래 가능</c:if>
 										<c:if test="${myList.pr_sold =='1' }">거래 중</c:if>
 										<c:if test="${myList.pr_sold =='2' }">거래 완료</c:if>
+									</td>
+									<td>
+									<c:forEach var="commentCnt" items="${commentCnt}" >
+											<c:if test="${commentCnt.regNum==myList.regNum}">${ commentCnt.boardCommentCount}</c:if>
+									</c:forEach>
 									</td>
 								</tr>
 							</c:forEach>
