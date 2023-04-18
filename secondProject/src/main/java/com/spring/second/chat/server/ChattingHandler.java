@@ -26,13 +26,14 @@ public class ChattingHandler extends TextWebSocketHandler{
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// TODO Auto-generated method stub
 		sessionList.add(session);
-		logger.info("{}¿¬°áµÊ",session.getId());
+		System.out.println("ì—°ê²°ëœ session ìˆ˜ : " + sessionList.size());
+		logger.info("{} ì—°ê²°ë¨",session.getId());
 	}
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		// TODO Auto-generated method stub
-		logger.info("{}·Î ºÎÅÍ {}¹ŞÀ½",session.getId(), message.getPayload());
-		//¸ğµç À¯Àú¿¡°Ô ¸Ş¼¼Áö Ãâ·Â
+		logger.info("{}ê°€ {} ë³´ëƒ„",session.getId(), message.getPayload());
+		//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ş¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		for(WebSocketSession sess : sessionList) {
 			sess.sendMessage(new TextMessage(message.getPayload()));
 		}
@@ -41,7 +42,7 @@ public class ChattingHandler extends TextWebSocketHandler{
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		// TODO Auto-generated method stub
 		sessionList.remove(session);
-		logger.info("{}¿¬°á ²÷±è",session.getId());
+		logger.info("{} ë‹«ìŒ",session.getId());
 	}
 	
 	
