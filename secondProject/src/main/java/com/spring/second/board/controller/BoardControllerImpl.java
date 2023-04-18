@@ -127,6 +127,8 @@ public class BoardControllerImpl implements BoardController {
 				int brdcmtcnt=commentService.getBoardCommentCnt(regNum);
 				commentService.minusUserCommentCnt(seller_id, brdcmtcnt);
 			}
+			int commentCnt=commentService.findUserCommentCnt(member.getUser_id());
+			session.setAttribute("commentCnt", commentCnt);
 			mav.addObject("buyerComments", buyerComments);
 		}
 		mav.addObject("pageName", request.getParameter("pageName"));
