@@ -115,9 +115,9 @@
 			<div id="op">
 
 			</div>
-			<div class="chatUpper" align="left">
-				<div class="chatImg">
-					<img src="/image/${board.regNum }/${board.pr_img1}" class="d-block w-100" alt="...">
+			<div class="chatUpper" align="left" onclick="location.href='${contextPath}/product/viewProduct.do?regNum=${board.regNum }';">
+				<div class="chatImgDiv">
+					<img src="/image/${board.regNum }/${board.pr_img1}" class="chatImg" alt="...">
 				</div>
 				<div class="chatSummary">
 					<div class="chatWith">
