@@ -12,7 +12,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="${contextPath }/resources/css/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath }/resources/css/mypage/mypageMain_style.css">
+<link rel="stylesheet" href="${contextPath }/resources/css/mypage/myChatList_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -49,26 +49,47 @@
 				1대1 채팅 목록
 			</div>
 			<div class="menuContent">
-				<table border="1" align="center" width="50%">
-					<tr align="center" bgcolor="lightgreen">
+				<table align="center" width="550px;" class="chatListTable">
 						<c:forEach var="chat" items="${chatList}">
 							<tr align="left">
 								<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 (param 수정해야 함)-->
-									<td>구매</td>
-									<td onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'">
-									${chat.seller_id }<br>${chat.pr_title }</td>
+									<td class="chatPurpose" style="color: #5A7EFF;" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }';">
+										구매
+									</td>
+									<td class="chatInfo" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'"><%-- 제품 상세 --%>
+										<div class="chatListId">
+											${chat.seller_id }님
+										</div>
+										<div class="chatListPr_title">
+											${chat.pr_title }
+										</div>
+									</td>
+									<td class="chatImg" align="center" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'"><%-- 제품 이미지 --%>
+										<div class="chatListImgDiv">
+											<img src="/image/${chat.pr_id }/${chat.pr_img1 }" class="chatListImg" alt="...">
+										</div>
+									</td>
 								</c:if>
 								<c:if test="${param.id == chat.seller_id}"> <!-- 내가 판매자면 -->
-									<td>판매</td>
-									<td onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }'">
-									${chat.buyer_id }<br>${chat.pr_title }</td>
+									<td class="chatPurpose" style="color: #FFCD4A;" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }';">
+										판매
+									</td>
+									<td class="chatInfo" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }';"><%-- 제품 상세 --%>
+										<div class="chatListId">
+											${chat.buyer_id }님
+										</div>
+										<div class="chatListPr_title">
+											${chat.pr_title }
+										</div>
+									</td>
+									<td class="chatImg" align="center" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }';"><%-- 제품 이미지 --%>
+										<div class="chatListImgDiv">
+											<img src="/image/${chat.pr_id }/${chat.pr_img1 }" class="chatListImg" alt="...">
+										</div>
+									</td>
 								</c:if>
-								<td><img src="/image/${chat.pr_id }/${chat.pr_img1 }"
-									class="d-block w-100" alt="...">
-								</td>
 							</tr>
 						</c:forEach>
-					</tr>
 				</table>
 			</div>
 		</div>
