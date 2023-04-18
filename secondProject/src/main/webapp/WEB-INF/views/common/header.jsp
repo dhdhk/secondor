@@ -52,8 +52,8 @@
 			</div>
 		</div>
 		<c:choose>
-		<%-- 어드민 상태 버튼 --%>
-<%-- 		<c:when test="">
+		<%-- 관리자 상태 버튼 --%>
+		<c:when test="${ member.user_id == 'admin'}">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!(로그아웃) 
@@ -67,9 +67,9 @@
 						</div>
 				</div>
 			</div>
-		</c:when> --%>
+		</c:when>
 		<%-- 로그인 상태 버튼 --%>
-		<c:when test="${isLogOn == true && member != null }">
+		<c:when test="${isLogOn == true && member != null && member.user_id != 'admin' }">
 			<div class="nav_right">
 				<div class="nav_welcomeUser_id">
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!
