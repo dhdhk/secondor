@@ -15,6 +15,16 @@
 <title>회원 가입창</title>
 <link rel="stylesheet" href="${contextPath }/resources/css/member/memberForm_style.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+/* 회원가입 버튼 */
+.joinButton{
+	background-color: #d8d8d8;
+	border-style: none;
+	color: white;
+	border-radius: 3px;
+	width: 100px;
+	height: 40px;
+</style>
 <script>
 	function readURL(input) {
 		if(input.files && input.files[0]){
@@ -51,6 +61,7 @@ function fn_regIdCheck() {
 				alert("사용할 수 있는 아이디입니다.");
 				$('#user_id').attr('style', 'color:#5A7EFF');
 				$('#joinButton').prop('disabled', false);
+				$('#joinButton').attr('style','background-color: #5A7EFF;');
 			}
 		}, error:function(data, textStatus){
 			alert("에러가 발생했습니다.")
@@ -61,6 +72,7 @@ function fn_regIdCheck() {
 function checkagain() { 
 	$('#user_id').attr('style','');
 	$('#joinButton').attr('disabled','disabled');
+	$('#joinButton').attr('style','background-color: ##d8d8d8;');
 }
 </script>
 
