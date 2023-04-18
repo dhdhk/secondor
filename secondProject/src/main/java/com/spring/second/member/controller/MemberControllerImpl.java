@@ -202,8 +202,10 @@ public class MemberControllerImpl extends MultiActionController implements Membe
 
 		if(member != null) {
 			HttpSession session = request.getSession();
+			int commentCnt=commentService.findUserCommentCnt(member.getUser_id());
 			session.setAttribute("member", member);
 			session.setAttribute("isLogOn", true);
+			session.setAttribute("commentCnt", commentCnt);
 			rAttr.addAttribute("msg", "login");
 			String action = (String) session.getAttribute("action");
 			session.removeAttribute("action");
