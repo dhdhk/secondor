@@ -87,7 +87,7 @@
 					<div class="nav_writeProduct" onclick="location.href='${contextPath }/write/writeForm.do';">
 						상품 등록
 					</div>
-					<div class="nav_message" onclick="location.href='${contextPath }/chat/chatList.do?id=${member.user_id }';">
+					<div class="nav_message" onclick="location.href='${contextPath }/mypage/myChatListForm.do';">
 						메세지
 					</div>
 

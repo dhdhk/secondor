@@ -36,7 +36,7 @@
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
-				<a href="${contextPath }/chat/chatList.do?id=${member.user_id }" class="mypageMenuHref">1대1 채팅</a>
+				<a href="${contextPath }/mypage/myChatListForm.do" class="mypageMenuHref">1대1 채팅</a>
 				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>
@@ -52,11 +52,11 @@
 				<table align="center" width="550px;" class="chatListTable">
 						<c:forEach var="chat" items="${chatList}">
 							<tr align="left">
-								<c:if test="${param.id == chat.buyer_id}"> <!-- 내가 구매자면 (param 수정해야 함)-->
-									<td class="chatPurpose" style="color: #5A7EFF;" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }';">
+								<c:if test="${member.user_id == chat.buyer_id}"> <!-- 내가 구매자면 (param 수정해야 함)-->
+									<td class="chatPurpose" style="color: #5A7EFF;" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${member.user_id }&&regNum=${chat.pr_id }';">
 										구매
 									</td>
-									<td class="chatInfo" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'"><%-- 제품 상세 --%>
+									<td class="chatInfo" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${member.user_id }&&regNum=${chat.pr_id }'"><%-- 제품 상세 --%>
 										<div class="chatListId">
 											${chat.seller_id }님
 										</div>
@@ -64,13 +64,13 @@
 											${chat.pr_title }
 										</div>
 									</td>
-									<td class="chatImg" align="center" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${param.id }&&regNum=${chat.pr_id }'"><%-- 제품 이미지 --%>
+									<td class="chatImg" align="center" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${member.user_id }&&regNum=${chat.pr_id }'"><%-- 제품 이미지 --%>
 										<div class="chatListImgDiv">
 											<img src="/image/${chat.pr_id }/${chat.pr_img1 }" class="chatListImg" alt="...">
 										</div>
 									</td>
 								</c:if>
-								<c:if test="${param.id == chat.seller_id}"> <!-- 내가 판매자면 -->
+								<c:if test="${member.user_id == chat.seller_id}"> <!-- 내가 판매자면 -->
 									<td class="chatPurpose" style="color: #FFCD4A;" onclick="location.href='${contextPath }/chat/chatForm.do?buyer_id=${chat.buyer_id }&&regNum=${chat.pr_id }';">
 										판매
 									</td>

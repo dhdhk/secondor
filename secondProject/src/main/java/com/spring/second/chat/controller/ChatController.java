@@ -10,8 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
-import com.spring.second.board.service.BoardService;
 import com.spring.second.chat.dto.ChatDTO;
 import com.spring.second.chat.service.ChatService;
 import com.spring.second.member.dto.MemberDTO;
@@ -33,6 +30,8 @@ public class ChatController {
 	private ChatService chatservice;
 	@Autowired
 	SqlSession sqlSession;
+	@Autowired
+	MemberService memberService;
 
 	@RequestMapping(value="/chat/*Form.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView form(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -78,16 +77,17 @@ public class ChatController {
 		return mav;
 	}
 
-	@RequestMapping(value="/chat/chatList.do")
+	//@RequestMapping(value="/chat/chatList.do")
 	public ModelAndView chatList(@RequestParam("id")String id, HttpServletRequest request, HttpServletResponse response)
 			throws Exception{
 		// TODO Auto-generated method stub
-		System.out.println(id + "�� chatList");
+		System.out.println(id + " : chatList");
 		String viewName = (String)request.getAttribute("viewName");
+		
 		List<ChatDTO> chatList = chatservice.listchats(id);
-
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("chatList", chatList);
+		
 
 		return mav;
 	}

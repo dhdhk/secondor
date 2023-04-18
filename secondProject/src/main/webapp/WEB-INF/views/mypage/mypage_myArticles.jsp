@@ -36,7 +36,7 @@
 			
 				<a href="${contextPath }/mypage/modInfoForm.do" class="mypageMenuHref">내 정보</a>
 				<a href="${contextPath }/mypage/myArticles.do" class="mypageMenuHref">작성글</a>
-				<a href="${contextPath }/chat/chatList.do?id=${member.user_id }" class="mypageMenuHref">1대1 채팅</a>
+				<a href="${contextPath }/mypage/myChatListForm.do" class="mypageMenuHref">1대1 채팅</a>
 				<a href="${contextPath }/mypage/logoutForm.do" class="mypageMenuHref">로그아웃</a>
 				<br><br><br><br>
 				<a href="${contextPath }/mypage/dropOutForm.do" class="mypageMenuHref" style="color:#d0d0d0">회원 탈퇴</a>

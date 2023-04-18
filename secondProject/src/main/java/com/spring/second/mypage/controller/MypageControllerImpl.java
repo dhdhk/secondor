@@ -27,6 +27,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.second.board.dto.BoardDTO;
+import com.spring.second.chat.dto.ChatDTO;
+import com.spring.second.chat.service.ChatService;
 import com.spring.second.member.controller.MemberControllerImpl;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
@@ -50,6 +52,9 @@ public class MypageControllerImpl implements MypageController{
 	 
 	 @Autowired
 	 MemberControllerImpl mc;
+	 
+	 @Autowired
+	private ChatService chatservice;
 	 
 
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
@@ -76,11 +81,11 @@ public class MypageControllerImpl implements MypageController{
 		HttpSession session = request.getSession();
 		session.setAttribute("action", action);
 		MemberDTO member = (MemberDTO)session.getAttribute("member");
-		String id= member.getUser_id();
+		String user_id= member.getUser_id();
 		ModelAndView mav = new ModelAndView(viewName);
-		MemberDTO dto = memberService.selectMember(id);
-//		List<BoardDTO> bto = mypageService.selectMyList(id);
-//		mav.addObject("myList",bto);
+		MemberDTO dto = memberService.selectMember(user_id);
+		List<ChatDTO> chatList = chatservice.listchats(user_id);
+		mav.addObject("chatList", chatList);
 		mav.addObject("member", dto);
 		mav.addObject("result", result);
 		return mav;
@@ -230,7 +235,7 @@ public class MypageControllerImpl implements MypageController{
 		
 		return mav;
 	}
-	@RequestMapping(value = "/mypage/myChatlist.do", method= {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/chat/chatList.do", method= {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView myChatlist(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		String viewName = (String) request.getAttribute("viewName");
