@@ -36,17 +36,17 @@
 			<%-- 카테고리 --%>
 			<div class="navbar_bottom">
 				<ul class="nav_category">
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=living">거실</a></li>
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=dining">주방</a></li>
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=bedroom">침실</a></li>
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=bathroom">화장실</a></li>
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=study">서재</a></li>
-					<li class="category_item"><a class="nav-link"
+					<li class="category_item"><a class="nav-link" style="color: #5A7EFF;"
 						href="${contextPath }/viewList.do?category_name=etc">기타</a></li>
 				</ul>
 			</div>
