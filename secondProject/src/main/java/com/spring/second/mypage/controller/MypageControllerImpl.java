@@ -223,9 +223,19 @@ public class MypageControllerImpl implements MypageController{
 		
 		MypageHandler mypageHandler = new MypageHandler(totalCnt, mp);
 		
-		List<BoardDTO> myList = mypageService.getselectMyList(mp);
+		List<BoardCommentCntDTO> commentCnt=commentService.getAllCommentCnt();
+		for(int i=0;i<myList.size();i++) {
+			System.out.println(myList);
+		}
+		for(int i=0;i<commentCnt.size();i++) {
+			System.out.println(commentCnt);
+		}
 		m.addAttribute("myList", myList);
+		System.out.println("1");
 		m.addAttribute("mh", mypageHandler);
+		System.out.println("2");
+		m.addAttribute("commentCnt", commentCnt);
+		System.out.println("3");
 		
 		
 		return mav;
