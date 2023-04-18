@@ -174,7 +174,7 @@ td>a{
 			<c:choose>
 				<c:when test="${isLogOn == true }"><!-- 로그인 시 댓글보임 -->
 					<c:choose>
-						<c:when test="${member.user_id==product.seller_id }"><!-- 판매자한테 댓글 모두 보임 -->
+						<c:when test="${member.user_id==product.seller_id || member.user_id=='admin' }"><!-- 판매자한테 댓글 모두 보임 -->
 							<form name="comment" method="post" action="${contextPath }/product/SellerWriteComment.do?regNum=${product.regNum}" enctype="multipart/form-data">
 								<table align="center" width="1150px;">
 									<c:forEach var="sellerCommentsView0" items="${sellerCommentsView0 }"><!-- 판매자에게는 ForEach문 기준으로 10개(10명분,0~9) 반복됨, 데이터 없으면 보이지 않음-->
@@ -203,7 +203,7 @@ td>a{
 									</c:forEach>
 									<!-- 댓글입력창 -->
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView0 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView0 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content0" placeholder="댓글을 입력하세요">
@@ -238,7 +238,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView1 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView1 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content1" placeholder="댓글을 입력하세요">
@@ -273,7 +273,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView2 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView2 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content2" placeholder="댓글을 입력하세요">
@@ -308,7 +308,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView3 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView3 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content3" placeholder="댓글을 입력하세요">
@@ -343,7 +343,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView4 and (product.pr_sold==0 or product.pr_sold==1) }">
+										<c:when test="${not empty sellerCommentsView4 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content4" placeholder="댓글을 입력하세요">
@@ -378,7 +378,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView5 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView5 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content5" placeholder="댓글을 입력하세요">
@@ -413,7 +413,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView6 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView6 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content6" placeholder="댓글을 입력하세요">
@@ -448,7 +448,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView7 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView7 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content7" placeholder="댓글을 입력하세요">
@@ -483,7 +483,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView8 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView8 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td width="1050px;">
 													<input type="text" name="comment_content8" placeholder="댓글을 입력하세요">
@@ -518,7 +518,7 @@ td>a{
 										</tr>
 									</c:forEach>
 									<c:choose>
-										<c:when test="${not empty sellerCommentsView9 and (product.pr_sold==0 or product.pr_sold==1)}">
+										<c:when test="${not empty sellerCommentsView9 and (product.pr_sold==0 or product.pr_sold==1) and member.user_id!='admin'}">
 											<tr>
 												<td>
 													<input type="text" name="comment_content9" placeholder="댓글을 입력하세요">
