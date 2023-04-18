@@ -3,6 +3,7 @@ package com.spring.second.comment.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.spring.second.comment.dto.BoardCommentCntDTO;
 import com.spring.second.comment.dto.CommentDTO;
 
 public interface CommentDAO {
@@ -33,4 +34,8 @@ public List<CommentDTO> commentGet(int regNum);
 	public int boardCommentCntGet(int regNum);
 	
 	public void userCommentCntMinus(String user_id, int brdcmtcnt);
+	
+	public int userCommentFind(String user_id);
+	
+	public List<BoardCommentCntDTO> allCommentCntGet();
 }
