@@ -127,12 +127,16 @@
 	color:white;
 	background-color: #5A7EFF;
 }
-.nav_login {
 
-}
-.nav_writeProduct {
-	
-}
-.nav_message {
-	
+.nav_adminMemberList,.nav_adminProductList {
+	display: flex;
+	flex-direction:row;
+	width: 110px;
+	height: 40px;
+    justify-content: center;
+    align-items: center;
+	border-radius: 5px;
+	cursor: pointer;
+	color:white;
+	background-color: #5A7EFF;
 }

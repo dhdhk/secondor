@@ -59,10 +59,10 @@
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!(로그아웃) 
 				</div>
 				<div class="nav_buttons">
-						<div class="nav_writeProduct" onclick="location.href='${contextPath }/admin/listMembers.do';">
+						<div class="nav_adminMemberList" onclick="location.href='${contextPath }/admin/listMembers.do';">
 							회원 전체 목록
 						</div>
-						<div class="nav_message" onclick="location.href='${contextPath }/admin/prdel.do';">
+						<div class="nav_adminProductList" onclick="location.href='${contextPath }/admin/prdel.do';">
 							글 전체 목록
 						</div>
 				</div>
