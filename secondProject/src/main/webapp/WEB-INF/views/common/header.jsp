@@ -13,6 +13,11 @@
 		location.href='${contextPath }/member/loginForm.do';
 	}
 	
+	function fn_newCommentsAlert(){
+		alert("새로운 댓글이 ${commentCnt }개 있습니다.");
+		location.href='${contextPath }/mypage/myArticles.do';
+	}
+	
 </script>
 </head>
 <body>
@@ -74,8 +79,8 @@
 				<div class="nav_welcomeUser_id">
 					환영합니다. <a href="${contextPath }/member/logout.do">${member.user_name } </a>님!
 					<!-- 코멘트 갯수 없으면 div 안뜨도록 -->
-						<c:if test="${commentCnt!=0 }">
-							<div id="newComments">
+						<c:if test="${commentCnt>0 }">
+							<div id="newComments" onclick="fn_newCommentsAlert();">
 								${commentCnt }
 							</div>
 						</c:if>
