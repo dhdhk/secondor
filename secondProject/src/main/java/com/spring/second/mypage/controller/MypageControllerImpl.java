@@ -29,6 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.spring.second.board.dto.BoardDTO;
 import com.spring.second.chat.dto.ChatDTO;
 import com.spring.second.chat.service.ChatService;
+import com.spring.second.comment.dto.BoardCommentCntDTO;
+import com.spring.second.comment.service.CommentService;
 import com.spring.second.member.controller.MemberControllerImpl;
 import com.spring.second.member.dto.MemberDTO;
 import com.spring.second.member.service.MemberService;
@@ -55,6 +57,9 @@ public class MypageControllerImpl implements MypageController{
 	 
 	 @Autowired
 	private ChatService chatservice;
+	 
+	 @Autowired
+	 CommentService commentService;
 	 
 
 	@RequestMapping(value = "/mypage/mypageMain.do" , method= {RequestMethod.GET,RequestMethod.POST})
@@ -228,10 +233,12 @@ public class MypageControllerImpl implements MypageController{
 		
 		MypageHandler mypageHandler = new MypageHandler(totalCnt, mp);
 		
+		List<BoardCommentCntDTO> commentDTO = commentService.getAllCommentCnt();
 		List<BoardDTO> myList = mypageService.getselectMyList(mp);
+		
 		m.addAttribute("myList", myList);
 		m.addAttribute("mh", mypageHandler);
-		
+		m.addAttribute("commentDTO", commentDTO);
 		
 		return mav;
 	}

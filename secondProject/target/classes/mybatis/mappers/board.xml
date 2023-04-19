@@ -26,7 +26,7 @@
   	<select id="serchSelectPage" parameterType="SearchCondition" resultMap="articleResult">
        <![CDATA[  
 			select * from (select rownum as rnum, pr_title, pr_img1,pr_price, pr_sold, regdate ,regnum from board where pr_title like '%' || #{keyword} || '%' order by regNum desc) 
-			where rnum between  #{start} and #{end}       
+			where rownum between  #{start} and #{end}       
       ]]>
      
     </select> 
