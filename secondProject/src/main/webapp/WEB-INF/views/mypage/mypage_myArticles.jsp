@@ -92,9 +92,7 @@
 									</td>
 									<td>
 										<c:forEach var="commentDTO" items="${commentDTO }">
-											<c:if test="${commentDTO.regNum == myList.regNum}">
-												${commentDTO.boardCommentCount }
-											</c:if>
+											<c:if test="${commentDTO.regNum == myList.regNum}">${commentDTO.boardCommentCount }</c:if>
 										</c:forEach>
 									</td>
 								</tr>
